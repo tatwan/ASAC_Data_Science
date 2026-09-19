@@ -16,7 +16,7 @@ The programme supports preparation for the Microsoft Power BI Data Analyst certi
 
 [Download the schedule as a PDF](course/assets/schedule.pdf)
 
-[View the student schedule](course/STUDENT_SCHEDULE.md) · [Download the Excel version](course/assets/student-schedule.xlsx)
+[View the student schedule](course/STUDENT_SCHEDULE.md) · [Download the Excel version](course/assets/student-schedule.xlsx) · [Open in Google Sheets](https://docs.google.com/spreadsheets/d/1eese9ddJeecPEWQ60ApRvr0rfiYVBfoNaogoYhwyRNk/edit?usp=sharing)
 
 The scheduled hours include a 25-minute break from 3:35 to 4:00 PM. The final mock exam will follow the timing and break rules confirmed by its provider.
 
