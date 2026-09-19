@@ -1,3 +1,5 @@
+![img](course/assets/repo_images/logo.png)
+
 # ASAC Data Science & Analytics — 2026
 
 This beginner programme prepares learners for analyst and business intelligence roles. It combines guided instruction with practical work in SQL, Power Query, data modelling, DAX, report design, introductory machine learning and responsible AI.
