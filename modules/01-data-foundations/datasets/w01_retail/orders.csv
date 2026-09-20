@@ -1,0 +1,6 @@
+order_id,customer_id,order_date,status
+1001,C-204,2026-08-03,completed
+1002,C-118,2026-08-03,cancelled
+1003,C-204,2026-08-11,completed
+1004,C-401,2026-08-18,completed
+1005,C-118,2026-08-24,completed
