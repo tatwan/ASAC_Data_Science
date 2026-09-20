@@ -1,6 +1,6 @@
 # Module 01 · Data foundations
 
-[Course home](../../README.md) · [Schedule](../../course/SCHEDULE.md) · [Assessment](../../course/ASSESSMENT.md)
+[Course home](../../README.md) · [Schedule](../../course/STUDENT_SCHEDULE.md) · [Assessment](../../course/ASSESSMENT.md)
 
 **Week 1 · D01–D02 · 20 and 21 September 2026 · 8 hours**
 
