@@ -76,6 +76,14 @@ The third-party mock on the final day supports the programme's voucher decision 
 
 Required trainee work uses free access and does not require a credit card. Power BI Desktop requires access to Windows. If a paid or restricted feature is unavailable, the instructor demonstrates it and provides an equivalent free evidence route.
 
+> [!Note]
+>
+> A copy of these materials is mirrored in the course
+> [Google Drive folder](https://drive.google.com/drive/folders/14MonW3zPw5i9iubBdrclYS3XEZeaqYBP?usp=sharing).
+> This repository is the original; if the two ever disagree, trust this one.
+
+
+
 ## Reuse
 
 No public reuse licence has been selected for these materials. Public access to the repository does not grant permission to copy, modify or redistribute its contents.
