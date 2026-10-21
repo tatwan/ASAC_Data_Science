@@ -17,7 +17,8 @@ Lab 03 reads the models from activities 01 and 02. Labs 04 and 05 stand alone. L
 
 ## If something goes wrong
 
-- **`Churn` or `Attrition` uploaded as BOOLEAN:** write `TRUE`/`FALSE` for `'Yes'`/`'No'`, including in `p.label = 'Yes'` and in `CLASS_WEIGHTS`.
+- **`Churn` and `Attrition` are BOOLEAN.** The files say Yes or No; **Auto detect** reads them as TRUE (left) or FALSE (stayed), and every query in D12 is written that way. If your table shows STRING, you uploaded without Auto detect: write `'Yes'`/`'No'` for `TRUE`/`FALSE`.
+- **A threshold needs data to score.** `STRUCT(0.3 AS threshold)` works in `ML.PREDICT`, which always has input rows. `ML.EVALUATE` and `ML.CONFUSION_MATRIX` accept a threshold only when you also give them a table or query; without one they fail. To see the held-aside customers at several thresholds, read the rows of `ML.ROC_CURVE`, as in activity 02 block 6.
 - **`Not found: Dataset bigquery-public-data:ml_datasets`** in lab 05: your `ml` dataset is not in the US location. Create it with `OPTIONS (location = 'US')`.
 - **Your scores differ from a classmate's:** every `RANDOM` split holds aside different rows.
 - **Precision is empty:** the model said Yes for nobody at that threshold; precision divides by zero flagged rows.

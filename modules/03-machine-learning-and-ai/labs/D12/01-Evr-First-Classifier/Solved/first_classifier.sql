@@ -1,6 +1,6 @@
 -- D12 · 01 · A first classifier: will this customer leave? · Solved
 -- Run one numbered block at a time. CREATE MODEL and the ML. functions run in BigQuery only.
--- If Churn uploaded as BOOLEAN, write TRUE/FALSE for 'Yes'/'No'.
+-- Churn is BOOLEAN: TRUE = left, FALSE = stayed (Auto detect read Yes/No that way).
 
 -- 1. Which values of TotalCharges are not numbers?
 SELECT tenure, TotalCharges
@@ -10,7 +10,7 @@ WHERE SAFE_CAST(TotalCharges AS FLOAT64) IS NULL;
 -- 2. Who leaves, by contract?
 SELECT Contract,
        COUNT(*) AS customers,
-       ROUND(COUNTIF(Churn = 'Yes') / COUNT(*), 3) AS share_left
+       ROUND(COUNTIF(Churn = TRUE) / COUNT(*), 3) AS share_left
 FROM ml.telco
 GROUP BY Contract
 ORDER BY share_left DESC;
@@ -32,7 +32,7 @@ SELECT customerID, tenure, Churn,
 FROM ML.PREDICT(MODEL ml.churn_tenure,
        (SELECT * FROM ml.telco LIMIT 5)),
      UNNEST(predicted_Churn_probs) AS p
-WHERE p.label = 'Yes';
+WHERE p.label = TRUE;
 
 -- 5. What it learned.
 SELECT processed_input, ROUND(weight, 4) AS weight

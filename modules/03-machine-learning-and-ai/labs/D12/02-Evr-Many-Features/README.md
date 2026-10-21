@@ -2,7 +2,7 @@
 
 In this activity, you will train a classifier on eight features, score it against the majority guess, read its confusion matrix and ROC curve, move the threshold, find who it misses, read what it learned, and let invented costs choose the threshold.
 
-**Time:** about 90 minutes in class, following along, across several steps · **Data:** `ml.telco` (activity 01) · **Starter:** `Unsolved/many_features.sql`
+**Data:** `ml.telco` (activity 01) · **Starter:** `Unsolved/many_features.sql`
 
 ## The story
 
@@ -21,7 +21,7 @@ You need `ml.telco` from activity 01.
 
 ## Steps
 
-1. **Train with eight features (block 1).** `tenure`, `MonthlyCharges`, `Contract`, `InternetService`, `PaymentMethod`, `SeniorCitizen`, `PaperlessBilling`, `TechSupport`. Five are text: BigQuery one-hot encodes them, as in D11. `customerID` is left out (an identifier says nothing about leaving), and so is `TotalCharges`.
+1. **Train with eight features (block 1).** `tenure`, `MonthlyCharges`, `Contract`, `InternetService`, `PaymentMethod`, `SeniorCitizen`, `PaperlessBilling`, `TechSupport`. Five are categories, not numbers (four text columns, and `PaperlessBilling`, which is TRUE or FALSE): BigQuery one-hot encodes them, as in D11. `customerID` is left out (an identifier says nothing about leaving), and so is `TotalCharges`.
 
 2. **Score it (block 2).** `ML.EVALUATE` scores the 20% held aside at threshold 0.5:
 
@@ -33,17 +33,25 @@ You need `ml.telco` from activity 01.
     | `f1_score` | one number that balances precision and recall |
     | `roc_auc` | how well it ranks leavers above stayers, over every threshold: 0.5 is guessing, 1 is perfect |
 
-    Expect about 0.80, 0.64, 0.52, 0.58 and 0.84. Your split is random: your numbers move a little.
+    Expect about 0.80, 0.64, 0.52, 0.58 and 0.84. Your numbers may differ a little from these.
 
-3. **The guess to beat (block 3).** Say "No" for everyone. It is right for every customer who stayed: 0.735. The model's 0.80 is only a little higher, but the guess finds **no** leavers and the model finds about half. When one class is rare, accuracy hides what matters.
+3. **The guess to beat (block 3).** Say "stays" for everyone. `COUNTIF(Churn = FALSE)` counts the customers who stayed, so the guess is right for 0.735 of all customers. The model's 0.80 is only a little higher, but the guess finds **no** leavers and the model finds about half. When one class is rare, accuracy hides what matters.
 
 4. **The matrix in SQL (block 4).** `ML.CONFUSION_MATRIX` counts the held-aside customers by what really happened (rows) and what the model said (columns). About 925 stayed and were left alone; 109 stayed but got an offer; 178 left without an offer; 195 left and got one.
 
 5. **The ROC curve (block 5).** `ML.ROC_CURVE` lists many thresholds and, for each, the recall and the false positive rate (the share of stayers wrongly flagged). As the threshold falls, both rise.
 
-6. **Move the threshold (block 6).** `STRUCT(0.3 AS threshold)` passes a setting to `ML.EVALUATE`. At 0.3, 0.5 and 0.7: precision about 0.53, 0.64, 0.78; recall about 0.77, 0.52, 0.19. A lower threshold finds more leavers and wastes more offers. There is no setting that is free.
+6. **Move the threshold (block 6).** The same `ML.ROC_CURVE` rows as block 5, with two new columns in the retention team's words: **offers** (everyone flagged: `true_positives + false_positives`) and **leavers caught** (`true_positives`). Precision is leavers caught ÷ offers; work it out for the three rows. Find the rows closest to 0.3, 0.5 and 0.7:
 
-7. **Who does it miss? (block 7).** The customers who left but were predicted to stay, by contract. They have longer tenure and more often yearly contracts: the kind of customer the model learned to trust.
+    | Threshold | Offers | Leavers caught | Precision | Recall |
+    |---|---:|---:|---:|---:|
+    | 0.3 | ≈ 538 | ≈ 286 | ≈ 0.53 | ≈ 0.77 |
+    | 0.5 | ≈ 304 | ≈ 195 | ≈ 0.64 | ≈ 0.52 |
+    | 0.7 | ≈ 93 | ≈ 72 | ≈ 0.78 | ≈ 0.19 |
+
+    A lower threshold finds more leavers and wastes more offers. There is no setting that is free. Your counts may differ a little from these.
+
+7. **Who does it miss? (block 7).** The customers who left (`Churn = TRUE`) but were predicted to stay (`predicted_Churn = FALSE`), by contract. They have longer tenure and more often yearly contracts: the kind of customer the model learned to trust.
 
 8. **Read what it learned (block 8).** In logistic regression a weight works on the log-odds of leaving. Read the **sign** and compare sizes within a feature; do not read it in dollars. Pushing toward leaving: month-to-month contracts, fiber optic internet, paying by electronic check, paperless billing, being a senior citizen. Pushing toward staying: one- and two-year contracts, longer tenure, tech support.
 
@@ -65,15 +73,16 @@ You need `ml.telco` from activity 01.
 |---|---:|---|
 | 2 | 1 | accuracy ≈ 0.80 · recall ≈ 0.52 · ROC AUC ≈ 0.84 |
 | 3 | 1 | 0.735 |
-| 4 | 2 | rows for No and Yes; your four counts add up to the held-aside rows (about 1,400) |
-| 6 | 3 | recall at 0.3 ≈ 0.77 |
+| 4 | 2 | one row for FALSE (stayed), one for TRUE (left); your four counts add up to the held-aside rows (about 1,400) |
+| 6 | a few dozen | the row nearest 0.3: recall ≈ 0.77 |
 | 9 | 2 | month-to-month ≈ 0.65 · two year ≈ 0.31 |
 
 ## If something goes wrong
 
-- **`Churn` is BOOLEAN:** write `TRUE`/`FALSE` for `'Yes'`/`'No'`, and `p.label = TRUE`.
-- **Block 9 fails with a type error:** each typed-in value must have the training column's type: `SeniorCitizen` is a number (0 or 1), the others text.
-- **Your counts differ from the slides:** each random 20% is a different 1,400 customers.
+- **`Churn` is STRING in your table:** you uploaded without Auto detect. Write `'Yes'`/`'No'` for `TRUE`/`FALSE`, also for `PaperlessBilling` in block 9.
+- **Block 9 fails with a type error:** each typed-in value must have the training column's type: `SeniorCitizen` is a number (0 or 1), `PaperlessBilling` is TRUE or FALSE, the others text.
+- **Your counts differ a little from the slides:** that is expected; the slides' numbers were worked out before class on one 20% of the customers.
+- **Block 6 shows no row at exactly 0.3:** `ML.ROC_CURVE` picks its own thresholds. Read the row closest to 0.3.
 
 ## Bonus
 

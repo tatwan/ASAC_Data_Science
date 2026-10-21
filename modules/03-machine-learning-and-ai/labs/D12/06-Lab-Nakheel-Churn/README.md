@@ -2,7 +2,7 @@
 
 In this optional self-guided lab, you will turn Nakheel's spend table into a yes-or-no label, train a classifier on it, judge it against the majority guess, and then watch a reasonable-looking column make the score almost perfect, and worthless.
 
-**When:** after labs 03–05, at your own pace, about 45 minutes. Optional; not submitted. · **Data:** `ml.customer_features` (built in D11's optional lab 08), `nakheel.orders` · **SQL:** `Solved/nakheel_churn.sql`
+**When:** after labs 03–05, at your own pace. Optional; not submitted. · **Data:** `ml.customer_features` (built in D11's optional lab 08), `nakheel.orders` · **SQL:** `Solved/nakheel_churn.sql`
 
 ## Before you start
 
@@ -45,7 +45,7 @@ SELECT ROUND(accuracy, 3) AS accuracy, ROUND(recall, 3) AS recall, ROUND(roc_auc
 FROM ML.EVALUATE(MODEL ml.nakheel_churn);
 ```
 
-**What you should see:** accuracy around 0.6 to 0.7 and ROC AUC around 0.65 to 0.75, depending on your split. Better than the majority guess, not by a lot. With only about 80 customers held aside, the score moves a lot between splits.
+**What you should see:** accuracy around 0.6 to 0.7 and ROC AUC around 0.65 to 0.75. Better than the majority guess, not by a lot. With only about 80 customers held aside, a different 80 could give quite a different score.
 
 **Think:** compare with the Telco model in class (AUC ≈ 0.84 on 7,043 customers). Name two reasons Nakheel is harder.
 
@@ -53,40 +53,40 @@ FROM ML.EVALUATE(MODEL ml.nakheel_churn);
 
 A colleague offers help: "Our customer report has each customer's total number of completed orders. Loyal customers have more. Add it."
 
+First, put the colleague's column next to ours in a view, so we only write the join once:
+
 ```sql
+CREATE OR REPLACE VIEW ml.customer_churn_plus AS
 WITH totals AS (
   SELECT customer_id, COUNT(*) AS orders_all_time
   FROM nakheel.orders
   WHERE status = 'completed'
   GROUP BY customer_id
 )
-SELECT ch.customer_id, ch.orders_before, t.orders_all_time, ch.churned
+SELECT ch.*, t.orders_all_time
 FROM ml.customer_churn AS ch
-INNER JOIN totals AS t ON ch.customer_id = t.customer_id
-WHERE ch.customer_id IN ('C-1010', 'C-1022', 'C-1026', 'C-1036', 'C-1041')
-ORDER BY ch.customer_id;
+INNER JOIN totals AS t
+  ON ch.customer_id = t.customer_id;
+
+SELECT customer_id, orders_before, orders_all_time, churned
+FROM ml.customer_churn_plus
+ORDER BY customer_id
+LIMIT 10;
 ```
 
 **What you should see:** where `orders_before` and `orders_all_time` are equal, `churned` is Yes; where they differ, No.
 
-Train with it:
+Train with it: the same model as step 2, plus one column.
 
 ```sql
 CREATE OR REPLACE MODEL ml.nakheel_churn_leak
 OPTIONS (model_type = 'LOGISTIC_REG', input_label_cols = ['churned'],
          data_split_method = 'RANDOM', data_split_eval_fraction = 0.2) AS
-WITH totals AS (
-  SELECT customer_id, COUNT(*) AS orders_all_time
-  FROM nakheel.orders
-  WHERE status = 'completed'
-  GROUP BY customer_id
-)
-SELECT ch.segment, ch.city, ch.orders_before, ch.revenue_before, ch.avg_order_value,
-       ch.days_since_last, ch.tenure_days, ch.online_share,
-       t.orders_all_time,
-       ch.churned
-FROM ml.customer_churn AS ch
-INNER JOIN totals AS t ON ch.customer_id = t.customer_id;
+SELECT segment, city, orders_before, revenue_before, avg_order_value,
+       days_since_last, tenure_days, online_share,
+       orders_all_time,
+       churned
+FROM ml.customer_churn_plus;
 
 SELECT ROUND(accuracy, 3) AS accuracy, ROUND(roc_auc, 3) AS roc_auc
 FROM ML.EVALUATE(MODEL ml.nakheel_churn_leak);
