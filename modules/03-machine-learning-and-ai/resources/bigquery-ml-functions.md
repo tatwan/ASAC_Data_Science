@@ -7,26 +7,26 @@ Every `ML.` function you meet in D11 to D15, in class or in the after-class labs
 | Function | What it is for | Days and where | Notes |
 |---|---|---|---|
 | [`ML.PREDICT`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-predict) | A prediction for each row you pass in: a number, a class with its probabilities, or a k-means group with its distances | D11: activities 02, 03; lab 08 · D12: activities 01, 02; labs 03, 05 · D13: activities 01, 03, 04; labs 05, 07–09 · D14: activities 01, 03; lab 11 · D15: activity 08 | Columns the model does not use are passed through to the output, so you can keep an ID or a `split` column beside the prediction |
-| [`ML.EVALUATE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-evaluate) | The scores on the rows you pass: MAE and R² for a number; accuracy, precision, recall, F1, log loss and ROC AUC for a class; the Davies–Bouldin index and mean squared distance for k-means; MAE and other errors for a forecast | D11: activities 02–04; labs 05–08 · D12: activity 02; labs 03–06 · D13: activity 04; labs 05, 06 · D14: activities 01, 03–06; labs 07–11 · D15: labs 10, 12 | For an `ARIMA_PLUS` model, pass the actual values to compare with; without them, Google points you to `ML.ARIMA_EVALUATE` |
-| [`ML.CONFUSION_MATRIX`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-confusion) | The counts of right and wrong answers, by class | D12: activity 02; labs 03, 05 | Classifiers |
-| [`ML.ROC_CURVE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-roc) | Recall, false positive rate and the four counts at each threshold | D12: activity 02; labs 03, 04 | Lab 03 computes precision and PR AUC from its counts |
-| [`ML.METRICS`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-metrics) | Regression or classification scores from any table or query of actual and predicted values, with no model | D12: lab 03 · D14: Resources · D15: lab 10 | **Preview** (Google's Pre-GA terms). Rows with a NULL are left out. BOOL labels are scored for the TRUE class; STRING labels as a macro-average over all classes |
+| [`ML.EVALUATE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-evaluate) | The scores on the rows you pass: MAE and R² for a number; accuracy, precision, recall, F1, log loss and ROC AUC for a class; the Davies–Bouldin index and mean squared distance for k-means; MAE and other errors for a forecast | D11: activities 02–04; labs 05–08 · D12: activities 01, 02; labs 03, 04, 05, 06 · D13: activity 04; labs 05, 06 · D14: activities 01, 03–06; labs 07–11 · D15: labs 10, 12 | For an `ARIMA_PLUS` model, pass the actual values to compare with; without them, Google points you to `ML.ARIMA_EVALUATE` |
+| [`ML.CONFUSION_MATRIX`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-confusion) | The counts of right and wrong answers, by class | D12: activity 02; lab 05 | Classifiers. A threshold works only with a table or query to score |
+| [`ML.ROC_CURVE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-roc) | Recall, false positive rate and the four counts at each threshold | D12: activity 02; labs 03, 04 | Precision is one division of its counts: `true_positives / (true_positives + false_positives)` |
+| [`ML.METRICS`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-metrics) | Regression or classification scores from any table or query of actual and predicted values, with no model | D14: Resources · D15: lab 10 | **Preview** (Google's Pre-GA terms). Rows with a NULL are left out. BOOL labels are scored for the TRUE class; STRING labels as a macro-average over all classes |
 
 ## Inspect the model
 
 | Function | What it is for | Days and where | Notes |
 |---|---|---|---|
 | [`ML.WEIGHTS`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-weights) | The numbers the model learned, feature by feature (one per category for a text column) | D11: activities 02, 03; labs 06, 07 · D12: activities 01, 02 · D14: activity 05 | Linear and logistic regression; for trees, use `ML.FEATURE_IMPORTANCE` |
-| [`ML.ADVANCED_WEIGHTS`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-advanced-weights) | The weights with their standard errors and p-values | D11: lab 06 | Linear and logistic regression |
-| [`ML.FEATURE_INFO`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-feature) | What the model was given: for each input column, its min, max, mean, median, standard deviation, number of categories and number of NULLs | D11: lab 06 · D14: activity 04, Resources · D15: lab 12 | With `TRANSFORM`, it describes the columns before the transform |
-| [`ML.TRAINING_INFO`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-train) | One row per training step (iteration): the loss on the training rows, the loss on the rows held aside, and how long the step took | D11: labs 05, 07 · D13: lab 06 · D14: lab 08 | For k-means, also each group's size and radius. The held-out loss is empty when no rows were held aside (`NO_SPLIT`) |
+| [`ML.ADVANCED_WEIGHTS`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-advanced-weights) | The weights with their standard errors and p-values | D11: lab 06 (bonus) | Linear and logistic regression |
+| [`ML.FEATURE_INFO`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-feature) | What the model was given: for each input column, its min, max, mean, median, standard deviation, number of categories and number of NULLs | D14: activity 04, Resources · D15: lab 12 | With `TRANSFORM`, it describes the columns before the transform |
+| [`ML.TRAINING_INFO`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-train) | One row per training step (iteration): the loss on the training rows, the loss on the rows held aside, and how long the step took | D11: lab 07 · D13: lab 06 · D14: lab 08 | For k-means, also each group's size and radius. The held-out loss is empty when no rows were held aside (`NO_SPLIT`) |
 
 ## Explain
 
 | Function | What it is for | Days and where | Notes |
 |---|---|---|---|
 | [`ML.EXPLAIN_PREDICT`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-explain-predict) | Each prediction with the features that pushed it up or down from a baseline | D15: activity 07; lab 11 | `ML.PREDICT` with explanations added. `top_k_features` (default 5) sets how many features come back per row. For linear models and trees the attributions are exact |
-| [`ML.GLOBAL_EXPLAIN`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-global-explain) | How much each feature drives the predictions over the whole model: the average size of its pushes | D11: lab 06 · D12: lab 05 · D15: activity 07; lab 11 | Needs `ENABLE_GLOBAL_EXPLAIN = TRUE` in `CREATE MODEL`; the explanation is computed when the model is trained |
+| [`ML.GLOBAL_EXPLAIN`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-global-explain) | How much each feature drives the predictions over the whole model: the average size of its pushes | D15: activity 07; lab 11 | Needs `ENABLE_GLOBAL_EXPLAIN = TRUE` in `CREATE MODEL`; the explanation is computed when the model is trained |
 | [`ML.FEATURE_IMPORTANCE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-importance) | How often, and how usefully, each feature was used to split the data | D14: activity 04; lab 07 · D15: activity 07; lab 11 | Boosted trees and random forests only |
 
 ## Time series
@@ -43,7 +43,7 @@ Every `ML.` function you meet in D11 to D15, in class or in the after-class labs
 
 | Function | What it is for | Days and where | Notes |
 |---|---|---|---|
-| [`ML.CENTROIDS`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-centroids) | The centre of each k-means group, feature by feature | D13: activities 01, 04; lab 05 | Returned in the original units unless you ask for them standardized (`STANDARDIZE`, default FALSE) |
+| [`ML.CENTROIDS`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-centroids) | The centre of each k-means group, feature by feature | D13: activity 01 | Returned in the original units unless you ask for them standardized (`STANDARDIZE`, default FALSE) |
 
 `ML.PREDICT`, `ML.EVALUATE`, `ML.TRAINING_INFO` and `ML.DETECT_ANOMALIES` also work on k-means models; see the tables above.
 
@@ -69,7 +69,7 @@ D15 lab 12 also lists the other preprocessing functions on Google's [manual prep
 
 | Function | What it is for | Days and where | Notes |
 |---|---|---|---|
-| [`ML.TRIAL_INFO`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-trial-info) | One row per hyperparameter-tuning trial, with its settings and its score | D11: lab 07 · D13: lab 05 · D14: lab 09 | For a model trained with tuning (`NUM_TRIALS`); see Google's [hyperparameter tuning overview](https://docs.cloud.google.com/bigquery/docs/hp-tuning-overview) |
+| [`ML.TRIAL_INFO`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-trial-info) | One row per hyperparameter-tuning trial, with its settings and its score | D14: lab 09 | For a model trained with tuning (`NUM_TRIALS`); see Google's [hyperparameter tuning overview](https://docs.cloud.google.com/bigquery/docs/hp-tuning-overview) |
 
 ## Analysis
 
