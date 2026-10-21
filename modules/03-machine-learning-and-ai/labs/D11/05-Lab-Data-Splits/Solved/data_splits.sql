@@ -50,3 +50,20 @@ SELECT * FROM ml.cars_split;
 
 SELECT ROUND(mean_absolute_error, 2) AS mae, ROUND(r2_score, 3) AS r2
 FROM ML.EVALUATE(MODEL ml.cars_custom);
+
+-- Step 5 · Which rows did `ML.EVALUATE` score?
+SELECT 'held aside: 70 heavy cars' AS scored_on,
+       ROUND(mean_absolute_error, 2) AS mae, ROUND(r2_score, 3) AS r2
+FROM ML.EVALUATE(MODEL ml.cars_heavy_aside)
+UNION ALL
+SELECT 'all 398 cars',
+       ROUND(mean_absolute_error, 2), ROUND(r2_score, 3)
+FROM ML.EVALUATE(MODEL ml.cars_heavy_aside, (SELECT * FROM ml.cars_clean));
+
+SELECT 'no table' AS scored_on,
+       ROUND(mean_absolute_error, 2) AS mae, ROUND(r2_score, 3) AS r2
+FROM ML.EVALUATE(MODEL ml.cars_custom)
+UNION ALL
+SELECT 'is_eval rows passed',
+       ROUND(mean_absolute_error, 2), ROUND(r2_score, 3)
+FROM ML.EVALUATE(MODEL ml.cars_custom, (SELECT * FROM ml.cars_split WHERE is_eval));

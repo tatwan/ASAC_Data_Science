@@ -1,4 +1,4 @@
--- D12 · 02 · Eight features, judged honestly, and priced · Solved
+-- D12 · 02 · Eight features: better than a guess, and who gets an offer? · Solved
 -- Run one numbered block at a time. CREATE MODEL and the ML. functions run in BigQuery only.
 -- Churn is BOOLEAN: TRUE = left, FALSE = stayed.
 
@@ -21,7 +21,7 @@ SELECT ROUND(accuracy, 3) AS accuracy, ROUND(precision, 3) AS precision,
        ROUND(roc_auc, 3) AS roc_auc
 FROM ML.EVALUATE(MODEL ml.churn_model);
 
--- 3. The majority guess: say No for everyone.
+-- 3. The majority guess: say FALSE (stays) for everyone.
 SELECT ROUND(COUNTIF(Churn = FALSE) / COUNT(*), 3) AS majority_accuracy
 FROM ml.telco;
 
@@ -45,16 +45,25 @@ FROM ML.ROC_CURVE(MODEL ml.churn_model)
 WHERE threshold BETWEEN 0.25 AND 0.75
 ORDER BY threshold;
 
--- 7. The leavers it said would stay, by contract.
-SELECT Contract, COUNT(*) AS missed_leavers,
-       ROUND(AVG(tenure), 1) AS avg_tenure
+-- 7. The leavers by contract: how many it missed, and the share.
+--    All customers, the training rows included: for looking at mistakes, not for scoring.
+SELECT Contract,
+       COUNT(*) AS leavers,
+       COUNTIF(predicted_Churn = FALSE) AS missed,
+       ROUND(COUNTIF(predicted_Churn = FALSE) / COUNT(*), 2) AS miss_rate
 FROM ML.PREDICT(MODEL ml.churn_model, (SELECT * FROM ml.telco))
-WHERE Churn = TRUE AND predicted_Churn = FALSE
-GROUP BY Contract;
+WHERE Churn = TRUE
+GROUP BY Contract
+ORDER BY miss_rate DESC;
 
 -- 8. What it learned: read the signs.
 SELECT processed_input, ROUND(weight, 3) AS weight, category_weights
 FROM ML.WEIGHTS(MODEL ml.churn_model);
+
+-- 8b. The category features' weights, one row per category.
+SELECT processed_input AS feature, c.category, ROUND(c.weight, 3) AS category_weight
+FROM ML.WEIGHTS(MODEL ml.churn_model), UNNEST(category_weights) AS c
+ORDER BY feature, category_weight DESC;
 
 -- 9. The same customer, two contracts.
 SELECT Contract, ROUND(p.prob, 2) AS prob_leave

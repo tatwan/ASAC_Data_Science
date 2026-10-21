@@ -1,25 +1,217 @@
-# Lab 07 · Holding the weights back, and how training runs
+# Lab 07 · Ridge, Lasso and Elastic Net, and how training runs
 
-In this self-guided lab, you will watch how BigQuery fits a line (in one calculation, or step by step), see what happens when training stops too early, and use L1 and L2 regularization to hold large weights back.
+In this self-guided lab, you will train the same car model four ways (with no penalty, then Ridge, Lasso and Elastic Net), see what each does to the weights, and check whether any of them predicts better on cars the model has not seen.
 
 **When:** after class, at your own pace. Not submitted. · **Data:** `ml.cars_clean` (lab 05) · **SQL:** `Solved/regularization_and_training.sql`
 
 ## How to work through this lab
 
-Run each query, compare with **What you should see**, and answer **Think** in one line. If `ml.cars_clean` does not exist, run step 1 of lab 05 first.
+Run each query, compare with **What to look for**, and answer **Think** in one line. If `ml.cars_clean` does not exist, run step 1 of lab 05 first.
 
-Every model in this lab uses the same split (`RANDOM`, 0.2) and the same five features, so the only thing that changes is the option you are looking at.
+Part A is the lab. Part B is optional: it shows how BigQuery trains a model, for those who want to look behind the scenes.
 
-## Part A · How training runs
+Every model here uses `RANDOM` with 0.2 on the same `SELECT * FROM ml.cars_clean`. A random split is the same every time for the same data and columns (lab 05, step 4), so **every model holds aside the same cars**. The penalty is the only thing that changes, and the scores are a fair comparison.
 
-### Step 1 · `OPTIMIZE_STRATEGY`: one calculation, or many small steps
+The D11 slides show these four models fitted in Python on all 398 cars. Your BigQuery weights will be different: BigQuery measures the penalty on its own scale, and it learns from 80% of the cars. Look for the same patterns, not the same numbers.
 
-For a straight line there are two ways to find the best weights:
+## Part A · Ridge, Lasso and Elastic Net
 
-- **`NORMAL_EQUATION`** solves for them in one calculation. Exact and fast when there are few features.
-- **`BATCH_GRADIENT_DESCENT`** starts from a guess and improves it in steps (iterations). Each step looks at the errors on all training rows and moves every weight a little in the direction that shrinks them. It is how most machine-learning models train, and the only way when there are very many features.
+Regularization adds a penalty on large weights, so training aims for small errors **plus** small weights. BigQuery has two penalties, and the three methods you will meet in every machine-learning library are made from them:
 
-The default, `AUTO_STRATEGY`, picks for you. Train both on purpose:
+| Method | In BigQuery | What it does to the weights |
+|---|---|---|
+| Ordinary linear regression | `l1_reg = 0`, `l2_reg = 0` (the default) | no penalty |
+| **Ridge** | `l2_reg` above 0 | shrinks them; none reaches exactly 0 |
+| **Lasso** | `l1_reg` above 0 | pushes the weak ones to exactly 0 |
+| **Elastic Net** | both above 0 | some go to 0; the rest are shrunk and shared |
+
+There is no `RIDGE`, `LASSO` or `ELASTIC_NET` model type. All four are `LINEAR_REG` with different penalties.
+
+### Step 1 · The baseline: no penalty
+
+```sql
+CREATE OR REPLACE MODEL ml.cars_plain
+OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['mpg'],
+         data_split_method = 'RANDOM', data_split_eval_fraction = 0.2) AS
+SELECT * FROM ml.cars_clean;
+
+SELECT processed_input, ROUND(weight, 2) AS weight
+FROM ML.WEIGHTS(MODEL ml.cars_plain, STRUCT(TRUE AS standardize))
+ORDER BY processed_input;
+```
+
+Standardized weights (lab 06, step 3) put every feature on one yardstick: each weight is the change in mpg for one typical spread of that feature. Read the result as an equation:
+
+```text
+mpg = __INTERCEPT__ + (weight of cylinders) × cylinders + … + (weight of acceleration) × acceleration
+```
+
+**What to look for:** `weight` has by far the largest weight, negative; `acceleration` is close to 0. On the slides the equation was `mpg = 23.5 − 0.61 × cylinders − 0.15 × displacement − 1.49 × horsepower − 4.54 × weight − 0.02 × acceleration`. Copy your five weights into a note: every step below compares against them.
+
+Score it:
+
+```sql
+SELECT ROUND(mean_absolute_error, 2) AS mae, ROUND(r2_score, 3) AS r2
+FROM ML.EVALUATE(MODEL ml.cars_plain);
+```
+
+**What to look for:** MAE about 3.3 and R² about 0.7, as in lab 05.
+
+### Step 2 · Why hold weights back at all?
+
+Four of the five features describe one thing: how big the car and its engine are. Heavier cars tend to have bigger engines, more cylinders and more horsepower.
+
+```sql
+SELECT ROUND(CORR(displacement, weight), 2) AS displacement_weight,
+       ROUND(CORR(displacement, cylinders), 2) AS displacement_cylinders,
+       ROUND(CORR(horsepower, weight), 2) AS horsepower_weight
+FROM ml.cars_clean;
+```
+
+**What to look for:** all three above 0.85.
+
+When features carry the same information, many different sets of weights fit the training cars almost equally well. The model can give one feature a large weight and another a large weight of the opposite sign, and a few different cars in the training rows can swing them. A penalty on large weights makes training prefer the smaller, steadier set.
+
+Correlated features do not by themselves mean the model is overfitting. Whether a penalty actually helps is decided on the rows held aside, in step 6.
+
+**Think:** in your own words, why can two features that say the same thing make their weights unstable?
+
+### Step 3 · Ridge: `L2_REG`
+
+Ridge penalises the **squares** of the weights. Big weights cost the most, so it trims the biggest ones hardest.
+
+```sql
+CREATE OR REPLACE MODEL ml.cars_ridge
+OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['mpg'],
+         data_split_method = 'RANDOM', data_split_eval_fraction = 0.2,
+         l2_reg = 10) AS
+SELECT * FROM ml.cars_clean;
+
+SELECT processed_input, ROUND(weight, 2) AS weight
+FROM ML.WEIGHTS(MODEL ml.cars_ridge, STRUCT(TRUE AS standardize))
+ORDER BY processed_input;
+```
+
+Put the weights beside step 1's. Then add up the squared weights of each model, the quantity Ridge holds back:
+
+```sql
+SELECT ROUND(SUM(weight * weight), 2) AS sum_of_squared_weights
+FROM ML.WEIGHTS(MODEL ml.cars_ridge, STRUCT(TRUE AS standardize))
+WHERE processed_input != '__INTERCEPT__';
+```
+
+Run it again with `ml.cars_plain`.
+
+`10` is a penalty strength, not a percentage, and no value is "moderate" for every dataset. Google suggests trying values across several orders of magnitude. Train `cars_ridge` again with `l2_reg = 100`, then `1000`, and re-run both queries each time.
+
+**What to look for:**
+
+- The sum of squared weights is smaller than the baseline's, and falls further as `l2_reg` grows.
+- No weight becomes exactly 0.
+- Not every weight shrinks. Ridge shrinks the **total**, and the overlapping features can **share** the credit: on the slides, weight's −4.54 fell to −2.36 while cylinders went from −0.61 to −1.15 and displacement from −0.15 to −1.34.
+
+If nothing seems to change at 10, the penalty is too weak for this data: that is what the larger values are for.
+
+**Think:** as the penalty grows, what happens to the weights? Keep your answer for step 6.
+
+### Step 4 · Lasso: `L1_REG`
+
+Lasso penalises the **sizes** of the weights. For a weak feature, keeping any weight at all costs more than it saves, so its weight goes to exactly 0.
+
+```sql
+CREATE OR REPLACE MODEL ml.cars_lasso
+OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['mpg'],
+         data_split_method = 'RANDOM', data_split_eval_fraction = 0.2,
+         l1_reg = 10, early_stop = FALSE) AS
+SELECT * FROM ml.cars_clean;
+
+SELECT processed_input, ROUND(weight, 3) AS weight
+FROM ML.WEIGHTS(MODEL ml.cars_lasso, STRUCT(TRUE AS standardize))
+ORDER BY ABS(weight) DESC;
+```
+
+An L1 penalty cannot be solved in one calculation, so BigQuery trains this model step by step (Part B shows the steps). `early_stop = FALSE` lets it take all its steps, so the effect of the penalty is clear: Google gives the same advice when you test regularization.
+
+Count the features the model dropped:
+
+```sql
+SELECT COUNTIF(ROUND(weight, 3) = 0) AS weights_at_zero
+FROM ML.WEIGHTS(MODEL ml.cars_lasso, STRUCT(TRUE AS standardize))
+WHERE processed_input != '__INTERCEPT__';
+```
+
+Train it again with `l1_reg = 100`, then `1000`.
+
+**What to look for:**
+
+- As `l1_reg` grows, more weights reach 0.
+- **A weight of 0 drops the feature.** `0 × cylinders` is 0 for every car, so changing a car's cylinders no longer moves its prediction. Lasso chose the features for you.
+- Which features go first depends on the data and on the strength. On the slides, `acceleration` and `cylinders` went to 0 while `displacement`, which says much the same as cylinders, stayed. Among features that overlap, Lasso tends to keep one and drop the others.
+
+If no weight is 0 yet, the penalty is too weak: raise it.
+
+**Think:** you have 50 columns and want to keep only the useful ones. Ridge or Lasso? Why?
+
+### Step 5 · Elastic Net: both penalties
+
+```sql
+CREATE OR REPLACE MODEL ml.cars_enet
+OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['mpg'],
+         data_split_method = 'RANDOM', data_split_eval_fraction = 0.2,
+         l1_reg = 10, l2_reg = 10, early_stop = FALSE) AS
+SELECT * FROM ml.cars_clean;
+
+SELECT processed_input, ROUND(weight, 3) AS weight
+FROM ML.WEIGHTS(MODEL ml.cars_enet, STRUCT(TRUE AS standardize))
+ORDER BY ABS(weight) DESC;
+```
+
+Use the strengths that changed something in steps 3 and 4. The same number in `l1_reg` and `l2_reg` does not mean the two penalties count equally: try one larger than the other, and the other way round.
+
+**What to look for:** something of each. Like Lasso, the weakest features can go to 0; like Ridge, the overlapping engine features tend to share the credit instead of one being dropped. On the slides, Elastic Net dropped only `acceleration` and kept all four engine features at similar sizes (−1.08, −1.30, −1.38, −2.30).
+
+**Think:** the four engine features overlap, and you would rather keep them all than lose one. Which method fits?
+
+### Step 6 · Which one predicts best?
+
+Smaller weights are not the goal. A better score on cars the model has not seen is.
+
+```sql
+SELECT 'No penalty' AS model, ROUND(mean_absolute_error, 2) AS mae, ROUND(r2_score, 3) AS r2
+FROM ML.EVALUATE(MODEL ml.cars_plain)
+UNION ALL
+SELECT 'Ridge', ROUND(mean_absolute_error, 2), ROUND(r2_score, 3)
+FROM ML.EVALUATE(MODEL ml.cars_ridge)
+UNION ALL
+SELECT 'Lasso', ROUND(mean_absolute_error, 2), ROUND(r2_score, 3)
+FROM ML.EVALUATE(MODEL ml.cars_lasso)
+UNION ALL
+SELECT 'Elastic Net', ROUND(mean_absolute_error, 2), ROUND(r2_score, 3)
+FROM ML.EVALUATE(MODEL ml.cars_enet);
+```
+
+All four held aside the same cars, so this is a fair comparison.
+
+**What to look for:** close scores. With five features and 398 cars, a straight line has little room to overfit, so a penalty has little to fix. On the slides (Python, the average over 300 random splits) no penalty did best: MAE 3.29, against 3.31 for Ridge, 3.48 for Lasso and 3.32 for Elastic Net. Penalties earn their place when there are many features and few rows.
+
+Now overdo it. Train `cars_ridge` once more with `l2_reg = 100000` and re-run the comparison.
+
+**What to look for:** a higher MAE and a lower R². A penalty that is too strong holds the weights back so hard that the model cannot learn the pattern. That is **underfitting**, the opposite of overfitting.
+
+One caution. If you try many strengths and keep the one with the best score here, you have used the held-aside cars to make a choice. Their score now flatters your pick. An honest final score needs a third group that no choice has touched: the test group (lab 05, step 6; D14).
+
+**Think:** which of the four would you hand to a manager, and why?
+
+## Part B · Behind the scenes: how training runs (optional)
+
+### Step 7 · `OPTIMIZE_STRATEGY`: one calculation, or many small steps
+
+Training is a search for the weights that make the errors smallest. BigQuery has two ways to do it:
+
+- **`NORMAL_EQUATION`** works the best weights out directly, in one calculation.
+- **`BATCH_GRADIENT_DESCENT`** starts from a guess and improves it in steps (iterations), each step nudging every weight in the direction that makes the errors smaller.
+
+The default, `AUTO_STRATEGY`, picks for you: one calculation for a small model like this one, steps when there are very many features or an L1 penalty. Train both on purpose:
 
 ```sql
 CREATE OR REPLACE MODEL ml.cars_normal
@@ -35,7 +227,7 @@ OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['mpg'],
 SELECT * FROM ml.cars_clean;
 ```
 
-`ML.TRAINING_INFO` shows each training step: the iteration, the `loss` on the training rows (mean squared error), the `eval_loss` on the rows held aside, and the learning rate used.
+`ML.TRAINING_INFO` shows each step: the `loss` on the training rows, the `eval_loss` on the rows held aside, and the learning rate. For linear regression both losses are mean squared errors: squared miles per gallon, not the MAE that `ML.EVALUATE` reports, so do not compare the two kinds of number.
 
 ```sql
 SELECT iteration, ROUND(loss, 2) AS loss, ROUND(eval_loss, 2) AS eval_loss,
@@ -44,15 +236,21 @@ FROM ML.TRAINING_INFO(MODEL ml.cars_steps)
 ORDER BY iteration;
 ```
 
-**What you should see:** for `cars_steps`, several rows: the loss starts high and falls quickly, then flattens. Run the same query on `cars_normal`: one row.
-
-Compare the two scores with `ML.EVALUATE`. **What you should see:** nearly the same MAE and R² (about 3.3 and 0.7). Two routes, the same line.
+**What to look for:** for `cars_steps`, several rows, with the loss falling quickly and then flattening. Run the same query on `cars_normal`: one row. Compare the two with `ML.EVALUATE`: nearly the same MAE and R², since both routes reach about the same line.
 
 **Think:** looking at the loss column, when would you stop taking steps?
 
-### Step 2 · `MAX_ITERATIONS`: stop too early on purpose
+### Step 8 · `MAX_ITERATIONS`: stop early on purpose
 
-Gradient descent stops by itself when a step improves the loss by less than 1%, or after 20 steps (`MAX_ITERATIONS`). Stop it after two:
+Three options decide when gradient descent stops:
+
+| Option | Default | What it does |
+|---|---|---|
+| `MAX_ITERATIONS` | 20 | the most steps it may take |
+| `EARLY_STOP` | `TRUE` | allows it to stop before that, when a step stops helping |
+| `MIN_REL_PROGRESS` | 0.01 | what "stops helping" means: a step that improves the loss by less than 1% |
+
+Allow only two steps:
 
 ```sql
 CREATE OR REPLACE MODEL ml.cars_two_steps
@@ -65,78 +263,26 @@ SELECT ROUND(mean_absolute_error, 2) AS mae, ROUND(r2_score, 3) AS r2
 FROM ML.EVALUATE(MODEL ml.cars_two_steps);
 ```
 
-Run it again with `ml.cars_steps` (step 1's model, which trained until it stopped by itself) and compare.
+Compare it with `ml.cars_steps` (step 7), which ran until it stopped by itself. Look at the last `loss` and `eval_loss` of each in `ML.TRAINING_INFO` too: a lower training loss is good news only if the `eval_loss` falls with it.
 
-**What you should see:** after two steps the model is worse: a higher MAE and a lower R². It has not finished learning. This is **underfitting**: too simple, or not trained enough, to capture the pattern. Count the rows of `ML.TRAINING_INFO(MODEL ml.cars_steps)`: that is where early stopping ended it.
+**What to look for:** if the two-step model scores worse, training stopped before it reached a good line: that is **underfitting**, the same word as in step 6, from a different cause. If the two score about the same, this model happened to get close in two steps. Count the rows of `ML.TRAINING_INFO(MODEL ml.cars_steps)`: that is where early stopping ended it.
 
-**Think:** overfitting is learning the training rows too closely. What is underfitting, in your words?
-
-## Part B · Holding the weights back: regularization
-
-### Step 3 · Why hold weights back at all?
-
-Four of the five car features describe one thing: how big the engine and the car are. `cylinders`, `displacement`, `horsepower` and `weight` rise together. When features carry the same information, the model can share the credit between them in many ways that fit almost equally well, and small changes in the data can swing their weights a lot. See how closely they move together:
-
-```sql
-SELECT ROUND(CORR(displacement, weight), 2) AS displacement_weight,
-       ROUND(CORR(displacement, cylinders), 2) AS displacement_cylinders,
-       ROUND(CORR(horsepower, weight), 2) AS horsepower_weight
-FROM ml.cars_clean;
-```
-
-**What you should see:** all three above 0.85. A **penalty** on large weights makes training prefer smaller, more evenly shared weights. That is **regularization**: the training goal becomes *small errors plus small weights*.
-
-### Step 4 · `L2_REG`: shrink every weight a little
-
-```sql
-CREATE OR REPLACE MODEL ml.cars_l2
-OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['mpg'],
-         data_split_method = 'RANDOM', data_split_eval_fraction = 0.2,
-         l2_reg = 50) AS
-SELECT * FROM ml.cars_clean;
-
-SELECT processed_input, ROUND(weight, 2) AS weight
-FROM ML.WEIGHTS(MODEL ml.cars_l2, STRUCT(TRUE AS standardize))
-ORDER BY processed_input;
-```
-
-Run it again with `ml.cars_normal` (step 1's model, no penalty) and put the two lists side by side. Standardized weights (lab 06, step 3) put every feature on one yardstick, so you can compare sizes.
-
-**What you should see:** with L2, every weight is closer to zero, and the four engine features share the credit more evenly. No weight becomes exactly zero. Compare `ML.EVALUATE` for both: the scores are close, often a little lower with the penalty on data this small.
-
-Try `l2_reg = 500`. **Think:** what happens to the weights, and to R², as the penalty grows?
-
-### Step 5 · `L1_REG`: push weak weights to exactly zero
-
-```sql
-CREATE OR REPLACE MODEL ml.cars_l1
-OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['mpg'],
-         data_split_method = 'RANDOM', data_split_eval_fraction = 0.2,
-         l1_reg = 50) AS
-SELECT * FROM ml.cars_clean;
-
-SELECT processed_input, ROUND(weight, 3) AS weight
-FROM ML.WEIGHTS(MODEL ml.cars_l1, STRUCT(TRUE AS standardize))
-ORDER BY ABS(weight) DESC;
-```
-
-**What you should see:** some weights are exactly 0. The first to go are the features the model needs least, usually `acceleration` and `displacement`; `weight` survives longest. L1 chooses features for you: a weight of zero means the model no longer uses that column.
-
-Run `ML.TRAINING_INFO` on `cars_l1`: several rows. An L1 penalty cannot be solved in one calculation, so BigQuery trains it step by step.
-
-Try `l1_reg = 200`. **Think:** if you had 50 columns and only wanted to keep the useful ones, which of the two penalties would you use, and why?
+**Think:** you have now met underfitting twice. What are its two causes?
 
 ## What you saw
 
-| Option | Value tried | What you saw |
+| Model or option | Value tried | What you saw |
 |---|---|---|
+| No penalty | `l1_reg = 0`, `l2_reg = 0` | |
+| Ridge | `l2_reg` 10 / 100 / 1000 | |
+| Lasso | `l1_reg` 10 / 100 / 1000 | |
+| Elastic Net | both | |
+| Too much penalty | `l2_reg = 100000` | |
 | `OPTIMIZE_STRATEGY` | NORMAL_EQUATION / BATCH_GRADIENT_DESCENT | |
 | `MAX_ITERATIONS` | 2 | |
-| `L2_REG` | 50 / 500 | |
-| `L1_REG` | 50 / 200 | |
 
-These options are not special to linear regression. Logistic regression (D12) has the same ones, and other models have their own versions of them.
+These options are not special to linear regression. Logistic regression (D12) has the same penalties, and boosted trees (D14) have their own `l2_reg`.
 
 ## References
 
-Auto MPG, UCI Machine Learning Repository (Quinlan, 1993), CC BY 4.0. BigQuery ML: [CREATE MODEL for linear regression](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-create-glm), [ML.TRAINING_INFO](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-train), [ML.WEIGHTS](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-weights), Google Cloud.
+Auto MPG, UCI Machine Learning Repository (Quinlan, 1993), CC BY 4.0. BigQuery ML: [CREATE MODEL for linear regression](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-create-glm), [Preventing overfitting](https://docs.cloud.google.com/bigquery/docs/preventing-overfitting), [ML.TRAINING_INFO](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-train), [ML.WEIGHTS](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-weights), Google Cloud.

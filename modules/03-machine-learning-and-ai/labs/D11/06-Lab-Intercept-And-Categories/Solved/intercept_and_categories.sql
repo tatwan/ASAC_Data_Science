@@ -31,11 +31,15 @@ FROM ML.WEIGHTS(MODEL ml.insurance_onehot), UNNEST(category_weights) AS cw
 WHERE processed_input = 'region'
 ORDER BY cw.category;
 
--- Step 3 · Raw weights against standardized weights
+-- Step 3 · Comparing weights fairly: per unit, or per typical spread?
 SELECT processed_input, ROUND(weight, 4) AS weight
 FROM ML.WEIGHTS(MODEL ml.cars_random)
 WHERE processed_input != '__INTERCEPT__'
 ORDER BY ABS(weight) DESC;
+
+SELECT ROUND(STDDEV(weight)) AS weight_spread,
+       ROUND(STDDEV(cylinders), 1) AS cylinders_spread
+FROM ml.cars_clean;
 
 SELECT processed_input, ROUND(weight, 2) AS weight
 FROM ML.WEIGHTS(MODEL ml.cars_random, STRUCT(TRUE AS standardize))

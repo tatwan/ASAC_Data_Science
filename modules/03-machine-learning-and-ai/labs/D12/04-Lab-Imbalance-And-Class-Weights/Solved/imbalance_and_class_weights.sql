@@ -1,4 +1,4 @@
--- D12 · Lab 04 · When the Yes is rare: class weights · Solved
+-- D12 · Lab 04 · When accuracy misleads: a rare Yes and class weights · Solved
 -- Attrition is BOOLEAN: TRUE = left, FALSE = stayed.
 
 -- Step 1 · How rare is a leaver?
@@ -28,14 +28,17 @@ SELECT Age, Gender, DistanceFromHome, JobLevel, Department, MonthlyIncome,
 FROM ml.employees;
 
 SELECT 'plain' AS model, ROUND(accuracy, 3) AS accuracy,
-       ROUND(recall, 3) AS recall, ROUND(roc_auc, 3) AS roc_auc
+       ROUND(precision, 3) AS precision, ROUND(recall, 3) AS recall,
+       ROUND(roc_auc, 3) AS roc_auc
 FROM ML.EVALUATE(MODEL ml.attrition_plain)
 UNION ALL
-SELECT 'auto weights', ROUND(accuracy, 3), ROUND(recall, 3), ROUND(roc_auc, 3)
+SELECT 'auto weights', ROUND(accuracy, 3), ROUND(precision, 3),
+       ROUND(recall, 3), ROUND(roc_auc, 3)
 FROM ML.EVALUATE(MODEL ml.attrition_weighted);
 
--- Step 4 · The plain model's recall at low thresholds
-SELECT ROUND(threshold, 2) AS threshold, ROUND(recall, 2) AS recall
+-- Step 4 · The plain model at low thresholds: leavers found, stayers flagged
+SELECT ROUND(threshold, 2) AS threshold, ROUND(recall, 2) AS recall,
+       ROUND(false_positive_rate, 2) AS false_positive_rate
 FROM ML.ROC_CURVE(MODEL ml.attrition_plain)
 WHERE threshold BETWEEN 0.15 AND 0.25
 ORDER BY threshold;

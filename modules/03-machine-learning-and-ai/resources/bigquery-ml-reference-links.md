@@ -34,7 +34,7 @@ Official pages to read alongside Module 3. Start with **Start here**; then use t
 | [Automatic feature preprocessing](https://docs.cloud.google.com/bigquery/docs/auto-preprocessing) | What BigQuery does to your columns before training: one-hot encoding of text, standardizing numbers, filling missing values |
 | [Feature preprocessing overview](https://docs.cloud.google.com/bigquery/docs/preprocess-overview) | Doing your own preprocessing, including the `TRANSFORM` clause |
 | [Model evaluation overview](https://docs.cloud.google.com/bigquery/docs/evaluate-overview) | Which rows each model is scored on, and the metrics for each model type |
-| [Hyperparameter tuning overview](https://docs.cloud.google.com/bigquery/docs/hp-tuning-overview) | Letting BigQuery try settings for you (`NUM_TRIALS`, `HPARAM_RANGE`); D11 lab 07, part C; D13 lab 05 |
+| [Hyperparameter tuning overview](https://docs.cloud.google.com/bigquery/docs/hp-tuning-overview) | Letting BigQuery try settings for you (`NUM_TRIALS`, `HPARAM_RANGE`); D14 lab 09 |
 | [Explainable AI overview](https://docs.cloud.google.com/bigquery/docs/xai-overview) | Which features drive a model's predictions (`ENABLE_GLOBAL_EXPLAIN`) |
 | [Model selection guide (PDF)](https://docs.cloud.google.com/static/bigquery/images/ml-model-cheatsheet.pdf) | Which model type fits which question |
 | [BigQuery ML pricing](https://cloud.google.com/bigquery/pricing#bqml) | What training costs. Linear and logistic regression, k-means and time series train inside BigQuery; boosted trees, random forest, neural networks and AutoML are trained on Vertex AI and billed separately |
@@ -70,7 +70,7 @@ Each page lists every option for that model type, with its default. The labs cha
 | [`ML.ROC_CURVE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-roc) | recall, false positive rate and the four counts at each threshold; precision and PR AUC are computed from them (D12 lab 03) | D12 |
 | [`ML.METRICS`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-metrics) (Preview) | regression or classification scores from any table of actual and predicted values, with no model | D12 lab 03; D14 Resources; D15 lab 10 |
 | [`ML.CENTROIDS`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-centroids) | the centre of each k-means group, feature by feature | D13 |
-| [`ML.TRIAL_INFO`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-trial-info) | one row per hyperparameter-tuning trial, with its settings and score | D11 lab 07; D13 lab 05 |
+| [`ML.TRIAL_INFO`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-trial-info) | one row per hyperparameter-tuning trial, with its settings and score | D14 lab 09 |
 | [`ML.DETECT_ANOMALIES`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-detect-anomalies) | which rows are unusual; for k-means, by distance to the nearest centre; for `ARIMA_PLUS`, months outside the expected range. Billed even in the sandbox | D13 lab 08; D15 lab 10 |
 | [`ML.FORECAST`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-forecast) | the next months of a time series, each with a lower and upper bound | D15 |
 | [`ML.EXPLAIN_FORECAST`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-explain-forecast) | the parts of a forecast: trend, season, holidays, spikes and dips | D15 |

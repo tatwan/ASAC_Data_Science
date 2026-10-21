@@ -29,7 +29,7 @@ FROM ML.PREDICT(MODEL ml.churn_model,
 WHERE p.label = TRUE;
 ```
 
-`STRUCT(0.3 AS threshold)` is a setting for `ML.PREDICT`: say TRUE (leaves) when the probability is 0.3 or more. The `UNNEST` line is the one from activity 01: it keeps the probability of TRUE.
+`STRUCT(0.3 AS threshold)` is a setting for `ML.PREDICT`: say TRUE (leaves) when the probability is above 0.3. The `UNNEST` line is the one from activity 01: it keeps the probability of TRUE.
 
 Now change `0.3` to `0.7` and run it again.
 
@@ -90,6 +90,8 @@ Now make the offer cost **100**. A caught leaver is then worth 500 ÷ 3 − 100 
 
 Why 0.3 and 0.6? An offer pays when the chance of leaving × 500 ÷ 3 is more than its cost: 50 ÷ 167 ≈ 0.3, and 100 ÷ 167 ≈ 0.6.
 
+That rule takes the model's probabilities at their word. They are estimates, so the best rows land near 0.3 and 0.6, not exactly on them. One more honest note: we picked the threshold on the same held-aside customers we scored it on. That is fine for learning. In a real project, you pick it on one group of customers and check it once on another, as D14 does.
+
 **Think:** who should supply these costs, the analyst or the business?
 
 ## Step 4 · Which model ranks customers better?
@@ -130,7 +132,7 @@ WHERE threshold BETWEEN 0.1 AND 0.75
 ORDER BY recall;
 ```
 
-As recall climbs towards 1, precision drops towards about 0.27, the share of all customers who left: flag everyone and only the leavers among them are right. The area under this curve is called PR AUC; BigQuery does not print it, and you will meet it again in Python.
+As recall climbs, precision falls. At threshold 0.1 the model finds about 19 in 20 leavers, but only about 4 in 10 of the customers it flags really leave. Flag everyone and precision would fall to about 0.27, the share who left. The area under this curve is called PR AUC; BigQuery does not print it.
 
 ## References
 

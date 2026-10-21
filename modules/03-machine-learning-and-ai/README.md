@@ -10,11 +10,11 @@ Understand how models learn and are evaluated, build them in BigQuery ML, hand t
 
 | Session | Date | Focus |
 |---|---|---|
-| D11 | Sun 18 Oct | Machine learning 1: what learning means, and regression |
-| D12 | Mon 19 Oct | Machine learning 2: classification, and judging the prediction |
-| D13 | Wed 21 Oct | Machine learning 3: unsupervised learning and clustering |
-| D14 | Sun 25 Oct | Machine learning 4: improving models |
-| D15 | Mon 26 Oct | Machine learning 5: forecasting, explaining and serving predictions |
+| D11 | Sun 18 Oct | Machine learning 1: what learning means, and regression (begun) |
+| D12 | Mon 19 Oct | Machine learning 2: regression and BigQuery ML (D11 continued), then classification begins |
+| D13 | Wed 21 Oct | Machine learning 3: regression review, classification (D12 continued), then clustering begins |
+| D14 | Sun 25 Oct | Machine learning 4: clustering (D13 continued), then improving models begins |
+| D15 | Mon 26 Oct | Machine learning 5: forests, boosting and better features (D14 continued) · forecasting is optional self-study |
 | D24 | Tue 10 Nov | Generative AI for analysts |
 
 ## Datasets
@@ -52,4 +52,4 @@ Each lab will state prerequisites, input/version, numbered steps, three checkpoi
 
 Only released solutions belong here. Keep unreleased keys and instructor notes in the local ignored `instructor/` folder or the approved private teaching store. Graded submissions go to the institution’s private collection route, not issues or pull requests in this course repository.
 
-Assignment 2 covers the machine-learning sessions (issued D16 after the capstone, due before 4:00 PM D21, Thu 5 Nov). The AI usage charter is completed in class on D24.
+Assignment 2 covers the machine-learning sessions (issued D16 after the machine-learning part, due before 4:00 PM D21, Thu 5 Nov). The AI usage charter is completed in class on D24.
