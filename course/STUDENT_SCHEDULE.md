@@ -8,6 +8,8 @@ Classes run **4:00–8:00 PM** (Asia/Amman) with a break from **6:30 to 7:00 PM*
 
 **Updated 18 October 2026.** Each assignment now starts when its module is finished, and you always get a full week: Assignment 2 runs from Thursday 29 October to Thursday 5 November, Assignment 3 from Wednesday 4 to Wednesday 11 November, and Assignment 4 from Sunday 8 to Sunday 15 November, three days after the last session.
 
+**Updated 21 October 2026.** Machine learning is running about a day behind, so the topics move. D13 reviews regression, finishes classification (the confusion matrix and the threshold) and starts clustering. D14 finishes clustering and starts improving models with decision trees. D15 continues with forests, boosting and better features. **Forecasting is now optional, self-study:** the first part of the D15 slides (slides 1–49), activities 01–06 and labs 09, 10 and 13, with their solutions; it is not needed for Assignment 2. D16 starts with explaining and saving predictions (the second part of the D15 slides) and an overview of MLOps; Assignment 2 is still issued on D16, and Power BI starts at 6:00 PM that day as planned. Nothing changes from D17.
+
 **Optional sessions, 4:00–6:00 PM: Thursday 8 and Tuesday 20 October.** 8 October reviewed the SQL so far. 20 October is help with SQL and Assignment 1, the day before it is due. They are optional: no new content, no lab and nothing graded. They are shown in yellow on the schedule. (The session on Thursday 22 October is cancelled.)
 
 | Date | Topic | Material home | Lab | Assignment given | Assignment due |
@@ -23,13 +25,13 @@ Classes run **4:00–8:00 PM** (Asia/Amman) with a break from **6:30 to 7:00 PM*
 | **Optional** · Thu 8 Oct 2026 | **Optional review: SQL so far (D03–D08)**, 4:00–6:00 PM | [SQL](../modules/02-sql/README.md) | No | - | - |
 | D09 · Sun 11 Oct 2026 | Subqueries and CTEs, then views (D08 continued) | [SQL](../modules/02-sql/README.md) | After class | - | - |
 | D10 · Mon 12 Oct 2026 | Window functions, cloud warehouses and Assignment 1 | [SQL](../modules/02-sql/README.md) | After class | Assignment 1 | - |
-| D11 · Sun 18 Oct 2026 | Machine learning 1: what learning means, and regression | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | - |
-| D12 · Mon 19 Oct 2026 | Machine learning 2: classification, and judging the prediction | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | - |
+| D11 · Sun 18 Oct 2026 | Machine learning 1: what learning means, and regression (begun) | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | - |
+| D12 · Mon 19 Oct 2026 | Machine learning 2: regression and BigQuery ML (D11 continued), then classification begins | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | - |
 | **Optional** · Tue 20 Oct 2026 | **Optional support session: SQL and Assignment 1**, 4:00–6:00 PM | [SQL](../modules/02-sql/README.md) | No | - | - |
-| D13 · Wed 21 Oct 2026 | Machine learning 3: unsupervised learning and clustering | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | Assignment 1, before 4:00 PM |
-| D14 · Sun 25 Oct 2026 | Machine learning 4: improving models | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | - |
-| D15 · Mon 26 Oct 2026 | Machine learning 5: forecasting, explaining and serving predictions | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | - |
-| D16 · Thu 29 Oct 2026 | ML capstone on new data, then Power BI Desktop and Power Query I | [Prepare data with Power Query](../modules/04-power-query/README.md) | After class | Assignment 2 | - |
+| D13 · Wed 21 Oct 2026 | Machine learning 3: regression review, classification (D12 continued), then clustering begins | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | Assignment 1, before 4:00 PM |
+| D14 · Sun 25 Oct 2026 | Machine learning 4: clustering (D13 continued), then improving models begins | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | - |
+| D15 · Mon 26 Oct 2026 | Machine learning 5: forests, boosting and better features (D14 continued) · forecasting is optional self-study | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | - |
+| D16 · Thu 29 Oct 2026 | Machine learning 6: explaining and serving predictions, and MLOps; then Power BI Desktop and Power Query I | [Prepare data with Power Query](../modules/04-power-query/README.md) | After class | Assignment 2 | - |
 | D17 · Sun 1 Nov 2026 | Power Query II: BigQuery, folding and reusable queries | [Prepare data with Power Query](../modules/04-power-query/README.md) | After class | - | - |
 | D18 · Mon 2 Nov 2026 | Model: star schema, relationships and the date table | [Data modelling and DAX](../modules/05-data-modeling-and-dax/README.md) | After class | - | - |
 | D19 · Tue 3 Nov 2026 | DAX I: measures and filter context | [Data modelling and DAX](../modules/05-data-modeling-and-dax/README.md) | After class | - | - |
