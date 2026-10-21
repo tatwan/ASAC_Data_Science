@@ -1,12 +1,12 @@
 # Lab 06 · What goes into the line: the intercept, text features, and reading weights fairly
 
-In this self-guided lab, you will switch the intercept off and watch the line break, see the two ways BigQuery turns text into numbers, check what the model was given, ask which features the data really supports, and find out why raw weights can rank features in the wrong order.
+In this self-guided lab, you will switch the intercept off and watch the line break, see the two ways BigQuery turns text into numbers, and find out why raw weights can rank features in the wrong order.
 
-**When:** after class, about 40 minutes, at your own pace. Not submitted. · **Data:** `ml.salary_data`, `ml.insurance` (class), `ml.cars_clean` and `ml.cars_random` (lab 05) · **SQL:** `Solved/intercept_and_categories.sql`
+**When:** after class, at your own pace. Not submitted. · **Data:** `ml.salary_data`, `ml.insurance` (class), `ml.cars_random` (lab 05) · **SQL:** `Solved/intercept_and_categories.sql`
 
 ## How to work through this lab
 
-Run each query, compare with **What you should see**, and answer **Think** in one line. The options are on Google's page [The CREATE MODEL statement for generalized linear models](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-create-glm). If you have not done lab 05, do its steps 1 and 3 first: they create `ml.cars_clean` and `ml.cars_random`.
+Run each query, compare with **What you should see**, and answer **Think** in one line. If you have not done lab 05, do its steps 1 and 3 first: they create `ml.cars_clean` and `ml.cars_random`.
 
 ## Step 1 · `FIT_INTERCEPT`: does the line need a starting point?
 
@@ -60,17 +60,13 @@ FROM ml.insurance;
 Both have 1,338 rows, so `AUTO_SPLIT` holds 20% aside. Look at `region` in each:
 
 ```sql
-SELECT 'one-hot' AS encoding, cw.category, ROUND(cw.weight, 1) AS weight
+SELECT cw.category, ROUND(cw.weight, 1) AS weight
 FROM ML.WEIGHTS(MODEL ml.insurance_onehot), UNNEST(category_weights) AS cw
 WHERE processed_input = 'region'
-UNION ALL
-SELECT 'dummy', cw.category, ROUND(cw.weight, 1)
-FROM ML.WEIGHTS(MODEL ml.insurance_dummy), UNNEST(category_weights) AS cw
-WHERE processed_input = 'region'
-ORDER BY encoding, category;
+ORDER BY cw.category;
 ```
 
-`category_weights` holds a small list per text feature; `UNNEST` turns that list into rows, one per category.
+`category_weights` holds a small list per text feature; `UNNEST` turns that list into rows, one per category. Run it again with `ml.insurance_dummy` in place of `ml.insurance_onehot`.
 
 **What you should see:** one-hot gives four region weights. Dummy gives three: one region is missing, because it became the baseline. Write down which one. Each dummy weight is that region's charges compared with the baseline, other things equal. With `northeast` as the baseline they are about −353 (northwest), −1,035 (southeast) and −960 (southwest). With another baseline the numbers shift, but the gap between any two regions stays the same: southeast is always about 680 below northwest.
 
@@ -78,72 +74,7 @@ Now compare the two scores with `ML.EVALUATE`. **What you should see:** almost t
 
 **Think:** which version would you show a manager who asks "how much more does the southeast cost?"
 
-## Step 3 · `CALCULATE_P_VALUES`: which weights would survive new data?
-
-A weight learned from 1,338 people could be partly luck. A **p-value** asks: if this feature truly had no effect, how often would a weight this far from zero appear by chance? Small (below 0.05 is the usual line): the effect is very likely real. Large: the data cannot tell it from zero.
-
-BigQuery computes p-values only with dummy encoding and no L1 penalty. `ML.ADVANCED_WEIGHTS` shows them:
-
-```sql
-CREATE OR REPLACE MODEL ml.insurance_pvalues
-OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['charges'],
-         category_encoding_method = 'DUMMY_ENCODING',
-         calculate_p_values = TRUE,
-         data_split_method = 'NO_SPLIT') AS
-SELECT age, sex, bmi, children, smoker, region, charges
-FROM ml.insurance;
-
-SELECT processed_input, category, ROUND(weight, 1) AS weight,
-       ROUND(standard_error, 1) AS standard_error, ROUND(p_value, 4) AS p_value
-FROM ML.ADVANCED_WEIGHTS(MODEL ml.insurance_pvalues, STRUCT(FALSE AS standardize));
-```
-
-**What you should see** (values close to these):
-
-| Feature | Weight | p-value | Reading |
-|---|---:|---:|---|
-| smoker: yes | ≈ 23,849 | < 0.0001 | certainly real |
-| age | ≈ 257 | < 0.0001 | certainly real |
-| bmi | ≈ 339 | < 0.0001 | certainly real |
-| children | ≈ 476 | ≈ 0.0006 | real |
-| region (against northeast): southeast, southwest | ≈ −1,035, −960 | ≈ 0.03, 0.04 | just under the line |
-| region (against northeast): northwest | ≈ −353 | ≈ 0.46 | cannot tell from zero |
-| sex: male (against female) | ≈ −131 | ≈ 0.69 | cannot tell from zero |
-
-If your baseline region or sex is a different value, those rows compare against it instead; the four strong features read the same.
-
-`STRUCT(FALSE AS standardize)` is how ML functions take a setting: a named value. Here: weights in dollars, not standardized.
-
-**Think:** in class, three features did as well as six. Which row of this table explains why `sex` could be dropped?
-
-## Step 4 · `ML.FEATURE_INFO`: what the model was given
-
-Steps 2 and 3 were about how text columns become numbers. Before you read any weight, check what the model actually received: how many categories each text column had, the range of each number column, and whether anything was missing. `ML.FEATURE_INFO` reads this from the model, with no data to pass:
-
-```sql
-SELECT input, min, max, ROUND(mean, 2) AS mean, median, ROUND(stddev, 1) AS stddev,
-       category_count, null_count
-FROM ML.FEATURE_INFO(MODEL ml.insurance_pvalues);
-```
-
-Google's page lists one row per input feature and these columns: `min`, `max`, `mean`, `median` and `stddev` (NULL for text columns), `category_count` (NULL for number columns), `null_count`, and `dimension` (only for array columns, so it is left out here). `ml.insurance_pvalues` was trained with `data_split_method = 'NO_SPLIT'`, so it saw all 1,338 people.
-
-**What you should see:** six rows, one per feature; `charges` is the label, not a feature.
-
-| `input` | What to check |
-|---|---|
-| `age` | min 18, max 64, mean 39.21, median 39 |
-| `bmi` | min 15.96, max 53.13, mean 30.66, median 30.4 |
-| `children` | min 0, max 5, mean 1.09, median 1 |
-| `sex` | `category_count` 2 |
-| `smoker` | `category_count` 2 |
-| `region` | `category_count` 4 |
-
-`null_count` is 0 on every row. The standard deviations are about 14.0 for age and 6.1 for BMI. This table assumes `smoker` is text, as in class. If your table's **Schema** tab shows `smoker` as BOOLEAN (activity 03's "If something goes wrong"), its row may look different: Google's page does not say how a BOOLEAN column is counted.
-
-**Think:** step 2's dummy encoding made three region columns. Which number in this table tells you it would be three, before you train anything?
-
-## Step 5 · Raw weights against standardized weights
+## Step 3 · Raw weights against standardized weights
 
 Back to cars. Which feature hurts fuel efficiency most? Ask the raw weights first:
 
@@ -171,25 +102,24 @@ A raw weight is "mpg per one unit of this feature". One pound of car weight is t
 
 **Think:** a colleague says "cylinders hurt mpg the most". What do you tell them?
 
-## Step 6 · `ENABLE_GLOBAL_EXPLAIN`: which features matter most, in one table
+## Bonus · Which weights would survive new data?
 
-Standardized weights rank features for a straight line. `ENABLE_GLOBAL_EXPLAIN` asks BigQuery for a ranking that works for any model type: how much each feature moves the predictions, on average. Switch it on when you train, then read it with `ML.GLOBAL_EXPLAIN`:
+Not required. A weight learned from 1,338 people could be partly luck. A **p-value** asks: if this feature truly had no effect, how often would a weight this far from zero appear by chance? Below 0.05 is the usual line for "very likely real".
 
 ```sql
-CREATE OR REPLACE MODEL ml.insurance_explained
+CREATE OR REPLACE MODEL ml.insurance_pvalues
 OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['charges'],
-         enable_global_explain = TRUE) AS
+         category_encoding_method = 'DUMMY_ENCODING',
+         calculate_p_values = TRUE,
+         data_split_method = 'NO_SPLIT') AS
 SELECT age, sex, bmi, children, smoker, region, charges
 FROM ml.insurance;
 
-SELECT feature, ROUND(attribution, 1) AS attribution
-FROM ML.GLOBAL_EXPLAIN(MODEL ml.insurance_explained)
-ORDER BY attribution DESC;
+SELECT processed_input, category, ROUND(weight, 1) AS weight, ROUND(p_value, 4) AS p_value
+FROM ML.ADVANCED_WEIGHTS(MODEL ml.insurance_pvalues);
 ```
 
-**What you should see:** `smoker` far ahead of every other feature, then `age` and `bmi`; `sex` and `region` near the bottom. The same story as the p-values in step 3, told a different way.
-
-**Think:** you will meet this option again for classification and for tree models. Why is one ranking that works for every model type useful?
+BigQuery computes p-values only with dummy encoding. Expect tiny p-values for `smoker`, `age`, `bmi` and `children`, and large ones for `sex` (about 0.69) and the northwest region (about 0.46): the data cannot tell those from zero. That is why, in class, three features did as well as six.
 
 ## What you saw
 
@@ -197,11 +127,8 @@ ORDER BY attribution DESC;
 |---|---|---|
 | `FIT_INTERCEPT = FALSE` | the line must pass through zero | |
 | `CATEGORY_ENCODING_METHOD` | one-hot against dummy | |
-| `CALCULATE_P_VALUES = TRUE` | weights with p-values | |
-| `ML.FEATURE_INFO` | what the model was given, column by column | |
 | `STRUCT(TRUE AS standardize)` | weights on one yardstick | |
-| `ENABLE_GLOBAL_EXPLAIN = TRUE` | a ranking of the features | |
 
 ## References
 
-Salary data and Medical Cost Personal Datasets (Kaggle); Auto MPG, UCI Machine Learning Repository, CC BY 4.0. Course copies in [`shared/datasets/ml_classics`](../../../../../shared/datasets/ml_classics/README.md). BigQuery ML: [CREATE MODEL for linear regression](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-create-glm), [ML.WEIGHTS](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-weights), [ML.ADVANCED_WEIGHTS](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-advanced-weights), [ML.FEATURE_INFO](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-feature), Google Cloud.
+Salary data and Medical Cost Personal Datasets (Kaggle); Auto MPG, UCI Machine Learning Repository, CC BY 4.0. Course copies in [`shared/datasets/ml_classics`](../../../../../shared/datasets/ml_classics/README.md). BigQuery ML: [CREATE MODEL for linear regression](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-create-glm), [ML.WEIGHTS](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-weights), [ML.ADVANCED_WEIGHTS](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-advanced-weights), Google Cloud.

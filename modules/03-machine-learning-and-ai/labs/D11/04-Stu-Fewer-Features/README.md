@@ -2,7 +2,7 @@
 
 In this activity, you will train two smaller insurance models, score all three on the rows they did not learn from, and decide which one you would keep.
 
-**Time:** about 12 minutes in class · **Data:** `ml.insurance`, `ml.insurance_model` (activity 03) · **Starter:** `Unsolved/fewer_features.sql`
+**Data:** `ml.insurance`, `ml.insurance_model` (activity 03) · **Starter:** `Unsolved/fewer_features.sql`
 
 ## The story
 

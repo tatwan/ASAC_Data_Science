@@ -1,11 +1,6 @@
 -- D11 · Lab 05 · Which rows are held aside? · Solved (every query from the README, in order)
--- Self-guided: run one statement at a time and compare with the README's 'What you should see'.
 
 -- Step 1 · Upload, and check every column's type
-SELECT column_name, data_type
-FROM ml.INFORMATION_SCHEMA.COLUMNS
-WHERE table_name = 'cars';
-
 SELECT horsepower, COUNT(*) AS car_count
 FROM ml.cars
 WHERE SAFE_CAST(horsepower AS FLOAT64) IS NULL
@@ -24,9 +19,6 @@ SELECT * FROM ml.cars_clean;
 
 SELECT ROUND(mean_absolute_error, 2) AS mae, ROUND(r2_score, 3) AS r2
 FROM ML.EVALUATE(MODEL ml.cars_auto);
-
-SELECT iteration, ROUND(loss, 2) AS loss, eval_loss
-FROM ML.TRAINING_INFO(MODEL ml.cars_auto);
 
 -- Step 3 · `RANDOM`, with `DATA_SPLIT_EVAL_FRACTION`
 CREATE OR REPLACE MODEL ml.cars_random
@@ -58,4 +50,3 @@ SELECT * FROM ml.cars_split;
 
 SELECT ROUND(mean_absolute_error, 2) AS mae, ROUND(r2_score, 3) AS r2
 FROM ML.EVALUATE(MODEL ml.cars_custom);
-

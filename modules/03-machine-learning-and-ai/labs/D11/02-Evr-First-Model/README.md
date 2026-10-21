@@ -2,7 +2,7 @@
 
 In this activity, you will upload 30 past hires, train a model that predicts salary from years of experience, read the two numbers it learned, and ask it about a new candidate.
 
-**Time:** about 22 minutes in class, following along · **Data:** [`salary_data.csv`](../../../../../shared/datasets/ml_classics/salary_data.csv) → `ml.salary_data` · **Starter:** `Unsolved/first_model.sql`
+**Data:** [`salary_data.csv`](../../../../../shared/datasets/ml_classics/salary_data.csv) → `ml.salary_data` · **Starter:** `Unsolved/first_model.sql`
 
 ## The story
 

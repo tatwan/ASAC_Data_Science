@@ -2,7 +2,7 @@
 
 In this activity, you will recap what BigQuery does besides running your SQL, which of those parts the free sandbox gives you, and why we train machine-learning models inside BigQuery. The hands-on part is three D10 labs you try at home.
 
-**Time:** 8 minutes at the start of class, a recap on the slides; the labs below at home · **Data:** a public Google sample file and `bigquery-public-data.google_trends.top_terms` (in D10's labs) · **Files:** D10's activities, linked below
+**Data:** a public Google sample file and `bigquery-public-data.google_trends.top_terms` (in D10's labs) · **Files:** D10's activities, linked below
 
 ## The story
 

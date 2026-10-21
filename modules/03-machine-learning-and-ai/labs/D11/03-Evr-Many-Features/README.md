@@ -2,7 +2,7 @@
 
 In this activity, you will train a model on six features of 1,338 insured people, hold 20% of them aside, score the model on those unseen people, compare it with a simple guess, and read what it learned.
 
-**Time:** about 45 minutes in class, following along, across several steps · **Data:** [`insurance.csv`](../../../../../shared/datasets/ml_classics/insurance.csv) → `ml.insurance` · **Starter:** `Unsolved/many_features.sql`
+**Data:** [`insurance.csv`](../../../../../shared/datasets/ml_classics/insurance.csv) → `ml.insurance` · **Starter:** `Unsolved/many_features.sql`
 
 ## The story
 

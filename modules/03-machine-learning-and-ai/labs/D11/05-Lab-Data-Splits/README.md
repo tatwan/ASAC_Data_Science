@@ -2,7 +2,7 @@
 
 In this self-guided lab, you will train the same model on the cars data five times, changing only how BigQuery splits the rows, and watch how much the score depends on which rows it is measured on.
 
-**When:** after class, about 40 minutes, at your own pace. Not submitted. · **Data:** [`mpg.csv`](../../../../../shared/datasets/ml_classics/mpg.csv) → `ml.cars` · **SQL:** `Solved/data_splits.sql` (every query is also in this page)
+**When:** after class, at your own pace. Not submitted. · **Data:** [`mpg.csv`](../../../../../shared/datasets/ml_classics/mpg.csv) → `ml.cars` · **SQL:** `Solved/data_splits.sql` (every query is also in this page)
 
 ## How to work through this lab
 
@@ -16,15 +16,9 @@ The options come from Google's reference page for linear and logistic regression
 
 ## Step 1 · Upload, and check every column's type
 
-Upload `mpg.csv` to the `ml` dataset as `cars` (**⋮** → **Create table**, Upload, CSV, **Auto detect**). Then:
+Upload `mpg.csv` to the `ml` dataset as `cars` (**⋮** → **Create table**, Upload, CSV, **Auto detect**). Then open the table's **Schema** tab.
 
-```sql
-SELECT column_name, data_type
-FROM ml.INFORMATION_SCHEMA.COLUMNS
-WHERE table_name = 'cars';
-```
-
-**What you should see:** six columns. Five are numbers (INT64 or FLOAT64). `horsepower` is **STRING**.
+**What you should see:** six columns. Five are numbers (INTEGER or FLOAT). `horsepower` is **STRING**.
 
 Find out why:
 
@@ -66,14 +60,7 @@ FROM ML.EVALUATE(MODEL ml.cars_auto);
 
 **What you should see:** MAE ≈ 3.24, R² ≈ 0.705.
 
-`DATA_SPLIT_METHOD` defaults to `AUTO_SPLIT`. With fewer than 500 rows, it holds **nothing** aside, so this score was measured on the 398 cars the model learned from. Check it in the training record:
-
-```sql
-SELECT iteration, ROUND(loss, 2) AS loss, eval_loss
-FROM ML.TRAINING_INFO(MODEL ml.cars_auto);
-```
-
-**What you should see:** `eval_loss` is empty (NULL): there were no evaluation rows.
+`DATA_SPLIT_METHOD` defaults to `AUTO_SPLIT`. With fewer than 500 rows, it holds **nothing** aside, so this score was measured on the 398 cars the model learned from.
 
 **Think:** is 0.705 a fair score to report to a manager? Why not?
 
@@ -89,11 +76,11 @@ SELECT ROUND(mean_absolute_error, 2) AS mae, ROUND(r2_score, 3) AS r2
 FROM ML.EVALUATE(MODEL ml.cars_random);
 ```
 
-**What you should see:** MAE about 3.3 (2.9 to 3.8), R² about 0.69 (0.62 to 0.75). About 80 cars were held aside. Run `ML.TRAINING_INFO` on this model: `eval_loss` now has a value.
+**What you should see:** MAE about 3.3, R² about 0.7. About 80 cars were held aside.
 
 Try `data_split_eval_fraction = 0.4`, then `0.1`. Each time, note the R².
 
-**Think:** with 398 rows, why does the score move more when you hold aside 10% than when you hold aside 40%? What do you give up by holding aside 40%?
+**Think:** compare the R² you got with 0.4, 0.2 and 0.1. With 0.1 the score rests on only about 40 cars: why is that risky? And what does the model lose when you hold aside 40%?
 
 ## Step 4 · `CUSTOM`: you choose the evaluation rows
 

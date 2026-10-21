@@ -1,5 +1,4 @@
--- D11 · Lab 06 · The intercept, text features, and reading weights · Solved (every query from the README, in order)
--- Self-guided: run one statement at a time and compare with the README's 'What you should see'.
+-- D11 · Lab 06 · What goes into the line · Solved (every query from the README, in order)
 
 -- Step 1 · `FIT_INTERCEPT`: does the line need a starting point?
 CREATE OR REPLACE MODEL ml.salary_no_intercept
@@ -27,34 +26,12 @@ OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['charges'],
 SELECT age, sex, bmi, children, smoker, region, charges
 FROM ml.insurance;
 
-SELECT 'one-hot' AS encoding, cw.category, ROUND(cw.weight, 1) AS weight
+SELECT cw.category, ROUND(cw.weight, 1) AS weight
 FROM ML.WEIGHTS(MODEL ml.insurance_onehot), UNNEST(category_weights) AS cw
 WHERE processed_input = 'region'
-UNION ALL
-SELECT 'dummy', cw.category, ROUND(cw.weight, 1)
-FROM ML.WEIGHTS(MODEL ml.insurance_dummy), UNNEST(category_weights) AS cw
-WHERE processed_input = 'region'
-ORDER BY encoding, category;
+ORDER BY cw.category;
 
--- Step 3 · `CALCULATE_P_VALUES`: which weights would survive new data?
-CREATE OR REPLACE MODEL ml.insurance_pvalues
-OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['charges'],
-         category_encoding_method = 'DUMMY_ENCODING',
-         calculate_p_values = TRUE,
-         data_split_method = 'NO_SPLIT') AS
-SELECT age, sex, bmi, children, smoker, region, charges
-FROM ml.insurance;
-
-SELECT processed_input, category, ROUND(weight, 1) AS weight,
-       ROUND(standard_error, 1) AS standard_error, ROUND(p_value, 4) AS p_value
-FROM ML.ADVANCED_WEIGHTS(MODEL ml.insurance_pvalues, STRUCT(FALSE AS standardize));
-
--- Step 4 · `ML.FEATURE_INFO`: what the model was given
-SELECT input, min, max, ROUND(mean, 2) AS mean, median, ROUND(stddev, 1) AS stddev,
-       category_count, null_count
-FROM ML.FEATURE_INFO(MODEL ml.insurance_pvalues);
-
--- Step 5 · Raw weights against standardized weights
+-- Step 3 · Raw weights against standardized weights
 SELECT processed_input, ROUND(weight, 4) AS weight
 FROM ML.WEIGHTS(MODEL ml.cars_random)
 WHERE processed_input != '__INTERCEPT__'
@@ -65,14 +42,14 @@ FROM ML.WEIGHTS(MODEL ml.cars_random, STRUCT(TRUE AS standardize))
 WHERE processed_input != '__INTERCEPT__'
 ORDER BY ABS(weight) DESC;
 
--- Step 6 · `ENABLE_GLOBAL_EXPLAIN`: which features matter most, in one table
-CREATE OR REPLACE MODEL ml.insurance_explained
+-- Bonus · Which weights would survive new data?
+CREATE OR REPLACE MODEL ml.insurance_pvalues
 OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['charges'],
-         enable_global_explain = TRUE) AS
+         category_encoding_method = 'DUMMY_ENCODING',
+         calculate_p_values = TRUE,
+         data_split_method = 'NO_SPLIT') AS
 SELECT age, sex, bmi, children, smoker, region, charges
 FROM ml.insurance;
 
-SELECT feature, ROUND(attribution, 1) AS attribution
-FROM ML.GLOBAL_EXPLAIN(MODEL ml.insurance_explained)
-ORDER BY attribution DESC;
-
+SELECT processed_input, category, ROUND(weight, 1) AS weight, ROUND(p_value, 4) AS p_value
+FROM ML.ADVANCED_WEIGHTS(MODEL ml.insurance_pvalues);
