@@ -1,8 +1,8 @@
 # Lab 09 (optional, self-study) · Nakheel's customers, by rule and by k-means
 
-In this optional self-guided lab, you will group Nakheel's customers two ways: with recency, frequency and spend tiers a person defines in SQL, and with k-means, three times, until the groups are usable. Then you will check each group against what its customers spent after the cutoff.
+In this optional self-guided lab, you will group Nakheel's customers with k-means three times, raw, scaled, and logged then scaled, until the groups are usable. Then you will check each group against what its customers spent after the cutoff.
 
-**When:** after labs 05–08, at your own pace, about 50 minutes. Optional; not submitted. · **Data:** `ml.customer_features` (built in D11's optional lab 08) · **SQL:** `Solved/nakheel_segments.sql`
+**When:** after labs 05–08, at your own pace. Optional; not submitted. · **Data:** `ml.customer_features` (built in D11's optional lab 08) · **SQL:** `Solved/nakheel_segments.sql`
 
 ## Before you start
 
@@ -16,40 +16,15 @@ Work like the other labs: run each query, compare with **What you should see**, 
 
 ```sql
 SELECT COUNT(*) AS customers,
-       APPROX_QUANTILES(days_since_last, 4) AS days_quartiles,
-       APPROX_QUANTILES(orders_before, 4) AS orders_quartiles,
-       APPROX_QUANTILES(revenue_before, 4) AS spend_quartiles
+       MIN(days_since_last) AS min_days, ROUND(AVG(days_since_last)) AS avg_days, MAX(days_since_last) AS max_days,
+       MIN(orders_before) AS min_orders, ROUND(AVG(orders_before), 1) AS avg_orders, MAX(orders_before) AS max_orders,
+       MIN(revenue_before) AS min_spend, ROUND(AVG(revenue_before)) AS avg_spend, MAX(revenue_before) AS max_spend
 FROM ml.customer_features;
 ```
 
-**What you should see:** 412 customers. Days since the last order run from 1 to 540, median about 123. Orders: median 2, but up to 86. Spend: median about 198 JOD, but up to about 25,360. Orders and spend have heavy tails, like the wholesaler's spending in lab 07; days do not.
+**What you should see:** 412 customers. Days since the last order run from 1 to 540. Orders: most customers have one or two, but one has 86. Spend: half the customers spent under about 198 JOD, but one spent about 25,360. Orders and spend have heavy tails, like the wholesaler's spending in lab 07; days do not.
 
-## Step 2 · Tiers the business way: RFM
-
-Marketing often groups customers by three numbers: **R**ecency (how recently they bought), **F**requency (how often) and **M**onetary value (how much). Each customer gets a tier from 1 (best) to 4 on each, by quarters.
-
-```sql
-CREATE OR REPLACE VIEW ml.customer_rfm AS
-SELECT customer_id, days_since_last, orders_before, revenue_before, revenue_next_6m,
-       NTILE(4) OVER (ORDER BY days_since_last, customer_id) AS r_tier,
-       NTILE(4) OVER (ORDER BY orders_before DESC, customer_id) AS f_tier,
-       NTILE(4) OVER (ORDER BY revenue_before DESC, customer_id) AS m_tier
-FROM ml.customer_features;
-
-SELECT CONCAT(CAST(r_tier AS STRING), CAST(f_tier AS STRING), CAST(m_tier AS STRING)) AS rfm, COUNT(*) AS customers
-FROM ml.customer_rfm
-GROUP BY rfm
-ORDER BY customers DESC
-LIMIT 6;
-```
-
-`NTILE(4)` (D10) cuts the ordered customers into four groups of equal size: 103 each here. `customer_id` in each `ORDER BY` breaks ties, so the same customer always gets the same tier.
-
-`CAST(… AS STRING)` turns each tier into text so `CONCAT` can join them into a code such as 111.
-
-**What you should see:** 49 different codes. The most common are 111 (48 customers: recent, frequent, big spenders) and 444 (31: the opposite). A person chose every rule here: quarters, the order of the three letters, what "best" means.
-
-## Step 3 · k-means on the raw columns
+## Step 2 · k-means on the raw columns
 
 ```sql
 CREATE OR REPLACE MODEL ml.nakheel_seg_a
@@ -66,7 +41,7 @@ ORDER BY customers DESC;
 
 **What you should see:** about 353 · 49 · 8 · 2 (or one huge group and three tiny ones). Spend in dinars runs to thousands while orders run to tens: spend decides every distance, as the penguins' grams did in class.
 
-## Step 4 · Scaled
+## Step 3 · Scaled
 
 The same statement with one option changed:
 
@@ -85,7 +60,7 @@ ORDER BY customers DESC;
 
 **What you should see:** about 254 · 151 · 5 · 2. The columns now count equally, but a handful of huge spenders still sit so far out that they get groups of their own. Scaling fixed the units, not the tail.
 
-## Step 5 · Logs, then scaled
+## Step 4 · Logs, then scaled
 
 ```sql
 CREATE OR REPLACE VIEW ml.customer_features_log AS
@@ -101,7 +76,7 @@ FROM ml.customer_features_log;
 
 `days_since_last` is not logged: it has no heavy tail.
 
-## Step 6 · Profile, and check against what happened next
+## Step 5 · Profile, and check against what happened next
 
 ```sql
 SELECT centroid_id, COUNT(*) AS customers,
@@ -128,20 +103,6 @@ The groups were made without the spend after the cutoff, and they still separate
 
 **Think:** name the four groups and give each one action. Which group would you call first?
 
-## Step 7 · Rules against clusters
-
-```sql
-SELECT r.r_tier, p.centroid_id, COUNT(*) AS customers
-FROM ML.PREDICT(MODEL ml.nakheel_seg_c, (SELECT * FROM ml.customer_features_log)) AS p
-JOIN ml.customer_rfm AS r USING (customer_id)
-GROUP BY r.r_tier, p.centroid_id
-ORDER BY r.r_tier, p.centroid_id;
-```
-
-**What you should see:** the least recent quarter (`r_tier` 4) falls almost entirely into one cluster, the long-gone customers. The other tiers spread over several clusters, because the clusters weigh all three columns at once.
-
-**Think:** RFM tiers are rules a person wrote; clusters come from the data. When would marketing prefer each?
-
 ## What you saw
 
 | Run | Sizes | What it shows |
@@ -152,4 +113,4 @@ ORDER BY r.r_tier, p.centroid_id;
 
 ## References
 
-Nakheel Retail (course data), [`shared/datasets/nakheel`](../../../../../shared/datasets/nakheel/README.md). BigQuery ML: [CREATE MODEL for k-means](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-create-kmeans), Google Cloud. `NTILE`: [numbering functions](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/numbering_functions#ntile), Google Cloud.
+Nakheel Retail (course data), [`shared/datasets/nakheel`](../../../../../shared/datasets/nakheel/README.md). BigQuery ML: [CREATE MODEL for k-means](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-create-kmeans), Google Cloud.

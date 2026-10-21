@@ -2,7 +2,7 @@
 
 In this activity, you will do the two steps k-means repeats, assign and update, for six shoppers and two groups, starting from a poor choice of centres. You need a calculator (your phone is fine), not BigQuery.
 
-**Time:** 12 minutes in class · **Data:** six shoppers from `ml.mall` (below) · **Worksheet:** `Unsolved/one_round.md`
+**Data:** six shoppers from `ml.mall` (below) · **Worksheet:** `Unsolved/one_round.md`
 
 ## The story
 

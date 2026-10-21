@@ -25,19 +25,19 @@ Everything on Google's [CREATE MODEL page for k-means](https://docs.cloud.google
 | `NUM_CLUSTERS` | log10 of the row count | how many groups (2 to 100) | activities 01, 04; lab 05 |
 | `KMEANS_INIT_METHOD` | `'RANDOM'` | starting centres: `RANDOM`, `KMEANS++` or `CUSTOM` | activity 01; lab 06 |
 | `KMEANS_INIT_COL` | none | the BOOL column marking the starting rows when `CUSTOM` | lab 06 |
-| `DISTANCE_TYPE` | `'EUCLIDEAN'` | straight-line distance, or `'COSINE'` to compare the mix | lab 07 |
+| `DISTANCE_TYPE` | `'EUCLIDEAN'` | straight-line distance, or `'COSINE'` to compare the mix | lab 07 (bonus) |
 | `STANDARDIZE_FEATURES` | `TRUE` | put numeric columns on one scale before measuring | activity 03; labs 07, 09 |
-| `MAX_ITERATIONS` | 20 | the most rounds of assign-and-update | lab 06 |
-| `EARLY_STOP` | `TRUE` | stop when a round improves the loss by less than `MIN_REL_PROGRESS` | lab 06 |
-| `MIN_REL_PROGRESS` | 0.01 | the improvement a round needs to continue | lab 06 |
-| `WARM_START` | `FALSE` | keep the centres and train again on new rows | lab 06 |
-| `NUM_TRIALS` | none | turn on tuning: how many models to try (1 to 100) | lab 05 |
-| `MAX_PARALLEL_TRIALS` | 1 | trials at the same time (1 to 5) | lab 05 |
-| `HPARAM_TUNING_ALGORITHM` | `'VIZIER_DEFAULT'` | how to search: also `RANDOM_SEARCH`, `GRID_SEARCH` | lab 05 |
-| `HPARAM_TUNING_OBJECTIVES` | `'DAVIES_BOULDIN_INDEX'` | the score tuning minimises (the only one for k-means) | lab 05 |
+| `MAX_ITERATIONS` | 20 | the most rounds of assign-and-update | lab 06 (bonus) |
+| `EARLY_STOP` | `TRUE` | stop when a round improves the loss by less than `MIN_REL_PROGRESS` | default kept |
+| `MIN_REL_PROGRESS` | 0.01 | the improvement a round needs to continue | default kept |
+| `WARM_START` | `FALSE` | keep the centres and train again on new rows | not used in this course |
+| `NUM_TRIALS` | none | turn on tuning: how many models to try (1 to 100) | named in lab 05, not used: 200 rows are too few to tune on |
+| `MAX_PARALLEL_TRIALS` | 1 | trials at the same time (1 to 5) | not used |
+| `HPARAM_TUNING_ALGORITHM` | `'VIZIER_DEFAULT'` | how to search: also `RANDOM_SEARCH`, `GRID_SEARCH` | not used |
+| `HPARAM_TUNING_OBJECTIVES` | `'DAVIES_BOULDIN_INDEX'` | the score tuning minimises (the only one for k-means) | not used |
 | `MODEL_REGISTRY`, `VERTEX_AI_MODEL_ID`, `VERTEX_AI_MODEL_VERSION_ALIASES`, `KMS_KEY_NAME` | none | registering the model in Vertex AI; encrypting it with your own key | not used in this course |
 
-The functions: `ML.PREDICT` (`centroid_id`, `nearest_centroids_distance`; activities 01, 04, labs 07–09), `ML.CENTROIDS` (activity 01), `ML.EVALUATE` (Davies–Bouldin index, mean squared distance; activity 04, labs 05, 06), `ML.TRAINING_INFO` (lab 06), `ML.TRIAL_INFO` (lab 05), `ML.DETECT_ANOMALIES` (lab 08).
+The functions: `ML.PREDICT` (`centroid_id`, `nearest_centroids_distance`; activities 01, 04, labs 07–09), `ML.CENTROIDS` (activity 01), `ML.EVALUATE` (Davies–Bouldin index, mean squared distance; activity 04, lab 05), `ML.TRAINING_INFO` (lab 06), `ML.DETECT_ANOMALIES` (lab 08).
 
 ## If CREATE MODEL fails in class
 
@@ -54,6 +54,5 @@ The profile in activity 04, block 1, then runs as plain SQL. `ML.EVALUATE`, `ML.
 ## If something goes wrong
 
 - **`Not found: Dataset bigquery-public-data:ml_datasets`** in activity 03: your `ml` dataset is not in the US location. Create it with `OPTIONS (location = 'US')`.
-- **`Column name centroid_id is ambiguous`:** a query that `UNNEST`s `nearest_centroids_distance` needs the aliases `p` and `d`, as in activity 01 block 7.
 - **Your group sizes differ from a classmate's:** k-means starts from random centres. Compare sizes and profiles, not `centroid_id` numbers, and compare mean squared distance when two runs disagree.
 - **`KMEANS_INIT_COL` error in lab 06:** the BOOL column must have exactly as many `TRUE` rows as `num_clusters`.

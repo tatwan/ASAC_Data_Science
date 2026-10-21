@@ -2,7 +2,7 @@
 
 In this activity, you will describe each of the mall's five groups in the units marketing understands, read the one score BigQuery gives a clustering, try six groups instead of five, retrain to see whether the groups hold, and then, with a partner, name each group and give it one action.
 
-**Time:** about 45 minutes in class · **Data:** `ml.mall` and the model `ml.mall_segments` from activity 01 · **Starter:** `Unsolved/judge_the_segments.sql`
+**Data:** `ml.mall` and the model `ml.mall_segments` from activity 01 · **Starter:** `Unsolved/judge_the_segments.sql`
 
 ## The story
 
@@ -36,7 +36,7 @@ You need `ml.mall` and `ml.mall_segments` from [activity 01](../01-Evr-First-Seg
 
 3. **Six groups instead of five (block 3).** The same model with `num_clusters = 6`. Profile it. One of the two high-income groups splits: about 10 shoppers with incomes near 110 thousand get a group of their own. In some runs they are the big spenders, in others the low spenders. The Davies–Bouldin index is higher, about **0.63 to 0.67**. By that measure five is better; a business that wants a short list of its richest members might still choose six.
 
-4. **Train again (block 4).** Block 4 trains the same five-group model again under a new name, `ml.mall_segments_2`, then compares sizes and mean squared distance of the two models. Most runs give the same five groups (one shopper near the border can switch between the 80 and the 36). About one run in three ends in a worse split, with a group of about 100 and one of about 10, and a mean squared distance near **0.49** instead of 0.33. Lower is tighter: if two runs disagree, keep the one with the lower mean squared distance, and check that its profile still makes sense.
+4. **Train again (block 4).** Block 4 trains the same five-group model again under a new name, `ml.mall_segments_2`. Then compare its mean squared distance with block 2's, and its group sizes with block 1's. Most runs give the same five groups (one shopper near the border can switch between the 80 and the 36). About one run in three ends in a worse split, with a group of about 100 and one of about 10, and a mean squared distance near **0.49** instead of 0.33. Lower is tighter: if two runs disagree, keep the one with the lower mean squared distance, and check that its profile still makes sense.
 
 5. **With a partner: name the groups and give each one action.** Marketing can run one campaign per group. For each group: a short name a marketing manager would understand, and one action. Post your five lines in Slack.
 
@@ -47,7 +47,7 @@ You need `ml.mall` and `ml.mall_segments` from [activity 01](../01-Evr-First-Seg
 | 1 | 5 | sizes about 22, 23, 80, 39, 35 sorted by income; the two low-income groups differ by score, not income |
 | 2 | 1 | Davies–Bouldin ≈ 0.57 · mean squared distance ≈ 0.33 |
 | 3 | 6 | a group of about 10 shoppers with incomes near 110 thousand |
-| 4 | 2 | same sizes and ≈ 0.33 for most runs; ≈ 0.49 when a run ends in the worse split |
+| 4 | 1, then 5 | ≈ 0.33 and the same sizes for most runs; ≈ 0.49 when a run ends in the worse split |
 
 Computed outside BigQuery with the same settings before the class ran them. Your group numbers (`centroid_id`) will differ from a classmate's: compare sizes and profiles.
 

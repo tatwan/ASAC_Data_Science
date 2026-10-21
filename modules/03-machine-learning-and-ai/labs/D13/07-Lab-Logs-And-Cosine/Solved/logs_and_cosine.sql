@@ -1,11 +1,9 @@
--- D13 · Lab 07 · Heavy tails, logs, and grouping by mix: a wholesaler's clients · Solved (every query from the README, in order)
--- Self-guided: run one statement at a time.
+-- D13 · Lab 07 · Heavy tails and logs: a wholesaler's clients · Solved
 
 -- Step 1 · Look at the spending first
-SELECT APPROX_QUANTILES(fresh, 4) AS fresh_quartiles,
-       ROUND(AVG(fresh)) AS fresh_avg,
-       APPROX_QUANTILES(detergents_paper, 4) AS detergents_quartiles,
-       ROUND(AVG(detergents_paper)) AS detergents_avg
+SELECT MIN(fresh) AS min_fresh,
+       ROUND(AVG(fresh)) AS avg_fresh,
+       MAX(fresh) AS max_fresh
 FROM ml.wholesale;
 
 -- Step 2 · Scaled, but not logged
@@ -17,8 +15,8 @@ FROM ml.wholesale;
 
 SELECT centroid_id, COUNT(*) AS clients,
        ROUND(COUNTIF(channel = 'Retail') / COUNT(*), 2) AS share_retail,
-       APPROX_QUANTILES(fresh, 2)[OFFSET(1)] AS median_fresh,
-       APPROX_QUANTILES(grocery, 2)[OFFSET(1)] AS median_grocery
+       ROUND(AVG(fresh)) AS avg_fresh,
+       ROUND(AVG(grocery)) AS avg_grocery
 FROM ML.PREDICT(MODEL ml.wholesale_scaled, (SELECT * FROM ml.wholesale))
 GROUP BY centroid_id
 ORDER BY clients DESC;
@@ -26,8 +24,11 @@ ORDER BY clients DESC;
 -- Step 3 · Logs first, then scaling
 CREATE OR REPLACE VIEW ml.wholesale_logs AS
 SELECT *,
-       LN(1 + fresh) AS log_fresh, LN(1 + milk) AS log_milk, LN(1 + grocery) AS log_grocery,
-       LN(1 + frozen) AS log_frozen, LN(1 + detergents_paper) AS log_detergents_paper,
+       LN(1 + fresh) AS log_fresh,
+       LN(1 + milk) AS log_milk,
+       LN(1 + grocery) AS log_grocery,
+       LN(1 + frozen) AS log_frozen,
+       LN(1 + detergents_paper) AS log_detergents_paper,
        LN(1 + delicatessen) AS log_delicatessen
 FROM ml.wholesale;
 
@@ -39,15 +40,13 @@ FROM ml.wholesale_logs;
 
 SELECT centroid_id, COUNT(*) AS clients,
        ROUND(COUNTIF(channel = 'Retail') / COUNT(*), 2) AS share_retail,
-       APPROX_QUANTILES(fresh, 2)[OFFSET(1)] AS median_fresh,
-       APPROX_QUANTILES(milk, 2)[OFFSET(1)] AS median_milk,
-       APPROX_QUANTILES(grocery, 2)[OFFSET(1)] AS median_grocery,
-       APPROX_QUANTILES(detergents_paper, 2)[OFFSET(1)] AS median_detergents
+       ROUND(AVG(fresh)) AS avg_fresh,
+       ROUND(AVG(grocery)) AS avg_grocery
 FROM ML.PREDICT(MODEL ml.wholesale_log_model, (SELECT * FROM ml.wholesale_logs))
 GROUP BY centroid_id
 ORDER BY clients DESC;
 
--- Step 4 · Group by the mix, not the size
+-- Bonus · Group by the mix, not the size
 CREATE OR REPLACE MODEL ml.wholesale_cosine
 OPTIONS (model_type = 'KMEANS', num_clusters = 2, kmeans_init_method = 'KMEANS++',
          distance_type = 'COSINE', standardize_features = FALSE) AS

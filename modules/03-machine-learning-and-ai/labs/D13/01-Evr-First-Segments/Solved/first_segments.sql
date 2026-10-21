@@ -32,16 +32,11 @@ FROM ML.PREDICT(MODEL ml.mall_segments, (SELECT * FROM ml.mall))
 GROUP BY centroid_id
 ORDER BY shoppers DESC;
 
--- 5. Three shoppers from each group.
-WITH segs AS (
-  SELECT centroid_id, customer_id, annual_income_k, spending_score,
-         ROW_NUMBER() OVER (PARTITION BY centroid_id ORDER BY customer_id) AS n
-  FROM ML.PREDICT(MODEL ml.mall_segments, (SELECT * FROM ml.mall))
-)
+-- 5. Five shoppers from group 1. Change 1 to 2, 3, 4, 5 to look at the other groups.
 SELECT centroid_id, customer_id, annual_income_k, spending_score
-FROM segs
-WHERE n <= 3
-ORDER BY centroid_id, customer_id;
+FROM ML.PREDICT(MODEL ml.mall_segments, (SELECT * FROM ml.mall))
+WHERE centroid_id = 1
+LIMIT 5;
 
 -- 6. The centre of each group, in thousands of dollars and score points.
 SELECT centroid_id, feature, ROUND(numerical_value, 1) AS centre
@@ -49,10 +44,6 @@ FROM ML.CENTROIDS(MODEL ml.mall_segments)
 ORDER BY centroid_id, feature;
 
 -- 7. Two shoppers' distances to every centre (scaled units), nearest first.
---    p is the prediction row, d one item of its list; both have a centroid_id, so we say which.
-SELECT p.customer_id, p.annual_income_k, p.spending_score, p.centroid_id AS joined,
-       d.centroid_id AS centre, ROUND(d.distance, 2) AS distance
+SELECT customer_id, centroid_id, nearest_centroids_distance
 FROM ML.PREDICT(MODEL ml.mall_segments,
-       (SELECT * FROM ml.mall WHERE customer_id IN (3, 124))) AS p,
-     UNNEST(p.nearest_centroids_distance) AS d
-ORDER BY p.customer_id, distance;
+       (SELECT * FROM ml.mall WHERE customer_id IN (3, 124)));

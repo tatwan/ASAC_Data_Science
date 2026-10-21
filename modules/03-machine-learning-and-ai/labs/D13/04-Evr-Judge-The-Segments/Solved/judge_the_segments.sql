@@ -52,10 +52,8 @@ OPTIONS (
 SELECT annual_income_k, spending_score
 FROM ml.mall;
 
-SELECT 'first run' AS run, ROUND(mean_squared_distance, 3) AS mean_squared_distance
-FROM ML.EVALUATE(MODEL ml.mall_segments)
-UNION ALL
-SELECT 'second run', ROUND(mean_squared_distance, 3)
+-- Compare with block 2's mean squared distance for the first run.
+SELECT ROUND(mean_squared_distance, 3) AS mean_squared_distance
 FROM ML.EVALUATE(MODEL ml.mall_segments_2);
 
 SELECT centroid_id, COUNT(*) AS shoppers, ROUND(AVG(annual_income_k), 1) AS avg_income_k,

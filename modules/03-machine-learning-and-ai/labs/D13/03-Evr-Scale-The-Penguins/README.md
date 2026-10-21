@@ -2,7 +2,7 @@
 
 In this activity, you will cluster 342 penguins twice from the same four measurements, once with scaling switched off and once with it on, and compare each set of groups with the species the penguins really are.
 
-**Time:** about 20 minutes in class, following along · **Data:** `bigquery-public-data.ml_datasets.penguins` (a public table, nothing to upload) · **Starter:** `Unsolved/scale_the_penguins.sql`
+**Data:** `bigquery-public-data.ml_datasets.penguins` (a public table, nothing to upload) · **Starter:** `Unsolved/scale_the_penguins.sql`
 
 ## The story
 
