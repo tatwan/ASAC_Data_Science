@@ -40,28 +40,45 @@ WHERE processed_input != '__INTERCEPT__';
 CREATE OR REPLACE MODEL ml.cars_lasso
 OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['mpg'],
          data_split_method = 'RANDOM', data_split_eval_fraction = 0.2,
+         optimize_strategy = 'BATCH_GRADIENT_DESCENT',
          l1_reg = 10, early_stop = FALSE) AS
 SELECT * FROM ml.cars_clean;
 
-SELECT processed_input, ROUND(weight, 3) AS weight
+SELECT processed_input, ROUND(weight, 3) AS weight,
+       IF(weight = 0, 'DROPPED', 'KEPT') AS status
 FROM ML.WEIGHTS(MODEL ml.cars_lasso, STRUCT(TRUE AS standardize))
+WHERE processed_input != '__INTERCEPT__'
 ORDER BY ABS(weight) DESC;
 
-SELECT COUNTIF(ROUND(weight, 3) = 0) AS weights_at_zero
-FROM ML.WEIGHTS(MODEL ml.cars_lasso, STRUCT(TRUE AS standardize))
-WHERE processed_input != '__INTERCEPT__';
+-- Then: train cars_lasso again with l1_reg = 100, then 500, and re-run the weights query each time.
+-- At 500 (in our class run, cylinders was DROPPED here); step 6 compares this version:
+CREATE OR REPLACE MODEL ml.cars_lasso
+OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['mpg'],
+         data_split_method = 'RANDOM', data_split_eval_fraction = 0.2,
+         optimize_strategy = 'BATCH_GRADIENT_DESCENT',
+         l1_reg = 500, early_stop = FALSE) AS
+SELECT * FROM ml.cars_clean;
 
--- Then: train cars_lasso again with l1_reg = 100, then 1000.
+SELECT processed_input, ROUND(weight, 3) AS weight,
+       IF(weight = 0, 'DROPPED', 'KEPT') AS status
+FROM ML.WEIGHTS(MODEL ml.cars_lasso, STRUCT(TRUE AS standardize))
+WHERE processed_input != '__INTERCEPT__'
+ORDER BY ABS(weight) DESC;
+
+-- Optional: at l1_reg = 500, add max_iterations = 50 (the default is 20) and compare the weights.
 
 -- Step 5 · Elastic Net: both penalties
 CREATE OR REPLACE MODEL ml.cars_enet
 OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['mpg'],
          data_split_method = 'RANDOM', data_split_eval_fraction = 0.2,
-         l1_reg = 10, l2_reg = 10, early_stop = FALSE) AS
+         optimize_strategy = 'BATCH_GRADIENT_DESCENT',
+         l1_reg = 500, l2_reg = 100, early_stop = FALSE) AS
 SELECT * FROM ml.cars_clean;
 
-SELECT processed_input, ROUND(weight, 3) AS weight
+SELECT processed_input, ROUND(weight, 3) AS weight,
+       IF(weight = 0, 'DROPPED', 'KEPT') AS status
 FROM ML.WEIGHTS(MODEL ml.cars_enet, STRUCT(TRUE AS standardize))
+WHERE processed_input != '__INTERCEPT__'
 ORDER BY ABS(weight) DESC;
 
 -- Step 6 · Which one predicts best?
@@ -101,6 +118,13 @@ SELECT iteration, ROUND(loss, 2) AS loss, ROUND(eval_loss, 2) AS eval_loss,
        ROUND(learning_rate, 3) AS learning_rate
 FROM ML.TRAINING_INFO(MODEL ml.cars_steps)
 ORDER BY iteration;
+
+-- One calculation with an L1 penalty: expect an error, not a model.
+CREATE OR REPLACE MODEL ml.cars_lasso_one_calc
+OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['mpg'],
+         data_split_method = 'RANDOM', data_split_eval_fraction = 0.2,
+         optimize_strategy = 'NORMAL_EQUATION', l1_reg = 500) AS
+SELECT * FROM ml.cars_clean;
 
 -- Step 8 · `MAX_ITERATIONS`: stop early on purpose
 CREATE OR REPLACE MODEL ml.cars_two_steps

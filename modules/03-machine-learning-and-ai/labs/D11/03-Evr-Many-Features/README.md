@@ -25,7 +25,7 @@ You need the dataset `ml` from activity 02. Download [`insurance.csv`](../../../
 
 1. **Look at the data (block 1).** One row is one insured person. Then the average charges for smokers and non-smokers: about 32,050 dollars against 8,434. Before any model, you already know which feature will matter.
 
-    Open the table's **Schema** tab. `sex`, `smoker` and `region` are text (STRING). BigQuery turns each text value into its own 0-or-1 column when it trains (**one-hot encoding**), so you do not have to. Lab 06 shows the other way, dummy encoding.
+    Open the table's **Schema** tab. `sex` and `region` are text (STRING). `smoker` is **BOOLEAN**: the file says *yes* or *no*, and **Auto detect** loads it as `true` or `false`, so block 1 shows `true` 274 and `false` 1,064. That is why block 8 writes `TRUE` and `FALSE`, not `'yes'` and `'no'`. BigQuery turns each text or true/false value into its own 0-or-1 column when it trains (**one-hot encoding**), so you do not have to. Lab 06 shows the other way, dummy encoding.
 
 2. **Train, holding 20% aside (block 2).** Two options are new:
 
@@ -48,15 +48,15 @@ You need the dataset `ml` from activity 02. Download [`insurance.csv`](../../../
 
 6. **Seen rows against unseen rows (block 6).** The same model scored on all 1,338 rows, most of which it trained on. If the two scores are close, the model learned a pattern. If it were far better on the rows it saw, it would have memorised them: **overfitting**. Here: about 0.75 against 0.75.
 
-7. **Read the learned numbers (block 7).** `age` about 257 dollars a year; `bmi` about 339 per point; `children` about 476 per child. `smoker` has no single weight: it is text, so its weights are in `category_weights`, one per value, and *yes* sits about 23,800 dollars above *no*. In words: *the same person costs about 23,800 dollars more a year as a smoker.* A weight shows what the model learned from these rows. It does not prove cause.
+7. **Read the learned numbers (block 7).** `age` about 257 dollars a year; `bmi` about 339 per point; `children` about 476 per child. `smoker` has no single weight: it is true or false, so its weights are in `category_weights`, one per value, and `true` sits about 23,800 dollars above `false`. In words: *the same person costs about 23,800 dollars more a year as a smoker.* A weight shows what the model learned from these rows. It does not prove cause.
 
-8. **Ask about two new people (block 8).** Two 40-year-old women with the same BMI and one child, one a smoker. Every feature the model was trained on must be in the `SELECT`. About 7,960 and about 31,810.
+8. **Ask about two new people (block 8).** Two 40-year-old women with the same BMI and one child, one a smoker. Every feature the model was trained on must be in the `SELECT`, with the same type: `smoker` is `FALSE` or `TRUE`, as in the table. About 7,960 and about 31,810.
 
 ## Check yourself
 
 | Block | Rows returned | One value to check |
 |---|---:|---|
-| 1 | 2 | smokers 274, ≈ 32,050 · non-smokers 1,064, ≈ 8,434 |
+| 1 | 2 | `true` (smokers) 274, ≈ 32,050 · `false` 1,064, ≈ 8,434 |
 | 4 | 1 | MAE ≈ 4,200 (3,900 to 4,550) · RMSE ≈ 6,100 (5,650 to 6,600) · R² ≈ 0.75 (0.70 to 0.79) |
 | 5 | 1 | the guess is 13,270; its average miss (MAE) ≈ 9,091 |
 | 6 | 2 | both R² ≈ 0.75 |
@@ -66,7 +66,8 @@ The ranges come from repeating a random 80/20 split many times on the course fil
 
 ## If something goes wrong
 
-- **`smoker` shows as BOOLEAN in the schema:** in block 8, write `FALSE` and `TRUE` instead of `'no'` and `'yes'`. Everything else works as written.
+- **An error about the type of `smoker` in block 8:** you wrote `'no'` and `'yes'`. The model learned `smoker` as BOOLEAN, so new rows must be `FALSE` and `TRUE`.
+- **`smoker` shows as STRING in the schema:** you uploaded without **Auto detect**. Write `'no'` and `'yes'` in block 8 instead of `FALSE` and `TRUE`.
 - **`Invalid table-valued function ML.PREDICT ... column ... not found`:** block 8 must list all six features with the same names and types as the training data.
 - **Your R² is close to 1.0:** check that `charges` is not also listed as a feature.
 

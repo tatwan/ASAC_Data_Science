@@ -17,7 +17,7 @@ ORDER BY smoker, bmi_30_or_more;
 --    age_sq: age times age, so the line can bend upwards with age.
 CREATE OR REPLACE VIEW ml.insurance_features AS
 SELECT *,
-       IF(smoker = 'yes' AND bmi >= 30, 1, 0) AS smoker_obese,
+       IF(smoker = TRUE AND bmi >= 30, 1, 0) AS smoker_obese,
        age * age AS age_sq
 FROM ml.insurance_groups;
 

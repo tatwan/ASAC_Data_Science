@@ -65,7 +65,7 @@ The linear numbers are exact for these rows. The boosted-trees numbers were comp
 ## If something goes wrong
 
 - **`Not found: Table ml.insurance`:** see Before you start.
-- **`smoker` was uploaded as BOOLEAN:** in block 2 write `COUNTIF(smoker)` instead of `COUNTIF(smoker = 'yes')`. Everything else works as written.
+- **`smoker` is BOOLEAN** (Auto detect reads the file's yes/no as true/false), so block 2 counts smokers with `smoker = TRUE`. If your schema shows `smoker` as STRING, you uploaded without Auto detect: write `smoker = 'yes'` instead.
 - **Your counts are not 803, 268 and 267:** check that block 1 reads `ORDER BY charges` and that the table has 1,338 rows.
 - **Your linear R² is close to 1.0:** check that `charges` is not also listed as a feature.
 

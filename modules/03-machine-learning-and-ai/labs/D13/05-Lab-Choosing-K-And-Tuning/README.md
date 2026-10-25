@@ -51,7 +51,7 @@ FROM ML.EVALUATE(MODEL ml.mall_k3);
 | 5 | ≈ 0.57 | ≈ 0.33 |
 | 6 | ≈ 0.63–0.67 | ≈ 0.27–0.29 |
 
-Mean squared distance falls every time k grows. It would reach 0 with 200 groups of one shopper each, which is no use to marketing, so it cannot choose k. The Davies–Bouldin index also looks at how far apart the groups are, and it can rise again: here it is lowest at 5. If one of your rows is much higher than the table, that run landed in a worse split; train it again.
+Mean squared distance usually falls as k grows. In theory it would reach 0 with one group per shopper, which is no use to marketing, so it cannot choose k. The Davies–Bouldin index also looks at how far apart the groups are, and it can rise again: here it is lowest at 5. If one of your rows is much higher than the table, that run landed in a worse split; train it again.
 
 **Think:** the index prefers 5. Name one business reason to choose 4, and one to choose 6.
 

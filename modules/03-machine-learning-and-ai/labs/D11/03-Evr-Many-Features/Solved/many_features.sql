@@ -52,13 +52,14 @@ UNION ALL
 SELECT 'all rows (mostly seen)', ROUND(r2_score, 3), ROUND(mean_absolute_error)
 FROM ML.EVALUATE(MODEL ml.insurance_model, (SELECT * FROM ml.insurance));
 
--- 7. What it learned. Text features keep one weight per value in category_weights.
+-- 7. What it learned. Text and true/false features keep one weight per value in category_weights.
 SELECT processed_input, ROUND(weight, 1) AS weight, category_weights
 FROM ML.WEIGHTS(MODEL ml.insurance_model);
 
 -- 8. Two new people, the same except for smoking.
+--    smoker is BOOLEAN (Auto detect read the file's yes/no as true/false): write FALSE and TRUE.
 SELECT smoker, ROUND(predicted_charges) AS predicted_charges
 FROM ML.PREDICT(MODEL ml.insurance_model,
-  (SELECT 40 AS age, 'female' AS sex, 28.0 AS bmi, 1 AS children, 'no' AS smoker, 'northwest' AS region
+  (SELECT 40 AS age, 'female' AS sex, 28.0 AS bmi, 1 AS children, FALSE AS smoker, 'northwest' AS region
    UNION ALL
-   SELECT 40, 'female', 28.0, 1, 'yes', 'northwest'));
+   SELECT 40, 'female', 28.0, 1, TRUE, 'northwest'));

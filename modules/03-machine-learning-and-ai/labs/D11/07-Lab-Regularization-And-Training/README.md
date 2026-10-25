@@ -12,7 +12,7 @@ Part A is the lab. Part B is optional: it shows how BigQuery trains a model, for
 
 Every model here uses `RANDOM` with 0.2 on the same `SELECT * FROM ml.cars_clean`. A random split is the same every time for the same data and columns (lab 05, step 4), so **every model holds aside the same cars**. The penalty is the only thing that changes, and the scores are a fair comparison.
 
-The D11 slides show these four models fitted in Python on all 398 cars. Your BigQuery weights will be different: BigQuery measures the penalty on its own scale, and it learns from 80% of the cars. Look for the same patterns, not the same numbers.
+The D11 slides show these four models fitted in Python on all 398 cars. Your BigQuery weights will be different: BigQuery measures the penalty on its own scale, and it learns from 80% of the cars. The strengths are different too: a penalty that drops a feature in Python can do nothing visible in BigQuery (step 4). Look for the same patterns, not the same numbers.
 
 ## Part A · Ridge, Lasso and Elastic Net
 
@@ -118,39 +118,44 @@ If nothing seems to change at 10, the penalty is too weak for this data: that is
 
 Lasso penalises the **sizes** of the weights. For a weak feature, keeping any weight at all costs more than it saves, so its weight goes to exactly 0.
 
+An L1 penalty has no one-calculation answer, so BigQuery trains this model step by step, with gradient descent (Part B shows the steps). Two options make that clear:
+
+| Option | What it does here |
+|---|---|
+| `optimize_strategy = 'BATCH_GRADIENT_DESCENT'` | train in steps. The default, `AUTO_STRATEGY`, already switches to steps whenever `l1_reg` is set; writing it down shows whoever reads your SQL how the model was trained |
+| `early_stop = FALSE` | take every step allowed, so the effect of the penalty is clear. Google gives the same advice when you test regularization |
+
+Start with a small penalty:
+
 ```sql
 CREATE OR REPLACE MODEL ml.cars_lasso
 OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['mpg'],
          data_split_method = 'RANDOM', data_split_eval_fraction = 0.2,
+         optimize_strategy = 'BATCH_GRADIENT_DESCENT',
          l1_reg = 10, early_stop = FALSE) AS
 SELECT * FROM ml.cars_clean;
 
-SELECT processed_input, ROUND(weight, 3) AS weight
+SELECT processed_input, ROUND(weight, 3) AS weight,
+       IF(weight = 0, 'DROPPED', 'KEPT') AS status
 FROM ML.WEIGHTS(MODEL ml.cars_lasso, STRUCT(TRUE AS standardize))
+WHERE processed_input != '__INTERCEPT__'
 ORDER BY ABS(weight) DESC;
 ```
 
-An L1 penalty cannot be solved in one calculation, so BigQuery trains this model step by step (Part B shows the steps). `early_stop = FALSE` lets it take all its steps, so the effect of the penalty is clear: Google gives the same advice when you test regularization.
+**What to look for:** every feature `KEPT`. The weights moved a little from step 1's, but none reached 0. Nothing is broken: on BigQuery's scale, 10 is a weak penalty for these cars.
 
-Count the features the model dropped:
-
-```sql
-SELECT COUNTIF(ROUND(weight, 3) = 0) AS weights_at_zero
-FROM ML.WEIGHTS(MODEL ml.cars_lasso, STRUCT(TRUE AS standardize))
-WHERE processed_input != '__INTERCEPT__';
-```
-
-Train it again with `l1_reg = 100`, then `1000`.
+Raise it. Train `cars_lasso` again with `l1_reg = 100`, then `l1_reg = 500`, and re-run the weights query each time.
 
 **What to look for:**
 
-- As `l1_reg` grows, more weights reach 0.
+- As `l1_reg` grows, the weights shrink and some reach 0. In our class run, strengths in the tens kept every feature; at **500**, `cylinders` was `DROPPED`. Find where it happens in yours.
 - **A weight of 0 drops the feature.** `0 × cylinders` is 0 for every car, so changing a car's cylinders no longer moves its prediction. Lasso chose the features for you.
-- Which features go first depends on the data and on the strength. On the slides, `acceleration` and `cylinders` went to 0 while `displacement`, which says much the same as cylinders, stayed. Among features that overlap, Lasso tends to keep one and drop the others.
-
-If no weight is 0 yet, the penalty is too weak: raise it.
+- Which features go first depends on the data and on the strength. On the slides, `acceleration` and `cylinders` went to 0 while `displacement`, which says much the same as cylinders, stayed. Look at `acceleration` in yours too. Among features that overlap, Lasso tends to keep one and drop the others.
+- More steps did not change the story. Try `max_iterations = 50` at 500 (the default is 20): in class the weights came out about the same. The strength decided which features went, not the number of steps.
 
 **Think:** you have 50 columns and want to keep only the useful ones. Ridge or Lasso? Why?
+
+**Think:** 10 did nothing visible here. What does that tell you about copying a penalty strength from another tool, or another dataset?
 
 ### Step 5 · Elastic Net: both penalties
 
@@ -158,15 +163,18 @@ If no weight is 0 yet, the penalty is too weak: raise it.
 CREATE OR REPLACE MODEL ml.cars_enet
 OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['mpg'],
          data_split_method = 'RANDOM', data_split_eval_fraction = 0.2,
-         l1_reg = 10, l2_reg = 10, early_stop = FALSE) AS
+         optimize_strategy = 'BATCH_GRADIENT_DESCENT',
+         l1_reg = 500, l2_reg = 100, early_stop = FALSE) AS
 SELECT * FROM ml.cars_clean;
 
-SELECT processed_input, ROUND(weight, 3) AS weight
+SELECT processed_input, ROUND(weight, 3) AS weight,
+       IF(weight = 0, 'DROPPED', 'KEPT') AS status
 FROM ML.WEIGHTS(MODEL ml.cars_enet, STRUCT(TRUE AS standardize))
+WHERE processed_input != '__INTERCEPT__'
 ORDER BY ABS(weight) DESC;
 ```
 
-Use the strengths that changed something in steps 3 and 4. The same number in `l1_reg` and `l2_reg` does not mean the two penalties count equally: try one larger than the other, and the other way round.
+Elastic Net has an L1 part, so it trains in steps too. Start from the strengths that changed something in steps 3 and 4: here, the `l1_reg` that dropped a feature and an `l2_reg` from step 3. The same number in `l1_reg` and `l2_reg` does not mean the two penalties count equally: try one larger than the other, and the other way round.
 
 **What to look for:** something of each. Like Lasso, the weakest features can go to 0; like Ridge, the overlapping engine features tend to share the credit instead of one being dropped. On the slides, Elastic Net dropped only `acceleration` and kept all four engine features at similar sizes (−1.08, −1.30, −1.38, −2.30).
 
@@ -190,7 +198,7 @@ SELECT 'Elastic Net', ROUND(mean_absolute_error, 2), ROUND(r2_score, 3)
 FROM ML.EVALUATE(MODEL ml.cars_enet);
 ```
 
-All four held aside the same cars, so this is a fair comparison.
+All four held aside the same cars, so this is a fair comparison. Each model is the version you trained last: `cars_lasso` at `l1_reg = 500` if you followed step 4.
 
 **What to look for:** close scores. With five features and 398 cars, a straight line has little room to overfit, so a penalty has little to fix. On the slides (Python, the average over 300 random splits) no penalty did best: MAE 3.29, against 3.31 for Ridge, 3.48 for Lasso and 3.32 for Elastic Net. Penalties earn their place when there are many features and few rows.
 
@@ -211,7 +219,7 @@ Training is a search for the weights that make the errors smallest. BigQuery has
 - **`NORMAL_EQUATION`** works the best weights out directly, in one calculation.
 - **`BATCH_GRADIENT_DESCENT`** starts from a guess and improves it in steps (iterations), each step nudging every weight in the direction that makes the errors smaller.
 
-The default, `AUTO_STRATEGY`, picks for you: one calculation for a small model like this one, steps when there are very many features or an L1 penalty. Train both on purpose:
+The default, `AUTO_STRATEGY`, picks for you. Google's rules: steps when `l1_reg` is set, when the features have more than 10,000 values between them, or when there are fewer than 10 training rows for each of those values; one calculation otherwise. So the plain and Ridge models in Part A took one calculation, and Lasso and Elastic Net took steps. Train both on purpose:
 
 ```sql
 CREATE OR REPLACE MODEL ml.cars_normal
@@ -237,6 +245,18 @@ ORDER BY iteration;
 ```
 
 **What to look for:** for `cars_steps`, several rows, with the loss falling quickly and then flattening. Run the same query on `cars_normal`: one row. Compare the two with `ML.EVALUATE`: nearly the same MAE and R², since both routes reach about the same line.
+
+Now ask for the impossible: one calculation with an L1 penalty.
+
+```sql
+CREATE OR REPLACE MODEL ml.cars_lasso_one_calc
+OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['mpg'],
+         data_split_method = 'RANDOM', data_split_eval_fraction = 0.2,
+         optimize_strategy = 'NORMAL_EQUATION', l1_reg = 500) AS
+SELECT * FROM ml.cars_clean;
+```
+
+**What to look for:** an error instead of a model. Google's page lists `l1_reg` among the cases where `NORMAL_EQUATION` can't be used. Then run the `ML.TRAINING_INFO` query on `ml.cars_lasso`: one row per step, the record that it was trained by gradient descent.
 
 **Think:** looking at the loss column, when would you stop taking steps?
 
@@ -275,10 +295,10 @@ Compare it with `ml.cars_steps` (step 7), which ran until it stopped by itself. 
 |---|---|---|
 | No penalty | `l1_reg = 0`, `l2_reg = 0` | |
 | Ridge | `l2_reg` 10 / 100 / 1000 | |
-| Lasso | `l1_reg` 10 / 100 / 1000 | |
+| Lasso | `l1_reg` 10 / 100 / 500 | |
 | Elastic Net | both | |
 | Too much penalty | `l2_reg = 100000` | |
-| `OPTIMIZE_STRATEGY` | NORMAL_EQUATION / BATCH_GRADIENT_DESCENT | |
+| `OPTIMIZE_STRATEGY` | NORMAL_EQUATION / BATCH_GRADIENT_DESCENT; NORMAL_EQUATION with `l1_reg` | |
 | `MAX_ITERATIONS` | 2 | |
 
 These options are not special to linear regression. Logistic regression (D12) has the same penalties, and boosted trees (D14) have their own `l2_reg`.

@@ -32,7 +32,7 @@ You need `ml.insurance_features` and `ml.ins_linear_plus` from [activity 05](../
     | boosted trees | ≈ 2,630 | ≈ 0.83 | ≈ 0.97 |
     | linear + `smoker_obese` + `age_sq` | 2,419 | 0.86 | 0.87 |
 
-2. **Is the gap real?** The validation group is one deal of the cards. Below, the same models were trained and scored four times, each time holding out a different fifth of the 1,071 training and validation people (the test people were never touched). The table gives validation R² for each deal:
+2. **Is the gap real?** The validation group is one deal of the cards. Below, the same models were trained and scored four times, each time retraining every model on three of the four non-test groups and scoring it on the fourth, about 268 people (the test people were never touched). The table gives validation R² for each deal:
 
     | Deal | Linear | Linear + two features | Random forest | Boosted trees |
     |---|---:|---:|---:|---:|
@@ -41,7 +41,7 @@ You need `ml.insurance_features` and `ml.ins_linear_plus` from [activity 05](../
     | 3 | 0.76 | 0.87 | 0.86 | 0.84 |
     | 4 (today's validation group) | 0.74 | 0.86 | 0.84 | 0.83 |
 
-    The scores move by up to 0.04 from deal to deal: that is how much one group of about 268 people can shift a score. A difference of 0.01 between two models on one deal says little. A model that comes first on every deal says more. Repeating the split like this is called **cross-validation**.
+    The scores move by up to 0.04 from deal to deal: that is how much one group of about 268 people can shift a score. A difference of 0.01 between two models on one deal says little. A model that comes first on every deal says more. Repeating the split like this is called **cross-validation**. Coming first every time is good evidence that a result is steady, not proof that the model will always win.
 
 3. **Choose, with your partner.** Write three sentences: which model, why, and what a new customer's average miss will probably be. Think about the score, how steady it is across deals, how easy the model is to explain to a pricing manager, and the gap between training and validation.
 

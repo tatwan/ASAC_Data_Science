@@ -90,13 +90,13 @@ FROM scored;
 
 ### Telco (lab 07)
 
-Download [`fallback/d14_telco_probabilities.csv`](fallback/d14_telco_probabilities.csv) and upload it as `d14_telco` in `ml`. One row is one customer: `customerID`, `split` (the same groups as `ml.telco_groups`), `Churn`, and each model's probability of Yes: `prob_logistic`, `prob_boosted`, `prob_forest`. Accuracy at threshold 0.5, for example:
+Download [`fallback/d14_telco_probabilities.csv`](fallback/d14_telco_probabilities.csv) and upload it as `d14_telco` in `ml`. One row is one customer: `customerID`, `split` (the same groups as `ml.telco_groups`), `Churn`, and each model's probability of leaving: `prob_logistic`, `prob_boosted`, `prob_forest`. The file says Yes or No; Auto detect loads `Churn` as BOOLEAN (TRUE left), as on D12. Accuracy at threshold 0.5, for example:
 
 ```sql
 SELECT split,
-       ROUND(AVG(IF((prob_logistic >= 0.5) = (Churn = 'Yes'), 1, 0)), 3) AS accuracy_logistic,
-       ROUND(AVG(IF((prob_boosted >= 0.5) = (Churn = 'Yes'), 1, 0)), 3) AS accuracy_boosted,
-       ROUND(AVG(IF((prob_forest >= 0.5) = (Churn = 'Yes'), 1, 0)), 3) AS accuracy_forest
+       ROUND(AVG(IF((prob_logistic >= 0.5) = Churn, 1, 0)), 3) AS accuracy_logistic,
+       ROUND(AVG(IF((prob_boosted >= 0.5) = Churn, 1, 0)), 3) AS accuracy_boosted,
+       ROUND(AVG(IF((prob_forest >= 0.5) = Churn, 1, 0)), 3) AS accuracy_forest
 FROM ml.d14_telco
 WHERE split = 'validation'
 GROUP BY split;

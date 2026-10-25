@@ -19,7 +19,7 @@ FROM ML.EVALUATE(MODEL ml.ins_linear_ageband,
   (SELECT *, ML.BUCKETIZE(age, [30, 45, 60]) AS age_band FROM ml.insurance_groups WHERE split = 'validation'));
 
 -- Step 2 · A cross of two categories
-SELECT ML.FEATURE_CROSS(STRUCT(smoker, IF(bmi >= 30, '30plus', 'under30') AS bmi_group)).smoker_bmi_group
+SELECT ML.FEATURE_CROSS(STRUCT(IF(smoker, 'yes', 'no') AS smoker, IF(bmi >= 30, '30plus', 'under30') AS bmi_group)).smoker_bmi_group
          AS smoker_bmi,
        COUNT(*) AS people, ROUND(AVG(charges)) AS avg_charges
 FROM ml.insurance_groups
@@ -30,7 +30,7 @@ ORDER BY avg_charges;
 CREATE OR REPLACE MODEL ml.ins_linear_cross
 OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['charges'], data_split_method = 'NO_SPLIT') AS
 SELECT age, sex, bmi, children, smoker, region,
-       ML.FEATURE_CROSS(STRUCT(smoker, IF(bmi >= 30, '30plus', 'under30') AS bmi_group)).smoker_bmi_group
+       ML.FEATURE_CROSS(STRUCT(IF(smoker, 'yes', 'no') AS smoker, IF(bmi >= 30, '30plus', 'under30') AS bmi_group)).smoker_bmi_group
          AS smoker_bmi,
        charges
 FROM ml.insurance_groups WHERE split = 'train';
@@ -38,7 +38,7 @@ FROM ml.insurance_groups WHERE split = 'train';
 SELECT ROUND(r2_score, 3) AS validation_r2, ROUND(mean_absolute_error) AS validation_mae
 FROM ML.EVALUATE(MODEL ml.ins_linear_cross,
   (SELECT *,
-          ML.FEATURE_CROSS(STRUCT(smoker, IF(bmi >= 30, '30plus', 'under30') AS bmi_group)).smoker_bmi_group
+          ML.FEATURE_CROSS(STRUCT(IF(smoker, 'yes', 'no') AS smoker, IF(bmi >= 30, '30plus', 'under30') AS bmi_group)).smoker_bmi_group
             AS smoker_bmi
    FROM ml.insurance_groups WHERE split = 'validation'));
 

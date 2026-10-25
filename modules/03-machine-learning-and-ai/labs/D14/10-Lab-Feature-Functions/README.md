@@ -52,7 +52,7 @@ FROM ML.EVALUATE(MODEL ml.ins_linear_ageband,
 ## Step 2 · A cross of two categories
 
 ```sql
-SELECT ML.FEATURE_CROSS(STRUCT(smoker, IF(bmi >= 30, '30plus', 'under30') AS bmi_group)).smoker_bmi_group
+SELECT ML.FEATURE_CROSS(STRUCT(IF(smoker, 'yes', 'no') AS smoker, IF(bmi >= 30, '30plus', 'under30') AS bmi_group)).smoker_bmi_group
          AS smoker_bmi,
        COUNT(*) AS people, ROUND(AVG(charges)) AS avg_charges
 FROM ml.insurance_groups
@@ -61,7 +61,7 @@ GROUP BY smoker_bmi
 ORDER BY avg_charges;
 ```
 
-`ML.FEATURE_CROSS` takes a `STRUCT` of text columns and returns a `STRUCT` with one field per pair, named after the two columns (`smoker_bmi_group`) and holding the two values joined (`yes_30plus`). The class's `smoker_obese` was one of these four combinations; the cross gives the line all four.
+`ML.FEATURE_CROSS` takes a `STRUCT` of text columns only. `smoker` is BOOLEAN, so `IF(smoker, 'yes', 'no') AS smoker` turns it back into text under the same name (Google's page asks for a `STRUCT` of STRING values). The function returns a `STRUCT` with one field per pair, named after the two columns (`smoker_bmi_group`) and holding the two values joined (`yes_30plus`). The class's `smoker_obese` was one of these four combinations; the cross gives the line all four.
 
 **What you should see:** `no_under30` 305 · 7,861 · `no_30plus` 327 · 8,657 · `yes_under30` 84 · 21,632 · `yes_30plus` 87 · 41,473: activity 05's table, in one column.
 
@@ -69,7 +69,7 @@ ORDER BY avg_charges;
 CREATE OR REPLACE MODEL ml.ins_linear_cross
 OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['charges'], data_split_method = 'NO_SPLIT') AS
 SELECT age, sex, bmi, children, smoker, region,
-       ML.FEATURE_CROSS(STRUCT(smoker, IF(bmi >= 30, '30plus', 'under30') AS bmi_group)).smoker_bmi_group
+       ML.FEATURE_CROSS(STRUCT(IF(smoker, 'yes', 'no') AS smoker, IF(bmi >= 30, '30plus', 'under30') AS bmi_group)).smoker_bmi_group
          AS smoker_bmi,
        charges
 FROM ml.insurance_groups WHERE split = 'train';
@@ -77,7 +77,7 @@ FROM ml.insurance_groups WHERE split = 'train';
 SELECT ROUND(r2_score, 3) AS validation_r2, ROUND(mean_absolute_error) AS validation_mae
 FROM ML.EVALUATE(MODEL ml.ins_linear_cross,
   (SELECT *,
-          ML.FEATURE_CROSS(STRUCT(smoker, IF(bmi >= 30, '30plus', 'under30') AS bmi_group)).smoker_bmi_group
+          ML.FEATURE_CROSS(STRUCT(IF(smoker, 'yes', 'no') AS smoker, IF(bmi >= 30, '30plus', 'under30') AS bmi_group)).smoker_bmi_group
             AS smoker_bmi
    FROM ml.insurance_groups WHERE split = 'validation'));
 ```

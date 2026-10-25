@@ -16,7 +16,7 @@ On D12 the retention team got a logistic regression that ranks customers by thei
 
 ## Before you start
 
-You need the table `ml.telco` from [D12 activity 01](../../D12/01-Evr-First-Classifier/README.md): 7,043 rows, `Churn` Yes or No. If it is missing, download [`telco_churn.csv`](../../../../../shared/datasets/ml_classics/telco_churn.csv) and upload it as `telco` in `ml` with **Auto detect**. If `Churn` arrives as BOOLEAN, write `Churn` for `Churn = 'Yes'` and `NOT Churn` for `Churn = 'No'` in the queries below.
+You need the table `ml.telco` from [D12 activity 01](../../D12/01-Evr-First-Classifier/README.md): 7,043 rows, `Churn` TRUE (left) or FALSE (stayed), as on D12. If it is missing, download [`telco_churn.csv`](../../../../../shared/datasets/ml_classics/telco_churn.csv) and upload it as `telco` in `ml` with **Auto detect**. Auto detect reads the file's Yes/No as BOOLEAN. If `Churn` shows as STRING instead, write `'Yes'` for `TRUE` and `'No'` for `FALSE` in the queries below.
 
 Work like the other labs: run each query, compare with **What you should see**, and answer **Think** in one line. The values were computed outside BigQuery with BigQuery's default settings; tree models may differ a little from yours. If the tree models will not train in your sandbox (a message about billing or Vertex AI), use the fallback file in step 3.
 
@@ -38,7 +38,7 @@ SELECT *,
        END AS split
 FROM ml.telco;
 
-SELECT split, COUNT(*) AS customers, ROUND(COUNTIF(Churn = 'Yes') / COUNT(*), 3) AS churn_rate
+SELECT split, COUNT(*) AS customers, ROUND(COUNTIF(Churn = TRUE) / COUNT(*), 3) AS churn_rate
 FROM ml.telco_groups
 GROUP BY split
 ORDER BY customers DESC;
@@ -88,7 +88,7 @@ UNION ALL
 SELECT 'random forest', ROUND(roc_auc, 3), ROUND(accuracy, 3), ROUND(precision, 3), ROUND(recall, 3), ROUND(log_loss, 3)
 FROM ML.EVALUATE(MODEL ml.telco_forest, (SELECT * FROM ml.telco_groups WHERE split = 'validation'));
 
-SELECT ROUND(COUNTIF(Churn = 'No') / COUNT(*), 3) AS majority_guess_accuracy
+SELECT ROUND(COUNTIF(Churn = FALSE) / COUNT(*), 3) AS majority_guess_accuracy
 FROM ml.telco_groups
 WHERE split = 'validation';
 ```
@@ -105,7 +105,7 @@ WHERE split = 'validation';
 
 The majority guess ("No" for everyone) is right for 0.748 of the validation customers. All three models land within about 0.004 of each other on ROC AUC.
 
-**If the tree models will not train:** upload [`d14_telco_probabilities.csv`](../Resources/fallback/d14_telco_probabilities.csv) as `ml.d14_telco` and compute accuracy at 0.5 for each column in plain SQL, for example `ROUND(AVG(IF((prob_boosted >= 0.5) = (Churn = 'Yes'), 1, 0)), 3)` on `WHERE split = 'validation'`.
+**If the tree models will not train:** upload [`d14_telco_probabilities.csv`](../Resources/fallback/d14_telco_probabilities.csv) as `ml.d14_telco` and compute accuracy at 0.5 for each column in plain SQL, for example `ROUND(AVG(IF((prob_boosted >= 0.5) = Churn, 1, 0)), 3)` on `WHERE split = 'validation'`.
 
 **Think:** the trees' training ROC AUC is about 0.90 (boosted) and 0.91 (forest), against 0.84 for logistic. What does that gap tell you?
 
@@ -201,7 +201,7 @@ SELECT ROUND(roc_auc, 3) AS roc_auc, ROUND(accuracy, 3) AS accuracy,
 FROM ML.EVALUATE(MODEL ml.telco_logistic_log,
   (SELECT *, LN(1 + tenure) AS log_tenure FROM ml.telco_groups WHERE split = 'test'));
 
-SELECT ROUND(COUNTIF(Churn = 'No') / COUNT(*), 3) AS majority_guess_accuracy
+SELECT ROUND(COUNTIF(Churn = FALSE) / COUNT(*), 3) AS majority_guess_accuracy
 FROM ml.telco_groups
 WHERE split = 'test';
 ```

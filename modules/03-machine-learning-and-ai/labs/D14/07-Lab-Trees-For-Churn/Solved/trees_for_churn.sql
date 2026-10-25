@@ -11,7 +11,7 @@ SELECT *,
        END AS split
 FROM ml.telco;
 
-SELECT split, COUNT(*) AS customers, ROUND(COUNTIF(Churn = 'Yes') / COUNT(*), 3) AS churn_rate
+SELECT split, COUNT(*) AS customers, ROUND(COUNTIF(Churn = TRUE) / COUNT(*), 3) AS churn_rate
 FROM ml.telco_groups
 GROUP BY split
 ORDER BY customers DESC;
@@ -49,7 +49,7 @@ UNION ALL
 SELECT 'random forest', ROUND(roc_auc, 3), ROUND(accuracy, 3), ROUND(precision, 3), ROUND(recall, 3), ROUND(log_loss, 3)
 FROM ML.EVALUATE(MODEL ml.telco_forest, (SELECT * FROM ml.telco_groups WHERE split = 'validation'));
 
-SELECT ROUND(COUNTIF(Churn = 'No') / COUNT(*), 3) AS majority_guess_accuracy
+SELECT ROUND(COUNTIF(Churn = FALSE) / COUNT(*), 3) AS majority_guess_accuracy
 FROM ml.telco_groups
 WHERE split = 'validation';
 
@@ -110,6 +110,6 @@ SELECT ROUND(roc_auc, 3) AS roc_auc, ROUND(accuracy, 3) AS accuracy,
 FROM ML.EVALUATE(MODEL ml.telco_logistic_log,
   (SELECT *, LN(1 + tenure) AS log_tenure FROM ml.telco_groups WHERE split = 'test'));
 
-SELECT ROUND(COUNTIF(Churn = 'No') / COUNT(*), 3) AS majority_guess_accuracy
+SELECT ROUND(COUNTIF(Churn = FALSE) / COUNT(*), 3) AS majority_guess_accuracy
 FROM ml.telco_groups
 WHERE split = 'test';

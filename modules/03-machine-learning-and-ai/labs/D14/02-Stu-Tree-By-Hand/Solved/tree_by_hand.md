@@ -2,11 +2,11 @@
 
 | Person | Route | Leaf | Predicted | Actual | Miss |
 |---|---|---:|---:|---:|---:|
-| A | smoker no → age 44 or under yes → age 32 or under yes | 1 | 4,341 | 4,392 | +51 |
-| B | smoker no → age 44 or under no → age 51 or under yes | 3 | 10,460 | 10,371 | −89 |
-| C | smoker no → age 44 or under no → age 51 or under no | 4 | 13,567 | 13,229 | −338 |
-| D | smoker yes → BMI 30.1 or under yes → age 40 or under yes | 5 | 18,605 | 17,905 | −700 |
-| E | smoker yes → BMI 30.1 or under no → age 44 or under no | 8 | 46,076 | 43,579 | −2,497 |
+| A | non-smoker yes → age 44 or under yes → age 32 or under yes | 1 | 4,341 | 4,392 | +51 |
+| B | non-smoker yes → age 44 or under no → age 51 or under yes | 3 | 10,460 | 10,371 | −89 |
+| C | non-smoker yes → age 44 or under no → age 51 or under no | 4 | 13,567 | 13,229 | −338 |
+| D | non-smoker no → BMI 30.1 or under yes → age 40 or under yes | 5 | 18,605 | 17,905 | −700 |
+| E | non-smoker no → BMI 30.1 or under no → age 44 or under no | 8 | 46,076 | 43,579 | −2,497 |
 
 **Average miss of the tree:** (51 + 89 + 338 + 700 + 2,497) ÷ 5 = 3,675 ÷ 5 = **735 dollars**.
 

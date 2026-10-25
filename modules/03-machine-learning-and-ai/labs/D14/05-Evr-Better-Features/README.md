@@ -15,7 +15,7 @@ Building new columns from the ones you have, so a model can use a pattern it cou
 - To spot an **interaction** (a pattern that holds for one group only) in a grouped table.
 - To build features in SQL with `IF` and arithmetic, in a view, and train on them.
 - To read the new weights in business words.
-- To ask of every new column: **does this column use the label?**
+- To ask of every new column: **would we know this column when we make the prediction?** A column built from the label never passes; nor does one filled in only after the event
 
 ## Before you start
 
@@ -29,7 +29,7 @@ You need `ml.insurance_groups` and `ml.ins_linear` from [activity 01](../01-Evr-
 
     | Column | Built as | Why |
     |---|---|---|
-    | `smoker_obese` | `IF(smoker = 'yes' AND bmi >= 30, 1, 0)` | gives the line a switch for exactly the group the trees found |
+    | `smoker_obese` | `IF(smoker = TRUE AND bmi >= 30, 1, 0)` | gives the line a switch for exactly the group the trees found |
     | `age_sq` | `age * age` | charges rise faster at older ages; with age and age² the line can bend |
 
     BMI 30 is the usual medical cut-off for obesity, and it is where the trees put their question.
@@ -41,7 +41,7 @@ You need `ml.insurance_groups` and `ml.ins_linear` from [activity 01](../01-Evr-
 5. **What it learned (block 5).** Read two weights in words:
 
     - `smoker_obese` about 18,840: *a smoker with a BMI of 30 or more costs about 18,800 dollars a year more than a smoker below 30, other things equal.*
-    - In `category_weights` for `smoker`, *yes* now sits about 14,000 above *no*: the extra cost of smoking below BMI 30. On D11 one number, about 23,800, had to cover every smoker.
+    - In `category_weights` for `smoker`, `true` now sits about 14,000 above `false`: the extra cost of smoking below BMI 30. On D11 one number, about 23,800, had to cover every smoker.
 
     `age` and `age_sq` work together: about 15 dollars per year of age plus about 3 dollars per year squared, so the yearly step grows with age.
 
@@ -62,7 +62,7 @@ The linear models' numbers are exact for these rows: a line has no random part.
 
 ## If something goes wrong
 
-- **`smoker` was uploaded as BOOLEAN:** in blocks 1 and 2 write `smoker` instead of `smoker = 'yes'`.
+- **`smoker` shows as STRING in the schema:** you uploaded without Auto detect. In block 2 write `smoker = 'yes'` instead of `smoker = TRUE`; block 1 then shows `yes` and `no` instead of `true` and `false`.
 - **`Unrecognized name: smoker_obese` in block 4:** the second query must read from `ml.insurance_features`, not `ml.insurance_groups`.
 - **Block 6's second query fails with a missing column:** `ML.EVALUATE` needs every feature the model was trained on, so the query adds `charges / 12 AS monthly_charges` as well.
 

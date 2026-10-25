@@ -17,7 +17,7 @@ FROM ml.insurance;
 SELECT split,
        COUNT(*) AS people,
        ROUND(AVG(charges)) AS avg_charges,
-       COUNTIF(smoker = 'yes') AS smokers
+       COUNTIF(smoker = TRUE) AS smokers
 FROM ml.insurance_groups
 GROUP BY split
 ORDER BY people DESC;

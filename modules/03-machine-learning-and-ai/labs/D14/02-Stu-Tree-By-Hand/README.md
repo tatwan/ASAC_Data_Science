@@ -23,15 +23,15 @@ Nothing to set up. A phone calculator helps for step 3.
 Start at the top. Answer each question about the person; follow **yes** or **no** until you reach a leaf. The leaf gives the prediction (the average yearly charges of the training people who ended there) and how many training people that was.
 
 ```text
-Is the person a smoker?
-├── no ── Is age 44 or under?
+Is the person a non-smoker?
+├── yes ─ Is age 44 or under?
 │         ├── yes ── Is age 32 or under?
 │         │          ├── yes ─▶ leaf 1:  4,341 dollars  (232 people)
 │         │          └── no ──▶ leaf 2:  7,174 dollars  (138 people)
 │         └── no ─── Is age 51 or under?
 │                    ├── yes ─▶ leaf 3: 10,460 dollars  (104 people)
 │                    └── no ──▶ leaf 4: 13,567 dollars  (158 people)
-└── yes ─ Is BMI 30.1 or under?
+└── no ── Is BMI 30.1 or under?
           ├── yes ── Is age 40 or under?
           │          ├── yes ─▶ leaf 5: 18,605 dollars   (49 people)
           │          └── no ──▶ leaf 6: 25,766 dollars   (36 people)
@@ -73,7 +73,7 @@ The tree's average miss on these five people is under 1,000 dollars; the line's 
 
 ## Hint
 
-For person D: smoker yes → BMI 24.8 is 30.1 or under, yes → age 33 is 40 or under, yes.
+For person D: non-smoker? no → BMI 24.8 is 30.1 or under, yes → age 33 is 40 or under, yes.
 
 ## Bonus
 
