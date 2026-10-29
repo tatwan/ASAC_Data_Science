@@ -2,7 +2,7 @@
 
 In this activity, you will answer one question on one table, then again after a join, and find out why the second answer is wrong even though the join is right. Then you will answer a question that does need the join.
 
-**Time:** 10 minutes · **Data:** `D03.orders`, `D03.order_items` · **Starter:** `Unsolved/count_completed_orders.sql`
+**Time:** 10 minutes · **Data:** `D03.orders`, `D03.order_items` (D03 activity 01) · **Starter:** `Unsolved/count_completed_orders.sql`
 
 ## How the tables connect
 

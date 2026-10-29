@@ -2,7 +2,7 @@
 
 In this activity, you will answer D08's "Which months were better than our average month?" a third way: with `AVG(...) OVER ()`, a window function that puts the average next to every month without collapsing the rows.
 
-**Time:** 12 minutes · **Data:** `nakheel.orders` · **File:** `Solved/window_keeps_rows.sql`
+**Time:** 12 minutes · **Data:** `nakheel.orders` (D04 activity 03) · **File:** `Solved/window_keeps_rows.sql`
 
 You have answered this question twice. On D08 you used two CTEs, `monthly` and `average_month`. On D09 you used one CTE read twice, with a subquery in `WHERE`. Today, one CTE and one window.
 

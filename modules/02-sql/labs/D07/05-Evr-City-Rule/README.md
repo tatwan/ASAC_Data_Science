@@ -2,7 +2,7 @@
 
 In this activity, you will report completed revenue by city after a join, and write your own cleaning rule as a `CASE` for the spellings that `LOWER` and `TRIM` cannot fix.
 
-**Time:** 12 minutes · **Data:** `nakheel.orders`, `nakheel.customers` · **Starter:** `Unsolved/city_rule.sql`
+**Time:** 12 minutes · **Data:** `nakheel.orders`, `nakheel.customers` (D04 activity 03) · **Starter:** `Unsolved/city_rule.sql`
 
 ## How the tables connect
 

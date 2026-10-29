@@ -2,7 +2,7 @@
 
 In this activity, you will filter three tables, then run a query that fails and use the error to learn the order in which a query runs.
 
-**Time:** 9 minutes · **Data:** `D03.customers`, `D03.orders`, `D03.order_items` · **Starter:** `Unsolved/filter_rows.sql`
+**Time:** 9 minutes · **Data:** `D03.customers`, `D03.orders`, `D03.order_items` (activity 01) · **Starter:** `Unsolved/filter_rows.sql`
 
 ## Instructions
 

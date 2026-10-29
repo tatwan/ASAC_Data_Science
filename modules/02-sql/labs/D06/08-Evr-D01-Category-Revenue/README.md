@@ -2,7 +2,7 @@
 
 In this activity, you will answer the first question of the programme, "which product category produced the most completed-order revenue last month?" (August 2026), with a three-table join, and check it against the answer you worked out by hand on D01.
 
-**Time:** 22 minutes · **Data:** `D03.order_items`, `D03.orders`, `D03.products` · **Starter:** `Unsolved/d01_category_revenue.sql`
+**Time:** 22 minutes · **Data:** `D03.order_items`, `D03.orders`, `D03.products` (D03 activity 01) · **Starter:** `Unsolved/d01_category_revenue.sql`
 
 Imagine it is September 2026, the setting of D01, so "last month" means 1–31 August 2026. Every order in `D03.orders` was placed between 3 and 24 August 2026. The data never changes, so the answer stays the same whenever you take this course.
 

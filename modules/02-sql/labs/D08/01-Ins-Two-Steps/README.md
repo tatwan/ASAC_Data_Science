@@ -2,7 +2,7 @@
 
 In this activity, you will answer "Which completed orders are bigger than our average completed order?" in two steps, then put the first step inside the second as a subquery.
 
-**Time:** 12 minutes · **Data:** `nakheel.orders` · **File:** `Solved/two_steps.sql`
+**Time:** 12 minutes · **Data:** `nakheel.orders` (D04 activity 03) · **File:** `Solved/two_steps.sql`
 
 You cannot compare each order with the average until you know the average. So the question has two steps: find the average, then compare every order with it.
 

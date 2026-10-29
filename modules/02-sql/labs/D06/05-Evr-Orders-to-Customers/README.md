@@ -2,7 +2,7 @@
 
 In this activity, you will join 3,000 Nakheel orders to their customers, find the one order that does not survive an `INNER JOIN`, and see why a `LEFT JOIN` keeps it.
 
-**Time:** 10 minutes · **Data:** `nakheel.orders`, `nakheel.customers` · **Starter:** `Unsolved/orders_to_customers.sql`
+**Time:** 10 minutes · **Data:** `nakheel.orders`, `nakheel.customers` (D04 activity 03) · **Starter:** `Unsolved/orders_to_customers.sql`
 
 ## How the tables connect
 

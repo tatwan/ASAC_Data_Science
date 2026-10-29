@@ -2,7 +2,7 @@
 
 In this lab, you will answer the question the D04 managers could not get answered, "which product category brings in the most revenue?", and prove with an audit table that no join changed the total.
 
-**Time:** about 35 minutes in class, then finish after class · **Data:** `nakheel.order_items`, `nakheel.products`, `nakheel.orders` · **Starter:** `Unsolved/category_revenue.sql`
+**Time:** about 35 minutes in class, then finish after class · **Data:** `nakheel.order_items`, `nakheel.products`, `nakheel.orders` (D04 activity 03) · **Starter:** `Unsolved/category_revenue.sql`
 
 **Before you start:** the four `nakheel` tables are uploaded. If they are missing, use the [D04 Nakheel upload activity](../../D04/03-Evr-Upload-Nakheel/README.md).
 

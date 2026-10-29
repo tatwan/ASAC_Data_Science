@@ -2,7 +2,7 @@
 
 In this activity, you will build one query on Nakheel orders that uses `GROUP BY`, a `CASE` rule and `HAVING` together, saying what one row is and predicting the row count before every run.
 
-**Time:** 20 minutes · **Data:** `nakheel.orders` · **Starter:** `Unsolved/d04_review.sql`
+**Time:** 20 minutes · **Data:** `nakheel.orders` (D04 activity 03) · **Starter:** `Unsolved/d04_review.sql`
 
 **Before you start:** the four `nakheel` tables are uploaded. If they are missing, use the [D04 Nakheel upload activity](../../D04/03-Evr-Upload-Nakheel/README.md).
 

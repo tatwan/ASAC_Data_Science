@@ -2,7 +2,7 @@
 
 In this activity, you will count the cancelled orders without filtering the others away, then turn that count into a rate.
 
-**Time:** 10 minutes · **Data:** `nakheel.orders` · **Starter:** `Unsolved/rates.sql`
+**Time:** 10 minutes · **Data:** `nakheel.orders` (activity 03) · **Starter:** `Unsolved/rates.sql`
 
 ## Instructions
 

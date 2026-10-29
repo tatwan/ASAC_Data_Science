@@ -2,7 +2,7 @@
 
 In this activity, you will add a calculated column to every row of `D03.order_items`, then group the same twelve rows two different ways and see what one row of each result means.
 
-**Time:** 18 minutes · **Data:** `D03.order_items` · **File:** `Solved/collapse_rows.sql`
+**Time:** 18 minutes · **Data:** `D03.order_items` (D03 activity 01) · **File:** `Solved/collapse_rows.sql`
 
 ## Instructions
 

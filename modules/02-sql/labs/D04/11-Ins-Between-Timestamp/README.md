@@ -2,7 +2,7 @@
 
 In this activity, you will count August 2026 orders twice with the same `BETWEEN`, once on the date and once on the timestamp, get two different answers, and learn the safe pattern for a timestamp.
 
-**Time:** 5 minutes · **Data:** `nakheel.orders` · **File:** `Solved/between_timestamp.sql`
+**Time:** 5 minutes · **Data:** `nakheel.orders` (activity 03) · **File:** `Solved/between_timestamp.sql`
 
 ## Instructions
 

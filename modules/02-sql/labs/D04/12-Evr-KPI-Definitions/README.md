@@ -2,7 +2,7 @@
 
 In this activity, you will write three KPIs as a definition table (name, rule in words, grain) and then as one query.
 
-**Time:** 15 minutes · **Data:** `nakheel.orders` · **Starter:** `Unsolved/kpi_definitions.sql`
+**Time:** 15 minutes · **Data:** `nakheel.orders` (activity 03) · **Starter:** `Unsolved/kpi_definitions.sql`
 
 A KPI (key performance indicator) is a number a business agrees to track the same way every time. Two analysts who calculate "revenue" differently will report different numbers to the same manager. Writing the rule down first stops that.
 

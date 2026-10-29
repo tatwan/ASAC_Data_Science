@@ -2,7 +2,7 @@
 
 In this activity, you will look at four things the free BigQuery sandbox gives you beyond running queries, and learn which features of a cloud warehouse need a billing account.
 
-**When:** after class, about 15 minutes. In class you saw only the "needs billing" table below · **Data:** `nakheel` and `bi` · **File:** `Solved/sandbox_tour.sql`
+**When:** after class, about 15 minutes. In class you saw only the "needs billing" table below · **Data:** `nakheel` (D04 activity 03) and `bi` (D08 activities 07 and 08) · **File:** `Solved/sandbox_tour.sql`
 
 ## Instructions
 

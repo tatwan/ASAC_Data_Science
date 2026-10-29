@@ -2,7 +2,7 @@
 
 In this lab, you will build one report on Nakheel that uses all of D06 and D07: completed revenue by cleaned customer segment and channel, the D04 size band with a `HAVING` test, and one list of everything with no match, with an audit before any grouping.
 
-**Time:** about 35 minutes in class, then finish after class · **Data:** `nakheel.orders`, `nakheel.customers`, `nakheel.products`, `nakheel.order_items` · **Starter:** `Unsolved/joined_report.sql`
+**Time:** about 35 minutes in class, then finish after class · **Data:** `nakheel.orders`, `nakheel.customers`, `nakheel.products`, `nakheel.order_items` (D04 activity 03) · **Starter:** `Unsolved/joined_report.sql`
 
 **Before you start:** the four `nakheel` tables are uploaded. If they are missing, use the [D04 Nakheel upload activity](../../D04/03-Evr-Upload-Nakheel/README.md). For the more practice question X3 you also need the `pagila` tables from [A bridge table: films per category](../08-Evr-Films-Per-Category/README.md).
 

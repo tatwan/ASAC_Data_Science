@@ -2,7 +2,7 @@
 
 In this activity, you will answer three manager questions with `ROW_NUMBER`, `RANK`, `LAG` and `QUALIFY`.
 
-**Time:** 18 minutes · **Data:** `nakheel.orders` · **Starter:** `Unsolved/rank_and_trend.sql`
+**Time:** 18 minutes · **Data:** `nakheel.orders` (D04 activity 03) · **Starter:** `Unsolved/rank_and_trend.sql`
 
 Before every query: what is one row, what is the window, and in what order does the window count?
 

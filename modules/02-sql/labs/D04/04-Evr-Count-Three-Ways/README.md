@@ -2,7 +2,7 @@
 
 In this activity, you will group Nakheel's orders by status and by month, then count the same rows three ways and explain why the three numbers differ.
 
-**Time:** 10 minutes · **Data:** `nakheel.orders` · **Starter:** `Unsolved/count_three_ways.sql`
+**Time:** 10 minutes · **Data:** `nakheel.orders` (activity 03) · **Starter:** `Unsolved/count_three_ways.sql`
 
 ## Instructions
 

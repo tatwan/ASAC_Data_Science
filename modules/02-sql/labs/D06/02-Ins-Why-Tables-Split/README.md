@@ -2,7 +2,7 @@
 
 In this activity, you will see why a database keeps customers and orders in separate tables, draw the one-to-many shape between them, and run the checks that come before every join.
 
-**Time:** 18 minutes · **Data:** `D03.orders`, `D03.customers` · **File:** `Solved/five_checks.sql`
+**Time:** 18 minutes · **Data:** `D03.orders`, `D03.customers` (D03 activity 01) · **File:** `Solved/five_checks.sql`
 
 ## Instructions
 

@@ -2,7 +2,7 @@
 
 In this activity, you will answer four questions from the store manager using the `D03` tables, on your own. They are the four tables you met on D01.
 
-**Time:** 10 minutes · **Data:** `D03.orders`, `D03.order_items`, `D03.customers` · **Starter:** `Unsolved/first_questions.sql`
+**Time:** 10 minutes · **Data:** `D03.orders`, `D03.order_items`, `D03.customers` (activity 01) · **Starter:** `Unsolved/first_questions.sql`
 
 For every question: write down what one row of the table is, predict how many rows you will get, then run.
 

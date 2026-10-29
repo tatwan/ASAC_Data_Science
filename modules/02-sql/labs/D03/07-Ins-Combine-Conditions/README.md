@@ -2,7 +2,7 @@
 
 In this activity, you will combine conditions with `AND` and `OR`, see why brackets matter, and use four shortcuts: `IN`, `BETWEEN`, `LIKE` and `DISTINCT`.
 
-**Time:** 10 minutes · **Data:** `D03` tables · **File:** `Solved/combine_conditions.sql`
+**Time:** 10 minutes · **Data:** `D03` tables (activity 01) · **File:** `Solved/combine_conditions.sql`
 
 ## Instructions
 

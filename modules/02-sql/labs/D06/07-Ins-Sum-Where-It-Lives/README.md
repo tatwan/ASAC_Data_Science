@@ -2,7 +2,7 @@
 
 In this activity, you will see a join inflate revenue by channel about three times, fix it two ways, and count orders correctly after the join.
 
-**Time:** 15 minutes · **Data:** `nakheel.orders`, `nakheel.order_items` · **File:** `Solved/sum_where_it_lives.sql`
+**Time:** 15 minutes · **Data:** `nakheel.orders`, `nakheel.order_items` (D04 activity 03) · **File:** `Solved/sum_where_it_lives.sql`
 
 The question: "Completed revenue by channel." The amount (`order_total`) and the channel are both on `orders`. Reports often join `order_items` anyway, because they need a line column too, such as units or product. This activity shows what that join does to `order_total`.
 

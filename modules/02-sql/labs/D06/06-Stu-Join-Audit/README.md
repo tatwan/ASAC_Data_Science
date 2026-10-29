@@ -2,7 +2,7 @@
 
 In this activity, you will join Nakheel orders to their order lines and fill in an audit table, before and after, to find which number the join changed.
 
-**Time:** 15 minutes · **Data:** `nakheel.orders`, `nakheel.order_items` · **Starter:** `Unsolved/join_audit.sql`
+**Time:** 15 minutes · **Data:** `nakheel.orders`, `nakheel.order_items` (D04 activity 03) · **Starter:** `Unsolved/join_audit.sql`
 
 ## How the tables connect
 

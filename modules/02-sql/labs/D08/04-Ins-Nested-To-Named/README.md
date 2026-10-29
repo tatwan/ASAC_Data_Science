@@ -2,7 +2,7 @@
 
 In this activity, you will answer "What does a typical customer who has bought from us spend, in each segment?" first with a query nested inside another, then with a CTE that names each step and reads from top to bottom.
 
-**Time:** 12 minutes · **Data:** `nakheel.orders`, `nakheel.customers` · **File:** `Solved/nested_to_named.sql`
+**Time:** 12 minutes · **Data:** `nakheel.orders`, `nakheel.customers` (D04 activity 03) · **File:** `Solved/nested_to_named.sql`
 
 Can one `GROUP BY` answer this question? No. It needs two grains: first one row per customer (what each customer spent), then one row per segment (the average of those customers).
 

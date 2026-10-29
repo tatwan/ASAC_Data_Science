@@ -2,7 +2,7 @@
 
 In this activity, you will type four queries that choose columns, rename one, sort the rows and keep only the top few.
 
-**Time:** 10 minutes · **Data:** `D03.orders`, `D03.order_items` · **Starter:** `Unsolved/columns_sort_limit.sql`
+**Time:** 10 minutes · **Data:** `D03.orders`, `D03.order_items` (activity 01) · **Starter:** `Unsolved/columns_sort_limit.sql`
 
 ## Instructions
 

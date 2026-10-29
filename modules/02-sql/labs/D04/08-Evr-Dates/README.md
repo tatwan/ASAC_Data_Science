@@ -2,7 +2,7 @@
 
 In this activity, you will group Nakheel orders by year, by month and by weekday, using three date functions. Count every order, whatever its status: there is no `WHERE` in this activity.
 
-**Time:** 10 minutes · **Data:** `nakheel.orders` · **Starter:** `Unsolved/dates.sql`
+**Time:** 10 minutes · **Data:** `nakheel.orders` (activity 03) · **Starter:** `Unsolved/dates.sql`
 
 ## Instructions
 

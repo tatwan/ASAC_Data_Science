@@ -2,7 +2,7 @@
 
 In this activity, you will write a business rule in words, turn it into a `CASE` expression, and group by the new column.
 
-**Time:** 8 minutes · **Data:** `nakheel.orders` · **File:** `Solved/case_rules.sql`
+**Time:** 8 minutes · **Data:** `nakheel.orders` (activity 03) · **File:** `Solved/case_rules.sql`
 
 ## Instructions
 

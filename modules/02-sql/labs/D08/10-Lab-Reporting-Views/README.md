@@ -2,7 +2,7 @@
 
 In this lab, you will save three more views in `bi`, each with an audit: a one-row-per-customer summary, completed revenue by category and month, and a customer list that also covers the customer ID that has orders but no record.
 
-**Time:** about 25 minutes in class, then finish after class · **Data:** `nakheel.orders`, `nakheel.customers`, `bi.fact_sales`, `bi.dim_customer`, `bi.dim_product` · **Starter:** `Unsolved/reporting_views.sql`
+**Time:** about 25 minutes in class, then finish after class · **Data:** `nakheel.orders`, `nakheel.customers` (D04 activity 03), `bi.fact_sales` (activity 07), `bi.dim_customer`, `bi.dim_product` (activity 08) · **Starter:** `Unsolved/reporting_views.sql`
 
 **Before you start:** the `bi` dataset holds `fact_sales`, `dim_customer` and `dim_product`. If any is missing, create it with [Save a query as a view](../07-Ins-First-View/README.md) and [The customer and product views](../08-Evr-Dimension-Views/README.md).
 

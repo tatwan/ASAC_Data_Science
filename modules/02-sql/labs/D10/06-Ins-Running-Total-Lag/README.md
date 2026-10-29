@@ -2,7 +2,7 @@
 
 In this activity, you will add two columns to monthly revenue: a running total, which must end at the completed revenue you already know, and the change on the previous month with `LAG`.
 
-**Time:** 12 minutes · **Data:** `nakheel.orders` · **File:** `Solved/running_total_lag.sql`
+**Time:** 12 minutes · **Data:** `nakheel.orders` (D04 activity 03) · **File:** `Solved/running_total_lag.sql`
 
 ## Instructions
 

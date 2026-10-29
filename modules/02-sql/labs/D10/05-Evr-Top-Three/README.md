@@ -2,7 +2,7 @@
 
 In this activity, you will answer "What are the three best-selling products by revenue in each category?" twice: with a CTE and `WHERE`, then with `QUALIFY`, BigQuery's shortcut for filtering on a window.
 
-**Time:** 13 minutes · **Data:** `nakheel.order_items`, `nakheel.orders`, `nakheel.products` · **Starter:** `Unsolved/top_three.sql`
+**Time:** 13 minutes · **Data:** `nakheel.order_items`, `nakheel.orders`, `nakheel.products` (D04 activity 03) · **Starter:** `Unsolved/top_three.sql`
 
 ## Instructions
 

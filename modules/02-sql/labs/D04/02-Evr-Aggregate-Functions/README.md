@@ -2,7 +2,7 @@
 
 In this activity, you will turn many rows into one number with each aggregate function, and check each answer against the D01 worksheet you did by hand, or against the rows on screen where the worksheet has no figure.
 
-**Time:** 12 minutes · **Data:** `D03` tables · **Starter:** `Unsolved/aggregate_functions.sql`
+**Time:** 12 minutes · **Data:** `D03` tables (D03 activity 01) · **Starter:** `Unsolved/aggregate_functions.sql`
 
 ## Instructions
 

@@ -2,7 +2,7 @@
 
 In this activity, you will take two nested queries that already work and rewrite each one as a CTE, then prove the rewrite gives exactly the same answer.
 
-**Time:** 15 minutes · **Data:** `nakheel.orders`, `nakheel.customers` · **Starter:** `Unsolved/untangle.sql`
+**Time:** 15 minutes · **Data:** `nakheel.orders`, `nakheel.customers` (D04 activity 03) · **Starter:** `Unsolved/untangle.sql`
 
 The recipe, every time:
 

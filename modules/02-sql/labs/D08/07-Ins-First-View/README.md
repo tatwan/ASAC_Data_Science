@@ -2,7 +2,7 @@
 
 In this activity, you will create a dataset called `bi`, save the order-line join as a view named `bi.fact_sales`, look at what BigQuery stores for it, and read it like a table.
 
-**Time:** 15 minutes · **Data:** `nakheel.order_items`, `nakheel.orders` · **File:** `Solved/first_view.sql`
+**Time:** 15 minutes · **Data:** `nakheel.order_items`, `nakheel.orders` (D04 activity 03) · **File:** `Solved/first_view.sql`
 
 A CTE lasts only while its query runs. A **view** is a query saved in a dataset under a name, so you, a colleague or Power BI (from D17) can read the result by name without copying the SQL. A view stores no rows. Every time you read it, BigQuery runs its query again on the tables underneath, so it is always up to date.
 

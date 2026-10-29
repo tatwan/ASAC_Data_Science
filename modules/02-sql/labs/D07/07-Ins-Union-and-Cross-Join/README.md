@@ -2,7 +2,7 @@
 
 In this activity, you will stack two results with `UNION ALL` and `UNION DISTINCT`, meet the BigQuery error for a bare `UNION`, and pair every row with every row using `CROSS JOIN`.
 
-**Time:** 15 minutes · **Data:** `D03.customers`, `D03.orders`, `D03.products`, `D03.order_items`, `nakheel.customers`, `nakheel.orders` · **Files:** `Solved/union.sql`, `Solved/cross_join.sql`
+**Time:** 15 minutes · **Data:** `D03.customers`, `D03.orders`, `D03.products`, `D03.order_items` (D03 activity 01), `nakheel.customers`, `nakheel.orders` (D04 activity 03) · **Files:** `Solved/union.sql`, `Solved/cross_join.sql`
 
 A join puts tables **side by side** on a key and adds columns. `UNION` puts one result **under** another and adds rows. It needs no key, only matching columns: both queries return the same number of columns, in the same order, with matching types, and the result takes its column names from the first query.
 

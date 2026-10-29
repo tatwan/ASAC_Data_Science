@@ -2,7 +2,7 @@
 
 In this activity, you will answer three questions from Nakheel's managers with `GROUP BY`, `WHERE` and `HAVING`.
 
-**Time:** 10 minutes · **Data:** `nakheel.orders`, `nakheel.customers` · **Starter:** `Unsolved/nakheel_measures.sql`
+**Time:** 10 minutes · **Data:** `nakheel.orders`, `nakheel.customers` (activity 03) · **Starter:** `Unsolved/nakheel_measures.sql`
 
 For each question, write down what one row of the **result** will be before you write the query.
 

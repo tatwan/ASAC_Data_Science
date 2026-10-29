@@ -2,7 +2,7 @@
 
 In this activity, you will work with a partner to answer two manager questions as CTEs: you plan the steps in comments first, name each step after what one row of it is, and check each step's rows before you write the next.
 
-**Time:** 20 minutes · **Data:** `nakheel.orders`, `nakheel.order_items`, `nakheel.products`, `nakheel.customers` · **Starter:** `Unsolved/plan_the_steps.sql`
+**Time:** 20 minutes · **Data:** `nakheel.orders`, `nakheel.order_items`, `nakheel.products`, `nakheel.customers` (D04 activity 03) · **Starter:** `Unsolved/plan_the_steps.sql`
 
 **How to pair:** for question 1, one of you plans the steps aloud and the other types; for question 2, swap. The person typing does not type a step until the planner has said what one row of it is.
 

@@ -2,7 +2,7 @@
 
 In this activity, you will join the D01 orders and customers two ways, and see which rows each kind of join keeps.
 
-**Time:** 22 minutes · **Data:** `D03.orders`, `D03.customers` · **Starter:** `Unsolved/inner_and_left.sql`
+**Time:** 22 minutes · **Data:** `D03.orders`, `D03.customers` (D03 activity 01) · **Starter:** `Unsolved/inner_and_left.sql`
 
 ## How the tables connect
 

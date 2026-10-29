@@ -2,7 +2,7 @@
 
 In this activity, you will filter rows with `WHERE`, then meet two filters written the way most people would write them. BigQuery refuses to run the first one. The second runs and gives the wrong answer, with no warning.
 
-**Time:** 8 minutes · **Data:** `D03.orders`, `D03.order_items`, `D03.customers` · **File:** `Solved/where_and_null.sql`
+**Time:** 8 minutes · **Data:** `D03.orders`, `D03.order_items`, `D03.customers` (activity 01) · **File:** `Solved/where_and_null.sql`
 
 ## Instructions
 

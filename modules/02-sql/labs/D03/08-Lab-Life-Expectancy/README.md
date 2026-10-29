@@ -2,7 +2,7 @@
 
 In this lab, you will load a real public dataset into your own project and use `SELECT`, `WHERE` and `ORDER BY` to answer three questions about how long people live, including one where the obvious query gives a misleading answer.
 
-**Time:** 45 minutes, TA-led · **Data:** `owid.life_expectancy_data` · **Starter:** `Unsolved/life_expectancy.sql`
+**Time:** 45 minutes, TA-led · **Data:** `Resources/life_expectancy.csv` → `owid.life_expectancy_data` (you upload it in C1, steps 1–3) · **Starter:** `Unsolved/life_expectancy.sql`
 
 **Before you start:** you have a BigQuery project with the `D03` dataset from today. If your `D03` upload did not work, you can still do this lab: it uses a new dataset.
 

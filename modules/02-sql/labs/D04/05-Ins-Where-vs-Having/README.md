@@ -2,7 +2,7 @@
 
 In this activity, you will filter Nakheel orders before grouping with `WHERE`, then filter the groups after counting with `HAVING`, and see why `WHERE` cannot test a count.
 
-**Time:** 5 minutes · **Data:** `nakheel.orders` · **File:** `Solved/where_vs_having.sql`
+**Time:** 5 minutes · **Data:** `nakheel.orders` (activity 03) · **File:** `Solved/where_vs_having.sql`
 
 ## Instructions
 

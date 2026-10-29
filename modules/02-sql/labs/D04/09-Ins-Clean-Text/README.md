@@ -2,7 +2,7 @@
 
 In this activity, you will fix the D01 problem, "retail" typed three ways, on Nakheel's 500 customers.
 
-**Time:** 7 minutes · **Data:** `nakheel.customers` · **File:** `Solved/clean_text.sql`
+**Time:** 7 minutes · **Data:** `nakheel.customers` (activity 03) · **File:** `Solved/clean_text.sql`
 
 ## Instructions
 

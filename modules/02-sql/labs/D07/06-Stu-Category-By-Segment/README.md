@@ -2,7 +2,7 @@
 
 In this activity, you will join four tables to report completed units and revenue by product category and customer segment, audit the join, and keep only the combinations worth more than 20,000.
 
-**Time:** 18 minutes · **Data:** `nakheel.order_items`, `nakheel.products`, `nakheel.orders`, `nakheel.customers` · **Starter:** `Unsolved/category_by_segment.sql`
+**Time:** 18 minutes · **Data:** `nakheel.order_items`, `nakheel.products`, `nakheel.orders`, `nakheel.customers` (D04 activity 03) · **Starter:** `Unsolved/category_by_segment.sql`
 
 ## How the tables connect
 

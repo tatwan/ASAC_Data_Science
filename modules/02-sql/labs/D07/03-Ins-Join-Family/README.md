@@ -2,7 +2,7 @@
 
 In this activity, you will compare the four joins by the rows each one keeps, see that a `RIGHT JOIN` is a `LEFT JOIN` with the tables swapped, and find the rows with no match on either side.
 
-**Time:** 10 minutes · **Data:** `nakheel.customers`, `nakheel.orders`, `nakheel.order_items` · **File:** `Solved/right_full_subquery.sql`
+**Time:** 10 minutes · **Data:** `nakheel.customers`, `nakheel.orders`, `nakheel.order_items` (D04 activity 03) · **File:** `Solved/right_full_subquery.sql`
 
 You will read these joins more often than you write them. Most analysts write `LEFT JOIN` and put the table they want to keep first.
 

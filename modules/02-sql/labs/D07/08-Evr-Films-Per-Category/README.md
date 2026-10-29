@@ -2,7 +2,7 @@
 
 In this activity, you will upload three tables from a film rental database, join through a table that links films to categories, and explain why 1,000 films become 2,367 rows.
 
-**Time:** 28 minutes · **Data:** `pagila.film`, `pagila.film_category`, `pagila.category` · **Starter:** `Unsolved/films_per_category.sql`
+**Time:** 28 minutes · **Data:** three CSVs in `Resources/` → `pagila.film`, `pagila.film_category`, `pagila.category` (you upload them in step 1) · **Starter:** `Unsolved/films_per_category.sql`
 
 Pagila is a sample database for a DVD rental shop, used in many SQL courses. It is a new sector on purpose: film and media, with the same method as Nakheel. One film can belong to more than one category, so the link between films and categories is kept in a third table, `film_category`, with one row per film per category. A table that sits between two others like this is called a **bridge table**.
 

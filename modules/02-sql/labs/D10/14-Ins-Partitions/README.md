@@ -2,7 +2,7 @@
 
 In this activity, you will see how BigQuery reads less of a large table by splitting it into partitions and sorting it into clusters, and how the bytes estimate shows the saving before a query runs.
 
-**Time:** 10 minutes · **Data:** `bigquery-public-data.google_trends.top_terms` (estimates only) and `nakheel.orders` · **File:** `Solved/partitions.sql` (BigQuery only)
+**Time:** 10 minutes · **Data:** `bigquery-public-data.google_trends.top_terms` (estimates only) and `nakheel.orders` (D04 activity 03) · **File:** `Solved/partitions.sql` (BigQuery only)
 
 In class you watch on Tarek's screen. Step 9 is optional, for after class. Nothing here is checked.
 

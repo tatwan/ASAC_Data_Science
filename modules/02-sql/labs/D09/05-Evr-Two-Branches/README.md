@@ -2,7 +2,7 @@
 
 In this activity, you will answer "Which categories grew most from our first year to our second?" with two CTEs that do not need each other, one per year, joined at the end.
 
-**Time:** 15 minutes · **Data:** `nakheel.order_items`, `nakheel.orders`, `nakheel.products` · **Starter:** `Unsolved/two_branches.sql`
+**Time:** 15 minutes · **Data:** `nakheel.order_items`, `nakheel.orders`, `nakheel.products` (D04 activity 03) · **Starter:** `Unsolved/two_branches.sql`
 
 So far each CTE has read the one before it (a chain), or one CTE has been read twice. Here the two steps are **branches**: `year_one` and `year_two` each start from the raw tables, and only the final `SELECT` brings them together.
 

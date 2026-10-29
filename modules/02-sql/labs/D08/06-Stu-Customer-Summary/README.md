@@ -2,7 +2,7 @@
 
 In this activity, you will build a customer summary in two named steps: completed orders, revenue, and the dates of the first and last completed order for every customer, including those with no completed order, and then audit it.
 
-**Time:** 18 minutes · **Data:** `nakheel.orders`, `nakheel.customers` · **Starter:** `Unsolved/customer_summary.sql`
+**Time:** 18 minutes · **Data:** `nakheel.orders`, `nakheel.customers` (D04 activity 03) · **Starter:** `Unsolved/customer_summary.sql`
 
 Before you start, answer two questions in a comment: what is one row of the final answer, and which table has every customer?
 

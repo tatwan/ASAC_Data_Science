@@ -2,7 +2,7 @@
 
 In this activity, you will answer "what does a typical order cost?" twice, at two different grains, and see that both answers are correct.
 
-**Time:** 10 minutes · **Data:** `nakheel.orders`, `nakheel.order_items` · **File:** `Solved/misleading_average.sql`
+**Time:** 10 minutes · **Data:** `nakheel.orders`, `nakheel.order_items` (activity 03) · **File:** `Solved/misleading_average.sql`
 
 ## Instructions
 

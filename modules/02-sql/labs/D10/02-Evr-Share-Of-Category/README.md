@@ -2,7 +2,7 @@
 
 In this activity, you will answer "What share of its category's revenue does each product bring?" with `SUM(...) OVER (PARTITION BY category)`: one row per product, with its category's total beside it.
 
-**Time:** 15 minutes · **Data:** `nakheel.order_items`, `nakheel.orders`, `nakheel.products` · **Starter:** `Unsolved/share_of_category.sql`
+**Time:** 15 minutes · **Data:** `nakheel.order_items`, `nakheel.orders`, `nakheel.products` (D04 activity 03) · **Starter:** `Unsolved/share_of_category.sql`
 
 ## How the tables connect
 

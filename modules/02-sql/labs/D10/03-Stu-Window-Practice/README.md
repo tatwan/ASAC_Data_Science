@@ -2,7 +2,7 @@
 
 In this activity, you will answer three manager questions that compare each row with its group, using `OVER ()` and `OVER (PARTITION BY ...)`.
 
-**Time:** 12 minutes · **Data:** `nakheel.orders`, `nakheel.customers` · **Starter:** `Unsolved/window_practice.sql`
+**Time:** 12 minutes · **Data:** `nakheel.orders`, `nakheel.customers` (D04 activity 03) · **Starter:** `Unsolved/window_practice.sql`
 
 Before every query: what is one row, and what is the window?
 

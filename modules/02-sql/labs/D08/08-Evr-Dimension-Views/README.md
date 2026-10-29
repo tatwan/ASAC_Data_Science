@@ -2,7 +2,7 @@
 
 In this activity, you will save two more views in `bi`: `dim_customer`, one row per customer with the D07 cleaning rules built in, and `dim_product`, one row per product, and check that each has exactly one row per ID.
 
-**Time:** 20 minutes · **Data:** `nakheel.customers`, `nakheel.products` · **Starter:** `Unsolved/dimension_views.sql`
+**Time:** 20 minutes · **Data:** `nakheel.customers`, `nakheel.products` (D04 activity 03) · **Starter:** `Unsolved/dimension_views.sql`
 
 **Before you start:** you need the `bi` dataset and `bi.fact_sales` from [Save a query as a view](../07-Ins-First-View/README.md). If `bi` is missing, create it: in the **Explorer**, **⋮** next to your project → **Create dataset** → **Dataset ID** `bi` → the same location as `nakheel` (the [D04 upload guide](../../D04/03-Evr-Upload-Nakheel/README.md) used **Multi-region**, **US**) → **Create dataset**.
 

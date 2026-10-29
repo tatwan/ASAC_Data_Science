@@ -2,7 +2,7 @@
 
 In this activity, you will answer four manager questions with a subquery: the products above the average price, the customers who never ordered and the products never sold (with `NOT IN`), and the name of the biggest customer.
 
-**Time:** 12 minutes · **Data:** `nakheel.products`, `nakheel.customers`, `nakheel.orders`, `nakheel.order_items` · **Starter:** `Unsolved/subquery_practice.sql`
+**Time:** 12 minutes · **Data:** `nakheel.products`, `nakheel.customers`, `nakheel.orders`, `nakheel.order_items` (D04 activity 03) · **Starter:** `Unsolved/subquery_practice.sql`
 
 **When:** done after class on D09 (Sunday 11 October), before the D08 lab. The Solved folder is released with the lab's.
 

@@ -2,7 +2,7 @@
 
 In this activity, you will answer "Which months were better than our average month?" with two CTEs, checking the rows after each step before you add the next.
 
-**Time:** 15 minutes · **Data:** `nakheel.orders` · **Starter:** `Unsolved/months_above_average.sql`
+**Time:** 15 minutes · **Data:** `nakheel.orders` (D04 activity 03) · **Starter:** `Unsolved/months_above_average.sql`
 
 Before you type anything, plan the steps in a comment: (1) completed revenue per month; (2) the average of those months; (3) the months above that average.
 

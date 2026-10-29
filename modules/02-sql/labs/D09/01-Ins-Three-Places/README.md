@@ -2,7 +2,7 @@
 
 In this activity, you will put the same inner query, "the average completed order", in three places in an outer query, `WHERE`, `SELECT` and `FROM`, and see what each place needs from it.
 
-**Time:** 15 minutes · **Data:** `nakheel.orders` · **File:** `Solved/three_places.sql`
+**Time:** 15 minutes · **Data:** `nakheel.orders` (D04 activity 03) · **File:** `Solved/three_places.sql`
 
 A subquery is a query inside another query, in brackets. The inner query runs first, and the outer query uses its answer. Where you put the brackets decides what the answer must look like.
 

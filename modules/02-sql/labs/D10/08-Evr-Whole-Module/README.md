@@ -2,7 +2,7 @@
 
 In this activity, you will answer one manager question with everything from D03 to D10 in a single query: a join, `CASE`, `GROUP BY`, CTEs and two window functions.
 
-**Time:** 20 minutes · **Data:** `nakheel.orders`, `nakheel.customers` · **Starter:** `Unsolved/whole_module.sql`
+**Time:** 20 minutes · **Data:** `nakheel.orders`, `nakheel.customers` (D04 activity 03) · **Starter:** `Unsolved/whole_module.sql`
 
 **The question:** "For each segment, who are our three biggest customers, which city are they in, and what share of the segment's completed revenue does each one bring?"
 

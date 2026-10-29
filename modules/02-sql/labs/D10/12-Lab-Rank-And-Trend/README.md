@@ -2,7 +2,7 @@
 
 In this lab, you will rank Nakheel's products by units sold inside each category, follow each channel's revenue month by month, and keep each category's top three with their share, using the window functions from today.
 
-**When:** after class. Not submitted, not graded; the Solved file is released afterwards. · **Data:** `nakheel.orders`, `nakheel.order_items`, `nakheel.products` · **Starter:** `Unsolved/rank_and_trend_lab.sql`
+**When:** after class. Not submitted, not graded; the Solved file is released afterwards. · **Data:** `nakheel.orders`, `nakheel.order_items`, `nakheel.products` (D04 activity 03) · **Starter:** `Unsolved/rank_and_trend_lab.sql`
 
 **How this lab is organised:** C1, C2 and C3 are checkpoints. Each builds on what you did in class; check yours against the numbers before you go on.
 

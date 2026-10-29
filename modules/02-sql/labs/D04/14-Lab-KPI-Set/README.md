@@ -2,7 +2,7 @@
 
 In this lab, you will define and calculate five KPIs for Nakheel's managers, then show how the answer to "is the typical order getting bigger?" changes with the grain you choose.
 
-**Time:** about 45 minutes, after class · **Data:** `nakheel.orders` · **Starter:** `Unsolved/kpi_set.sql`
+**Time:** about 45 minutes, after class · **Data:** `nakheel.orders` (activity 03) · **Starter:** `Unsolved/kpi_set.sql`
 
 **Before you start:** the four `nakheel` tables are uploaded (3,000 rows in `orders`). If not, use the CSVs and steps in the [Nakheel upload activity](../03-Evr-Upload-Nakheel/README.md); `orders.csv` alone is enough for C1 to C3.
 

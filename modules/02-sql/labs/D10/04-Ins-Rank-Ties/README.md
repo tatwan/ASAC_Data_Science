@@ -2,7 +2,7 @@
 
 In this activity, you will rank the Sportswear products by units sold with `ROW_NUMBER`, `RANK` and `DENSE_RANK`, and see how each handles the two products that sold exactly 284 units.
 
-**Time:** 12 minutes · **Data:** `nakheel.order_items`, `nakheel.orders`, `nakheel.products` · **File:** `Solved/rank_ties.sql`
+**Time:** 12 minutes · **Data:** `nakheel.order_items`, `nakheel.orders`, `nakheel.products` (D04 activity 03) · **File:** `Solved/rank_ties.sql`
 
 ## Instructions
 

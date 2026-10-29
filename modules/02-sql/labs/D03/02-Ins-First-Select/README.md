@@ -2,7 +2,7 @@
 
 In this activity, you will run the shortest useful query, every column of every row from one table, and learn what each part of the table's name means.
 
-**Time:** 8 minutes · **Data:** `D03.orders`, `D03.order_items` · **File:** `Solved/first_select.sql`
+**Time:** 8 minutes · **Data:** `D03.orders`, `D03.order_items` (activity 01) · **File:** `Solved/first_select.sql`
 
 ## Instructions
 

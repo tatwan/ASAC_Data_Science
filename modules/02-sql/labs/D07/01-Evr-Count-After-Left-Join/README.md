@@ -2,7 +2,7 @@
 
 In this activity, you will count each customer's orders with a `LEFT JOIN` and see why `COUNT(*)` gives a customer with no orders a count of 1.
 
-**Time:** 12 minutes · **Data:** `nakheel.customers`, `nakheel.orders` · **Starter:** `Unsolved/count_after_left_join.sql`
+**Time:** 12 minutes · **Data:** `nakheel.customers`, `nakheel.orders` (D04 activity 03) · **Starter:** `Unsolved/count_after_left_join.sql`
 
 ## How the tables connect
 

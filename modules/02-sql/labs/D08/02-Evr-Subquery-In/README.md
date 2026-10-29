@@ -2,7 +2,7 @@
 
 In this activity, you will count the completed orders from wholesale customers with a subquery that returns a list of customers, test against that list with `IN`, and check the answer against the D07 join.
 
-**Time:** 13 minutes · **Data:** `nakheel.orders`, `nakheel.customers` · **Starter:** `Unsolved/subquery_in.sql`
+**Time:** 13 minutes · **Data:** `nakheel.orders`, `nakheel.customers` (D04 activity 03) · **Starter:** `Unsolved/subquery_in.sql`
 
 "How many completed orders came from wholesale customers, and what were they worth?" Before you start, write two answers in a comment: which table knows who is wholesale, and which table has the orders?
 

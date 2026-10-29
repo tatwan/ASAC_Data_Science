@@ -2,7 +2,7 @@
 
 In this activity, you will see what window functions are used for at work beyond ranking: removing duplicates, measuring the time between events, splitting rows into equal groups, and smoothing a trend.
 
-**Time:** 10 minutes · **Data:** `nakheel.customers`, `nakheel.orders` · **File:** `Solved/more_window_jobs.sql`
+**Time:** 10 minutes · **Data:** `nakheel.customers`, `nakheel.orders` (D04 activity 03) · **File:** `Solved/more_window_jobs.sql`
 
 Today you have used three families of window function. This step names all three, then shows four more jobs, each with one short query.
 

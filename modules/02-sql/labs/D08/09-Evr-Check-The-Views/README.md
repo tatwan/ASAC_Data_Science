@@ -2,7 +2,7 @@
 
 In this activity, you will answer three questions you have answered before, this time from the `bi` views, and check that the numbers match.
 
-**Time:** 20 minutes · **Data:** `bi.fact_sales`, `bi.dim_product`, `bi.dim_customer` · **Starter:** `Unsolved/check_views.sql`
+**Time:** 20 minutes · **Data:** `bi.fact_sales` (activity 07), `bi.dim_product`, `bi.dim_customer` (activity 08) · **Starter:** `Unsolved/check_views.sql`
 
 **Before you start:** you need the three views from [Save a query as a view](../07-Ins-First-View/README.md) and [The customer and product views](../08-Evr-Dimension-Views/README.md).
 

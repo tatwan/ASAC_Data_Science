@@ -2,7 +2,7 @@
 
 In this activity, you will answer "Do our customers come back after their first order?" with a subquery in `FROM`: first one row per customer, then a question about those rows.
 
-**Time:** 12 minutes · **Data:** `nakheel.orders` · **Starter:** `Unsolved/subquery_in_from.sql`
+**Time:** 12 minutes · **Data:** `nakheel.orders` (D04 activity 03) · **Starter:** `Unsolved/subquery_in_from.sql`
 
 The question is about customers, but the data is one row per order. So the answer takes two grains: first count each customer's completed orders (one row per customer), then summarise those counts.
 

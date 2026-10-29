@@ -2,7 +2,7 @@
 
 In this activity, you will find the customers who have never placed an order and the products that have never been sold, using a `LEFT JOIN` and `IS NULL`.
 
-**Time:** 10 minutes · **Data:** `nakheel.customers`, `nakheel.orders`, `nakheel.products`, `nakheel.order_items` · **Starter:** `Unsolved/never_ordered.sql`
+**Time:** 10 minutes · **Data:** `nakheel.customers`, `nakheel.orders`, `nakheel.products`, `nakheel.order_items` (D04 activity 03) · **Starter:** `Unsolved/never_ordered.sql`
 
 ## How the tables connect
 

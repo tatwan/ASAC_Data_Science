@@ -2,7 +2,7 @@
 
 In this activity, you will answer "completed revenue by customer segment" by joining `orders` to `customers`, auditing the join, and grouping by the cleaned segment.
 
-**Time:** 12 minutes · **Data:** `nakheel.orders`, `nakheel.customers` · **File:** `Solved/segment_after_join.sql`
+**Time:** 12 minutes · **Data:** `nakheel.orders`, `nakheel.customers` (D04 activity 03) · **File:** `Solved/segment_after_join.sql`
 
 The amount is on `orders`; the segment is on `customers`. One join brings the column, then D04's `GROUP BY` does the rest.
 
