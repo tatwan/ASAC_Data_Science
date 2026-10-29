@@ -1,0 +1,13 @@
+store_code,store_name,governorate - city - area,lat / long,size,opened
+NK-AMM-01,Nakheel Abdali,AM - Amman - Abdali,31.9632 / 35.9106,420 m²,2019-03-14
+NK-AMM-02,Nakheel Sweifieh,AM - Amman - Sweifieh,31.9545 / 35.8623,380 sqm,2020-11-02
+NK-AMM-03,Nakheel Tabarbour,AM - Amman - Tabarbour,32.0148 / 35.9372,260 m2,2022-05-21
+NK-IRB-01,Nakheel University Street,IR - Irbid - Irbid,32.5390 / 35.8560,310 m²,2020-02-10
+nk-irb-02,Nakheel Irbid City Centre,IR - Irbid - Irbid,32.5556 / 35.8500,240 m²,2023-09-01
+NK-ZRQ-01,Nakheel New Zarqa,ZA - Zarqa - Zarqa,32.0833 / 36.1000,290 sqm,2021-06-15
+NK-AQB-01,Nakheel Aqaba,AQ - Aqaba - Aqaba,29.5320 / 35.0063,350 m2,2021-01-20
+NK-KRK-01,Nakheel Karak,KA - Karak - Karak,31.1853 / 35.7048,180 m²,2022-10-05
+nk-slt-01,Nakheel Salt,BA - Balqa - Salt,32.0392 / 35.7272,160 sqm,2023-03-12
+NK-MDB-01,Nakheel Madaba,MA - Madaba - Madaba,31.7160 / 35.7939,150 m²,2023-06-18
+NK-MFQ-01,Nakheel Mafraq,MF - Mafraq - Mafraq,32.3429 / 36.2080,140 m2,2024-02-25
+NK-JRS-01,Nakheel Jerash,JA - Jerash - Jerash,32.2808 / 35.8993,unknown,2026-09-15

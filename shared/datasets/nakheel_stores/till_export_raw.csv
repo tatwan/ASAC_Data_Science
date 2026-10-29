@@ -1,0 +1,17 @@
+Nakheel till export,,,
+Store NK-AQB-01 (Aqaba),August 2026,,
+,,,
+order_id,order_date,status,order_total
+102853,2026-08-03,completed,292.50
+102862,2026-08-06,completed,657.50
+102868,2026-08-06,completed,471.50
+102869,2026-08-06,completed,93.50 JOD
+VOID,2026-08-06,voided,-
+102873,2026-08-06,cancelled,35.00
+102881,2026-08-08,completed,8.00
+102931,2026-08-17,completed,449.50
+102982,2026-08-27,pending,247.50
+VOID,2026-08-27,voided,-
+102988,2026-08-28,completed,60.00
+102989,2026-08-29,pending,104.50
+,,,

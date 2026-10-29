@@ -7,9 +7,11 @@ These are the datasets you use in the labs and assignments. Each folder holds th
 | Folder | What it is | Where you use it |
 |---|---|---|
 | [`nakheel/`](nakheel/README.md) | Nakheel Retail, a clothing and footwear retailer in Jordan: customers, products, orders and order lines over 24 months. Synthetic, written for this course | From D04 through SQL and Power BI, and in the graded assignments |
+| [`nakheel_stores/`](nakheel_stores/README.md) | Nakheel Retail's store sales as files: two yearly exports, one file per shop, a hand-typed store list, website orders as JSON, a raw till export and monthly targets. Made from the Nakheel tables for this course | D17 (Power Query: append, a folder of files, merge) and its labs |
 | [`owid_life_expectancy/`](owid_life_expectancy/README.md) | Life expectancy at birth for countries and regions, 1950–2023, from Our World in Data | D03 lab and D04 practice questions |
 | [`pagila/`](pagila/README.md) | Films, film categories and the table that links them, from the Pagila sample database | D07 activity 08 and the D07 lab |
 | [`intl_football/`](intl_football/README.md) | Every men's international football match since 1872, with goal scorers and penalty shootouts, to 30 September 2026 | Assignment 1 (SQL), loaded on D10 |
+| [`hotel_bookings/`](hotel_bookings/README.md) | 119,390 bookings for a resort hotel and a city hotel in Portugal, 2015–2017, with cancellations and prices, from Antonio, Almeida and Nunes (2019) | Assignment 2 (machine learning), issued on D16 |
 | [`ml_classics/`](ml_classics/README.md) | Eight small, well-known machine-learning datasets: salaries, medical insurance costs, car fuel economy (Auto MPG), telecom customer churn, employee attrition, mall shoppers, Palmer penguins and a wholesaler's clients | D11, D12 and D13, to learn regression, classification and clustering in BigQuery ML |
 
 Three more datasets live elsewhere:
@@ -37,6 +39,7 @@ Other datasets appear when an idea is easier to see somewhere else: life expecta
 | Nakheel Retail, D01 retail tables | Written for this course. No real people or businesses are in them |
 | Life expectancy | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (Our World in Data) and [CC BY 3.0 IGO](https://creativecommons.org/licenses/by/3.0/igo/) (United Nations) |
 | Pagila | The permission notice in [`pagila/LICENSE.txt`](pagila/LICENSE.txt) |
+| Hotel bookings | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (Antonio, Almeida and Nunes, *Data in Brief*, 2019) |
 | International football results | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (public domain), Mart Jürisoo |
 | Classic ML datasets | Per file, in [`ml_classics/README.md`](ml_classics/README.md#sources): Auto MPG and Wholesale customers are [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), the penguins [CC0](https://creativecommons.org/publicdomain/zero/1.0/); the others link to their public pages |
 

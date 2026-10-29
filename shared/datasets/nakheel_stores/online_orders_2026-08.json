@@ -1,0 +1,1890 @@
+{
+  "exported": "2026-09-01",
+  "source": "Nakheel website",
+  "orders": [
+    {
+      "order_id": 102844,
+      "order_date": "2026-08-01",
+      "status": "cancelled",
+      "customer": {
+        "customer_id": "C-1068",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-001",
+          "qty": 1,
+          "price": 19.5
+        },
+        {
+          "product_id": "P-042",
+          "qty": 2,
+          "price": 26.0
+        },
+        {
+          "product_id": "P-044",
+          "qty": 1,
+          "price": 12.0
+        },
+        {
+          "product_id": "P-017",
+          "qty": 1,
+          "price": 38.0
+        },
+        {
+          "product_id": "P-033",
+          "qty": 1,
+          "price": 13.5
+        }
+      ]
+    },
+    {
+      "order_id": 102845,
+      "order_date": "2026-08-01",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1335",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-011",
+          "qty": 2,
+          "price": 42.0
+        }
+      ]
+    },
+    {
+      "order_id": 102848,
+      "order_date": "2026-08-01",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1267",
+        "city": "Karak"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-030",
+          "qty": 2,
+          "price": 11.0
+        },
+        {
+          "product_id": "P-043",
+          "qty": 2,
+          "price": 15.0
+        }
+      ]
+    },
+    {
+      "order_id": 102849,
+      "order_date": "2026-08-01",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1120",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-026",
+          "qty": 3,
+          "price": 5.0
+        },
+        {
+          "product_id": "P-035",
+          "qty": 2,
+          "price": 11.0
+        },
+        {
+          "product_id": "P-017",
+          "qty": 1,
+          "price": 38.0
+        }
+      ]
+    },
+    {
+      "order_id": 102850,
+      "order_date": "2026-08-01",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1380",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-033",
+          "qty": 10,
+          "price": 13.5
+        }
+      ]
+    },
+    {
+      "order_id": 102855,
+      "order_date": "2026-08-03",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1160",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-002",
+          "qty": 2,
+          "price": 34.0
+        },
+        {
+          "product_id": "P-054",
+          "qty": 2,
+          "price": 14.0
+        }
+      ]
+    },
+    {
+      "order_id": 102856,
+      "order_date": "2026-08-04",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1141",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-007",
+          "qty": 3,
+          "price": 7.5
+        }
+      ]
+    },
+    {
+      "order_id": 102857,
+      "order_date": "2026-08-04",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1121",
+        "city": "Irbid"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-041",
+          "qty": 1,
+          "price": 8.0
+        }
+      ]
+    },
+    {
+      "order_id": 102858,
+      "order_date": "2026-08-05",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1354",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-032",
+          "qty": 4,
+          "price": 19.0
+        },
+        {
+          "product_id": "P-005",
+          "qty": 1,
+          "price": 9.0
+        }
+      ]
+    },
+    {
+      "order_id": 102861,
+      "order_date": "2026-08-06",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1380",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-044",
+          "qty": 10,
+          "price": 12.0
+        },
+        {
+          "product_id": "P-014",
+          "qty": 30,
+          "price": 24.0
+        },
+        {
+          "product_id": "P-048",
+          "qty": 5,
+          "price": 9.0
+        },
+        {
+          "product_id": "P-012",
+          "qty": 3,
+          "price": 29.0
+        },
+        {
+          "product_id": "P-001",
+          "qty": 9,
+          "price": 19.5
+        }
+      ]
+    },
+    {
+      "order_id": 102865,
+      "order_date": "2026-08-06",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1091",
+        "city": "Amman"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-033",
+          "qty": 1,
+          "price": 13.5
+        },
+        {
+          "product_id": "P-044",
+          "qty": 1,
+          "price": 12.0
+        },
+        {
+          "product_id": "P-026",
+          "qty": 1,
+          "price": 5.0
+        }
+      ]
+    },
+    {
+      "order_id": 102866,
+      "order_date": "2026-08-06",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1414",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-053",
+          "qty": 1,
+          "price": 6.0
+        },
+        {
+          "product_id": "P-039",
+          "qty": 3,
+          "price": 23.5
+        },
+        {
+          "product_id": "P-007",
+          "qty": 2,
+          "price": 7.5
+        },
+        {
+          "product_id": "P-042",
+          "qty": 1,
+          "price": 26.0
+        },
+        {
+          "product_id": "P-014",
+          "qty": 2,
+          "price": 24.0
+        }
+      ]
+    },
+    {
+      "order_id": 102867,
+      "order_date": "2026-08-06",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1022",
+        "city": "Mafraq"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-047",
+          "qty": 1,
+          "price": 22.0
+        }
+      ]
+    },
+    {
+      "order_id": 102876,
+      "order_date": "2026-08-07",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1380",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-054",
+          "qty": 5,
+          "price": 14.0
+        }
+      ]
+    },
+    {
+      "order_id": 102882,
+      "order_date": "2026-08-08",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1357",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-043",
+          "qty": 1,
+          "price": 15.0
+        },
+        {
+          "product_id": "P-053",
+          "qty": 1,
+          "price": 6.0
+        },
+        {
+          "product_id": "P-004",
+          "qty": 3,
+          "price": 16.5
+        }
+      ]
+    },
+    {
+      "order_id": 102884,
+      "order_date": "2026-08-09",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1375",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-033",
+          "qty": 1,
+          "price": 13.5
+        }
+      ]
+    },
+    {
+      "order_id": 102885,
+      "order_date": "2026-08-09",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1103",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-055",
+          "qty": 2,
+          "price": 19.0
+        }
+      ]
+    },
+    {
+      "order_id": 102886,
+      "order_date": "2026-08-09",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1267",
+        "city": "Karak"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-059",
+          "qty": 2,
+          "price": 5.5
+        },
+        {
+          "product_id": "P-041",
+          "qty": 1,
+          "price": 8.0
+        }
+      ]
+    },
+    {
+      "order_id": 102887,
+      "order_date": "2026-08-10",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1237",
+        "city": "Amman"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-048",
+          "qty": 1,
+          "price": 9.0
+        }
+      ]
+    },
+    {
+      "order_id": 102888,
+      "order_date": "2026-08-10",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1041",
+        "city": "Aqaba"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-043",
+          "qty": 3,
+          "price": 15.0
+        },
+        {
+          "product_id": "P-021",
+          "qty": 1,
+          "price": 6.5
+        },
+        {
+          "product_id": "P-026",
+          "qty": 1,
+          "price": 5.0
+        }
+      ]
+    },
+    {
+      "order_id": 102890,
+      "order_date": "2026-08-10",
+      "status": "cancelled",
+      "customer": {
+        "customer_id": "C-1445",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-060",
+          "qty": 2,
+          "price": 18.0
+        },
+        {
+          "product_id": "P-004",
+          "qty": 1,
+          "price": 16.5
+        },
+        {
+          "product_id": "P-056",
+          "qty": 2,
+          "price": 12.5
+        }
+      ]
+    },
+    {
+      "order_id": 102891,
+      "order_date": "2026-08-10",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1499",
+        "city": "Mafraq"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-034",
+          "qty": 1,
+          "price": 12.5
+        },
+        {
+          "product_id": "P-021",
+          "qty": 2,
+          "price": 6.5
+        }
+      ]
+    },
+    {
+      "order_id": 102893,
+      "order_date": "2026-08-10",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1267",
+        "city": "Karak"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-021",
+          "qty": 1,
+          "price": 6.5
+        },
+        {
+          "product_id": "P-052",
+          "qty": 1,
+          "price": 31.0
+        },
+        {
+          "product_id": "P-048",
+          "qty": 1,
+          "price": 9.0
+        }
+      ]
+    },
+    {
+      "order_id": 102894,
+      "order_date": "2026-08-10",
+      "status": "cancelled",
+      "customer": {
+        "customer_id": "C-1383",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-028",
+          "qty": 1,
+          "price": 14.5
+        },
+        {
+          "product_id": "P-031",
+          "qty": 1,
+          "price": 22.0
+        },
+        {
+          "product_id": "P-044",
+          "qty": 3,
+          "price": 12.0
+        }
+      ]
+    },
+    {
+      "order_id": 102897,
+      "order_date": "2026-08-10",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1380",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-026",
+          "qty": 10,
+          "price": 5.0
+        },
+        {
+          "product_id": "P-007",
+          "qty": 9,
+          "price": 7.5
+        },
+        {
+          "product_id": "P-041",
+          "qty": 3,
+          "price": 8.0
+        },
+        {
+          "product_id": "P-052",
+          "qty": 3,
+          "price": 31.0
+        }
+      ]
+    },
+    {
+      "order_id": 102898,
+      "order_date": "2026-08-10",
+      "status": "cancelled",
+      "customer": {
+        "customer_id": "C-1463",
+        "city": "Amman"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-030",
+          "qty": 2,
+          "price": 11.0
+        }
+      ]
+    },
+    {
+      "order_id": 102899,
+      "order_date": "2026-08-11",
+      "status": "cancelled",
+      "customer": {
+        "customer_id": "C-1073",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-018",
+          "qty": 2,
+          "price": 21.5
+        }
+      ]
+    },
+    {
+      "order_id": 102905,
+      "order_date": "2026-08-11",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1359",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-013",
+          "qty": 1,
+          "price": 52.0
+        },
+        {
+          "product_id": "P-048",
+          "qty": 1,
+          "price": 9.0
+        }
+      ]
+    },
+    {
+      "order_id": 102906,
+      "order_date": "2026-08-11",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1141",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-035",
+          "qty": 1,
+          "price": 11.0
+        },
+        {
+          "product_id": "P-036",
+          "qty": 1,
+          "price": 17.0
+        }
+      ]
+    },
+    {
+      "order_id": 102910,
+      "order_date": "2026-08-12",
+      "status": "cancelled",
+      "customer": {
+        "customer_id": "C-1380",
+        "city": "Amman"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-040",
+          "qty": 3,
+          "price": 8.5
+        }
+      ]
+    },
+    {
+      "order_id": 102913,
+      "order_date": "2026-08-13",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1346",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-007",
+          "qty": 2,
+          "price": 7.5
+        },
+        {
+          "product_id": "P-045",
+          "qty": 2,
+          "price": 10.5
+        },
+        {
+          "product_id": "P-015",
+          "qty": 1,
+          "price": 60.0
+        }
+      ]
+    },
+    {
+      "order_id": 102914,
+      "order_date": "2026-08-14",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1473",
+        "city": "Mafraq"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-016",
+          "qty": 1,
+          "price": 17.5
+        },
+        {
+          "product_id": "P-032",
+          "qty": 3,
+          "price": 19.0
+        }
+      ]
+    },
+    {
+      "order_id": 102915,
+      "order_date": "2026-08-14",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1245",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-024",
+          "qty": 1,
+          "price": 16.5
+        },
+        {
+          "product_id": "P-008",
+          "qty": 1,
+          "price": 55.0
+        },
+        {
+          "product_id": "P-043",
+          "qty": 1,
+          "price": 15.0
+        },
+        {
+          "product_id": "P-059",
+          "qty": 1,
+          "price": 5.5
+        }
+      ]
+    },
+    {
+      "order_id": 102916,
+      "order_date": "2026-08-14",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1338",
+        "city": "Amman"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-029",
+          "qty": 3,
+          "price": 9.5
+        },
+        {
+          "product_id": "P-048",
+          "qty": 1,
+          "price": 9.0
+        }
+      ]
+    },
+    {
+      "order_id": 102918,
+      "order_date": "2026-08-15",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1346",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-019",
+          "qty": 3,
+          "price": 18.0
+        },
+        {
+          "product_id": "P-038",
+          "qty": 2,
+          "price": 14.0
+        },
+        {
+          "product_id": "P-034",
+          "qty": 2,
+          "price": 12.5
+        }
+      ]
+    },
+    {
+      "order_id": 102920,
+      "order_date": "2026-08-15",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1160",
+        "city": "Irbid"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-054",
+          "qty": 2,
+          "price": 14.0
+        }
+      ]
+    },
+    {
+      "order_id": 102921,
+      "order_date": "2026-08-15",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1379",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-004",
+          "qty": 1,
+          "price": 16.5
+        },
+        {
+          "product_id": "P-060",
+          "qty": 1,
+          "price": 18.0
+        },
+        {
+          "product_id": "P-010",
+          "qty": 1,
+          "price": 21.0
+        },
+        {
+          "product_id": "P-040",
+          "qty": 2,
+          "price": 8.5
+        }
+      ]
+    },
+    {
+      "order_id": 102923,
+      "order_date": "2026-08-16",
+      "status": "cancelled",
+      "customer": {
+        "customer_id": "C-1380",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-034",
+          "qty": 6,
+          "price": 12.5
+        }
+      ]
+    },
+    {
+      "order_id": 102924,
+      "order_date": "2026-08-16",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1091",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-052",
+          "qty": 1,
+          "price": 31.0
+        },
+        {
+          "product_id": "P-015",
+          "qty": 2,
+          "price": 60.0
+        },
+        {
+          "product_id": "P-040",
+          "qty": 1,
+          "price": 8.5
+        },
+        {
+          "product_id": "P-044",
+          "qty": 4,
+          "price": 12.0
+        },
+        {
+          "product_id": "P-027",
+          "qty": 2,
+          "price": 24.0
+        }
+      ]
+    },
+    {
+      "order_id": 102925,
+      "order_date": "2026-08-16",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1275",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-014",
+          "qty": 1,
+          "price": 24.0
+        },
+        {
+          "product_id": "P-057",
+          "qty": 2,
+          "price": 16.0
+        },
+        {
+          "product_id": "P-060",
+          "qty": 1,
+          "price": 18.0
+        },
+        {
+          "product_id": "P-052",
+          "qty": 2,
+          "price": 31.0
+        },
+        {
+          "product_id": "P-054",
+          "qty": 3,
+          "price": 14.0
+        }
+      ]
+    },
+    {
+      "order_id": 102927,
+      "order_date": "2026-08-16",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1175",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-011",
+          "qty": 4,
+          "price": 42.0
+        },
+        {
+          "product_id": "P-059",
+          "qty": 2,
+          "price": 5.5
+        },
+        {
+          "product_id": "P-017",
+          "qty": 3,
+          "price": 38.0
+        }
+      ]
+    },
+    {
+      "order_id": 102929,
+      "order_date": "2026-08-17",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1459",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-014",
+          "qty": 1,
+          "price": 24.0
+        }
+      ]
+    },
+    {
+      "order_id": 102930,
+      "order_date": "2026-08-17",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1120",
+        "city": "Irbid"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-027",
+          "qty": 1,
+          "price": 24.0
+        }
+      ]
+    },
+    {
+      "order_id": 102932,
+      "order_date": "2026-08-17",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1391",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-013",
+          "qty": 1,
+          "price": 52.0
+        }
+      ]
+    },
+    {
+      "order_id": 102934,
+      "order_date": "2026-08-18",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1441",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-016",
+          "qty": 1,
+          "price": 17.5
+        },
+        {
+          "product_id": "P-057",
+          "qty": 2,
+          "price": 16.0
+        },
+        {
+          "product_id": "P-026",
+          "qty": 1,
+          "price": 5.0
+        },
+        {
+          "product_id": "P-027",
+          "qty": 1,
+          "price": 24.0
+        }
+      ]
+    },
+    {
+      "order_id": 102938,
+      "order_date": "2026-08-18",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1121",
+        "city": "Irbid"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-004",
+          "qty": 1,
+          "price": 16.5
+        }
+      ]
+    },
+    {
+      "order_id": 102939,
+      "order_date": "2026-08-19",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1444",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-028",
+          "qty": 2,
+          "price": 14.5
+        },
+        {
+          "product_id": "P-007",
+          "qty": 2,
+          "price": 7.5
+        },
+        {
+          "product_id": "P-032",
+          "qty": 3,
+          "price": 19.0
+        },
+        {
+          "product_id": "P-049",
+          "qty": 2,
+          "price": 27.5
+        },
+        {
+          "product_id": "P-054",
+          "qty": 1,
+          "price": 14.0
+        },
+        {
+          "product_id": "P-043",
+          "qty": 1,
+          "price": 15.0
+        }
+      ]
+    },
+    {
+      "order_id": 102940,
+      "order_date": "2026-08-19",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1045",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-013",
+          "qty": 1,
+          "price": 52.0
+        },
+        {
+          "product_id": "P-039",
+          "qty": 1,
+          "price": 23.5
+        },
+        {
+          "product_id": "P-057",
+          "qty": 3,
+          "price": 16.0
+        }
+      ]
+    },
+    {
+      "order_id": 102942,
+      "order_date": "2026-08-20",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1102",
+        "city": "Irbid"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-059",
+          "qty": 3,
+          "price": 5.5
+        }
+      ]
+    },
+    {
+      "order_id": 102945,
+      "order_date": "2026-08-22",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1245",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-006",
+          "qty": 3,
+          "price": 48.0
+        },
+        {
+          "product_id": "P-023",
+          "qty": 1,
+          "price": 12.0
+        },
+        {
+          "product_id": "P-050",
+          "qty": 2,
+          "price": 11.5
+        }
+      ]
+    },
+    {
+      "order_id": 102947,
+      "order_date": "2026-08-22",
+      "status": "cancelled",
+      "customer": {
+        "customer_id": "C-1343",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-032",
+          "qty": 2,
+          "price": 19.0
+        },
+        {
+          "product_id": "P-004",
+          "qty": 1,
+          "price": 16.5
+        },
+        {
+          "product_id": "P-018",
+          "qty": 1,
+          "price": 21.5
+        }
+      ]
+    },
+    {
+      "order_id": 102948,
+      "order_date": "2026-08-22",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1115",
+        "city": "Karak"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-023",
+          "qty": 6,
+          "price": 12.0
+        }
+      ]
+    },
+    {
+      "order_id": 102952,
+      "order_date": "2026-08-23",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1380",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-010",
+          "qty": 10,
+          "price": 21.0
+        },
+        {
+          "product_id": "P-033",
+          "qty": 15,
+          "price": 13.5
+        }
+      ]
+    },
+    {
+      "order_id": 102954,
+      "order_date": "2026-08-23",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1270",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-021",
+          "qty": 1,
+          "price": 6.5
+        },
+        {
+          "product_id": "P-022",
+          "qty": 4,
+          "price": 18.0
+        },
+        {
+          "product_id": "P-020",
+          "qty": 1,
+          "price": 26.0
+        },
+        {
+          "product_id": "P-017",
+          "qty": 1,
+          "price": 38.0
+        },
+        {
+          "product_id": "P-054",
+          "qty": 1,
+          "price": 14.0
+        }
+      ]
+    },
+    {
+      "order_id": 102955,
+      "order_date": "2026-08-23",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1062",
+        "city": "Al Zarqa"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-028",
+          "qty": 1,
+          "price": 14.5
+        },
+        {
+          "product_id": "P-059",
+          "qty": 1,
+          "price": 5.5
+        }
+      ]
+    },
+    {
+      "order_id": 102956,
+      "order_date": "2026-08-23",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1212",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-022",
+          "qty": 3,
+          "price": 18.0
+        },
+        {
+          "product_id": "P-060",
+          "qty": 1,
+          "price": 18.0
+        }
+      ]
+    },
+    {
+      "order_id": 102957,
+      "order_date": "2026-08-23",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1007",
+        "city": "Amman"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-023",
+          "qty": 1,
+          "price": 12.0
+        }
+      ]
+    },
+    {
+      "order_id": 102959,
+      "order_date": "2026-08-24",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1016",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-019",
+          "qty": 1,
+          "price": 18.0
+        },
+        {
+          "product_id": "P-040",
+          "qty": 2,
+          "price": 8.5
+        },
+        {
+          "product_id": "P-036",
+          "qty": 2,
+          "price": 17.0
+        },
+        {
+          "product_id": "P-056",
+          "qty": 1,
+          "price": 12.5
+        },
+        {
+          "product_id": "P-038",
+          "qty": 1,
+          "price": 14.0
+        }
+      ]
+    },
+    {
+      "order_id": 102962,
+      "order_date": "2026-08-25",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1073",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-002",
+          "qty": 2,
+          "price": 34.0
+        }
+      ]
+    },
+    {
+      "order_id": 102963,
+      "order_date": "2026-08-25",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1487",
+        "city": null
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-026",
+          "qty": 1,
+          "price": 5.0
+        },
+        {
+          "product_id": "P-006",
+          "qty": 1,
+          "price": 48.0
+        },
+        {
+          "product_id": "P-014",
+          "qty": 1,
+          "price": 24.0
+        }
+      ]
+    },
+    {
+      "order_id": 102964,
+      "order_date": "2026-08-25",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1454",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-014",
+          "qty": 1,
+          "price": 24.0
+        },
+        {
+          "product_id": "P-054",
+          "qty": 2,
+          "price": 14.0
+        },
+        {
+          "product_id": "P-026",
+          "qty": 2,
+          "price": 5.0
+        }
+      ]
+    },
+    {
+      "order_id": 102965,
+      "order_date": "2026-08-25",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1308",
+        "city": "Amman"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-051",
+          "qty": 1,
+          "price": 10.0
+        },
+        {
+          "product_id": "P-029",
+          "qty": 1,
+          "price": 9.5
+        }
+      ]
+    },
+    {
+      "order_id": 102968,
+      "order_date": "2026-08-25",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1174",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-045",
+          "qty": 3,
+          "price": 10.5
+        },
+        {
+          "product_id": "P-004",
+          "qty": 2,
+          "price": 16.5
+        },
+        {
+          "product_id": "P-033",
+          "qty": 1,
+          "price": 13.5
+        }
+      ]
+    },
+    {
+      "order_id": 102969,
+      "order_date": "2026-08-25",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1474",
+        "city": "amman"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-056",
+          "qty": 1,
+          "price": 12.5
+        }
+      ]
+    },
+    {
+      "order_id": 102971,
+      "order_date": "2026-08-25",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1383",
+        "city": "Irbid"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-036",
+          "qty": 1,
+          "price": 17.0
+        },
+        {
+          "product_id": "P-045",
+          "qty": 1,
+          "price": 10.5
+        }
+      ]
+    },
+    {
+      "order_id": 102973,
+      "order_date": "2026-08-26",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1160",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-026",
+          "qty": 3,
+          "price": 5.0
+        },
+        {
+          "product_id": "P-050",
+          "qty": 2,
+          "price": 11.5
+        },
+        {
+          "product_id": "P-028",
+          "qty": 3,
+          "price": 14.5
+        },
+        {
+          "product_id": "P-060",
+          "qty": 1,
+          "price": 18.0
+        }
+      ]
+    },
+    {
+      "order_id": 102980,
+      "order_date": "2026-08-27",
+      "status": "pending",
+      "customer": {
+        "customer_id": "C-1212",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-037",
+          "qty": 1,
+          "price": 21.0
+        },
+        {
+          "product_id": "P-047",
+          "qty": 3,
+          "price": 22.0
+        }
+      ]
+    },
+    {
+      "order_id": 102981,
+      "order_date": "2026-08-27",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1227",
+        "city": null
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-045",
+          "qty": 1,
+          "price": 10.5
+        },
+        {
+          "product_id": "P-003",
+          "qty": 2,
+          "price": 42.0
+        }
+      ]
+    },
+    {
+      "order_id": 102983,
+      "order_date": "2026-08-27",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1474",
+        "city": "amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-024",
+          "qty": 2,
+          "price": 16.5
+        },
+        {
+          "product_id": "P-041",
+          "qty": 1,
+          "price": 8.0
+        },
+        {
+          "product_id": "P-001",
+          "qty": 1,
+          "price": 19.5
+        },
+        {
+          "product_id": "P-007",
+          "qty": 1,
+          "price": 7.5
+        },
+        {
+          "product_id": "P-033",
+          "qty": 1,
+          "price": 13.5
+        },
+        {
+          "product_id": "P-044",
+          "qty": 2,
+          "price": 12.0
+        }
+      ]
+    },
+    {
+      "order_id": 102984,
+      "order_date": "2026-08-28",
+      "status": "pending",
+      "customer": {
+        "customer_id": "C-1203",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-052",
+          "qty": 1,
+          "price": 31.0
+        },
+        {
+          "product_id": "P-048",
+          "qty": 1,
+          "price": 9.0
+        }
+      ]
+    },
+    {
+      "order_id": 102985,
+      "order_date": "2026-08-28",
+      "status": "pending",
+      "customer": {
+        "customer_id": "C-1469",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-040",
+          "qty": 30,
+          "price": 8.5
+        }
+      ]
+    },
+    {
+      "order_id": 102986,
+      "order_date": "2026-08-28",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1122",
+        "city": "Irbid"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-030",
+          "qty": 1,
+          "price": 11.0
+        },
+        {
+          "product_id": "P-004",
+          "qty": 1,
+          "price": 16.5
+        },
+        {
+          "product_id": "P-054",
+          "qty": 2,
+          "price": 14.0
+        },
+        {
+          "product_id": "P-057",
+          "qty": 1,
+          "price": 16.0
+        }
+      ]
+    },
+    {
+      "order_id": 102991,
+      "order_date": "2026-08-29",
+      "status": "pending",
+      "customer": {
+        "customer_id": "C-1470",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-041",
+          "qty": 1,
+          "price": 8.0
+        }
+      ]
+    },
+    {
+      "order_id": 102993,
+      "order_date": "2026-08-30",
+      "status": "pending",
+      "customer": {
+        "customer_id": "C-1085",
+        "city": "Amman"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-006",
+          "qty": 5,
+          "price": 48.0
+        },
+        {
+          "product_id": "P-027",
+          "qty": 12,
+          "price": 24.0
+        },
+        {
+          "product_id": "P-022",
+          "qty": 5,
+          "price": 18.0
+        },
+        {
+          "product_id": "P-007",
+          "qty": 10,
+          "price": 7.5
+        },
+        {
+          "product_id": "P-035",
+          "qty": 5,
+          "price": 11.0
+        }
+      ]
+    },
+    {
+      "order_id": 102994,
+      "order_date": "2026-08-30",
+      "status": "completed",
+      "customer": {
+        "customer_id": "C-1151",
+        "city": "Amman"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-043",
+          "qty": 2,
+          "price": 15.0
+        },
+        {
+          "product_id": "P-007",
+          "qty": 1,
+          "price": 7.5
+        }
+      ]
+    },
+    {
+      "order_id": 102999,
+      "order_date": "2026-08-31",
+      "status": "pending",
+      "customer": {
+        "customer_id": "C-1141",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 2.5,
+      "items": [
+        {
+          "product_id": "P-042",
+          "qty": 1,
+          "price": 26.0
+        },
+        {
+          "product_id": "P-026",
+          "qty": 1,
+          "price": 5.0
+        }
+      ]
+    },
+    {
+      "order_id": 103000,
+      "order_date": "2026-08-31",
+      "status": "pending",
+      "customer": {
+        "customer_id": "C-1189",
+        "city": "Zarqa"
+      },
+      "shipping_fee": 0.0,
+      "items": [
+        {
+          "product_id": "P-049",
+          "qty": 2,
+          "price": 27.5
+        },
+        {
+          "product_id": "P-041",
+          "qty": 2,
+          "price": 8.0
+        },
+        {
+          "product_id": "P-020",
+          "qty": 1,
+          "price": 26.0
+        },
+        {
+          "product_id": "P-012",
+          "qty": 1,
+          "price": 29.0
+        },
+        {
+          "product_id": "P-021",
+          "qty": 2,
+          "price": 6.5
+        }
+      ]
+    }
+  ]
+}
