@@ -2,7 +2,7 @@
 
 In this self-guided lab, you will change every argument of `ML.EXPLAIN_PREDICT`, read every column it returns, explain a classifier as well as a regression, and put `ML.GLOBAL_EXPLAIN` beside D14's `ML.FEATURE_IMPORTANCE`.
 
-**When:** after class, about 45 minutes, at your own pace. Not submitted. · **Data:** `ml.insurance_groups`, `ml.ins_boosted` and `ml.ins_explain` (D14 activity 01, activity 07); `ml.telco_groups` and `ml.telco_boosted` (D14 lab 07) · **SQL:** `Unsolved/explain_options.sql` to run step by step, `Solved/explain_options.sql`
+**When:** after class, about 45 minutes, at your own pace. Not submitted. · **Data:** `ml.insurance_groups` and `ml.ins_boosted` (D14 activity 01), `ml.ins_explain` (activity 07); `ml.telco_groups` and `ml.telco_boosted` (D14 lab 07) · **SQL:** `Unsolved/explain_options.sql` to run step by step, `Solved/explain_options.sql`
 
 ## The story
 

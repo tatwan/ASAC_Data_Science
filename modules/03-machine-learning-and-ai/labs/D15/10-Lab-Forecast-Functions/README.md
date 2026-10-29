@@ -2,7 +2,7 @@
 
 In this self-guided lab, you will run each function that reads an ARIMA_PLUS model (`ML.FORECAST`, `ML.EXPLAIN_FORECAST`, `ML.DETECT_ANOMALIES`, `ML.ARIMA_EVALUATE`, `ML.ARIMA_COEFFICIENTS` and `ML.EVALUATE`), change each of its arguments, and read every column it returns. Then you will score forecasts with `ML.METRICS`, which needs no model at all.
 
-**When:** after class, about 60 minutes, at your own pace. Not submitted. · **Data:** `ml.air_arima` (activity 02), `ml.air_validation` and `ml.air_training` (activities 02 and 03) · **SQL:** `Unsolved/forecast_functions.sql` to run step by step, `Solved/forecast_functions.sql`
+**When:** after class, about 60 minutes, at your own pace. Not submitted. · **Data:** `ml.air_arima` and `ml.air_training` (activity 02), `ml.air_validation` (activity 03) · **SQL:** `Unsolved/forecast_functions.sql` to run step by step, `Solved/forecast_functions.sql`
 
 ## The story
 

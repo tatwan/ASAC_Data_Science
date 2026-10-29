@@ -2,7 +2,7 @@
 
 In this optional self-guided lab, you will build Nakheel's daily revenue series from its orders, split it by date, score three simple forecasts and an ARIMA_PLUS model on the days held aside, try the custom-holiday route for Jordan's Eid holidays, and save a 30-day forecast for D22.
 
-**When:** after labs 09 to 12, at your own pace, about 45 minutes. Optional; not submitted. · **Data:** `nakheel.orders` (D04) → the views `ml.nakheel_daily`, `ml.revenue_training`, `ml.revenue_validation` and the table `ml.revenue_forecast` · **SQL:** `Unsolved/nakheel_daily_revenue.sql` to run step by step, `Solved/nakheel_daily_revenue.sql`
+**When:** after labs 09 to 12, at your own pace, about 45 minutes. Optional; not submitted. · **Data:** `nakheel.orders` (D04 activity 03) → the views `ml.nakheel_daily`, `ml.revenue_training`, `ml.revenue_validation` and the table `ml.revenue_forecast` · **SQL:** `Unsolved/nakheel_daily_revenue.sql` to run step by step, `Solved/nakheel_daily_revenue.sql`
 
 ## The story
 

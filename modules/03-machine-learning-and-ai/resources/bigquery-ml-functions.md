@@ -1,13 +1,13 @@
 # BigQuery ML functions in Module 3
 
-Every `ML.` function you meet in D11 to D15, in class or in the after-class labs, on one page. A model is something you query: you train it with `CREATE MODEL`, then each function below reads something out of it (predictions, scores, weights, explanations) or prepares the features it trains on. Use the table to find what a function is for and where you ran it; each name links to Google's page for that function, with every argument and output column. "Activity" means in class; "lab" means after class. Each day's deck has the same list for that day on its "BigQuery ML functions today" slide, just before the close.
+Every `ML.` function you meet in D11 to D16, in class or in the after-class labs, on one page. A model is something you query: you train it with `CREATE MODEL`, then each function below reads something out of it (predictions, scores, weights, explanations) or prepares the features it trains on. Use the table to find what a function is for and where you ran it; each name links to Google's page for that function, with every argument and output column. "Activity" means in class; "lab" means after class. Each day's deck has the same list for that day on its "BigQuery ML functions today" slide, just before the close.
 
 ## Predict and score
 
 | Function | What it is for | Days and where | Notes |
 |---|---|---|---|
-| [`ML.PREDICT`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-predict) | A prediction for each row you pass in: a number, a class with its probabilities, or a k-means group with its distances | D11: activities 02, 03; lab 08 · D12: activities 01, 02; labs 03, 05 · D13: activities 01, 03, 04; labs 05, 07–09 · D14: activities 01, 03; lab 11 · D15: activity 08 | Columns the model does not use are passed through to the output, so you can keep an ID or a `split` column beside the prediction |
-| [`ML.EVALUATE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-evaluate) | The scores on the rows you pass: MAE and R² for a number; accuracy, precision, recall, F1, log loss and ROC AUC for a class; the Davies–Bouldin index and mean squared distance for k-means; MAE and other errors for a forecast | D11: activities 02–04; labs 05–08 · D12: activities 01, 02; labs 03, 04, 05, 06 · D13: activity 04; labs 05, 06 · D14: activities 01, 03–06; labs 07–11 · D15: labs 10, 12 | For an `ARIMA_PLUS` model, pass the actual values to compare with; without them, Google points you to `ML.ARIMA_EVALUATE` |
+| [`ML.PREDICT`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-predict) | A prediction for each row you pass in: a number, a class with its probabilities, or a k-means group with its distances | D11: activities 02, 03; lab 08 · D12: activities 01, 02; labs 03, 05 · D13: activities 01, 03, 04; labs 05, 07–09 · D14: activities 01, 03; lab 11 · D15: activity 08 · D16: activities 01–04; labs 06, 07 | Columns the model does not use are passed through to the output, so you can keep an ID or a `split` column beside the prediction |
+| [`ML.EVALUATE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-evaluate) | The scores on the rows you pass: MAE and R² for a number; accuracy, precision, recall, F1, log loss and ROC AUC for a class; the Davies–Bouldin index and mean squared distance for k-means; MAE and other errors for a forecast | D11: activities 02–04; labs 05–08 · D12: activities 01, 02; labs 03, 04, 05, 06 · D13: activity 04; labs 05, 06 · D14: activities 01, 03–06; labs 07–11 · D15: labs 10, 12 · D16: activities 02–05; labs 06, 07 | For an `ARIMA_PLUS` model, pass the actual values to compare with; without them, Google points you to `ML.ARIMA_EVALUATE` |
 | [`ML.CONFUSION_MATRIX`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-confusion) | The counts of right and wrong answers, by class | D12: activity 02; lab 05 | Classifiers. A threshold works only with a table or query to score |
 | [`ML.ROC_CURVE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-roc) | Recall, false positive rate and the four counts at each threshold | D12: activity 02; labs 03, 04 | Precision is one division of its counts: `true_positives / (true_positives + false_positives)` |
 | [`ML.METRICS`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-metrics) | Regression or classification scores from any table or query of actual and predicted values, with no model | D14: Resources · D15: lab 10 | **Preview** (Google's Pre-GA terms). Rows with a NULL are left out. BOOL labels are scored for the TRUE class; STRING labels as a macro-average over all classes |
@@ -19,7 +19,7 @@ Every `ML.` function you meet in D11 to D15, in class or in the after-class labs
 | [`ML.WEIGHTS`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-weights) | The numbers the model learned, feature by feature (one per category for a text column) | D11: activities 02, 03; labs 06, 07 · D12: activities 01, 02 · D14: activity 05 | Linear and logistic regression; for trees, use `ML.FEATURE_IMPORTANCE` |
 | [`ML.ADVANCED_WEIGHTS`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-advanced-weights) | The weights with their standard errors and p-values | D11: lab 06 (bonus) | Linear and logistic regression |
 | [`ML.FEATURE_INFO`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-feature) | What the model was given: for each input column, its min, max, mean, median, standard deviation, number of categories and number of NULLs | D14: activity 04, Resources · D15: lab 12 | With `TRANSFORM`, it describes the columns before the transform |
-| [`ML.TRAINING_INFO`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-train) | One row per training step (iteration): the loss on the training rows, the loss on the rows held aside, and how long the step took | D11: lab 07 · D13: lab 06 · D14: lab 08 | For k-means, also each group's size and radius. The held-out loss is empty when no rows were held aside (`NO_SPLIT`) |
+| [`ML.TRAINING_INFO`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-train) | One row per training step (iteration): the loss on the training rows, the loss on the rows held aside, and how long the step took | D11: lab 07 · D13: lab 06 · D14: lab 08 · D16: activity 01 | For k-means, also each group's size and radius. The held-out loss is empty when no rows were held aside (`NO_SPLIT`) |
 
 ## Explain
 
@@ -33,7 +33,7 @@ Every `ML.` function you meet in D11 to D15, in class or in the after-class labs
 
 | Function | What it is for | Days and where | Notes |
 |---|---|---|---|
-| [`ML.FORECAST`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-forecast) | The next periods of a series, each with a lower and upper bound | D15: activities 02, 04–06, 08; labs 09, 10, 13 | `horizon` defaults to 3 periods and `confidence_level` to 0.95 |
+| [`ML.FORECAST`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-forecast) | The next periods of a series, each with a lower and upper bound | D15: activities 02, 04–06, 08; labs 09, 10, 13 · D16: activity 05; lab 08 | `horizon` defaults to 3 periods and `confidence_level` to 0.95 |
 | [`ML.EXPLAIN_FORECAST`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-explain-forecast) | Every period, past and forecast, split into its parts: trend, season, holiday effect, spikes and dips, step changes and what is left | D15: activity 04; labs 09, 10, 13 | Needs `DECOMPOSE_TIME_SERIES` left at TRUE when the model is trained |
 | [`ML.ARIMA_EVALUATE`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-arima-evaluate) | The ARIMA order the model chose (p, d, q and drift), with its fit statistics (AIC) and the seasons it found | D15: labs 09, 10, 13 | Needs no input data |
 | [`ML.ARIMA_COEFFICIENTS`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-arima-coefficients) | The coefficients of the chosen ARIMA: AR, MA, and the intercept or drift | D15: lab 10 | |
@@ -46,6 +46,21 @@ Every `ML.` function you meet in D11 to D15, in class or in the after-class labs
 | [`ML.CENTROIDS`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-centroids) | The centre of each k-means group, feature by feature | D13: activity 01 | Returned in the original units unless you ask for them standardized (`STANDARDIZE`, default FALSE) |
 
 `ML.PREDICT`, `ML.EVALUATE`, `ML.TRAINING_INFO` and `ML.DETECT_ANOMALIES` also work on k-means models; see the tables above.
+
+## Monitor and manage (MLOps, D16)
+
+| Function or statement | What it is for | Days and where | Notes |
+|---|---|---|---|
+| [`ML.DESCRIBE_DATA`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-describe-data) | One row of statistics per column of a table or query: rows, NULLs, zeros, min, max, mean, standard deviation, median, distinct values, most common values | D16: lab 07 | Takes a table or query, not a model |
+| [`ML.VALIDATE_DATA_SKEW`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-validate-data-skew) | Compares new rows with the statistics saved when the model was trained, and flags columns whose distribution moved (`is_anomaly`) | D16: lab 07 | Not for `ARIMA_PLUS`, matrix factorization or AutoML. Default thresholds 0.3 |
+| [`ML.VALIDATE_DATA_DRIFT`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-validate-data-drift) | Compares two sets of rows (last month and this month, say) column by column, and flags the ones that moved | D16: lab 07 | Needs no model |
+| [`ALTER MODEL`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-alter-model) | Sets a model's description, labels or expiry after it is trained | D16: lab 06 | A statement, not a function. There is no INFORMATION_SCHEMA view for models |
+
+## Recommend
+
+| Function | What it is for | Days and where | Notes |
+|---|---|---|---|
+| [`ML.RECOMMEND`](https://docs.cloud.google.com/bigquery/docs/reference/standard-sql/bigqueryml-syntax-recommend) | For a matrix factorization model, a rating (explicit) or a confidence (implicit) for each user and item | D16: lab 09 (optional) | Google: "Matrix factorization models are only available to customers with reservations", so it may not train in a sandbox |
 
 ## Preprocessing inside TRANSFORM
 

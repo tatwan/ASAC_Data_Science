@@ -2,7 +2,7 @@
 
 In this activity, you and a partner will choose the model to give the pricing team, using only validation scores, write down why, and then score your choice once on the test people.
 
-**Time:** about 18 minutes: 10 to choose, 8 to test · **Data:** `ml.insurance_features` (activity 05) · **Starter:** `Unsolved/choose_and_test.sql`
+**Time:** about 18 minutes: 10 to choose, 8 to test · **Data:** `ml.insurance_features` and `ml.ins_linear_plus` (activity 05) · **Starter:** `Unsolved/choose_and_test.sql`
 
 ## The story
 

@@ -2,7 +2,7 @@
 
 In this lab, you will put D12's logistic regression, a boosted-trees classifier and a random-forest classifier on the same Telco customers, choose one on validation, test one engineered feature, and test your choice once.
 
-**When:** after class, about 50 minutes, at your own pace. Not submitted. · **Data:** `ml.telco` (D12) → the view `ml.telco_groups` · **SQL:** `Solved/trees_for_churn.sql`
+**When:** after class, about 50 minutes, at your own pace. Not submitted. · **Data:** `ml.telco` (D12 activity 01) → the view `ml.telco_groups` · **SQL:** `Solved/trees_for_churn.sql`
 
 ## The story
 

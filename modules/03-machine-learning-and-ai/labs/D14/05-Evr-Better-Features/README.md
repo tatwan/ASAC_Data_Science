@@ -2,7 +2,7 @@
 
 In this activity, you will turn the pattern the trees found into two new columns, give them to D11's straight line, and see whether a simple model with better features can match the trees. Then you will meet a column that looks helpful and is not.
 
-**Time:** about 20 minutes in class, following along · **Data:** `ml.insurance_groups` → the view `ml.insurance_features` · **Starter:** `Unsolved/better_features.sql`
+**Time:** about 20 minutes in class, following along · **Data:** `ml.insurance_groups` and `ml.ins_linear` (activity 01) → the view `ml.insurance_features` · **Starter:** `Unsolved/better_features.sql`
 
 ## The story
 

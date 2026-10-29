@@ -2,7 +2,7 @@
 
 In this self-guided lab, you will change the number of trees, their depth and the two random draws of the forest from class, and then ask BigQuery to try ten combinations of boosted-tree settings for you, scored on our own validation people.
 
-**When:** after class, about 40 minutes, at your own pace. Not submitted. · **Data:** `ml.insurance_groups` · **SQL:** `Solved/forest_options_and_tuning.sql`
+**When:** after class, about 40 minutes, at your own pace. Not submitted. · **Data:** `ml.insurance_groups` (activity 01) and `ml.ins_forest` (activity 04) · **SQL:** `Solved/forest_options_and_tuning.sql`
 
 ## The story
 

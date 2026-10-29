@@ -2,7 +2,7 @@
 
 In this self-guided lab, you will switch the intercept off and watch the line break, see the two ways BigQuery turns text into numbers, and find out why comparing raw weights misleads when features are measured in different units.
 
-**When:** after class, at your own pace. Not submitted. · **Data:** `ml.salary_data`, `ml.insurance` (class), `ml.cars_random` (lab 05) · **SQL:** `Solved/intercept_and_categories.sql`
+**When:** after class, at your own pace. Not submitted. · **Data:** `ml.salary_data` (activity 02), `ml.insurance` (activity 03), `ml.cars_random` (lab 05) · **SQL:** `Solved/intercept_and_categories.sql`
 
 ## How to work through this lab
 

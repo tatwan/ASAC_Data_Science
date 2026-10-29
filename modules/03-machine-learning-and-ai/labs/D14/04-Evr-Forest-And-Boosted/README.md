@@ -2,7 +2,7 @@
 
 In this activity, you will train a random forest, put every model of the day side by side on the same validation people, compare each with its score on the rows it learned from, and read which columns the boosted trees used.
 
-**Time:** about 22 minutes in class, following along · **Data:** `ml.insurance_groups` · **Starter:** `Unsolved/forest_and_boosted.sql`
+**Time:** about 22 minutes in class, following along · **Data:** `ml.insurance_groups`, `ml.ins_linear` and `ml.ins_boosted` (activity 01), `ml.ins_tree3` and `ml.ins_tree15` (activity 03) · **Starter:** `Unsolved/forest_and_boosted.sql`
 
 ## The story
 

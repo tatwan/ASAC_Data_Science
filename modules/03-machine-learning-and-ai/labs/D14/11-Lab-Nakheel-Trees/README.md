@@ -2,7 +2,7 @@
 
 In this optional self-guided lab, you will take Nakheel's customer view from D11, fix three groups of customers, compare a line, boosted trees and a forest on the same validation customers, test your choice once, and see why 82 customers are not enough to be sure.
 
-**When:** after labs 07–10, at your own pace, about 40 minutes. Optional; not submitted. · **Data:** `ml.customer_features` (built in D11's optional lab 08) · **SQL:** `Solved/nakheel_trees.sql`
+**When:** after labs 07–10, at your own pace, about 40 minutes. Optional; not submitted. · **Data:** `ml.customer_features` (D11 lab 08, step 3) · **SQL:** `Solved/nakheel_trees.sql`
 
 ## The story
 

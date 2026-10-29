@@ -2,7 +2,7 @@
 
 In this optional self-guided lab, you will take Nakheel's raw order and customer tables, check them, clean them, join and summarise them into one row per customer in a view, train a spend model on it, and see how real company data behaves differently from the clean classroom files.
 
-**When:** after labs 05–07, at your own pace. Optional; not submitted. · **Data:** `nakheel.orders`, `nakheel.customers` (uploaded on D04) · **SQL:** `Solved/nakheel_end_to_end.sql`
+**When:** after labs 05–07, at your own pace. Optional; not submitted. · **Data:** `nakheel.orders`, `nakheel.customers` (D04 activity 03) · **SQL:** `Solved/nakheel_end_to_end.sql`
 
 ## Why this lab exists
 

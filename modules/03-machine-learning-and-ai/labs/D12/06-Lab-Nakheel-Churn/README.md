@@ -2,7 +2,7 @@
 
 In this optional self-guided lab, you will turn Nakheel's spend table into a yes-or-no label, train a classifier on it, judge it against the majority guess, and then watch a reasonable-looking column make the score almost perfect, and worthless.
 
-**When:** after labs 03–05, at your own pace. Optional; not submitted. · **Data:** `ml.customer_features` (built in D11's optional lab 08), `nakheel.orders` · **SQL:** `Solved/nakheel_churn.sql`
+**When:** after labs 03–05, at your own pace. Optional; not submitted. · **Data:** `ml.customer_features` (D11 lab 08, step 3), `nakheel.orders` (D04 activity 03) · **SQL:** `Solved/nakheel_churn.sql`
 
 ## Before you start
 

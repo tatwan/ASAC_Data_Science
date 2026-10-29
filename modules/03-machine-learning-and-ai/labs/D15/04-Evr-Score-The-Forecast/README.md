@@ -2,7 +2,7 @@
 
 In this activity, you will put ARIMA_PLUS's forecast beside the twelve real months of 1959, score it with MAE and MAPE against the simple forecasts from activity 03, count the months its interval caught, and look for training months that the model found unusual.
 
-**Time:** about 23 minutes in class, following along · **Data:** `ml.air_arima` (activity 02), `ml.air_validation` and `ml.air_training` (activities 02 and 03) · **Starter:** `Unsolved/score_the_forecast.sql`
+**Time:** about 23 minutes in class, following along · **Data:** `ml.air_arima` and `ml.air_training` (activity 02), `ml.air_validation` (activity 03) · **Starter:** `Unsolved/score_the_forecast.sql`
 
 ## The story
 

@@ -2,7 +2,7 @@
 
 In this activity, you will split the 1,338 insured people into three fixed groups, train D11's linear model and a prepared boosted-trees model on the same training rows, and score both on the same validation rows.
 
-**Time:** about 30 minutes in class, following along · **Data:** `ml.insurance` (D11) → the view `ml.insurance_groups` · **Starter:** `Unsolved/same_rows_two_models.sql`
+**Time:** about 30 minutes in class, following along · **Data:** `ml.insurance` (D11 activity 03) → the view `ml.insurance_groups` · **Starter:** `Unsolved/same_rows_two_models.sql`
 
 ## The story
 

@@ -2,7 +2,7 @@
 
 In this self-guided lab, you will change the settings of the boosted-trees model from class one group at a time (how many rounds and how big a step, how big each tree, how much shrinking, how much randomness) and watch the training and validation scores move.
 
-**When:** after class, about 45 minutes, at your own pace. Not submitted. · **Data:** `ml.insurance_groups` · **SQL:** `Solved/boosted_tree_options.sql`
+**When:** after class, about 45 minutes, at your own pace. Not submitted. · **Data:** `ml.insurance_groups` and `ml.ins_boosted` (activity 01) · **SQL:** `Solved/boosted_tree_options.sql`
 
 ## The story
 

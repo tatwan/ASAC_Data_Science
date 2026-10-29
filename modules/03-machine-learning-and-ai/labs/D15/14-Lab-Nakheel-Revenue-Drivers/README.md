@@ -2,7 +2,7 @@
 
 In this optional self-guided lab, you will compare Nakheel's two years of completed orders with a contribution analysis model, read which cities, channels, customer segments and product categories explain the change, walk through each of the model's options, and check the model's answers with plain SQL.
 
-**When:** after lab 13 or any time after class, about 50 minutes, at your own pace. Optional; not submitted. · **Data:** `nakheel.orders`, `nakheel.order_items`, `nakheel.products`, `nakheel.customers` (D04) → the view `ml.revenue_lines` and the models `ml.revenue_drivers`, `ml.revenue_drivers_city_channel`, `ml.revenue_drivers_05`, `ml.revenue_drivers_top10`, `ml.revenue_drivers_pruned`, `ml.revenue_per_unit` and `ml.revenue_per_order` · **SQL:** `Unsolved/nakheel_revenue_drivers.sql` to run step by step, `Solved/nakheel_revenue_drivers.sql`
+**When:** after lab 13 or any time after class, about 50 minutes, at your own pace. Optional; not submitted. · **Data:** `nakheel.orders`, `nakheel.order_items`, `nakheel.products`, `nakheel.customers` (D04 activity 03) → the view `ml.revenue_lines` and the models `ml.revenue_drivers`, `ml.revenue_drivers_city_channel`, `ml.revenue_drivers_05`, `ml.revenue_drivers_top10`, `ml.revenue_drivers_pruned`, `ml.revenue_per_unit` and `ml.revenue_per_order` · **SQL:** `Unsolved/nakheel_revenue_drivers.sql` to run step by step, `Solved/nakheel_revenue_drivers.sql`
 
 ## The story
 

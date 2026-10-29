@@ -2,7 +2,7 @@
 
 In this activity, you will retrain the chosen model on every month before 1960, forecast 1960, and score it once against the same-month-last-year forecast.
 
-**Time:** about 8 minutes in class, following along · **Data:** `ml.air_passengers`, `ml.air_validation` and `ml.air_test` (activities 01 and 03) → the model `ml.air_arima_final` · **Starter:** `Unsolved/test_year_once.sql`
+**Time:** about 8 minutes in class, following along · **Data:** `ml.air_passengers` (activity 01), `ml.air_validation` and `ml.air_test` (activity 03) → the model `ml.air_arima_final` · **Starter:** `Unsolved/test_year_once.sql`
 
 ## The story
 

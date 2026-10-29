@@ -2,7 +2,7 @@
 
 In this activity, you will measure the small leak in D14 lab 10's BMI bands, train a model whose `TRANSFORM` clause computes the bands from training rows only, and save a forecast and a set of scored people as tables that Power BI can read.
 
-**Time:** about 15 minutes in class, following along · **Data:** `ml.insurance_groups` (D14), `ml.air_arima_final` and `ml.air_test` (activities 03 and 06) → `ml.ins_transform`, `ml.air_forecast`, `ml.insurance_scored` · **Starter:** `Unsolved/transform_and_save.sql`
+**Time:** about 15 minutes in class, following along · **Data:** `ml.insurance_groups` (D14 activity 01), `ml.air_arima_final` (activity 06) and `ml.air_test` (activity 03) → `ml.ins_transform`, `ml.air_forecast`, `ml.insurance_scored` · **Starter:** `Unsolved/transform_and_save.sql`
 
 ## The story
 

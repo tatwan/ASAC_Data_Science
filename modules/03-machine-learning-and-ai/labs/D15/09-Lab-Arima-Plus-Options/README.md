@@ -2,7 +2,7 @@
 
 In this self-guided lab, you will walk through every option on Google's CREATE MODEL page for ARIMA_PLUS, change one option or one small group at a time, and see what each change does to the model, its forecast and its 1959 score.
 
-**When:** after class, about 60 minutes, at your own pace. Not submitted. · **Data:** `ml.air_training` and `ml.air_validation` (activities 02 and 03); `nakheel.orders` for step 17 · **SQL:** `Unsolved/arima_plus_options.sql` to run step by step, `Solved/arima_plus_options.sql`
+**When:** after class, about 60 minutes, at your own pace. Not submitted. · **Data:** `ml.air_training` and `ml.air_arima` (activity 02), `ml.air_validation` (activity 03); `nakheel.orders` (D04 activity 03) for step 17 · **SQL:** `Unsolved/arima_plus_options.sql` to run step by step, `Solved/arima_plus_options.sql`
 
 ## The story
 

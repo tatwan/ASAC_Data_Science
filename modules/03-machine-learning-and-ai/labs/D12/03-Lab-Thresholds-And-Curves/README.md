@@ -2,7 +2,7 @@
 
 In this self-guided lab, you will see how the threshold turns the model's probabilities into decisions, read the ROC curve, let the costs of an offer choose the threshold, and compare two models on how well they rank customers.
 
-**When:** after class, at your own pace. Not submitted. · **Data:** `ml.telco`, and the models `ml.churn_tenure` (activity 01) and `ml.churn_model` (activity 02) · **SQL:** `Solved/thresholds_and_curves.sql`
+**When:** after class, at your own pace. Not submitted. · **Data:** `ml.telco` and the model `ml.churn_tenure` (activity 01), the model `ml.churn_model` (activity 02) · **SQL:** `Solved/thresholds_and_curves.sql`
 
 ## The one idea
 

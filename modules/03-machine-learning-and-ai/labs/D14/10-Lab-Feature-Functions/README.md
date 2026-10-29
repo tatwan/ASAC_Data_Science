@@ -2,7 +2,7 @@
 
 In this self-guided lab, you will build features with four of BigQuery ML's preprocessing functions (bands with `ML.BUCKETIZE` and `ML.QUANTILE_BUCKETIZE`, crosses with `ML.FEATURE_CROSS`, squares and products with `ML.POLYNOMIAL_EXPAND`), see which ones help the line, and meet the one trap they share.
 
-**When:** after class, about 35 minutes, at your own pace. Not submitted. · **Data:** `ml.insurance_groups` · **SQL:** `Solved/feature_functions.sql`
+**When:** after class, about 35 minutes, at your own pace. Not submitted. · **Data:** `ml.insurance_groups` and `ml.ins_linear` (activity 01) · **SQL:** `Solved/feature_functions.sql`
 
 ## The story
 

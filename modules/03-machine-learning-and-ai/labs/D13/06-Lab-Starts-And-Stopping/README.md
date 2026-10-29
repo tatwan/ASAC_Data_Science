@@ -2,7 +2,7 @@
 
 In this self-guided lab, you will watch k-means train round by round, then start it from five shoppers you choose so that it gives the same groups every time you run it.
 
-**When:** after class, at your own pace. Not submitted. · **Data:** `ml.mall` · **SQL:** `Solved/starts_and_stopping.sql`
+**When:** after class, at your own pace. Not submitted. · **Data:** `ml.mall` and the model `ml.mall_segments` (activity 01) · **SQL:** `Solved/starts_and_stopping.sql`
 
 ## The one idea
 

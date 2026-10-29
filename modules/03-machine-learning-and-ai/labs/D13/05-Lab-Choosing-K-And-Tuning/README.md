@@ -2,7 +2,7 @@
 
 In this self-guided lab, you will train the mall model with three and four groups, compare four values of k on BigQuery's score and on their profiles, and see where the score stops and the business decision starts.
 
-**When:** after class, at your own pace. Not submitted. · **Data:** `ml.mall` · **SQL:** `Solved/choosing_k_and_tuning.sql`
+**When:** after class, at your own pace. Not submitted. · **Data:** `ml.mall` and the model `ml.mall_segments` (activity 01), the model `ml.mall_k6` (activity 04) · **SQL:** `Solved/choosing_k_and_tuning.sql`
 
 ## The one idea
 

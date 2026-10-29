@@ -2,7 +2,7 @@
 
 In this optional self-guided lab, you will group Nakheel's customers with k-means three times, raw, scaled, and logged then scaled, until the groups are usable. Then you will check each group against what its customers spent after the cutoff.
 
-**When:** after labs 05–08, at your own pace. Optional; not submitted. · **Data:** `ml.customer_features` (built in D11's optional lab 08) · **SQL:** `Solved/nakheel_segments.sql`
+**When:** after labs 05–08, at your own pace. Optional; not submitted. · **Data:** `ml.customer_features` (D11 lab 08, step 3) · **SQL:** `Solved/nakheel_segments.sql`
 
 ## Before you start
 
