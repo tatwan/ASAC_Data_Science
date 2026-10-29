@@ -4,7 +4,7 @@
 
 This beginner programme prepares learners for analyst and business intelligence roles. It combines guided instruction with practical work in SQL, Power Query, data modelling, DAX, report design, introductory machine learning and responsible AI.
 
-**Dates:** 20 September–12 November 2026  
+**Dates:** 20 September–26 November 2026 (from November: Sundays, Mondays and Wednesdays)  
 **Class time:** 4:00–8:00 PM (Asia/Amman), from 27 September; D01–D02 ran 2:00–6:00 PM  
 **Format:** 26 sessions across 8 weeks, for 104 scheduled hours  
 **Optional review:** Thursday 8 October, 4:00–6:00 PM, a review of the SQL from D03 to D08 (yellow on the schedule)  
@@ -36,7 +36,7 @@ Five words are used consistently across the schedule, this repository and every 
 | **Session** | One four-hour class, identified as D01 to D26. The identifier never changes, so D08 means the same session in every document. |
 | **Lab** | Practice done in class to reinforce the concept just taught. It is not graded and does not become homework. If you do not finish, the reference solution is released at the debrief. |
 | **Homework** | A weekly set issued in class and due before the first session of the following week. About 26 hours across the programme. There is no homework in week 8. |
-| **Assignment** | Graded work done outside class, with a published brief, deadline and rubric. There are four: A1 to A4. |
+| **Assignment** | Graded work done outside class, with a published brief, deadline and rubric. There are three: A1 to A3. |
 | **Practical** | A graded, open-book assessment completed inside a session. There are two: P1 and P2. |
 
 The third-party mock on D26 is separate from all of these. It informs the voucher decision and carries no course marks.
