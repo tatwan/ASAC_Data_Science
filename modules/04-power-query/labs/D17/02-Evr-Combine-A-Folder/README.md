@@ -16,13 +16,13 @@ The shops also send their own files: one file per shop, named after its store co
 
 ## Before you start
 
-You need the unzipped `nakheel_store_files` folder from activity 01. Open the `store_files` folder in File Explorer and look: twelve `.csv` files and a `notes.txt`. Open one CSV file in Notepad: the columns are `order_id`, `order_date`, `status`, `order_total`. There is no store column; the file name is the store.
+Open `D17-checkpoint.pbix` from activity 01, or its browser semantic model, and keep using it. You need the unzipped `nakheel_store_files` folder from activity 01. Open the `store_files` folder in File Explorer and look: twelve `.csv` files and a `notes.txt`. Open one CSV file in Notepad: the columns are `order_id`, `order_date`, `status`, `order_total`. There is no store column; the file name is the store.
 
-**In the browser:** Power Query Online can reach a folder on your computer only through an on-premises data gateway, a Windows program installed by IT (Microsoft's Folder connector page). Use your university OneDrive instead: upload the `store_files` folder to OneDrive, then in your semantic model's Power Query choose **Get data** → **SharePoint folder**, and give the address of your OneDrive, the part of its web address that ends in your name after `/personal/` (for example `https://youruniversity-my.sharepoint.com/personal/your_name_youruniversity_edu`). Sign in with **Organizational account**. You will see every file in your OneDrive: filter `Folder Path` to the rows that contain `store_files`, then carry on from step 2. The browser's button is called **Combine**, not **Combine & Transform Data**.
+**In the browser:** Power Query Online can reach a folder on your computer only through an on-premises data gateway, a Windows program installed by IT (Microsoft's Folder connector page). For a cloud route, use your university OneDrive: upload the `store_files` folder to OneDrive, then in your semantic model's Power Query choose **Get data** → **SharePoint folder**, and give the address of your OneDrive, the part of its web address that ends in your name after `/personal/` (for example `https://youruniversity-my.sharepoint.com/personal/your_name_youruniversity_edu`). Sign in with **Organizational account**. You will see every file in your OneDrive: choose **Transform data** before combining, then filter `Folder Path` to **equal the full path of your uploaded `store_files/` folder**. Check that you have its twelve CSVs and one note, with no other folder mixed in, then carry on from step 2. This cloud-folder connection still needs a test on your university account; a file-upload test alone does not test it. The browser's button is called **Combine**, not **Combine & Transform Data**.
 
 ## Step 1 · Connect to the folder
 
-1. **Home** → **Get data** → **More…** → **Folder** → **Connect**.
+1. From the report: **Home → Get data → More… → Folder → Connect**. If Power Query is already open, use **Home → New Source → More… → Folder** instead.
 2. **Browse** to `nakheel_store_files\store_files` → **OK**.
 3. Power BI lists the files. Click **Transform Data**, not **Combine**: first look at what is in the folder.
 
@@ -49,15 +49,17 @@ Microsoft's rule for combining is that the files must "all have the same structu
 1. Select `Source.Name`. **Transform** → **Replace Values**. **Value To Find:** `.csv`. **Replace With:** leave empty. **OK**.
 2. Rename `Source.Name` to `store_code`.
 
-**What you should see:** `store_code` holds `NK-AMM-01`, `NK-IRB-02` and so on: 12 distinct values. Filter it to `NK-AMM-01`: 251 rows.
+**What you should see:** `store_code` holds `NK-AMM-01`, `NK-IRB-02` and so on: 12 distinct values. Filter it to `NK-AMM-01`: 251 rows. **Clear that filter before step 5**: open the filter menu and choose **Clear Filter**, or delete the temporary **Filtered Rows** step. The table must again contain all 1,901 orders.
 
 ## Step 5 · Same number, third route
 
-**Close & Apply**. Make a **Card**: `order_total` (Sum) from `store_files_sales`, filtered to `status` = completed.
+**Desktop:** **Close & Apply**. **Browser:** **Save**, return to the report and **Refresh**. Make a **Card**: `order_total` (Sum) from `store_files_sales`, filtered to `status` = completed.
 
 **What you should see:** **205,338.00**, the same as `store_sales` in activity 01 and the SQL answer. Two ways in, one number.
 
 `store_files_sales` and `store_sales` now hold the same 1,901 orders. Keep both loaded today, because activity 03 asks questions of this one and you will compare the two routes; in a report you hand to a manager you would load only one of them.
+
+Save your changes before continuing: **File → Save** on Desktop; in the browser, **Save** Power Query changes, refresh the report and save the report.
 
 ## Check yourself
 
@@ -73,7 +75,7 @@ Microsoft's rule for combining is that the files must "all have the same structu
 
 - **You clicked Combine & Transform Data in step 1 and `notes.txt` was included:** delete the steps after `Source` in **Applied steps** (or start again with **Transform Data**), filter `Extension`, then combine.
 - **You see 19 files, not 13:** you pointed at `nakheel_store_files` instead of its `store_files` folder. The Folder connector reads subfolders too.
-- **The card shows a number in thousands, such as 205.34K:** **Format visual** → **Callout value** → **Display units** → **None**.
+- **The card shows a number in thousands, such as 205.34K:** use the [Card formatting steps](../README.md#check-rows-and-totals).
 
 ## Hint
 
@@ -85,4 +87,4 @@ Move `NK-MFQ-01.csv` out of the folder to your desktop and click **Home** → **
 
 ## References
 
-Nakheel Retail store files, synthetic course data; see [`shared/datasets/nakheel_stores`](../../../../../shared/datasets/nakheel_stores/README.md). Button and menu names are those of Power BI Desktop in October 2026. Power BI changes every month: if a name on your screen differs, look in the same tab or menu. Microsoft: [Folder connector](https://learn.microsoft.com/en-us/power-query/connectors/folder), [Combine CSV files](https://learn.microsoft.com/en-us/power-query/combine-files-csv), [Combine files overview](https://learn.microsoft.com/en-us/power-query/combine-files-overview), [SharePoint folder connector](https://learn.microsoft.com/en-us/power-query/connectors/sharepoint-folder).
+Nakheel Retail store files, synthetic course data; see [`shared/datasets/nakheel_stores`](../../../../../shared/datasets/nakheel_stores/README.md). Use the [D17 guide](../README.md) for saving, browser navigation and row-count checks. Button and menu names can vary between Desktop and the browser. Power BI changes every month: if a name on your screen differs, look in the same tab or menu. Microsoft: [Folder connector](https://learn.microsoft.com/en-us/power-query/connectors/folder), [Combine CSV files](https://learn.microsoft.com/en-us/power-query/combine-files-csv), [Combine files overview](https://learn.microsoft.com/en-us/power-query/combine-files-overview), [SharePoint folder connector](https://learn.microsoft.com/en-us/power-query/connectors/sharepoint-folder).

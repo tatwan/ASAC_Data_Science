@@ -8,6 +8,12 @@ In this activity, you will use two more join kinds to answer the questions an au
 
 Head office's auditor is not satisfied with a chart that has a **(Blank)** bar. She wants the list of sales that belong to no store in the list, the list of stores that sold nothing, and to know how much an inner merge would have left out. On D06 you found customers who never ordered with a `LEFT JOIN … WHERE … IS NULL`. Power Query has join kinds for that.
 
+## What you will learn
+
+- Use left and right anti joins to find unmatched sales and stores.
+- Compare inner and left outer results against the same completed-revenue total.
+- Explain why an unmatched sale should remain visible in a revenue report.
+
 ## Before you start
 
 You need `store_sales` and `stores` from activities 01 to 06, with `stores`' `store_code` in capitals.
@@ -16,15 +22,17 @@ You need `store_sales` and `stores` from activities 01 to 06, with `stores`' `st
 
 1. Which sales have no store in the store list? How many, from which store code, and how much completed revenue?
 
-    Translate: **Merge Queries as New**, `store_sales` on top, `stores` below, both on `store_code`, **Join Kind:** **Left Anti (rows only in first)**. Name the query `sales_without_store`.
+    Translate: **Merge Queries as New**, `store_sales` on top, `stores` below, both on `store_code`, **Join Kind:** **Left Anti (rows only in first)**. Name the query `sales_without_store`. It contains 19 orders of every status. After loading, make a revenue card from this query and filter only that card to `status` = completed; the order count and completed-revenue check use different filters.
 
 2. Which store in the list has no sales at all?
 
-    Translate: the same merge with **Right Anti (rows only in second)**. The columns from `store_sales` are empty; expand `store_code` and `store_name` from the `stores` column, with **Use original column name as prefix** left ticked (`store_sales` already has a `store_code` column).
+    Translate: the same merge with **Right Anti (rows only in second)**. Name it `stores_without_sales`. The columns from `store_sales` are empty; expand `store_code` and `store_name` from the `stores` column, with **Use original column name as prefix** left ticked (`store_sales` already has a `store_code` column).
 
 3. If activity 06 had used **Inner (only matching rows)**, how many rows would the merged table have, and what would the governorate chart add up to? Which join answers "revenue by governorate" honestly?
 
-    Translate: one more merge, **Inner**, named `store_sales_inner`; **Close & Apply**, then a card with `order_total` (Sum) **from `store_sales_inner`**, filter `status` = completed. A card on `store_sales` would still show 205,338.00.
+    Translate: one more merge, **Inner**, named `store_sales_inner`; **Close & Apply** (browser: **Save**, then refresh the report), then a card with `order_total` (Sum) **from `store_sales_inner`**, filter `status` = completed. A card on `store_sales` would still show 205,338.00.
+
+Save your changes before continuing: **File → Save** on Desktop; in the browser, **Save** Power Query changes, refresh the report and save the report.
 
 ## Check yourself
 
@@ -53,4 +61,4 @@ Untick **Enable load** on the three audit queries from this activity: they answe
 
 ## References
 
-Nakheel Retail store files, synthetic course data; see [`shared/datasets/nakheel_stores`](../../../../../shared/datasets/nakheel_stores/README.md). Button and menu names are those of Power BI Desktop in October 2026. Power BI changes every month: if a name on your screen differs, look in the same tab or menu. Microsoft: [Left anti join](https://learn.microsoft.com/en-us/power-query/merge-queries-left-anti), [Merge queries overview](https://learn.microsoft.com/en-us/power-query/merge-queries-overview).
+Nakheel Retail store files, synthetic course data; see [`shared/datasets/nakheel_stores`](../../../../../shared/datasets/nakheel_stores/README.md). Use the [D17 guide](../README.md) for saving, browser navigation and row-count checks. Button and menu names can vary between Desktop and the browser. Power BI changes every month: if a name on your screen differs, look in the same tab or menu. Microsoft: [Left anti join](https://learn.microsoft.com/en-us/power-query/merge-queries-left-anti), [Merge queries overview](https://learn.microsoft.com/en-us/power-query/merge-queries-overview).

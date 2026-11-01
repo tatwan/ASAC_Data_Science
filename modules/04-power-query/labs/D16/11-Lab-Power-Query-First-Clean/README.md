@@ -28,7 +28,7 @@ As in activity 10, the steps are written for **Power BI Desktop**, and a box mar
 
 1. Open your report from activity 10:
     - **Desktop:** in your folder, double-click `D16-nakheel-first-report.pbix`. It opens in Power BI Desktop.
-    - **In the browser:** go to `app.powerbi.com` → **My workspace**, click the report `D16-nakheel-first-report`, then click **Edit** in the bar at the top.
+    - **In the browser:** go to `app.powerbi.com` → **My workspace**, click the report `D16-nakheel-first-report`, then switch from __Viewing__ to **Editing** in the bar at the top.
 2. Check the card: it shows **316,023.50** with the filter `status` is completed.
 
 If you have no report from activity 10, do [activity 10](../10-Evr-PowerBI-End-To-End/README.md) steps 1 to 6 first.
@@ -42,16 +42,22 @@ If you have no report from activity 10, do [activity 10](../10-Evr-PowerBI-End-T
     > **In the browser**
     >
     > 1. Go back to **My workspace**. Find the semantic model `D16-nakheel` (its type says **Semantic model**).
-    > 2. Click **More options (...)** beside it → **Open semantic model**. The model opens in a new tab.
+    > 2. Click **More options (...)** beside it → **Open semantic model**. The model may open in a new tab.
     > 3. At the top right, switch the mode from **Viewing** to **Editing**.
     > 4. On the **Home** ribbon, click **Transform data**. Power Query opens.
     >
-    > Power Query in the browser does not save as you go. When you finish step 3, save and apply your changes with the button at the bottom right of Power Query. If you click **Cancel** or close the window, Microsoft's page warns that "any changes made to queries will be discarded."
+    > **Important:** Power Query in the browser does not automatically save your transformations. When you finish, click **Save** in the bottom-right corner to save your changes. Clicking **Cancel** instead will discard unsaved changes.
 
 2. In **Queries** on the left, click `customers`.
+
 3. In **Applied steps** on the right, check that the last step, **Capitalized Each Word**, is selected.
+
 4. Check that the profiling options from activity 10 are still on: **View** → **Column quality**, **Column distribution**, **Column profile** (in the browser, **View** → **Data view**). Check that the status bar at the bottom left says **Column profiling based on entire data set**; if it says top 1000 rows, click it and change it.
+
+    ![image-20261101140413952](images/image-20261101140413952.png)
+
 5. Click the `city` column header.
+
 6. Read the three lines under the header, then hover over each bar in **Value distribution** at the bottom.
 
 **What you should see:**
@@ -67,17 +73,40 @@ Two problems besides the empty cells: `amman` in lower case (5 customers), and `
 ## Step 2 · Clean city (C2)
 
 1. With the `city` column selected, click **Transform** → **Format** → **Trim**.
+
 2. With `city` still selected, click **Transform** → **Format** → **Capitalize Each Word**.
 
     **Check:** `amman` has joined `Amman`: hovering over the first bar shows **Amman 196**.
 
 3. Right-click the `city` header → **Replace Values**. A small window opens.
     1. **Value To Find:** `Al Zarqa`
+
     2. **Replace With:** `Zarqa`
+
     3. Click **Advanced options** and tick **Match entire cell contents**.
+
     4. Click **OK**.
 
+       ![image-20261101141009847](images/image-20261101141009847.png)
+
     **Check:** the `Al Zarqa` bar has gone and **Zarqa** reads **67**.
+
+    > [!Note]
+    >
+    > **Why did we check "Match entire cell contents"?**
+    >
+    > We want to standardize the city name `Al Zarqa` to `Zarqa`, but only when the entire cell matches `Al Zarqa`.
+    >
+    > | Original value | Checked (entire cell) | Unchecked (partial match) |
+    > | -------------- | --------------------- | ------------------------- |
+    > | Al Zarqa       | Zarqa                 | Zarqa                     |
+    > | North Al Zarqa | North Al Zarqa        | North Zarqa               |
+    > | Al Zarqa City  | Al Zarqa City         | Zarqa City                |
+    > | Zarqa          | Zarqa                 | Zarqa                     |
+    >
+    > **Key takeaway:** Checking **Match entire cell contents** ensures we replace only exact cell values, rather than changing matching text within longer values. This helps prevent unintended changes during data cleaning.
+    >
+    > Although the box is unchecked by default, we deliberately checked it because we want to standardize specific city names, not perform partial text replacements.
 
 4. Right-click the `city` header → **Replace Values** again.
     1. Leave **Value To Find** empty.
@@ -85,11 +114,15 @@ Two problems besides the empty cells: `amman` in lower case (5 customers), and `
     3. Click **Advanced options** and tick **Match entire cell contents**.
     4. Click **OK**.
 
-    **Check:** a new bar, **Unknown 6**, and the **Empty** share under the header is 0%.
+    **Check:** a new bar, **Unknown (6)**, and the **Empty** share under the header is 0%.
+
+> Why **Match entire cell contents** again?
+>
+> For a text column, **Replace Values** on its own replaces a piece of text wherever it appears inside a cell. Ticking the box makes it replace only cells whose whole value matches, which is what you want here, and it is the only way an empty **Value To Find** means "an empty cell".
 
 5. In **Applied steps**, right-click the last step (**Replaced Value1**) → **Rename**, type `City cleaned` and press **Enter**.
 
-Why **Match entire cell contents**: for a text column, **Replace Values** on its own replaces a piece of text wherever it appears inside a cell. Ticking the box makes it replace only cells whose whole value matches, which is what you want here, and it is the only way an empty **Value To Find** means "an empty cell".
+    ![image-20261101141756947](images/image-20261101141756947.png)
 
 The same in SQL, for comparison:
 
@@ -110,21 +143,31 @@ ORDER BY customer_count DESC;
 ## Step 3 · Order size, a conditional column (C3)
 
 1. In **Queries**, click `orders`.
+
 2. Look at the `order_total` header. The icon at its left should read **1.2** (decimal number). If it reads **ABC** (text), click the icon and choose **Decimal number** before going on: the rules below compare numbers.
+
 3. Click the **Add Column** tab → **Conditional Column**. A window opens.
+
 4. **New column name:** `order_size`.
+
 5. Fill in the first row (**If**):
     - **Column name:** `order_total`
     - **Operator:** `is less than`
     - **Value:** `50`
     - **Output:** `small`
+
 6. Click **Add Clause**. A second row (**Else If**) appears. Fill it in:
     - **Column name:** `order_total`
     - **Operator:** `is less than`
     - **Value:** `150`
     - **Output:** `medium`
+
 7. In **Else** at the bottom, type `large`.
+
+    ![image-20261101142130195](images/image-20261101142130195.png)
+
 8. Click **OK**.
+
 9. The new `order_size` column has the icon **ABC123** (any type). Click that icon and choose **Text**.
 
 | | Column name | Operator | Value | Output |
@@ -137,21 +180,30 @@ The rules are read top to bottom, and the first one that is true wins, exactly l
 
 10. **Home** → **Close & Apply**.
 
-    > **In the browser:** save and apply your changes with the button at the bottom right of Power Query. Then go back to **My workspace**, open the report `D16-nakheel-first-report` and click **Edit**.
+    > **In the browser:** click **Save** in Power Query and apply changes if prompted. Return to the report tab, switch to **Editing** if necessary, and click **Refresh** so the new field appears.
 
 **What you should see:** in the **Data** pane, `orders` now has an `order_size` field.
 
 ## Step 4 · Which orders bring in the money? (C3)
 
-To keep step 5 clear, put these charts on a new page: click the **+** at the bottom of the report to add a page.
+For this step and the next, put these charts on a new page: click the **+** at the bottom of the report to add a page.
 
 1. Click an empty spot on the page. **Visualizations** → **Build visual** → **Clustered column chart**.
+
 2. From `orders`, drag `order_size` into **X-axis** and `order_total` into **Y-axis** (**Sum of order_total**).
+
 3. With the chart selected, drag `status` into **Filters on this visual** and tick **completed** only.
+
 4. Click an empty spot on the page. Add a second **Clustered column chart**.
+
 5. Drag `order_size` into **X-axis** and `order_id` into **Y-axis**. Because `order_id` is a whole number, Power BI adds the IDs up: the box says **Sum of order_id**, which means nothing.
+
 6. In the **Y-axis** box, click the arrow beside **Sum of order_id** and choose **Count**. The box now says **Count of order_id**: the number of orders.
+
+   ![image-20261101142654397](images/image-20261101142654397.png)
+
 7. Add the same `status` = completed filter to this chart.
+
 8. Hover over each column in both charts to read the exact values.
 
 **What you should see** (completed orders; the columns are sorted from largest to smallest):
@@ -168,12 +220,22 @@ The large orders are about one in six orders and well over half the revenue.
 ## Step 5 · Revenue by month (C3)
 
 1. Click an empty spot on the page. **Visualizations** → **Build visual** → **Line chart**.
+
 2. From `orders`, drag `order_date` into **X-axis**. Power BI builds a date hierarchy: under `order_date` in the **X-axis** box you see **Year**, **Quarter**, **Month** and **Day**.
+
 3. Remove **Quarter** and **Day**: click the **X** beside each in the **X-axis** box. **Year** and **Month** stay.
+
 4. Drag `order_total` into **Y-axis** (**Sum of order_total**).
+
 5. Add the `status` = completed filter to this chart.
+
 6. The chart now shows three points, one per year. Hover over the chart: icons appear above it. Click **Expand all down one level in the hierarchy** (the forked arrow pointing down). The chart now shows one point for every month of every year.
+
+   ![image-20261101142853243](images/image-20261101142853243.png)
+
 7. Hover over the highest and the lowest points to read their months and values.
+
+   ![image-20261101142927848](images/image-20261101142927848.png)
 
 Do not remove **Year** as well: with **Month** alone, Power BI adds up each month across the years and draws 12 points, not 24.
 

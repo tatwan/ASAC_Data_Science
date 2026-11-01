@@ -29,7 +29,7 @@ Open `till_export_raw.csv` in Notepad: three lines before the header, then the o
 ## Step 1 · Start from the file as it is (C1)
 
 1. **Get data** → **Text/CSV** → `till_export_raw.csv` → **Transform Data**.
-2. In **Applied steps**, delete the steps after `Source` (click the **X** beside `Promoted Headers` and `Changed Type`, if they are there). Power BI guessed the header from the first line, which is the title.
+2. In **Applied steps**, delete steps after `Source` **from the last step upwards**, keeping `Source`. Power BI guessed the header from the first line, which is the title.
 
 **What you should see:** 17 rows. Row 1 says `Nakheel till export`; the real header is row 4.
 
@@ -45,24 +45,26 @@ Open `till_export_raw.csv` in Notepad: three lines before the header, then the o
 
 1. Set `order_id` to **Whole Number**, `order_date` to **Date**, `order_total` to **Decimal Number**.
 2. **View** → **Column quality**. `order_id` and `order_total` show errors.
-3. **Home** → **Keep Rows** → **Keep Errors**.
+3. Ctrl+click the `order_id` and `order_total` headers to select both, then **Home → Keep Rows → Keep Errors**. A row is kept if either selected column has an error.
 
 **What you should see:** 3 rows. Two are `VOID` receipts: `order_id` is not a number and `order_total` is `-`. One is a real order, 102869, whose `order_total` was typed `93.50 JOD`. Click beside each Error to read it. Then delete the **Kept Errors** step.
 
 ## Step 4 · Try the quick fix, and check it (C3)
 
-1. **Home** → **Remove Rows** → **Remove Errors**, with all columns selected.
-2. Filter `status` to completed and read the total (select `order_total`, **Transform** → **Statistics** → **Sum**, then delete that step).
+1. Select all column headers (click the first, then Shift+click the last), then **Home → Remove Rows → Remove Errors**.
+2. Filter `status` to completed and read the total (select `order_total`, **Transform → Statistics → Sum**).
 
-**What you should see:** 6 completed orders, **1,939.00**. Order 102869's 93.50 was a sale, and **Remove Errors** threw it away. Delete the **Removed Errors** step and the filter.
+**What you should see:** 6 completed orders, **1,939.00**. Order 102869's 93.50 was a sale, and **Remove Errors** threw it away. Delete the temporary Sum step first, then the completed-status filter, then **Removed Errors**, working backwards. You should be back to the 12 rows with their type-conversion errors.
 
 ## Step 5 · Fix each error for its reason (C3)
 
 1. The voided receipts are not orders: filter `status` to remove `voided`. Their errors go with them.
-2. The typed currency is a real amount: move to the step before the type change of `order_total` (click it in **Applied steps**), then right-click `order_total` → **Replace Values** → **Value To Find:** ` JOD` (with the space) → **Replace With:** empty → **Insert** when Power Query asks. Click the last step again.
-3. Filter `status` to completed. Close & Apply, and make a card with `order_total` (Sum).
+2. The typed currency is a real amount: move to the step before the type change of `order_total` (click it in **Applied steps**), then right-click `order_total` → **Replace Values** → **Value To Find:** ` JOD` (with the space) → **Replace With:** empty. Leave **Match entire cell contents** unticked: here you want to remove a suffix within the text `93.50 JOD`, keeping `93.50`. Click **OK**, then confirm **Insert** if asked. Click the last step again.
+3. Filter `status` to completed. **Close & Apply** (browser: **Save**, then refresh the report), and make a card with `order_total` (Sum).
 
 **What you should see:** no errors, 7 completed orders, **2,032.50**: Aqaba's August in `store_sales` from today's activity 01.
+
+Save your changes before continuing: **File → Save** on Desktop; in the browser, **Save** Power Query changes, refresh the report and save the report.
 
 ## Check yourself
 
@@ -83,4 +85,4 @@ Open `till_export_raw.csv` in Notepad: three lines before the header, then the o
 
 ## References
 
-Nakheel Retail store files, synthetic course data; see [`shared/datasets/nakheel_stores`](../../../../../shared/datasets/nakheel_stores/README.md). Button and menu names are those of Power BI Desktop in October 2026. Power BI changes every month: if a name on your screen differs, look in the same tab or menu. Microsoft: [Dealing with errors](https://learn.microsoft.com/en-us/power-query/dealing-with-errors), [Filter a table by row position](https://learn.microsoft.com/en-us/power-query/filter-row-position), [Promote or demote column headers](https://learn.microsoft.com/en-us/power-query/table-promote-demote-headers).
+Nakheel Retail store files, synthetic course data; see [`shared/datasets/nakheel_stores`](../../../../../shared/datasets/nakheel_stores/README.md). Use the [D17 guide](../README.md) for saving, browser navigation and row-count checks. Button and menu names can vary between Desktop and the browser. Power BI changes every month: if a name on your screen differs, look in the same tab or menu. Microsoft: [Dealing with errors](https://learn.microsoft.com/en-us/power-query/dealing-with-errors), [Filter a table by row position](https://learn.microsoft.com/en-us/power-query/filter-row-position), [Promote or demote column headers](https://learn.microsoft.com/en-us/power-query/table-promote-demote-headers).

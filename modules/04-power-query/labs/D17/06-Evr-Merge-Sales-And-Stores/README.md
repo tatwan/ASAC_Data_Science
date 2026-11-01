@@ -29,7 +29,7 @@ You need `store_sales` (1,901 rows, 5 columns) and `stores` (12 rows, cleaned) i
 3. **Join Kind:** **Left Outer (all from first, matching from second)**.
 4. Before you click **OK**, read the message at the bottom of the dialog: it counts how many rows of the first table found a match.
 
-**What you should see:** about 1,497 of the 1,901 rows match. Four hundred sales would find no store. Click **OK** anyway, so you can see which ones.
+**What you should see:** if the dialog evaluates all rows, 1,497 of 1,901 match. A preview may show a partial count; do not use it as the full-data result. Click **OK** so you can check all unmatched rows after expanding.
 
 ## Step 3 · Expand, then look for the gaps
 
@@ -37,7 +37,7 @@ You need `store_sales` (1,901 rows, 5 columns) and `stores` (12 rows, cleaned) i
 2. Click the expand button in the `stores` header. Tick `governorate`, `area` and `short_name` (if you made it in activity 05) only, untick **Use original column name as prefix**, **OK**.
 3. Open the filter on `governorate` and keep only `(null)`.
 
-**What you should see:** 404 rows with no governorate, from three store codes: `NK-IRB-02` (345 rows), `NK-SLT-01` (40) and `NK-POP-01` (19). Clear the filter.
+**What you should see:** 404 rows with no governorate, from three store codes: `NK-IRB-02` (345 rows), `NK-SLT-01` (40) and `NK-POP-01` (19). Delete the temporary **Filtered Rows** step after checking. That restores all 1,901 rows for the next step.
 
 ## Step 4 · Why NK-IRB-02 found nothing
 
@@ -52,9 +52,9 @@ Fix it where the problem is:
 
 ## Step 5 · Revenue by governorate
 
-**Close & Apply**. Build a **Clustered bar chart** from `store_sales_by_store` (the model also holds `store_sales` and `stores`, so pick the fields from this table): `governorate` on the **Y-axis**, `order_total` (Sum) on the **X-axis**, filter `status` = completed.
+Clear the temporary null filter again by deleting its **Filtered Rows** step. Check that all 1,901 rows are back. **Close & Apply** (browser: **Save**, then refresh the report). Build a **Clustered bar chart** from `store_sales_by_store` (the model also holds `store_sales` and `stores`, so pick the fields from this table): `governorate` on the **Y-axis**, `order_total` (Sum) on the **X-axis**, filter `status` = completed.
 
-**What you should see:** Amman 83,914.50, Irbid 62,116.50, Aqaba 20,774.50, Zarqa 16,134.50, Karak 8,495.50, Balqa 5,897.00, Madaba 3,908.00, Mafraq 3,239.50, and a bar labelled **(Blank)** with 858.00: the stall. Together, 205,338.00, the SQL answer. A left outer merge never loses a sale.
+**What you should see:** Amman 83,914.50, Irbid 62,116.50, Aqaba 20,774.50, Zarqa 16,134.50, Karak 8,495.50, Balqa 5,897.00, Madaba 3,908.00, Mafraq 3,239.50, and a bar labelled **(Blank)** with 858.00: the stall. Together, 205,338.00, the SQL answer. A left outer merge keeps every sale. It can still duplicate sales if a store code appears more than once on the store side, which is why you check the row count as well as the total.
 
 The same in SQL:
 
@@ -68,18 +68,20 @@ GROUP BY st.governorate
 ORDER BY revenue DESC;
 ```
 
+Save your changes before continuing: **File → Save** on Desktop; in the browser, **Save** Power Query changes, refresh the report and save the report.
+
 ## Check yourself
 
 | Step | One value to check |
 |---|---|
-| 2 | about 1,497 of 1,901 rows match |
+| 2 | Full data: 1,497 of 1,901 rows match; the dialog may show a preview |
 | 3 | 1,901 rows; 404 with no governorate |
 | 4 | 19 rows with no governorate, all `NK-POP-01` |
 | 5 | Amman 83,914.50 · (Blank) 858.00 · total 205,338.00 |
 
 ## If something goes wrong
 
-- **The merged query has more than 1,901 rows:** the store list has a store code twice, so some sales matched two rows. Check `stores` for duplicates (**Column distribution**: distinct should equal unique).
+- **The merged query has more than 1,901 rows:** the store list has a store code twice, so some sales matched two rows. Check `stores` for duplicates (select `store_code` and check **Column profile**: all 12 values should be distinct and unique).
 - **The expand made columns called `stores.governorate`:** you left **Use original column name as prefix** ticked. Rename them, or redo the expand.
 - **Still 404 rows after UPPERCASE:** you changed the case in `store_sales_by_store` (the sales side, whose codes were already in capitals), not in the store list. Put the step in `stores` (or in `stores_raw`, which `stores` reads).
 
@@ -93,4 +95,4 @@ Open `store_sales_by_store` in **Home** → **Advanced Editor** and find `Table.
 
 ## References
 
-Nakheel Retail store files, synthetic course data; see [`shared/datasets/nakheel_stores`](../../../../../shared/datasets/nakheel_stores/README.md). Button and menu names are those of Power BI Desktop in October 2026. Power BI changes every month: if a name on your screen differs, look in the same tab or menu. Microsoft: [Merge queries overview](https://learn.microsoft.com/en-us/power-query/merge-queries-overview), [Left outer join](https://learn.microsoft.com/en-us/power-query/merge-queries-left-outer), [Capitalization of text in Power Query M](https://learn.microsoft.com/en-us/powerquery-m/m-working-with-case).
+Nakheel Retail store files, synthetic course data; see [`shared/datasets/nakheel_stores`](../../../../../shared/datasets/nakheel_stores/README.md). Use the [D17 guide](../README.md) for saving, browser navigation and row-count checks. Button and menu names can vary between Desktop and the browser. Power BI changes every month: if a name on your screen differs, look in the same tab or menu. Microsoft: [Merge queries overview](https://learn.microsoft.com/en-us/power-query/merge-queries-overview), [Left outer join](https://learn.microsoft.com/en-us/power-query/merge-queries-left-outer), [Capitalization of text in Power Query M](https://learn.microsoft.com/en-us/powerquery-m/m-working-with-case).

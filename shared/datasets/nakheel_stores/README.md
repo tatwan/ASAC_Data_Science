@@ -4,6 +4,8 @@ Nakheel's eleven shops send their sales to head office as files, not as a databa
 
 **Download everything at once:** [`nakheel_store_files.zip`](nakheel_store_files.zip). Unzip it to a folder you can find again, for example `Documents\nakheel_store_files`.
 
+The two finance files are **inside the `finance` subfolder** of the extracted folder. Their full example paths are `Documents\nakheel_store_files\finance\store_sales_2024-25.csv` and `Documents\nakheel_store_files\finance\store_sales_2025-26.csv`. They are also available individually: [2024–25 CSV](finance/store_sales_2024-25.csv) and [2025–26 CSV](finance/store_sales_2025-26.csv). On GitHub, open a CSV and use **Download raw file**. Use the ZIP for the full set so the folder-combine activity has all its inputs.
+
 | Fact | Value |
 |---|---|
 | Source | Generated for ASAC on 28 October 2026 from the Nakheel course tables (seed 20261101). No third-party data |
@@ -16,19 +18,19 @@ Nakheel's eleven shops send their sales to head office as files, not as a databa
 
 | File | Rows | What it is |
 |---|---:|---|
-| `stores_raw.csv` | 12 | The store list as head office keeps it in a spreadsheet: code, name, where the store is, its position, its size and the day it opened |
-| `finance/store_sales_2024-25.csv` | 892 | Every store order from September 2024 to August 2025, from the finance team |
-| `finance/store_sales_2025-26.csv` | 1,009 | Every store order from September 2025 to August 2026. The till system changed in September 2025, and so did the export |
-| `store_files/` | 12 files, 1,901 rows | One file per shop, named after its store code, with the same orders. The folder also holds a note from head office |
-| `online_orders_2026-08.json` | 77 orders | The website's orders for August 2026, as the website sends them: each order with its customer and its list of items |
-| `till_export_raw.csv` | — | One shop's August 2026 file as the till prints it |
-| `store_targets_2025-26.csv` | 11 | The monthly revenue target for each shop, September 2025 to August 2026, one column per month |
+| [`stores_raw.csv`](stores_raw.csv) | 12 | The store list as head office keeps it in a spreadsheet: code, name, where the store is, its position, its size and the day it opened |
+| [`finance/store_sales_2024-25.csv`](finance/store_sales_2024-25.csv) | 892 | Every store order from September 2024 to August 2025, from the finance team |
+| [`finance/store_sales_2025-26.csv`](finance/store_sales_2025-26.csv) | 1,009 | Every store order from September 2025 to August 2026. The till system changed in September 2025, and so did the export |
+| [store_files/](store_files/) | 12 files, 1,901 rows | One file per shop, named after its store code, with the same orders. The folder also holds a note from head office |
+| [`online_orders_2026-08.json`](online_orders_2026-08.json) | 77 orders | The website's orders for August 2026, as the website sends them: each order with its customer and its list of items |
+| [`till_export_raw.csv`](till_export_raw.csv) | — | One shop's August 2026 file as the till prints it |
+| [`store_targets_2025-26.csv`](store_targets_2025-26.csv) | 11 | The monthly revenue target for each shop, September 2025 to August 2026, one column per month |
 
 ## Columns
 
 | File | Column | Meaning |
 |---|---|---|
-| `stores_raw.csv` | `store_code` | The store's code, for example `NK-AMM-01` |
+| [`stores_raw.csv`](stores_raw.csv) | `store_code` | The store's code, for example `NK-AMM-01` |
 | | `store_name` | The name over the door |
 | | `governorate - city - area` | Three facts in one column: the governorate's code, the governorate, and the town or the part of Amman |
 | | `lat / long` | Latitude and longitude in one column |
@@ -39,8 +41,8 @@ Nakheel's eleven shops send their sales to head office as files, not as a databa
 | | `order_date` | The date of the order |
 | | `status` | `completed`, `cancelled` or `pending` |
 | | `order_total` | Value of the goods on the order, in dinars |
-| `online_orders_2026-08.json` | `orders[]` | One record per order: `order_id`, `order_date`, `status`, `customer` (a record with `customer_id` and `city`), `shipping_fee`, and `items` (a list of records with `product_id`, `qty`, `price`) |
-| `store_targets_2025-26.csv` | `store_code` | The shop |
+| [`online_orders_2026-08.json`](online_orders_2026-08.json) | `orders[]` | One record per order: `order_id`, `order_date`, `status`, `customer` (a record with `customer_id` and `city`), `shipping_fee`, and `items` (a list of records with `product_id`, `qty`, `price`) |
+| [`store_targets_2025-26.csv`](store_targets_2025-26.csv) | `store_code` | The shop |
 | | `2025-09` … `2026-08` | The revenue target for that month, in dinars |
 
 ## How the files connect

@@ -15,6 +15,8 @@ It is synthetic. Every customer, product and order was generated for this course
 
 ## Files
 
+For the first Power BI report, download [customers.csv](customers.csv) and [orders.csv](orders.csv). On GitHub, open each file and click **Download raw file**. Keep both in one folder.
+
 | File | Rows | Columns |
 |---|---:|---|
 | `customers.csv` | 500 | `customer_id`, `customer_name`, `city`, `segment`, `signup_date` |

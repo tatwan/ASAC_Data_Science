@@ -12,23 +12,23 @@ Your report reads `C:\Users\you\Documents\nakheel_store_files\...` in five place
 
 - To create a parameter with **Manage Parameters** → **New Parameter**, and what its fields mean.
 - To use a parameter inside a step, in the formula bar.
-- To give a parameter a list of allowed values and use it in a filter.
+- To give a parameter a list of suggested values and use it in a filter.
 
 ## Before you start
 
 Open your file from today in **Power BI Desktop**. You need `store_sales_2024-25`, `store_sales_2025-26`, `store_files_sales` and `stores_raw`.
 
-**In the browser:** this lab is for Desktop. A path on your computer means nothing to the Power BI service, and Microsoft's page on parameters in the service says you can review and edit parameter settings there "but not create them". Read the steps, and do them on a Windows computer when you can.
+**In the browser:** do this local-folder exercise on Desktop. The service cannot read a `C:\...` path on your computer without a gateway. Power Query Online also has parameter features, but a cloud-source exercise would need different source steps; do not paste the local paths below into your browser model.
 
 ## Checkpoints
 
 - **C1:** a Text parameter `FilesFolder` that holds the path to your `nakheel_store_files` folder.
 - **C2:** the four queries read `FilesFolder`; after you move the folder and change only the parameter, the completed store revenue is still 205,338.00.
-- **C3:** a parameter `StatusToCount` with three allowed values, used in a filter; the card reads 205,338.00, 14,224.00 or 1,040.00.
+- **C3:** a parameter `StatusToCount` with three suggested values, used in a filter; the card reads 205,338.00, 14,224.00 or 1,040.00.
 
 ## Step 1 · Create the parameter (C1)
 
-1. **Home** → **Transform data**. **Home** → **Manage Parameters** → **New Parameter**.
+1. Save a practice copy of `D17-checkpoint.pbix` as `D17-parameters.pbix`. Open **Home → Transform data**. If the formula bar is hidden, tick **View → Formula bar**. Then **Home → Manage Parameters → New Parameter**.
 2. **Name:** `FilesFolder`. **Description:** `Folder that holds the Nakheel store files, ending with \`. Tick **Required**. **Type:** **Text**. **Suggested Values:** **Any value**. **Current Value:** your path, for example `C:\Users\you\Documents\nakheel_store_files\`, with the backslash at the end. **OK**.
 
 **What you should see:** `FilesFolder` in the **Queries** pane, with its value shown beside a parameter icon.
@@ -56,7 +56,7 @@ Open your file from today in **Power BI Desktop**. You need `store_sales_2024-25
 
 5. **Close & Apply**. Then test it: close Power BI, rename the folder to `nakheel_store_files_2`, open the file, **Transform data** → **Manage Parameters**, change **Current Value** to the new path, **OK**, **Close & Apply**.
 
-**What you should see:** no errors, and the completed store revenue card still reads 205,338.00. Rename the folder back afterwards (and the parameter too).
+**What you should see:** no errors, and the completed store revenue card still reads 205,338.00. Rename the folder back afterwards, restore the original **Current Value** of `FilesFolder`, then apply and save again. Keep the parameter's name `FilesFolder` unchanged.
 
 ## Step 3 · A parameter with a list (C3)
 
@@ -66,7 +66,9 @@ Open your file from today in **Power BI Desktop**. You need `store_sales_2024-25
 4. **Close & Apply**. Build a card with `order_total` (Sum) from `store_sales_one_status`, with no visual filter.
 5. Change the parameter: **Transform data** → **Manage Parameters** → `StatusToCount` → **Current Value**, or **Home** → the drop-down under **Transform data** → **Edit parameters** if your version shows it. **Close & Apply** (or **Apply changes**) after each change.
 
-**What you should see:** completed 205,338.00 · cancelled 14,224.00 · pending 1,040.00. The three add up to 220,602.00, the total without any filter.
+**What you should see:** completed 205,338.00 · cancelled 14,224.00 · pending 1,040.00. The three add up to 220,602.00, the total without any filter. **Suggested Values** supplies a convenient list; it does not prevent someone typing a different value. Restore **Current Value** to `completed` before saving.
+
+Save your changes before continuing: **File → Save** on Desktop; in the browser, **Save** Power Query changes, refresh the report and save the report.
 
 ## Check yourself
 
@@ -81,7 +83,7 @@ Open your file from today in **Power BI Desktop**. You need `store_sales_2024-25
 - **An error saying the path could not be found:** the backslash between the parameter and the rest is missing or doubled. `FilesFolder` ends with `\`; the text after `&` does not start with one.
 - **An error saying the name `FilesFolder` was not recognized:** the spelling or capital letters differ. Power Query names are case-sensitive.
 - **`store_files_sales` shows an error after the move, and the other queries do not:** the helper query's `Source` step still has the old path (step 2, item 4).
-- **No Parameter option in the filter box:** the parameter's type is not **Text**. Edit it in **Manage Parameters**.
+- **No Parameter option in the filter box:** check that `StatusToCount` is **Text**, then enable parameter use if your editor offers **View → Parameters → Always allow**. Alternatively, filter `status` to `completed`, then replace `"completed"` in that filter step's formula with `StatusToCount` (no quotes).
 
 ## Bonus
 
@@ -89,4 +91,4 @@ Open your file from today in **Power BI Desktop**. You need `store_sales_2024-25
 
 ## References
 
-Button and menu names are those of Power BI Desktop in October 2026. Power BI changes every month: if a name on your screen differs, look in the same tab or menu. Microsoft: [Using parameters](https://learn.microsoft.com/en-us/power-query/power-query-query-parameters), [Edit parameter settings in the Power BI service](https://learn.microsoft.com/en-us/power-bi/connect-data/service-parameters).
+Use the [D17 guide](../README.md) for saving, browser navigation and row-count checks. Button and menu names can vary between Desktop and the browser. Power BI changes every month: if a name on your screen differs, look in the same tab or menu. Microsoft: [Using parameters](https://learn.microsoft.com/en-us/power-query/power-query-query-parameters), [Edit parameter settings in the Power BI service](https://learn.microsoft.com/en-us/power-bi/connect-data/service-parameters).

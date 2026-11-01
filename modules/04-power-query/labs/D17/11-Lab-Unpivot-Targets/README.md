@@ -24,7 +24,7 @@ Finance set a revenue target for every shop and month of 2025-26 and keeps it th
 
 1. **Get data** → **Text/CSV** → `store_targets_2025-26.csv` → **Transform Data**. 11 rows, 13 columns; one row is one shop.
 2. Select `store_code`, right-click → **Unpivot Other Columns**.
-3. Rename `Attribute` to `month` and `Value` to `target`. Check that `month` is **Text** (`2025-09`, the same text the month column of step 2 will hold). Rename the query `targets_long`.
+3. Rename `Attribute` to `month` and `Value` to `target`. Set `target` to **Whole Number**. Check that `store_code` and `month` are **Text** (`2025-09`, the same text the month column of step 2 will hold). Rename the query `targets_long`.
 
 **What you should see:** 132 rows (11 shops × 12 months); one row is one shop in one month.
 
@@ -32,7 +32,7 @@ Finance set a revenue target for every shop and month of 2025-26 and keeps it th
 
 1. Right-click `store_sales` → **Reference**. Rename it `actuals_by_month`.
 2. Filter `status` to completed, and `order_date` to **is after or equal to** 1 September 2025.
-3. **Add Column** → **Custom Column**: **New column name** `month`, **Formula** `Date.ToText([order_date], "yyyy-MM")`.
+3. Check `order_date` is **Date** and `order_total` is **Decimal Number**. Then **Add Column → Custom Column**: **New column name** `month`, **Formula** `Date.ToText([order_date], "yyyy-MM")`. Set the new column to **Text** to match `targets_long[month]`.
 4. **Home** → **Group By** → **Advanced**. Group by `store_code`, then **Add grouping** → `month`. **New column name** `actual`, **Operation** **Sum**, **Column** `order_total`. **OK**.
 
 **What you should see:** 125 rows, not 132: seven shop-months had no completed sale. The pop-up stall is not here: it traded in March 2025, before this year.
@@ -40,11 +40,14 @@ Finance set a revenue target for every shop and month of 2025-26 and keeps it th
 ## Step 3 · Merge on two keys (C3)
 
 1. Select `targets_long` → **Merge Queries as New**. Top: click `store_code`, then Ctrl+click `month`. Bottom: `actuals_by_month`, click `store_code`, then Ctrl+click `month`, in the same order. **Left Outer**. **OK**. Rename the query `targets_vs_actuals`.
-2. Expand `actual` only. Replace `null` in `actual` with `0` (the seven months without sales).
+2. Expand `actual` only, unticking **Use original column name as prefix**. Set `actual` to **Decimal Number**. Right-click it → **Replace Values**: find `null`, replace with `0` (the seven months without sales).
 3. **Add Column** → **Conditional Column**: **New column name** `met_target`; **If** `actual` **is greater than or equal to**, then in the value box switch the small drop-down from **ABC** (a typed value) to **Select a column** and choose `target`; **Output** `yes`; **Else** `no`.
-4. For the year: right-click `targets_vs_actuals` → **Reference**, then **Group By** `store_code` with two sums, `actual` and `target`.
+4. For the year: right-click `targets_vs_actuals` → **Reference** and rename it `targets_by_store`. **Home → Group By → Advanced**: group by `store_code`; add a sum of `actual` named `actual` and a sum of `target` named `target`. Add a conditional column `met_yearly_target`: if `actual` **is greater than or equal to** the column `target`, output `yes`; else `no`.
+5. **Close & Apply** (browser: **Save**, then refresh the report). Use a **Table** visual with `store_code`, `actual`, `target` and `met_yearly_target` from `targets_by_store` to compare the year. A shop can meet its yearly target without meeting every monthly target.
 
 **What you should see:** `targets_vs_actuals` has 132 rows; `met_target` is `yes` in 61. After step 4, 11 rows; over the year, actual 107,595.00 against target 110,000. Three shops beat their yearly target: NK-AMM-03, NK-IRB-01 and NK-KRK-01.
+
+Save your changes before continuing: **File → Save** on Desktop; in the browser, **Save** Power Query changes, refresh the report and save the report.
 
 ## Check yourself
 
@@ -65,4 +68,4 @@ Finance set a revenue target for every shop and month of 2025-26 and keeps it th
 
 ## References
 
-Nakheel Retail store files, synthetic course data; see [`shared/datasets/nakheel_stores`](../../../../../shared/datasets/nakheel_stores/README.md). Button and menu names are those of Power BI Desktop in October 2026. Power BI changes every month: if a name on your screen differs, look in the same tab or menu. Microsoft: [Unpivot columns](https://learn.microsoft.com/en-us/power-query/unpivot-column), [Group by](https://learn.microsoft.com/en-us/power-query/group-by), [Merge queries overview](https://learn.microsoft.com/en-us/power-query/merge-queries-overview).
+Nakheel Retail store files, synthetic course data; see [`shared/datasets/nakheel_stores`](../../../../../shared/datasets/nakheel_stores/README.md). Use the [D17 guide](../README.md) for saving, browser navigation and row-count checks. Button and menu names can vary between Desktop and the browser. Power BI changes every month: if a name on your screen differs, look in the same tab or menu. Microsoft: [Unpivot columns](https://learn.microsoft.com/en-us/power-query/unpivot-column), [Group by](https://learn.microsoft.com/en-us/power-query/group-by), [Merge queries overview](https://learn.microsoft.com/en-us/power-query/merge-queries-overview).

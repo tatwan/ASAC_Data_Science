@@ -2,9 +2,11 @@
 
 [Course home](../../README.md) · [Schedule](../../course/STUDENT_SCHEDULE.md)
 
-**D16–D17 · 8 scheduled hours · Status: D16 ready (slides and labs, built 27 October 2026); D17 ready (slides and labs, built 28 October 2026).**
+**D16–D17 · 8 scheduled hours · Slides and labs revised 1 November 2026: D16 112 slides; D17 57.**
 
 Connect, profile, clean and reshape data into reusable fact and dimension tables.
+
+D16 covered machine learning in class. Power BI starts with its first-report activity in the next lecture, followed by Append. We continue folder combine, store cleaning and Merge together before data modelling.
 
 ## Sessions
 
@@ -18,9 +20,9 @@ Connect, profile, clean and reshape data into reusable fact and dimension tables
 | Folder | Intended contents | Status |
 |---|---|---|
 | [slides_pdf/](slides_pdf/) | The slides for each session, as PDF | D16 (machine learning first, then Power BI) · D17 (files: append, a folder, merge) |
-| [labs/](labs/) | Guided/independent instructions, starter and restart files | [D16](labs/D16/) · [D17](labs/D17/) |
+| [labs/](labs/) | Guided/independent instructions, starter and restart files | [D16](labs/D16/) · [D17 · start here](labs/D17/README.md) |
 | [assignments/](assignments/) | Relevant weekly sets, graded briefs, rubrics and submission instructions | Planned |
-| [datasets/](datasets/) | Small domain-specific fixtures or links to the shared dataset | D17: [Nakheel store files](../../shared/datasets/nakheel_stores/README.md) |
+| [datasets/](datasets/) | Small domain-specific fixtures or links to the shared dataset | D16: [customers and orders](../../shared/datasets/nakheel/README.md) · D17: [store-file ZIP and individual files](../../shared/datasets/nakheel_stores/README.md) |
 | [resources/](resources/) | Setup instructions, cheat sheets and official reference links | [PL-300 and Microsoft Learn](resources/pl300-microsoft-learn.md) |
 
 Keep D01–D26 in filenames, for example `D03-select-and-filter.md`; use `W02-...`, `A01-...` and `P01-...` for weekly sets, assignments and practicals. These are naming examples, not existing files.

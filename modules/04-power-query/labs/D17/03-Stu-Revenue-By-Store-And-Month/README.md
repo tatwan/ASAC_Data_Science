@@ -8,6 +8,12 @@ In this activity, you will answer two questions a regional manager would ask, us
 
 The regional manager has the shop files in one table now and asks: which shop brings in the most, which month was the best, and is every file really a shop? Each answer is one chart.
 
+## What you will learn
+
+- Build completed-revenue charts by store and by calendar month.
+- Keep a count of all orders separate from a completed-only revenue total.
+- Use the source note and order dates to identify a temporary store.
+
 ## Before you start
 
 You need `store_files_sales` from activity 02, loaded, with its `store_code` column. If you do not have it, do activity 02 first.
@@ -26,6 +32,8 @@ You need `store_files_sales` from activity 02, loaded, with its `store_code` col
 
     Translate: filter `store_code` to that code; look at the smallest and largest `order_date`.
 
+Save your changes before continuing: **File → Save** on Desktop; in the browser, **Save** Power Query changes, refresh the report and save the report.
+
 ## Check yourself
 
 | Question | One value to check |
@@ -40,10 +48,12 @@ A different number is information, not failure. Check the `status` filter first:
 
 For question 2, if your line has 12 points, you removed **Year** too: each point then adds up a calendar month across both years.
 
+If no automatic date hierarchy is available, open Power Query, select `store_files_sales[order_date]` and choose **Add Column → Date → Month → Start of Month**. Apply/save the change, refresh the report and use that new full-date column on X-axis. It keeps September 2024 separate from September 2025.
+
 ## Bonus
 
 Add a slicer on `store_code` beside the line chart and click through the Irbid shops. Do they peak in the same months?
 
 ## References
 
-Button and menu names are those of Power BI Desktop in October 2026. Power BI changes every month: if a name on your screen differs, look in the same tab or menu. Nakheel Retail store files, synthetic course data; see [`shared/datasets/nakheel_stores`](../../../../../shared/datasets/nakheel_stores/README.md).
+Use the [D17 guide](../README.md) for saving, browser navigation and row-count checks. Button and menu names can vary between Desktop and the browser. Power BI changes every month: if a name on your screen differs, look in the same tab or menu. Nakheel Retail store files, synthetic course data; see [`shared/datasets/nakheel_stores`](../../../../../shared/datasets/nakheel_stores/README.md).
