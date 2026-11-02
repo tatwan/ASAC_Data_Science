@@ -31,41 +31,77 @@ For every later query change: **Open semantic model → Editing → Transform da
 
 **What you should see:** two queries on the left. `store_sales_2024-25` has 892 rows, `store_sales_2025-26` has 1,009. Look at the column headers of each. One row is one store order.
 
+![image-20261102131743682](images/image-20261102131743682.png)
+
 ## Step 2 · Predict, then append
 
 Before you click: the two files hold 892 and 1,009 orders. How many rows will the appended table have?
 
 1. Select `store_sales_2024-25`.
+
 2. **Home** → **Combine** → **Append queries** → **Append queries as new**.
+
+   ![image-20261102132052596](images/image-20261102132052596.png)
+
 3. **Two tables**. **First table:** `store_sales_2024-25`. **Second table:** `store_sales_2025-26`. **OK**.
-4. Rename the new query (right-click → **Rename**) to `store_sales`.
+
+   ![image-20261102132116951](images/image-20261102132116951.png)
+
+   You make get a warning like this:
+
+   ![image-20261102132146483](images/image-20261102132146483.png)
+
+   Just click __Continue__ and select the first option
+
+   ![image-20261102132224740](images/image-20261102132224740.png)
+
+4. Rename the new query which is called __Append1__ by default (right-click → **Rename**) to `store_sales`.
+
+   ![image-20261102132257618](images/image-20261102132257618.png)
 
 **What you should see:** 1,901 rows, as predicted. But count the columns: six, not five. The last one, `amount`, is empty (`null`) in the first 892 rows; `order_total` is `null` in the last 1,009.
+
+![image-20261102132328869](images/image-20261102132328869.png)
 
 ## Step 3 · Why the revenue looks wrong
 
 **Desktop:** **Home → Close & Apply**. **Browser:** **Create a report** for the first load, or **Save** for later changes, then return to the report and **Refresh**. Build a **Card** from `store_sales` with `order_total` (Sum), then drag `status` from the same table to **Filters on this visual** and tick **completed** only. See the [D17 guide](../README.md) if the card abbreviates the number.
 
-**What you should see:** **97,743.00**, not 205,338.00. The card adds up only the first year. The till system changed in September 2025 and the second file calls the column `amount`. Append puts columns with the same name under each other; a name that appears in only one file becomes a column of its own, empty for the other file's rows. The order of the columns did not matter: the second file has `order_date` before `store_code`, and they still landed in the right place, because they have the same names.
+**What you should see:** **97,743.00**, not 205,338.00. 
+
+![image-20261102133521337](images/image-20261102133521337.png)
+
+The card adds up only the first year. The till system changed in September 2025 and the second file calls the column `amount`. Append puts columns with the same name under each other; a name that appears in only one file becomes a column of its own, empty for the other file's rows. The order of the columns did not matter: the second file has `order_date` before `store_code`, and they still landed in the right place, because they have the same names.
 
 SQL works the other way round. `UNION ALL` matches columns by position, so in SQL the reordered file would have put dates under `store_code`, and a different name would not matter.
 
 ## Step 4 · Fix it at the source
 
 1. **Home** → **Transform data**. Select `store_sales_2025-26`.
+
 2. Right-click the `amount` header → **Rename** → `order_total`.
+
 3. Select `store_sales`.
 
+   ![image-20261102133647189](images/image-20261102133647189.png)
+
 **What you should see:** five columns and no empty `order_total`. You did not touch `store_sales`: it reads the two queries every time, so the fix in one of them flows through. **Close & Apply** (browser: **Save**, then refresh the report): the card now reads **205,338.00**, the SQL answer.
+
+![image-20261102133720708](images/image-20261102133720708.png)
 
 ## Step 5 · Keep the inputs out of the model
 
 The model needs `store_sales`, not the two yearly pieces. Loading them as well would put the same orders in the model twice.
 
-1. In Power Query, right-click `store_sales_2024-25` and untick **Enable load**. If Power BI warns that the data will be removed from the report, choose **Continue**.
+1. Click **Transform Data**, In Power Query, right-click `store_sales_2024-25` and untick **Enable load**. If Power BI warns that the data will be removed from the report, choose **Continue**.
+
+   ![image-20261102133838871](images/image-20261102133838871.png)
+
 2. Do the same for `store_sales_2025-26`.
 
 **What you should see:** the two names turn italic in the **Queries** pane. After **Close & Apply**, the **Data** pane shows only `store_sales`. The two queries still run at every refresh; they just are not loaded as tables of their own.
+
+![image-20261102133912351](images/image-20261102133912351.png)
 
 **In the browser:** look for **Enable load** in the query's right-click menu. If your editor does not offer it, keep the two source queries and use fields from `store_sales` for the report. Save the query changes and refresh the report.
 

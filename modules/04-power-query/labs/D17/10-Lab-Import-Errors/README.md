@@ -6,7 +6,7 @@ In this self-guided lab, you will load a shop's raw till export, get past the ti
 
 ## The story
 
-Aqaba's till prints its August 2026 file with a title, a blank line, two voided receipts and one amount typed with its currency. Head office's figure for Aqaba's completed August sales is 2,032.50 dinars. The fastest-looking fix, **Remove Errors**, gives a different number. Your job is to get 2,032.50, and to know why.
+Aqaba's till prints its August 2026 file with two title lines, a blank line, two voided receipts and one amount typed with its currency. Head office's figure for Aqaba's completed August sales is 2,032.50 dinars. The fastest-looking fix, **Remove Errors**, gives a different number. Your job is to get 2,032.50, and to know why.
 
 ## What you will learn
 
@@ -29,7 +29,7 @@ Open `till_export_raw.csv` in Notepad: three lines before the header, then the o
 ## Step 1 · Start from the file as it is (C1)
 
 1. **Get data** → **Text/CSV** → `till_export_raw.csv` → **Transform Data**.
-2. In **Applied steps**, delete steps after `Source` **from the last step upwards**, keeping `Source`. Power BI guessed the header from the first line, which is the title.
+2. In **Applied steps**, delete steps after `Source` **from the last step upwards**, keeping `Source`. Power BI's automatic steps may treat a title line as the header; you will choose the header row yourself.
 
 **What you should see:** 17 rows. Row 1 says `Nakheel till export`; the real header is row 4.
 

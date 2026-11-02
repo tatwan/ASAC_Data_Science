@@ -22,15 +22,15 @@ You need `store_sales` and `stores` from activities 01 to 06, with `stores`' `st
 
 1. Which sales have no store in the store list? How many, from which store code, and how much completed revenue?
 
-    Translate: **Merge Queries as New**, `store_sales` on top, `stores` below, both on `store_code`, **Join Kind:** **Left Anti (rows only in first)**. Name the query `sales_without_store`. It contains 19 orders of every status. After loading, make a revenue card from this query and filter only that card to `status` = completed; the order count and completed-revenue check use different filters.
+    Translate: **Merge Queries as New**, `store_sales` on top, `stores` below, both on `store_code`, **Join Kind:** **Left Anti (rows only in first)**. The new query is called `Merge1` by default: rename it `sales_without_store`. Its last column, `stores`, says **Table** in every row and holds nothing for these sales: right-click it → **Remove**. The query contains 19 orders of every status. After loading, make a revenue card from this query and filter only that card to `status` = completed; the order count and completed-revenue check use different filters.
 
 2. Which store in the list has no sales at all?
 
-    Translate: the same merge with **Right Anti (rows only in second)**. Name it `stores_without_sales`. The columns from `store_sales` are empty; expand `store_code` and `store_name` from the `stores` column, with **Use original column name as prefix** left ticked (`store_sales` already has a `store_code` column).
+    Translate: the same merge with **Right Anti (rows only in second)**. Rename the new `Merge1` to `stores_without_sales`. The columns from `store_sales` are empty; expand `store_code` and `store_name` from the `stores` column, with **Use original column name as prefix** left ticked (`store_sales` already has a `store_code` column).
 
 3. If activity 06 had used **Inner (only matching rows)**, how many rows would the merged table have, and what would the governorate chart add up to? Which join answers "revenue by governorate" honestly?
 
-    Translate: one more merge, **Inner**, named `store_sales_inner`; **Close & Apply** (browser: **Save**, then refresh the report), then a card with `order_total` (Sum) **from `store_sales_inner`**, filter `status` = completed. A card on `store_sales` would still show 205,338.00.
+    Translate: one more merge, **Inner**. Rename the new `Merge1` to `store_sales_inner` and remove its `stores` column, as in question 1: you need only the sales columns. **Close & Apply** (browser: **Save**, then refresh the report), then a card with `order_total` (Sum) **from `store_sales_inner`**, filter `status` = completed. A card on `store_sales` would still show 205,338.00.
 
 Save your changes before continuing: **File → Save** on Desktop; in the browser, **Save** Power Query changes, refresh the report and save the report.
 
@@ -57,7 +57,7 @@ WHERE st.store_code IS NULL;
 
 ## Bonus
 
-Untick **Enable load** on the three audit queries from this activity: they answer a question once, and the model does not need them.
+Once you have written down the three answers, untick **Enable load** on the three audit queries (choose **Continue** if Power BI warns you): they answer a question once, and the model does not need them. The cards you built on `sales_without_store` and `store_sales_inner` then show an error, because their tables left the model: delete those cards.
 
 ## References
 

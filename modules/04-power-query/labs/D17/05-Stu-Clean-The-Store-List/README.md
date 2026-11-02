@@ -22,23 +22,27 @@ You need `stores` from activity 04: 12 rows with `gov_code`, `governorate`, `are
 
 1. Split `lat / long` into two columns, `latitude` and `longitude`, both **Decimal Number**.
 
-    Translate: **Split Column** → **By Delimiter**, a custom delimiter of space, slash, space; then rename and set the types.
+    **Translate**: **Split Column** → **By Delimiter**, a custom delimiter of space, slash, space (`  /  `); then rename the two columns. If the split already set both headers to **1.2** (Decimal Number), leave them; check that Abdali reads `31.9632`, not `319632` (see the Hint if it does not). Rename the columns as __lat__ and __long__. 
 
 2. Add a column `short_name` that holds the name without the word "Nakheel": `Abdali`, `Sweifieh`, `University Street`.
 
-    Translate: select `store_name`, then **Add Column** → **Column From Examples** → **From Selection**. Type `Abdali` in the first row and `University Street` in the fourth, press **Enter**, check every row, then **OK**. Read the formula Power Query shows above the grid.
+    **Translate**: select `store_name`, then **Add Column** → **Column From Examples** → **From Selection**. A new empty column appears on the right: double-click its header and type `short_name` (or rename it after **OK**). Type `Abdali` in the first row and `University Street` in the fourth, press **Enter**, check all twelve rows, then **OK**.
 
-3. Rename the generated column to `short_name` if it has a different name. Check all twelve results before accepting the rule. A formula such as `Text.AfterDelimiter([store_name], " ")` keeps the text after the first space, so `Nakheel University Street` becomes `University Street`, with both words kept.
+    ![image-20261102152254453](images/image-20261102152254453.png)
+
+    Read the formula Power Query shows above the grid. `Text.AfterDelimiter([store_name], " ")` keeps everything after the first space, so `Nakheel University Street` becomes `University Street`, with both words kept.
 
     If **Column From Examples** is unavailable in your browser editor, use **Add Column → Custom Column**, name it `short_name` and enter `Text.AfterDelimiter([store_name], " ")`. This gives the same result; practising inference from examples can wait until you have Desktop.
 
-4. Check that `opened` is a **Date**, then **Close & Apply** (browser: **Save**, then refresh the report).
+3. Check that `opened` is a **Date**, then **Close & Apply** (browser: **Save**, then refresh the report).
 
-5. How many square metres of selling floor does Nakheel have in Amman, and in the whole country?
+4. How many square metres of selling floor does Nakheel have in Amman, and in the whole country?
 
     Translate: a **Table** visual with `governorate` and `size_m2` (Sum), or two cards with a filter.
 
 Save your changes before continuing: **File → Save** on Desktop; in the browser, **Save** Power Query changes, refresh the report and save the report.
+
+![image-20261102152324547](images/image-20261102152324547.png)
 
 ## Check yourself
 
@@ -46,8 +50,8 @@ Save your changes before continuing: **File → Save** on Desktop; in the browse
 |---|---|
 | 1 | Abdali: latitude 31.9632, longitude 35.9106; no errors in either column |
 | 2 | 12 rows; `Nakheel Irbid City Centre` becomes `Irbid City Centre` |
-| 4 | `opened` for Jerash: 15 September 2026 |
-| 5 | Amman 1,060 m² · all shops 2,880 m² (Jerash's size is unknown) |
+| 3 | `opened` for Jerash: 15 September 2026 |
+| 4 | Amman 1,060 m² · all shops 2,880 m² (Jerash's size is unknown) |
 
 ## Hint
 

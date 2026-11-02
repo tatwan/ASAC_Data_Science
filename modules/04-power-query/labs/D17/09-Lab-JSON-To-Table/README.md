@@ -48,6 +48,8 @@ Power BI may automatically flatten the JSON. To practise each expand yourself, r
 
 **Keep an order-level copy:** right-click the query → **Duplicate**, name the copy `online_orders`, and keep it at this 77-row stage. Its `items` column is still a List; right-click that column → **Remove** in the copy so it can load as an ordinary order table. Return to the original query for the next step.
 
+Why **Duplicate** here, when activity 04 taught **Reference**? A Reference reads the original query's final result, and in step 3 that result becomes item rows. A Duplicate keeps its own copy of the steps, so it stays at 77 orders.
+
 **Check the shipping now:** one row is one order, so a sum of `shipping_fee` on this table is the shipping the website charged. Select `shipping_fee`, **Transform** → **Statistics** → **Sum**: **72.50**. Write it down, then delete that step in **Applied steps** (it turned the table into one number).
 
 ## Step 3 · A list into rows (C2)

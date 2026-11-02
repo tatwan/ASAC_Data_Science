@@ -31,8 +31,8 @@ Finance set a revenue target for every shop and month of 2025-26 and keeps it th
 ## Step 2 · Group By (C2)
 
 1. Right-click `store_sales` → **Reference**. Rename it `actuals_by_month`.
-2. Filter `status` to completed, and `order_date` to **is after or equal to** 1 September 2025.
-3. Check `order_date` is **Date** and `order_total` is **Decimal Number**. Then **Add Column → Custom Column**: **New column name** `month`, **Formula** `Date.ToText([order_date], "yyyy-MM")`. Set the new column to **Text** to match `targets_long[month]`.
+2. Check `order_date` is **Date** and `order_total` is **Decimal Number**. Then filter `status` to completed, and `order_date` to **is after or equal to** 1 September 2025 (date filters appear only on a Date column).
+3. **Add Column → Custom Column**: **New column name** `month`, **Formula** `Date.ToText([order_date], "yyyy-MM")`. Set the new column to **Text** to match `targets_long[month]`.
 4. **Home** → **Group By** → **Advanced**. Group by `store_code`, then **Add grouping** → `month`. **New column name** `actual`, **Operation** **Sum**, **Column** `order_total`. **OK**.
 
 **What you should see:** 125 rows, not 132: seven shop-months had no completed sale. The pop-up stall is not here: it traded in March 2025, before this year.

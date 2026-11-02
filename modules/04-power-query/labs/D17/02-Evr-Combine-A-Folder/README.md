@@ -23,8 +23,12 @@ Open `D17-checkpoint.pbix` from activity 01, or its browser semantic model, and 
 ## Step 1 · Connect to the folder
 
 1. From the report: **Home → Get data → More… → Folder → Connect**. If Power Query is already open, use **Home → New Source → More… → Folder** instead.
+
 2. **Browse** to `nakheel_store_files\store_files` → **OK**.
+
 3. Power BI lists the files. Click **Transform Data**, not **Combine**: first look at what is in the folder.
+
+   ![image-20261102141642944](images/image-20261102141642944.png)
 
 **What you should see:** a table with one row per file: 13 rows, with columns such as `Content`, `Name`, `Extension`, `Date modified` and `Folder Path`. One row is one file, not one order.
 
@@ -36,17 +40,32 @@ Microsoft's rule for combining is that the files must "all have the same structu
 
 **What you should see:** 12 rows, one per shop file.
 
+![image-20261102141730495](images/image-20261102141730495.png)
+
+
+
 ## Step 3 · Combine
 
 1. In the `Content` column header, click the **Combine Files** button (two arrows pointing down).
+
+   ![image-20261102141848645](images/image-20261102141848645.png)
+
 2. The **Combine Files** dialog shows the first file as the example. Check the preview, then **OK**.
+
+   ![image-20261102141927580](images/image-20261102141927580.png)
+
 3. Rename the query to `store_files_sales`.
+
+   ![image-20261102142045533](images/image-20261102142045533.png)
 
 **What you should see:** one table, 1,901 rows: the same 1,901 store orders as activity 01, now read from twelve files. The first column, `Source.Name`, holds the file each row came from. On the left, Power BI added a group called **Helper queries**, including **Transform Sample file**. Power BI applies the steps of that sample query to every file; change the sample, and every file is read the new way.
 
 ## Step 4 · Turn the file name into a store code
 
 1. Select `Source.Name`. **Transform** → **Replace Values**. **Value To Find:** `.csv`. **Replace With:** leave empty. **OK**.
+
+   ![image-20261102142145587](images/image-20261102142145587.png)
+
 2. Rename `Source.Name` to `store_code`.
 
 **What you should see:** `store_code` holds `NK-AMM-01`, `NK-IRB-02` and so on: 12 distinct values. Filter it to `NK-AMM-01`: 251 rows. **Clear that filter before step 5**: open the filter menu and choose **Clear Filter**, or delete the temporary **Filtered Rows** step. The table must again contain all 1,901 orders.
@@ -56,6 +75,8 @@ Microsoft's rule for combining is that the files must "all have the same structu
 **Desktop:** **Close & Apply**. **Browser:** **Save**, return to the report and **Refresh**. Make a **Card**: `order_total` (Sum) from `store_files_sales`, filtered to `status` = completed.
 
 **What you should see:** **205,338.00**, the same as `store_sales` in activity 01 and the SQL answer. Two ways in, one number.
+
+![image-20261102144155367](images/image-20261102144155367.png)
 
 `store_files_sales` and `store_sales` now hold the same 1,901 orders. Keep both loaded today, because activity 03 asks questions of this one and you will compare the two routes; in a report you hand to a manager you would load only one of them.
 

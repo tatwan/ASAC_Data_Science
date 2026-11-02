@@ -25,19 +25,26 @@ You need `store_sales` (1,901 rows, 5 columns) and `stores` (12 rows, cleaned) i
 ## Step 2 · Merge
 
 1. Select `store_sales`. **Home** → **Combine** → **Merge Queries** → **Merge Queries as New**.
+
 2. The top table is `store_sales`: click its `store_code` column. In the drop-down below choose `stores` and click its `store_code` column.
+
 3. **Join Kind:** **Left Outer (all from first, matching from second)**.
+
 4. Before you click **OK**, read the message at the bottom of the dialog: it counts how many rows of the first table found a match.
+
+   ![image-20261102153315702](images/image-20261102153315702.png)
 
 **What you should see:** if the dialog evaluates all rows, 1,497 of 1,901 match. A preview may show a partial count; do not use it as the full-data result. Click **OK** so you can check all unmatched rows after expanding.
 
 ## Step 3 · Expand, then look for the gaps
 
-1. Rename the new query `store_sales_by_store`. It has 1,901 rows and a new column `stores` that says **Table** in every row: the matching rows of the store list.
+1. The new query is called `Merge1` by default. Right-click it → **Rename** → `store_sales_by_store`. It has 1,901 rows and a new column `stores` that says **Table** in every row: the matching rows of the store list.
 2. Click the expand button in the `stores` header. Tick `governorate`, `area` and `short_name` (if you made it in activity 05) only, untick **Use original column name as prefix**, **OK**.
 3. Open the filter on `governorate` and keep only `(null)`.
 
 **What you should see:** 404 rows with no governorate, from three store codes: `NK-IRB-02` (345 rows), `NK-SLT-01` (40) and `NK-POP-01` (19). Delete the temporary **Filtered Rows** step after checking. That restores all 1,901 rows for the next step.
+
+![image-20261102153613963](images/image-20261102153613963.png)
 
 ## Step 4 · Why NK-IRB-02 found nothing
 
@@ -50,9 +57,17 @@ Fix it where the problem is:
 
 **What you should see:** 19 rows, all `NK-POP-01`: the Ramadan stall, which really is not in the store list. You changed nothing in the merge. `store_sales_by_store` reads `stores` at every refresh, so the fix came through, the same as the rename in activity 01.
 
+![image-20261102153810868](images/image-20261102153810868.png)
+
 ## Step 5 · Revenue by governorate
 
 Clear the temporary null filter again by deleting its **Filtered Rows** step. Check that all 1,901 rows are back. **Close & Apply** (browser: **Save**, then refresh the report). Build a **Clustered bar chart** from `store_sales_by_store` (the model also holds `store_sales` and `stores`, so pick the fields from this table): `governorate` on the **Y-axis**, `order_total` (Sum) on the **X-axis**, filter `status` = completed.
+
+![image-20261102154003556](images/image-20261102154003556.png)
+
+If you open **Model view** and see lines between `stores` and the sales tables, Power BI drew them by itself on `store_code`. Leave them for now: this chart reads one table, and relationships are D18's subject.
+
+![image-20261102154107889](images/image-20261102154107889.png)
 
 **What you should see:** Amman 83,914.50, Irbid 62,116.50, Aqaba 20,774.50, Zarqa 16,134.50, Karak 8,495.50, Balqa 5,897.00, Madaba 3,908.00, Mafraq 3,239.50, and a bar labelled **(Blank)** with 858.00: the stall. Together, 205,338.00, the SQL answer. A left outer merge keeps every sale. It can still duplicate sales if a store code appears more than once on the store side, which is why you check the row count as well as the total.
 
