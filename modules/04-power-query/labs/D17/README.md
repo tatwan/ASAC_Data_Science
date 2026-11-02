@@ -30,7 +30,7 @@ The finance files also have [individual download links in the data guide](../../
 | [08 · Parameters](08-Lab-Parameters/README.md) | A folder parameter and a status parameter | Desktop file from 01–07 |
 | [09 · JSON to a table](09-Lab-JSON-To-Table/README.md) | `online_order_lines` | The JSON file; a new or existing report/model |
 | [10 · Import errors](10-Lab-Import-Errors/README.md) | A corrected till export | The till CSV; a new or existing report/model |
-| [11 · Optional targets against actuals](11-Lab-Unpivot-Targets/README.md) | Targets and actuals at store-month grain | 01 and the targets CSV |
+| [11 · Optional targets against actuals](11-Lab-Unpivot-Targets/README.md) | Targets and actuals at store-month grain | The targets CSV, with 01's `store_sales` or the lab's `Resources/store_sales.csv`; a new or existing report/model |
 
 **Desktop:** save the report as `D17-checkpoint.pbix` after activity 01 and save again after each activity. D18 starts from that file. Keep the extracted data folder too: the report reads it when you refresh.
 

@@ -28,14 +28,24 @@ Open your file from today in **Power BI Desktop**. You need `store_sales_2024-25
 
 ## Step 1 · Create the parameter (C1)
 
-1. Save a practice copy of `D17-checkpoint.pbix` as `D17-parameters.pbix`. Open **Home → Transform data**. If the formula bar is hidden, tick **View → Formula bar**. Then **Home → Manage Parameters → New Parameter**.
-2. **Name:** `FilesFolder`. **Description:** `Folder that holds the Nakheel store files, ending with \`. Tick **Required**. **Type:** **Text**. **Suggested Values:** **Any value**. **Current Value:** your path, for example `C:\Users\you\Documents\nakheel_store_files\`, with the backslash at the end. **OK**.
+1. Save a practice copy of `D17-checkpoint.pbix` as `D17-parameters.pbix`. Open **Home → Transform data**. If the formula bar is hidden, tick **View → Formula bar**. 
+
+2. Then **Home → Manage Parameters → New Parameter**.
+
+   ![image-20261102212735770](images/image-20261102212735770.png)
+
+3. **Name:** `FilesFolder`. **Description:** `Folder that holds the Nakheel store files, ending with \`. Tick **Required**. **Type:** **Text**. **Suggested Values:** **Any value**. **Current Value:** your path, for example `C:\Users\you\Documents\nakheel_store_files\`, with the backslash at the end. **OK**.
+
+   ![image-20261102212948584](images/image-20261102212948584.png)
 
 **What you should see:** `FilesFolder` in the **Queries** pane, with its value shown beside a parameter icon.
+
+<img src="images/image-20261102213039602.png" alt="image-20261102213039602" style="zoom:50%;" />
 
 ## Step 2 · Use it in the queries (C2)
 
 1. Select `store_files_sales` and click its `Source` step. The formula bar shows `= Folder.Files("C:\...\nakheel_store_files\store_files")`.
+
 2. Replace the text in quotes, quotes included, so the formula reads:
 
     ```powerquery
@@ -43,6 +53,14 @@ Open your file from today in **Power BI Desktop**. You need `store_sales_2024-25
     ```
 
     `&` joins two pieces of text, like `CONCAT` in SQL.
+
+    **BEFORE**
+
+    ![image-20261102213127675](images/image-20261102213127675.png)
+
+    **AFTER**
+
+    ![image-20261102213154860](images/image-20261102213154860.png)
 
 3. Do the same in the `Source` step of `store_sales_2024-25`, `store_sales_2025-26` and `stores_raw`. Each one has `File.Contents("C:\...\something.csv")` inside `Csv.Document(...)`. Change only the path inside `File.Contents(...)`:
 
@@ -52,6 +70,16 @@ Open your file from today in **Power BI Desktop**. You need `store_sales_2024-25
     File.Contents(FilesFolder & "stores_raw.csv")
     ```
 
+    This is how it looks like for me after making the replacements:
+
+    ![image-20261102213400526](images/image-20261102213400526.png)
+
+    ![image-20261102213430879](images/image-20261102213430879.png)
+
+    ![image-20261102213443005](images/image-20261102213443005.png)
+
+    
+
 4. The fifth place is easy to miss. Open the **Helper queries** group that **Combine Files** made in activity 02. One of its queries (usually named **Sample File**) has its own `Source` step with `Folder.Files("C:\...\store_files")`, so Power Query can read the example file. Change it the same way: `= Folder.Files(FilesFolder & "store_files")`. If you skip it, `store_files_sales` fails as soon as the folder moves.
 
 5. **Close & Apply**. Then test it: close Power BI, rename the folder to `nakheel_store_files_2`, open the file, **Transform data** → **Manage Parameters**, change **Current Value** to the new path, **OK**, **Close & Apply**.
@@ -60,11 +88,39 @@ Open your file from today in **Power BI Desktop**. You need `store_sales_2024-25
 
 ## Step 3 · A parameter with a list (C3)
 
-1. **Manage Parameters** → **New**. **Name:** `StatusToCount`. **Type:** **Text**. **Suggested Values:** **List of values**; type `completed`, `cancelled`, `pending` on three lines. **Default Value** and **Current Value:** `completed`. **OK**.
+1. **Manage Parameters** → **New**. 
+
+   1. **Name:** `StatusToCount`. 
+
+   2. **Type:** **Text**. 
+
+   3. **Suggested Values:** **List of values**; type `completed`, `cancelled`, `pending` on three lines. 
+
+   4. **Default Value** and **Current Value:** `completed`. **OK**.
+
+      ![image-20261102213710386](images/image-20261102213710386.png)
+
 2. Right-click `store_sales` → **Reference**. Rename it `store_sales_one_status`.
-3. Filter its `status` column: **Text Filters** → **Equals**. In the value box, open the small drop-down on its left (it shows **ABC**) and choose **Parameter**, then `StatusToCount`. **OK**.
-4. **Close & Apply**. Build a card with `order_total` (Sum) from `store_sales_one_status`, with no visual filter.
-5. Change the parameter: **Transform data** → **Manage Parameters** → `StatusToCount` → **Current Value**, or **Home** → the drop-down under **Transform data** → **Edit parameters** if your version shows it. **Close & Apply** (or **Apply changes**) after each change.
+
+3. Filter its `status` column: **Text Filters** → **Equals**. 
+
+   ![image-20261102213816160](images/image-20261102213816160.png)
+
+4. In the value box, open the small drop-down on its left (it shows **ABC**) and choose **Parameter**, then `StatusToCount`. **OK**.
+
+   ![image-20261102213903382](images/image-20261102213903382.png)
+
+   ![image-20261102213915327](images/image-20261102213915327.png)
+
+   
+
+5. **Close & Apply**. Build a card with `order_total` (Sum) from `store_sales_one_status`, with no visual filter.
+
+6. Change the parameter: **Transform data** → **Manage Parameters** → `StatusToCount` → **Current Value**, or **Home** → the drop-down under **Transform data** → **Edit parameters** if your version shows it. **Close & Apply** (or **Apply changes**) after each change.
+
+   ![image-20261102214753935](images/image-20261102214753935.png)
+
+   ![image-20261102214808078](images/image-20261102214808078.png)
 
 **What you should see:** completed 205,338.00 · cancelled 14,224.00 · pending 1,040.00. The three add up to 220,602.00, the total without any filter. **Suggested Values** supplies a convenient list; it does not prevent someone typing a different value. Restore **Current Value** to `completed` before saving.
 

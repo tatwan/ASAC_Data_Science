@@ -33,16 +33,45 @@ Open `online_orders_2026-08.json` in Notepad and read the first order. It has `o
 
 Power BI may automatically flatten the JSON. To practise each expand yourself, remove the automatically added steps **after `Source`**, starting with the last step and working upwards. Keep `Source`, which should return a record with the fields `exported`, `source` and `orders`.
 
+![image-20261102214933724](images/image-20261102214933724.png)
+
+You can delete the steps and only keep `source`
+
+![image-20261102215048973](images/image-20261102215048973.png)
+
+
+
 1. Click **List** beside `orders`. You now have a list of 77 records.
+
+   ![image-20261102215110280](images/image-20261102215110280.png)
+
 2. Select **Transform → To Table → OK**, leaving the delimiter as **None**.
 
-**What you should see:** one column, `Column1`, with **Record** in every row. Each record is one order. If `Source` itself is already a table, check its formula: this exercise starts from `Json.Document(...)`, before any expansion.
+   ![image-20261102215131666](images/image-20261102215131666-3645492.png)
+
+   ![image-20261102215143930](images/image-20261102215143930.png)
+
+   What you should see:** one column, `Column1`, with **Record** in every row. Each record is one order. If `Source` itself is already a table, check its formula: this exercise starts from `Json.Document(...)`, before any expansion.
+
+   ![image-20261102215159071](images/image-20261102215159071.png)
 
 ## Step 2 · Records into columns (C1)
 
 1. Click the expand button in the `Column1` header. Keep every field ticked, untick **Use original column name as prefix**, **OK**.
+
+   ![image-20261102215456518](images/image-20261102215456518.png)
+
 2. The `customer` column says **Record**. Expand it the same way: `customer_id` and `city`.
-3. Set the types: `order_id` **Whole Number**, `order_date` **Date**, `shipping_fee` **Decimal Number**.
+
+   ![image-20261102215508632](images/image-20261102215508632.png)
+
+   
+
+   ![image-20261102215520702](images/image-20261102215520702.png)
+
+3. Set the types: `order_id` **Whole Number**, `order_date` **Date**, `shipping_fee` **Decimal Number**. 
+
+![image-20261102215549851](images/image-20261102215549851.png)
 
 **What you should see:** 77 rows; one row is one order. `items` still says **List** in every row. Two orders have no city (`null`).
 
@@ -50,23 +79,47 @@ Power BI may automatically flatten the JSON. To practise each expand yourself, r
 
 Why **Duplicate** here, when activity 04 taught **Reference**? A Reference reads the original query's final result, and in step 3 that result becomes item rows. A Duplicate keeps its own copy of the steps, so it stays at 77 orders.
 
+![image-20261102215643738](images/image-20261102215643738.png)
+
 **Check the shipping now:** one row is one order, so a sum of `shipping_fee` on this table is the shipping the website charged. Select `shipping_fee`, **Transform** → **Statistics** → **Sum**: **72.50**. Write it down, then delete that step in **Applied steps** (it turned the table into one number).
+
+![image-20261102215725708](images/image-20261102215725708.png)
 
 ## Step 3 · A list into rows (C2)
 
-1. Click the expand button in the `items` header and choose **Expand to New Rows**.
+1. Back to the original query (`online_orders_2026-08`). Click the expand button in the `items` header and choose **Expand to New Rows**.
+
+   ![image-20261102215848694](images/image-20261102215848694.png)
+
 2. The column now says **Record**. Expand it: `product_id`, `qty`, `price`. Set `qty` to **Whole Number** and `price` to **Decimal Number**.
+
+   ![image-20261102215916793](images/image-20261102215916793.png)
+
 3. Rename the query `online_order_lines`.
+
+   ![image-20261102220015086](images/image-20261102220015086.png)
 
 **What you should see:** 192 rows. One row is now one **item**: order 102844 appears five times, once per product, with its `order_id`, `status` and `shipping_fee` repeated on each line.
 
 ## Step 4 · Revenue, and the shipping trap (C3)
 
 1. **Add Column** → **Custom Column**. **New column name:** `line_total`. **Formula:** `[qty] * [price]`. **OK**, and set it to **Decimal Number**.
+
+   ![image-20261102220108189](images/image-20261102220108189.png)
+
+   ![image-20261102220132779](images/image-20261102220132779.png)
+
 2. **Close & Apply** (browser: **Save**, then refresh the report). A card with `line_total` (Sum), filter `status` = completed.
+
 3. A second card with `shipping_fee` (Sum), no filter.
 
-**What you should see:** `line_total` for completed orders: **6,121.50**, the same as SQL. `shipping_fee`: **107.50**, but the website charged **72.50**. After step 3 each order's fee sits on every line of that order, so the sum counts it once per item. Shipping belongs to the order, not the line: verify it with a third card from `online_orders[shipping_fee]` (Sum), with no filter: **72.50**. The comparison is over all statuses on both shipping cards. Do not remove duplicate fee values: two different orders can charge the same fee.
+**What you should see:** `line_total` for completed orders: **6,121.50**, the same as SQL. `shipping_fee`: **107.50**, but the website charged **72.50**. 
+
+![image-20261102220241567](images/image-20261102220241567.png)
+
+After step 3 each order's fee sits on every line of that order, so the sum counts it once per item. Shipping belongs to the order, not the line: verify it with a third card from `online_orders[shipping_fee]` (Sum), with no filter: **72.50**. The comparison is over all statuses on both shipping cards. Do not remove duplicate fee values: two different orders can charge the same fee.
+
+![image-20261102220334415](images/image-20261102220334415.png)
 
 ```sql
 SELECT SUM(order_total) AS revenue, SUM(shipping_fee) AS shipping
