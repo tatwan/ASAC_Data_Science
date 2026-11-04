@@ -2,7 +2,7 @@
 
 [Course home](../../README.md) · [Schedule](../../course/STUDENT_SCHEDULE.md)
 
-**D16–D17 · 8 scheduled hours · Slides and labs revised 1 November 2026: D16 112 slides; D17 57.**
+**D16–D19 · Slides and labs revised 1–4 November 2026: D16 112 slides; D17 60. D17 is finished in the D19 slot, Wed 4 November.**
 
 Connect, profile, clean and reshape data into reusable fact and dimension tables.
 
@@ -13,7 +13,9 @@ D16 covered machine learning in class. Power BI starts with its first-report act
 | Session | Date | Focus |
 |---|---|---|
 | D16 | Thu 29 Oct | Machine learning 6: explaining, MLOps and four models in a row; then Power BI, Fabric and a first report |
-| D17 | Sun 1 Nov | Power Query II: files, append and merge |
+| D17 | Sun 1 Nov | Kick-off, Power BI Desktop and the first report, Append (D16 and D17 materials) |
+| D18 | Mon 2 Nov | The 1 November route continued (D16 and D17 materials) |
+| D19 | Wed 4 Nov | Power Query II finished (folder, store list, Merge), then why we model (D17 and D18 materials) |
 
 ## Materials
 
