@@ -21,7 +21,7 @@ The programme supports preparation for the Microsoft Power BI Data Analyst certi
 
 [View the student schedule](course/STUDENT_SCHEDULE.md) · [Download the Excel version](course/assets/student-schedule.xlsx) · [Open in Google Sheets](https://docs.google.com/spreadsheets/d/1eese9ddJeecPEWQ60ApRvr0rfiYVBfoNaogoYhwyRNk/edit?usp=sharing)
 
-The scheduled hours include a 30-minute break from 6:30 to 7:00 PM. Labs start at 7:00 PM, right after the break. The final mock exam will follow the timing and break rules confirmed by its provider.
+The scheduled hours include a 30-minute break from 6:30 to 7:00 PM. Labs start at 7:00 PM, right after the break.
 
 > [!NOTE]
 > Course materials will be released weekly before the first session of each new week.
@@ -39,7 +39,7 @@ Five words are used consistently across the schedule, this repository and every 
 | **Assignment** | Graded work done outside class, with a published brief, deadline and rubric. There are three: A1 to A3. |
 | **Practical** | A graded, open-book assessment completed inside a session. There are two: P1 and P2. |
 
-The third-party mock on D26 is separate from all of these. It informs the voucher decision and carries no course marks.
+There is no mock exam (changed 4 November 2026): D26 is a PL-300 review with exam-style practice.
 
 ## Course coverage
 
@@ -48,11 +48,11 @@ The third-party mock on D26 is separate from all of these. It informs the vouche
 | [01 Data foundations](modules/01-data-foundations/) | D01–D02 | 8 | Analyst roles, data quality, ethics and the Power BI workflow |
 | [02 SQL](modules/02-sql/) | D03–D10 | 32 | Querying, joins, CTEs, views and window functions in BigQuery |
 | [03 Machine learning and AI literacy](modules/03-machine-learning-and-ai/) | D11–D15, D24 | 24 | BigQuery ML, model evaluation, predictions for Power BI and generative AI used with checks |
-| [04 Power Query](modules/04-power-query/) | D16–D17 | 8 | Importing, profiling, cleaning, combining and validating data |
-| [05 Data modelling and DAX](modules/05-data-modeling-and-dax/) | D18–D20 | 12 | Star schemas, relationships, measures and filter context |
-| [06 Visualisation and storytelling](modules/06-visualization-and-storytelling/) | D21–D22 | 8 | Report design, accessibility, interaction and presentation |
-| [07 Managing and securing Power BI](modules/07-power-bi-service/) | D23 | 4 | Publishing, workspaces, refresh and row-level security |
-| [08 PL-300 review and career readiness](modules/08-pl300-and-career-readiness/) | D25–D26 | 8 | Structured review, mock practice and next steps |
+| [04 Power Query](modules/04-power-query/) | D16–D19 | 12 | Importing, profiling, cleaning, combining and validating data |
+| [05 Data modelling and DAX](modules/05-data-modeling-and-dax/) | D19–D22 | 12 | Star schemas, relationships, measures and filter context |
+| [06 Visualisation and storytelling](modules/06-visualization-and-storytelling/) | D22–D23 | 6 | Report design, interaction, analysis and the story |
+| [07 Managing and securing Power BI](modules/07-power-bi-service/) | D25 | 4 | An end-to-end demo, then publishing, workspaces, refresh and row-level security |
+| [08 PL-300 review and career readiness](modules/08-pl300-and-career-readiness/) | D26 | 4 | Structured review, exam practice and next steps |
 
 Modules are numbered in the order they are taught. Generative AI (D24) belongs to module 03 although it is taught after Power BI.
 
@@ -66,7 +66,7 @@ Tarek leads concepts and demonstrations. On shared days, he hands the class to t
 
 Labs are completed in class. Weekly homework provides about 26 hours of practice outside class. Formal assessment consists of four assignments, two open-book practicals and continuous professional practice; there is no capstone project.
 
-The third-party mock on the final day supports the programme's voucher decision under rules supplied to learners by the programme team. It is separate from the course grade and does not award Microsoft certification.
+From 4 November 2026 Tarek teaches every session, D01 to D26; there is no TA-only day and no mock exam. Vouchers follow rules supplied to learners by the programme team. The course does not award Microsoft certification.
 
 ## Tools and access
 
