@@ -1,0 +1,10 @@
+Delivered revenue =
+CALCULATE(
+    SUM(sales_lines[line_value]),
+    USERELATIONSHIP(sales_lines[delivered_date], dates[date])
+)
+
+// D18 · lab 04 · a prepared measure (D19 teaches how measures are written).
+// Copy from "Delivered revenue =" to the closing bracket above, not these comment lines.
+// It adds up line_value using the inactive relationship dates[date] → sales_lines[delivered_date]
+// instead of the active one to order_date. The relationship must exist (the dashed line in Model view).

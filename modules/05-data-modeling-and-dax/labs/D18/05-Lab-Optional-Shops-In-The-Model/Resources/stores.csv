@@ -1,0 +1,13 @@
+store_code,store_name,short_name,gov_code,governorate,area,latitude,longitude,size_m2,opened
+NK-AMM-01,Nakheel Abdali,Abdali,AM,Amman,Abdali,31.9632,35.9106,420,2019-03-14
+NK-AMM-02,Nakheel Sweifieh,Sweifieh,AM,Amman,Sweifieh,31.9545,35.8623,380,2020-11-02
+NK-AMM-03,Nakheel Tabarbour,Tabarbour,AM,Amman,Tabarbour,32.0148,35.9372,260,2022-05-21
+NK-IRB-01,Nakheel University Street,University Street,IR,Irbid,Irbid,32.5390,35.8560,310,2020-02-10
+NK-IRB-02,Nakheel Irbid City Centre,Irbid City Centre,IR,Irbid,Irbid,32.5556,35.8500,240,2023-09-01
+NK-ZRQ-01,Nakheel New Zarqa,New Zarqa,ZA,Zarqa,Zarqa,32.0833,36.1000,290,2021-06-15
+NK-AQB-01,Nakheel Aqaba,Aqaba,AQ,Aqaba,Aqaba,29.5320,35.0063,350,2021-01-20
+NK-KRK-01,Nakheel Karak,Karak,KA,Karak,Karak,31.1853,35.7048,180,2022-10-05
+NK-SLT-01,Nakheel Salt,Salt,BA,Balqa,Salt,32.0392,35.7272,160,2023-03-12
+NK-MDB-01,Nakheel Madaba,Madaba,MA,Madaba,Madaba,31.7160,35.7939,150,2023-06-18
+NK-MFQ-01,Nakheel Mafraq,Mafraq,MF,Mafraq,Mafraq,32.3429,36.2080,140,2024-02-25
+NK-JRS-01,Nakheel Jerash,Jerash,JA,Jerash,Jerash,32.2808,35.8993,,2026-09-15
