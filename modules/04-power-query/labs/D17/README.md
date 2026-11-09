@@ -32,7 +32,9 @@ The finance files also have [individual download links in the data guide](../../
 | [10 · Import errors](10-Lab-Import-Errors/README.md) | A corrected till export | The till CSV; a new or existing report/model |
 | [11 · Optional targets against actuals](11-Lab-Unpivot-Targets/README.md) | Targets and actuals at store-month grain | The targets CSV, with 01's `store_sales` or the lab's `Resources/store_sales.csv`; a new or existing report/model |
 
-**Desktop:** save the report as `D17-checkpoint.pbix` after activity 01 and save again after each activity. D18 starts from that file. Keep the extracted data folder too: the report reads it when you refresh.
+**Desktop:** save the report as `D17-checkpoint.pbix` after activity 01 and save again after each activity. Keep the extracted data folder too: the report reads it when you refresh.
+
+**For D18:** start a new file/model and follow the [D18 guide](../../../05-data-modeling-and-dax/labs/D18/README.md). You do not need to export any D17 queries. D18's optional shops lab supplies ready-to-load CSV copies of `store_sales` and `stores`.
 
 **Browser:** use one semantic model, `D17-nakheel`, throughout activities 01–07. Save the connected report as `D17-checkpoint`. To change its queries, select **Open semantic model**, switch **Viewing** to **Editing**, then **Transform data**. Finish Power Query with **Save**, apply changes if prompted, return to the report tab and click **Refresh**. Opening a new report for each CSV makes separate models that cannot be appended or merged together. The folder connector needs a cloud folder or a gateway; activity 02 explains the cloud route. Lab 08's local-path exercise needs Desktop.
 
