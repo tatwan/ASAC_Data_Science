@@ -65,7 +65,7 @@ The longer bar means Retail contributes slightly more completed revenue than Who
 
 **What just happened:** order 100003's lines landed in Outerwear, Sportswear and Tops, and in 2024-09.
 
-![image-20261108150229947](images/image-20261108150229947.png)
+![image-20261109170904999](images/image-20261109170904999.png)
 
 **Read the two visuals separately.** The bars compare completed **online** revenue across categories; Outerwear is only 195.00 ahead of Shoes. The line chart's month check, 20,237.00 for April 2026, is for completed sales across **all channels and categories**. The online filter belongs to the category visual, not the page or the month visual.
 

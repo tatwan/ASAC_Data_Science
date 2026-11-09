@@ -16,7 +16,7 @@ The four files use the synthetic [Nakheel Retail dataset](../../../../shared/dat
 |---|---|
 | [01 · Build the fresh model](01-Evr-Load-Start-Files-And-Measures/README.md) | Completed Revenue is 316,023.50 |
 | [02 · Compare revenue over time](02-Evr-Time-Intelligence/README.md) | April YoY is +58.2% |
-| [03 · Evaluate each sales line with SUMX](03-Evr-SUMX-And-Quick-Measures/README.md) | Order 100003 returns 47.00 |
+| [03 · Create a line-value column and use SUMX](03-Evr-SUMX-And-Quick-Measures/README.md) | Compression top stores 48.00 and order 100003 returns 47.00 |
 | [04 · Build the first overview](../../../06-visualization-and-storytelling/labs/D20/04-Lab-Overview-Page/README.md) | The completed scope gives 2,771 orders |
 | [05 · Optional distribution and relationship practice](../../../06-visualization-and-storytelling/labs/D20/05-Lab-Optional-Distribution-And-Relationship/README.md) | One band counts sales lines, one dot represents a product |
 
