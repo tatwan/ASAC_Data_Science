@@ -5,6 +5,6 @@
 | [`dates.pq`](dates.pq) | The whole `dates` query for the **Advanced Editor**, and the two custom-column formulas (`year_month`, `fiscal_year`) | activity 02 |
 | [`delivered_revenue.dax`](delivered_revenue.dax) | The prepared measure `Delivered revenue` | lab 04 |
 
-D17's store sales and store list, as files, are in [lab 05's `Resources/`](../05-Lab-Optional-Shops-In-The-Model/Resources/): only the optional lab 05 uses them.
+The ready-to-load store-order CSV and cleaned shop-list CSV are in [Lab 05's `Resources/`](../05-Lab-Optional-Shops-In-The-Model/Resources/). Lab 05 imports them; Lab 07 reuses those loaded tables when comparing sales with targets.
 
 Nakheel Retail, synthetic course data; course-owned.

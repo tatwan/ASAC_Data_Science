@@ -26,7 +26,7 @@ Bonus: with no status slicer, Total Revenue by category counts every status (Out
 
 ## Why this route works
 
-A measure runs once per cell with that cell's filters: the row (category or status), the slicers and the Filters pane. The total row has no category filter, so a distinct count there counts each customer once. `CALCULATE` changes the filters for one measure: Microsoft's rule is that a filter on a column not yet filtered is added, and a filter on a column already filtered overwrites it.
+Power BI evaluates the measure separately for each cell, using its table-row filters, slicer selections and filters from the Filters pane. The Total cell counts each customer once across the categories in scope. On the cancelled row, `CALCULATE` replaces the row's status filter with `completed` when it evaluates Completed Revenue. On a category row, it adds the completed status filter and keeps that category.
 
 **The most common error:** expecting the total row of a distinct count to equal the sum of its rows.
 

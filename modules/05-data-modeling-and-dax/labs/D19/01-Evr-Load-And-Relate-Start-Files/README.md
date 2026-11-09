@@ -35,6 +35,8 @@ We follow **order 100003** all day: customer C-1357, a store order on 2024-09-03
 2. Drag the missing ones: `customers[customer_id]` onto `sales_lines[customer_id]`, `products[product_id]` onto `sales_lines[product_id]`, `dates[date]` onto `sales_lines[order_date]`.
 3. Drag `dates[date]` onto `sales_lines[delivered_date]`. Power BI makes it inactive (dashed), because `dates` already reaches `sales_lines` through `order_date`.
 
+![image-20261109140400691](images/image-20261109140400691.png)
+
 > **On the web:** **Open semantic model** → **Editing**, then drag in the model diagram the same way.
 
 **Check:** **three solid** one-to-many lines and **one dashed** line into `sales_lines`.
@@ -45,11 +47,23 @@ We follow **order 100003** all day: customer C-1357, a store order on 2024-09-03
 
 **Why this step:** a date table must be marked for Wednesday's time measures, and month names sort alphabetically unless told otherwise.
 
-1. Select `dates` → **Table tools** → **Mark as date table** → column `date`.
+1. In the Report View. Select `dates` → **Table tools** → **Mark as date table** → column `date`.
+
+   ![image-20261109140501707](images/image-20261109140501707.png)
+
+   ![image-20261109140527285](images/image-20261109140527285.png)
+
 2. Select `dates[month]` → **Column tools** → **Sort by column** → `month_no`.
+
+   ![image-20261109140557633](images/image-20261109140557633.png)
+
 3. **File** → **Options and settings** → **Options** → **Current File** → **Data Load**: untick **Auto date/time**.
 
+   ![image-20261109140741355](images/image-20261109140741355.png)
+
 **Check:** a **Table** visual with `dates[month]` starts with **January**.
+
+![image-20261109140808309](images/image-20261109140808309.png)
 
 **What just happened:** 2024-09-03, order 100003's day, is a September row of `dates`, in fiscal year 2024-25.
 
@@ -60,6 +74,8 @@ We follow **order 100003** all day: customer C-1357, a store order on 2024-09-03
 A **Card**: drag `sales_lines[line_value]` into it. Power BI writes **Sum of line_value**. Set the display units to **None** ([the D19 page](../README.md)).
 
 **Check:** **340,370.00**.
+
+![image-20261109141139234](images/image-20261109141139234.png)
 
 **What just happened:** every line of every status, order 100003's 47.00 included. D16's 316,023.50 counts completed orders only; activity 02 gets there.
 

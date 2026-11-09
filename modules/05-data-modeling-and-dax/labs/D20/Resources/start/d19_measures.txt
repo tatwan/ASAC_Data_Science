@@ -1,0 +1,8 @@
+Total Revenue = SUM(sales_lines[line_value])
+
+Orders = DISTINCTCOUNT(sales_lines[order_id])
+
+Completed Revenue =
+CALCULATE([Total Revenue], sales_lines[status] = "completed")
+
+Average Order Value = DIVIDE([Total Revenue], [Orders])

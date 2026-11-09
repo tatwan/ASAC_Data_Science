@@ -1,10 +1,10 @@
 # Activity 01: load the four Nakheel tables, build sales_lines and name each table's grain
 
-In this activity, you will load D16's four CSV files into a new Power BI file, put each order onto its lines with **Merge**, and say what one row is in every table.
+In this activity, you will load the four supplied Nakheel CSV files into a new Power BI file, put each order onto its lines with **Merge**, and say what one row is in every table.
 
-**Files:** a new Power BI file · **Data:** `customers.csv`, `products.csv`, `orders.csv`, `order_items.csv` from [`shared/datasets/nakheel`](../../../../../shared/datasets/nakheel/README.md) (the files you used on D16) · **Guide:** [the D18 page](../README.md)
+**Files:** a new Power BI file · **Data:** `customers.csv`, `products.csv`, `orders.csv`, `order_items.csv` from [`shared/datasets/nakheel`](../../../../../shared/datasets/nakheel/README.md) · **Guide:** [the D18 page](../README.md)
 
-**The question:** a manager wants completed revenue by customer segment, by product category and by month. The number to land on is one you already have: **316,023.50** (D16).
+**The question:** a manager wants completed revenue by customer segment, by product category and by month. The completed-revenue check is **316,023.50**.
 
 | Step | The problem you will see | The tool |
 |---|---|---|
@@ -18,7 +18,7 @@ We follow **order 100003** all the way: one order, three lines, 47.00.
 
 ## Step 1 · Load the four CSV files
 
-**Why this step:** a new day starts from a new file, so nothing from D17 can change today's numbers.
+**Why this step:** we need all four source tables in one model before we can combine and relate them. Start from a blank file/model and use the supplied CSVs.
 
 1. Download the four files (on GitHub: open each, **Download raw file**) and keep them in one folder.
 2. **Get data** → **Text/CSV** → `customers.csv` → **Transform Data**. *Why:* **Transform Data** opens Power Query; **Load** would skip it.
@@ -51,7 +51,7 @@ Read the `segment` profile before and after cleaning: **distinct** counts differ
 
 ## Step 3 · Put each order onto its lines with Merge
 
-**Why this step:** revenue is on `order_items`, but the customer and the date are on `orders`. One order and its lines are the same sale at two grains, so we build one table at the line grain: this is the Merge from Part 1, not a relationship.
+**Why this step:** revenue is on `order_items`, but the customer and the date are on `orders`. One order and its lines are the same sale at two grains, so we build one table at the line grain: Merge adds those order fields to each line. We create relationships between the remaining tables in activity 03.
 
 **Grain means what one row represents.** Order 100003 appears once in `orders` and three times in `order_items`. We need its customer and date beside each of those three lines to group their values later. Each line must match just one order; if `orders` contained two rows with the same `order_id`, expanding the Merge could duplicate lines and inflate revenue.
 
@@ -128,7 +128,7 @@ A number belongs on a table only if it describes one row of that table.
 
 ## Bonus
 
-In SQL this table is D08's view `bi.fact_sales`: `order_items` joined to `orders` on `order_id`. Which of today's steps matches the `JOIN`, and which matches `qty * price AS revenue`?
+Order 100003 has three line values: 24.00, 18.00 and 5.00. Explain why summing those gives 47.00, but summing an order total of 47.00 repeated on each line gives 141.00.
 
 ## References
 

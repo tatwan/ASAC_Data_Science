@@ -20,11 +20,16 @@ We follow **order 100003**: three rows of `sales_lines`, one order, worth 47.00.
 **Why this step:** a measure is a named calculation, stored in the model, that every visual can use. Written once, it can be used inside other measures (step 4).
 
 1. Select `sales_lines` in the **Data** pane → **Home** → **New measure**. *Why select it first:* the measure lands in the selected table.
+
+   ![image-20261109140959322](images/image-20261109140959322.png)
+
 2. In the formula bar type the measure and press **Enter**:
 
 ```dax
 Total Revenue = SUM(sales_lines[line_value])
 ```
+
+![image-20261109141217489](images/image-20261109141217489.png)
 
 3. In activity 01's card, replace **Sum of line_value** with **Total Revenue** (it has a calculator icon in the **Data** pane).
 
@@ -32,7 +37,16 @@ Total Revenue = SUM(sales_lines[line_value])
 
 **Check:** **340,370.00**, the same as Sum of `line_value`.
 
-**What just happened:** for order 100003 alone, Total Revenue would be 24.00 + 18.00 + 5.00 = 47.00: the measure adds whatever rows the visual keeps.
+**What just happened**
+
+Look at the field name in the card’s **Values** area.
+
+- Drag in the `line_value` column and you see **Sum of line_value**. Power BI applies **Sum** in the visual. That’s an *implicit measure*.
+- Drag in the measure and you see **Total Revenue** on its own. The `SUM` is already in the DAX formula you saved in the model. That’s an *explicit measure*.
+
+For order 100003 alone, either field would give **47.00** by adding the same three lines (`24.00 + 18.00 + 5.00`). In Step 4, you’ll reuse the measure in `DIVIDE([Total Revenue], [Orders])` to calculate average order value.
+
+![image-20261109141853879](images/image-20261109141853879.png)
 
 ## Step 2 · Orders and Customers
 
@@ -49,29 +63,62 @@ Customers = DISTINCTCOUNT(sales_lines[customer_id])
 
 **What just happened:** order 100003 is three rows and counts as one order; C-1357 counts once however many lines it has.
 
+![image-20261109142320178](images/image-20261109142320178.png)
+
 ## Step 3 · A slicer on status
 
-**Why this step:** the three cards count every status, including cancelled and pending orders. SQL's answers count completed orders only.
+**Why this step**
 
-A **Slicer** with `sales_lines[status]`; tick **completed**.
+The three cards use sales lines from completed, cancelled and pending orders. A slicer is a filter you can use directly on the report page. Add one so all three cards use only sales lines from completed orders. Then compare the revenue, order count and customer count with your SQL results.
 
-**Check:** **316,023.50 · 2,771 · 452**: D16's revenue, D07's completed orders and D09's buying customers.
+1. On the page with the three cards, click a blank spot on the canvas. This lets you add a new visual without changing a card.
 
-**What just happened:** the measures did not change. The slicer chose the rows they add up and count. Order 100003 is completed, so its 47.00 is still inside. Part 3 of the slides explains this.
+2. In the **Visualizations** pane, hover over the icons to read their names. You may see **Button slicer**, **Input slicer** and **List slicer**. For this lab, choose the icon labelled just **Slicer**. An empty slicer appears on the page.
+
+   ![image-20261109144410814](images/image-20261109144410814.png)
+
+3. Keep the slicer selected. In the **Data** pane, expand `sales_lines` and tick `status`. The slicer now lists **cancelled**, **completed** and **pending**.
+
+4. Select **completed** in the slicer on the page. Watch the three cards update and leave **completed** selected for Step 4.
+
+   ![image-20261109144511986](images/image-20261109144511986.png)
+
+> **On the web** · Open the report in **Editing** mode and follow the same steps.
+
+**Check**
+
+Total Revenue reads **316,023.50** (D16), Orders **2,771** (D07) and Customers **452** (D09).
+
+**What just happened**
+
+Power BI recalculated the cards using only the rows where `status` is `completed`. Order 100003 still contributes **47.00** because all three of its lines have that status.
 
 ## Step 4 · Average Order Value with DIVIDE
 
-**Why this step:** `AVERAGE(sales_lines[line_value])` averages the rows, and a row is a line: it gives 45.46, the average line. The average order is revenue divided by orders.
+**Why this step**
+
+The **Average of line_value** card below gives the average amount per line because `sales_lines` has one row per order line. To find the average per order, we need to count each order once.
+
+![image-20261109144636418](images/image-20261109144636418.png)
 
 ```dax
 Average Order Value = DIVIDE([Total Revenue], [Orders])
 ```
 
-*Why `DIVIDE` and not `/`:* `DIVIDE` returns a blank if the bottom number is zero or blank; the slash returns Infinity. *Why square brackets:* a measure inside a measure is written by its name, with no table in front.
+`DIVIDE` returns a blank if `[Orders]` is zero or blank. That covers a filter selection with no orders to average. The square brackets let you refer to each measure by name.
 
 **Check:** **114.05** (the completed slicer is still on).
 
-**What just happened:** for order 100003, `AVERAGE` of its lines gives 15.67, but the order is worth 47.00. Divide the measures, not the rows.
+![image-20261109144920304](images/image-20261109144920304.png)
+
+**What just happened**
+
+With **completed** selected, both averages use **316,023.50** in revenue.
+
+- **Average line value** uses `AVERAGE(sales_lines[line_value])`. It divides by the **6,951 rows** with a line value. **316,023.50 ÷ 6,951 ≈ 45.46**.
+- **Average order value** uses `[Orders]`, which counts **2,771 distinct order IDs** with `DISTINCTCOUNT(sales_lines[order_id])`. **316,023.50 ÷ 2,771 ≈ 114.05**.
+
+Order 100003 adds three to the line count and one to the order count. Its three lines contribute **47.00** to the revenue in both calculations.
 
 ## Check yourself
 
@@ -94,4 +141,4 @@ Leave the completed slicer on: activity 03 starts with it.
 
 ## References
 
-Microsoft: [Create measures for data analysis](https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-measures), [DIVIDE function vs divide operator](https://learn.microsoft.com/en-us/dax/best-practices/dax-divide-function-operator). Menu names are Power BI's in November 2026.
+Microsoft: [Create measures for data analysis](https://learn.microsoft.com/en-us/power-bi/transform-model/desktop-measures), [Create a slicer](https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-slicer-visual#create-a-slicer), [Slicer types](https://learn.microsoft.com/en-us/power-bi/visuals/power-bi-visualization-slicers), [DIVIDE function vs divide operator](https://learn.microsoft.com/en-us/dax/best-practices/dax-divide-function-operator). Menu names are Power BI's in November 2026.

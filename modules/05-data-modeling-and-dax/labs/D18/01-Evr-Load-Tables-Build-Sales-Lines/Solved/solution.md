@@ -14,7 +14,7 @@ Step 5's three columns: `shipping_fee` does not belong on `sales_lines` (an orde
 
 ## Why this route works
 
-`orders` and `order_items` describe the same sale: the order says who and when, its lines say what. Merging the order onto its lines keeps one row per line, so the line grain is unchanged and nothing is counted twice, as long as the order's own totals stay behind. That is the Merge rule from Part 1: Merge builds one table at one grain. The customer and product descriptions are not merged in: they stay in their own tables, and activity 03 connects them with relationships.
+`orders` and `order_items` describe the same sale: the order says who and when, its lines say what. Merging the order onto its lines keeps one row per line, so the line grain is unchanged and nothing is counted twice, as long as the order's own totals stay behind. Merge builds one table at one grain. The customer and product descriptions are not merged in: they stay in their own tables, and activity 03 connects them with relationships.
 
 **The most common error:** leaving `order_total` ticked and adding it up on the lines: 988,971.50, about 3.1 times the true revenue, because each order's total is repeated once per line (order 100003: 47.00 × 3 = 141.00).
 
@@ -35,4 +35,4 @@ LEFT JOIN nakheel.orders AS o
 WHERE o.status = 'completed';
 ```
 
-D08's view `bi.fact_sales` is this table written in SQL (with `INNER JOIN`; every line finds its order, so both give 7,516 rows).
+Every line finds its order in these supplied files, so either a Left Outer or an Inner join gives 7,516 rows. The Left Outer join also keeps a line if its order record is missing in another dataset.

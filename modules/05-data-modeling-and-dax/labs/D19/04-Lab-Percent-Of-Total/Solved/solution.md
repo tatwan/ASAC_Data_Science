@@ -19,15 +19,15 @@ All Categories Revenue =
 | Tops | 40,588.00 | 316,023.50 | 12.8% | 13.6% |
 | **Total** | 316,023.50 | 316,023.50 | **100.0%** | 100.0% |
 
-Online only (step 4): All Categories Revenue reads 110,685.50 on every row; Outerwear's online revenue is 25,315.50.
+With only Outerwear selected in the category slicer, the Outerwear row still shows **76,637.00 ÷ 316,023.50 ≈ 24.3%**. After clearing that slicer and selecting online, the row shows **25,315.50 ÷ 110,685.50 ≈ 22.9%**.
 
 Bonus: by `customers[segment]`, `REMOVEFILTERS(products)` leaves the segment filter in place, so every row reads 100%. The bottom number must remove the table the rows come from: `REMOVEFILTERS(customers)` gives Retail 50.9%, Wholesale 48.8% and (Blank) 0.3%.
 
 ## Why this route works
 
-The top number keeps every filter of its cell. The bottom number runs the same measure with the products filter removed, so on every category row it sees all categories, but it keeps the other filters: the status filter inside Completed Revenue and any slicer. That is why the share follows the channel slicer in step 4.
+Both measures sum completed sales. **Completed Revenue** uses the category filter on the row. For **All Categories Revenue**, `REMOVEFILTERS(products)` clears the category filter from the row and any category slicer selection for that calculation. Selecting **online** filters `sales_lines`, so both measures then sum only online sales.
 
-**The most common error:** `REMOVEFILTERS()` with nothing inside, when the question is the share of online revenue. It removes the slicer too: Outerwear reads 8.0% (25,315.50 ÷ 316,023.50), the share of all completed revenue.
+`REMOVEFILTERS()` with no argument also removes the channel filter from the denominator's calculation. The online slicer selection stays visible. Outerwear reads **8.0%** because it divides online Outerwear revenue by completed revenue across all categories and channels.
 
 ## The same work in SQL (BigQuery)
 

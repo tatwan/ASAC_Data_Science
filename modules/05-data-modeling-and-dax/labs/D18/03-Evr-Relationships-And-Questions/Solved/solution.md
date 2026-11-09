@@ -35,12 +35,12 @@ A relationship keeps each table once and joins them when a visual asks. The filt
 | Count (Distinct) of `sales_lines[customer_id]` | `COUNT(DISTINCT o.customer_id)` after the join |
 
 ```sql
-SELECT c.segment, ROUND(SUM(i.qty * i.price), 2) AS revenue
+SELECT INITCAP(TRIM(c.segment)) AS segment, ROUND(SUM(i.qty * i.price), 2) AS revenue
 FROM nakheel.order_items AS i
 JOIN nakheel.orders AS o ON i.order_id = o.order_id
 LEFT JOIN nakheel.customers AS c ON o.customer_id = c.customer_id
 WHERE o.status = 'completed'
-GROUP BY c.segment;   -- the segment spellings need D16's fix first; NULL is the (Blank) bar
+GROUP BY 1;   -- trim and standardise segment as in activity 01; NULL is the (Blank) bar
 
 SELECT p.category, COUNT(DISTINCT o.customer_id) AS customers
 FROM nakheel.order_items AS i

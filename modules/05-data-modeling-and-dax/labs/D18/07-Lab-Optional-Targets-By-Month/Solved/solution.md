@@ -1,4 +1,4 @@
-# Solution: lab 07 (optional), finance's monthly targets in the model
+# Solution: lab 07 (optional), how to compare monthly targets with daily sales
 
 ## The answers
 
@@ -12,7 +12,7 @@
 
 ## Why this route works
 
-The targets are a third fact table at the shop-and-month grain. Giving each the first day of its month lets the day-level `dates` table relate to it; `stores` relates to it on `store_code`. Target and actual then meet in the shared dimensions, with no Merge. Below the month (by day) the targets mean nothing, so read them by month or above.
+The targets are a third fact table at the shop-and-month grain. Giving each the first day of its month lets the day-level `dates` table relate to it; `stores` relates to it on `store_code`. Target and actual then meet in the shared dimensions, with no Merge. At day level, the whole monthly target appears on the first day only. Compare targets and sales by month or above; a daily comparison would require an agreed allocation across days.
 
 **The most common error:** relating `dates` to `month` (text) instead of `month_start` (date): 110,000 on every row.
 
@@ -22,7 +22,7 @@ The targets are a third fact table at the shop-and-month grain. Giving each the 
 |---|---|
 | Unpivot Other Columns | `UNPIVOT (target FOR month IN (...))` |
 | `month_start` | `PARSE_DATE('%Y-%m-%d', CONCAT(month, '-01'))` |
-| two relationships and a matrix | join both fact tables to the month, then compare |
+| two relationships and a matrix | Aggregate each fact table by month, then join the two monthly results on month |
 
 ```sql
 SELECT FORMAT_DATE('%Y-%m', ss.order_date) AS month,

@@ -90,7 +90,7 @@ The profile's **1,096 distinct, 1,096 unique** means every date value occurs onc
 | `year_month` | `Date.ToText([date], "yyyy-MM", "en-US")` |
 | `fiscal_year` | `let y = if Date.Month([date]) >= 9 then Date.Year([date]) else Date.Year([date]) - 1 in Text.From(y) & "-" & Text.End(Text.From(y + 1), 2)` |
 
-*Why `"en-US"`:* on a computer set to another region, the text would come out in another calendar or language. *Why September:* Nakheel's year runs September to August, as D17's finance files.
+*Why `"en-US"`:* on a computer set to another region, the text would come out in another calendar or language. *Why September:* Nakheel's fiscal year runs from September to August.
 
 > [!Note]
 >

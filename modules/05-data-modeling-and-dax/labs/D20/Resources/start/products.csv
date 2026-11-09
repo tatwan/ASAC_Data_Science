@@ -1,0 +1,61 @@
+product_id,product_name,category,list_price
+P-001,Trail shoe,Shoes,19.50
+P-002,Running shoe,Shoes,34.00
+P-003,Leather loafer,Shoes,42.00
+P-004,Canvas sneaker,Shoes,16.50
+P-005,Kids sandal,Shoes,9.00
+P-006,Ankle boot,Shoes,48.00
+P-007,Slide sandal,Shoes,7.50
+P-008,Formal oxford,Shoes,55.00
+P-009,Hiking boot,Shoes,58.00
+P-010,School shoe,Shoes,21.00
+P-011,Rain jacket,Outerwear,42.00
+P-012,Denim jacket,Outerwear,29.00
+P-013,Puffer coat,Outerwear,52.00
+P-014,Fleece jacket,Outerwear,24.00
+P-015,Wool overcoat,Outerwear,60.00
+P-016,Kids windbreaker,Outerwear,17.50
+P-017,Light parka,Outerwear,38.00
+P-018,Knit cardigan,Outerwear,21.50
+P-019,Hooded sweatshirt,Outerwear,18.00
+P-020,Quilted vest,Outerwear,26.00
+P-021,Cotton T-shirt,Tops,6.50
+P-022,Linen shirt,Tops,18.00
+P-023,Polo shirt,Tops,12.00
+P-024,Oxford shirt,Tops,16.50
+P-025,Graphic T-shirt,Tops,8.00
+P-026,Kids T-shirt,Tops,5.00
+P-027,White thobe,Tops,24.00
+P-028,Blouse,Tops,14.50
+P-029,Long-sleeve top,Tops,9.50
+P-030,Sports top,Tops,11.00
+P-031,Slim jeans,Bottoms,22.00
+P-032,Chino trousers,Bottoms,19.00
+P-033,Cargo shorts,Bottoms,13.50
+P-034,Track pants,Bottoms,12.50
+P-035,Kids jeans,Bottoms,11.00
+P-036,Pleated skirt,Bottoms,17.00
+P-037,Linen trousers,Bottoms,21.00
+P-038,Denim shorts,Bottoms,14.00
+P-039,Wide-leg trousers,Bottoms,23.50
+P-040,Leggings,Bottoms,8.50
+P-041,Ankle socks,Accessories,8.00
+P-042,Leather belt,Accessories,26.00
+P-043,Canvas cap,Accessories,15.00
+P-044,Wool scarf,Accessories,12.00
+P-045,Tote bag,Accessories,10.50
+P-046,Sunglasses,Accessories,18.50
+P-047,Leather wallet,Accessories,22.00
+P-048,Winter gloves,Accessories,9.00
+P-049,Backpack,Accessories,27.50
+P-050,Keffiyeh,Accessories,11.50
+P-051,Gym shorts,Sportswear,10.00
+P-052,Training jacket,Sportswear,31.00
+P-053,Sports socks 3-pack,Sportswear,6.00
+P-054,Yoga mat,Sportswear,14.00
+P-055,Football jersey,Sportswear,19.00
+P-056,Swim shorts,Sportswear,12.50
+P-057,Compression top,Sportswear,16.00
+P-058,Headband,Sportswear,3.50
+P-059,Water bottle,Sportswear,5.50
+P-060,Kids football boots,Sportswear,18.00

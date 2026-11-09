@@ -18,7 +18,7 @@ We follow **order 100003** (customer C-1357, three products, 2024-09-03).
 
 ## Step 1 · Draw the three relationships
 
-**Why this step:** so far `sales_lines` and `customers` are two tables with no link; a chart that takes `segment` from one and `line_value` from the other has nothing to join them, so every bar shows the full total. A relationship is D06's join, saved once in the model.
+**Why this step:** so far `sales_lines` and `customers` are two tables with no link; a chart that takes `segment` from one and `line_value` from the other has nothing to join them, so every bar shows the full total.
 
 The tables remain separate. Unlike the Merge in activity 01, a relationship does not add columns to `sales_lines`. It tells Power BI how a filter on one table restricts rows in another: select Retail customers, match their IDs to sales lines, then sum the matching line values. We can reuse that relationship in every visual that groups sales by a customer field.
 
@@ -28,7 +28,7 @@ The tables remain separate. Unlike the Merge in activity 01, a relationship does
 
    ![image-20261108144737877](images/image-20261108144737877.png)
 
-3. Double-click a line: **One to many** (or **Many to one**, the same line seen from the other side), **Single**, active. **Cancel**.
+3. Click a line. The **Properties** pane shows its settings: **Cardinality** One to many (or Many to one, the same line seen from the other side), **Make this relationship active** Yes, and **Cross-filter direction** Single. Power BI sets these by default; we only read them here.
 
 > **On the web:** open the semantic model, switch to **Editing**, and drag in the model diagram the same way. **Manage relationships** is on the **Home** ribbon.
 
@@ -50,7 +50,7 @@ Report view. A **Clustered bar chart**: `customers[segment]` on the Y-axis, `sal
 
 **Check:** Retail 160,881.50, Wholesale 154,204.00 and **(Blank) 938.00**.
 
-**What just happened:** (Blank) is order 101664, customer C-0999, which has no row in `customers` (D06 and D07 found it). A relationship works like a `LEFT JOIN` from the fact: no line is lost, and the three bars add up to 316,023.50. Order 100003's 47.00 is inside Retail.
+**What just happened:** (Blank) is order 101664, customer C-0999, which has no row in `customers`. A relationship works like a `LEFT JOIN` from the fact: no line is lost, and the three bars add up to 316,023.50. Order 100003's 47.00 is inside Retail.
 
 The longer bar means Retail contributes slightly more completed revenue than Wholesale. It does not mean Retail customers spend more per customer; there are different numbers of customers in the two segments. **(Blank)** means the customer ID did not match the customer list, not that the sale had no value. Removing that bar would hide 938.00 from this view of revenue.
 
@@ -118,7 +118,7 @@ A **Table** visual: `products[product_name]` and `line_value`, completed only: 5
 
 ![image-20261108150829928](images/image-20261108150829928.png)
 
-**Check:** **60** rows; four have no value: Hiking boot, Graphic T-shirt, Sunglasses, Headband (D07's products that never sold).
+**Check:** **60** rows; four have no value: Hiking boot, Graphic T-shirt, Sunglasses, Headband.
 
 The product names come from the full product list; the amounts come from matching completed sales. **Show items with no data** keeps products whose amount is blank in this context. It does not create sales rows. With a month or category selected, a blank could mean no sales in that selection, so clear other visual selections before checking the four products above.
 

@@ -2,15 +2,16 @@
 
 You will turn Nakheel's four tables into one model: a fact table of order lines, `sales_lines`; a date table, `dates`; three relationships; a second date; and a tidy **Data** pane. In class your instructor shows each activity and you follow; anything you do not finish, you finish from the README.
 
-**D18 starts with a new, blank Power BI file.** You need nothing from D17 or from Wednesday.
+**D18 starts with a new, blank Power BI file/model.** All required inputs are linked below; the activities show how to prepare them.
 
 The model should let us ask the same revenue question by customer segment, product category or month. We first decide what one row represents (**grain**), so revenue is not counted twice. We then keep the sales amounts in a **fact table** and the fields we group by in **dimension tables**. Relationships let those grouping fields filter the sales. The charts check whether that filtering gives the answers we expect.
 
 ## Get the files
 
-- **Nakheel's four tables**, the files you used on D16: [customers.csv](../../../../shared/datasets/nakheel/customers.csv), [products.csv](../../../../shared/datasets/nakheel/products.csv), [orders.csv](../../../../shared/datasets/nakheel/orders.csv), [order_items.csv](../../../../shared/datasets/nakheel/order_items.csv). On GitHub, open each file and click **Download raw file**; keep the four in one folder.
+- **Four source CSVs for activities 01–04:** [customers.csv](../../../../shared/datasets/nakheel/customers.csv), [products.csv](../../../../shared/datasets/nakheel/products.csv), [orders.csv](../../../../shared/datasets/nakheel/orders.csv), [order_items.csv](../../../../shared/datasets/nakheel/order_items.csv). On GitHub, open each file and click **Download raw file**; keep the four in one folder.
 - **Two prepared files:** [`Resources/dates.pq`](Resources/dates.pq) (activity 02's date table, to paste if you prefer) and [`Resources/delivered_revenue.dax`](Resources/delivered_revenue.dax) (lab 04's measure).
-- **Optional labs only:** lab 05's [`Resources/`](05-Lab-Optional-Shops-In-The-Model/Resources/) has D17's store sales and store list; lab 07 uses [`store_targets_2025-26.csv`](../../../../shared/datasets/nakheel_stores/store_targets_2025-26.csv).
+- **Lab 05 supplies two ready-to-load CSVs:** [`store_sales.csv`](05-Lab-Optional-Shops-In-The-Model/Resources/store_sales.csv) and [`stores.csv`](05-Lab-Optional-Shops-In-The-Model/Resources/stores.csv). They contain store orders and a cleaned shop list, ready to import. Download these supplied inputs directly.
+- **Lab 07 starts from the supplied wide targets CSV:** [`store_targets_2025-26.csv`](../../../../shared/datasets/nakheel_stores/store_targets_2025-26.csv). The lab includes the full unpivot and date-key instructions.
 
 The [Nakheel data guide](../../../../shared/datasets/nakheel/README.md) describes every column.
 
@@ -23,8 +24,12 @@ The [Nakheel data guide](../../../../shared/datasets/nakheel/README.md) describe
 | [Activity 03: relate the tables and answer the manager's questions](03-Evr-Relationships-And-Questions/README.md) | three relationships; five answers | 02 |
 | [Lab 04: two dates and a tidy model](04-Lab-Two-Dates-Tidy-Model/README.md) | the delivered date, `Delivered revenue`; keys hidden | 03 |
 | [Lab 05 (optional): the shops in the same model](05-Lab-Optional-Shops-In-The-Model/README.md) | `store_sales` and `stores` related | 04 (or 03) |
-| [Lab 06 (optional, PL-300): cross filter direction Both and what it costs](06-Lab-Optional-Filter-Direction/README.md) | **Both**, then back to **Single** | a copy of 03 |
-| [Lab 07 (optional, PL-300): finance's monthly targets in the model](07-Lab-Optional-Targets-By-Month/README.md) | `targets_long` | 05 |
+| [Lab 06 (optional, PL-300): How to make a filter travel both ways](06-Lab-Optional-Filter-Direction/README.md) | **Both**, then back to **Single** | 03 or any later D18 checkpoint; see the lab's copy/save guidance |
+| [Lab 07 (optional, PL-300): How to compare monthly targets with daily sales](07-Lab-Optional-Targets-By-Month/README.md) | `targets_long` | 05 |
+
+**After Lab 04:** Lab 05 adds the shops to your D18 model, then Lab 07 adds their targets. Lab 06 is a separate experiment: you may skip it and go from 05 straight to 07. If you do 06, restore **Single** before continuing.
+
+If you have no D18 checkpoint, begin with activity 01 above and work through 03. Those activities build the tables and relationships needed by the optional labs. Saving a `.pbix` keeps the Desktop report, model and queries together; it does not create separate cleaned CSV files. The optional labs provide the CSV inputs they need.
 
 ## Desktop and the web
 
@@ -34,7 +39,7 @@ The [Nakheel data guide](../../../../shared/datasets/nakheel/README.md) describe
 ## Check rows and totals
 
 - **Row counts:** **Table view** (the second icon on the left) → select a table: the status bar shows its rows. Power Query's `999+ rows` is not a count. Today: `sales_lines` 7,516 · `customers` 500 · `products` 60 · `dates` 1,096.
-- **Revenue:** put `sales_lines[status]` = **completed** in **Filters on this visual**. The check is **316,023.50** (D16); 340,370.00 means the filter is missing.
+- **Revenue:** put `sales_lines[status]` = **completed** in **Filters on this visual**. The check is **316,023.50**; 340,370.00 means the filter is missing.
 - **The whole value on a card:** a **Card** shows `316.02K`. **Format visual** → **Visual** → **Callout** → **Value** → **Display units** → **None** (some versions say **Callout values**).
 
 ## Where the data comes from

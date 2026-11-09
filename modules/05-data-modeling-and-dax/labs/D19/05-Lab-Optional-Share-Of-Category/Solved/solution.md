@@ -19,9 +19,9 @@ Category Revenue =
 
 ## Why this route works
 
-Each row has two filters from `products`: its category and its product. Removing only the `product_name` filter leaves the category filter, so the bottom number is the row's category total. Removing the whole table would leave nothing, and give 316,023.50 (lab 04's share of the total).
+On the White thobe row, **Completed Revenue** uses both `category = Tops` and `product_name = White thobe`, giving **9,768.00**. For **Category Revenue**, Power BI removes the filter on `products[product_name]` whether it comes from the row or a slicer. The `category = Tops` filter stays in place, so the measure sums completed sales across all Tops products and gives **40,588.00**. With the other slicers clear, removing filters on the whole `products` table would give **316,023.50** across all categories.
 
-**The most common error:** removing the filter on a column the table does not use (`product_id` when the table shows `product_name`): nothing is removed and every row reads 100%.
+If the table uses `product_id` as the product field, clearing `product_name` leaves the ID filter in place. Both measures then use the same product on each row, giving **100%** wherever there is revenue.
 
 ## The same work in SQL (BigQuery)
 

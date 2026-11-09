@@ -1,4 +1,4 @@
-# Solution: lab 06 (optional), cross filter direction Both
+# Solution: lab 06 (optional), how to make a filter travel both ways
 
 ## The answers
 
