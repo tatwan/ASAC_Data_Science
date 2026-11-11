@@ -19,5 +19,6 @@ The four files use the synthetic [Nakheel Retail dataset](../../../../shared/dat
 | [03 · Create a line-value column and use SUMX](03-Evr-SUMX-And-Quick-Measures/README.md) | Compression top stores 48.00 and order 100003 returns 47.00 |
 | [04 · Build the first overview](../../../06-visualization-and-storytelling/labs/D20/04-Lab-Overview-Page/README.md) | The completed scope gives 2,771 orders |
 | [05 · Optional distribution and relationship practice](../../../06-visualization-and-storytelling/labs/D20/05-Lab-Optional-Distribution-And-Relationship/README.md) | One band counts sales lines, one dot represents a product |
+| [06 · Optional PL-300 DAX workout](06-Lab-Optional-PL300-DAX-Workout/README.md) | Calculation group: April 2026 reads 20,237.00 · 62,497.50 · 12,791.00 |
 
 Desktop keeps the model and report in one PBIX. On the web, the semantic model and report are separate workspace items. Create relationships and measures in the semantic model, then open its report to build the visuals. Keep both item names so you can reopen the right pair. Editing and export depend on the account. If a control is missing, use the worked views in the chapter and repeat the same checks in Desktop when you have access. [Microsoft Service model editing](https://learn.microsoft.com/en-us/power-bi/transform-model/service-edit-data-models).

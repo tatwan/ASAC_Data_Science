@@ -22,6 +22,27 @@ TOTALYTD([Completed Revenue], dates[date])
 
 **Check.** April 2026 gives 62,497.50, and December 2025 gives 147,589.00. If every month has the same result, check the date field and active order-date relationship.
 
+> [!Note]
+>
+> The `TOTALYTD()` behavior is that it **resets at the beginning of every year** . Year-to-Date only accumulates revenue within the same calendar year. This allows you to compare yearly performance. 
+>
+> What if you want to keep it accumulating? Then you can use 
+>
+> ```
+> Revenue Running Total =
+> CALCULATE(
+>     [Completed Revenue],
+>     FILTER(
+>         ALL(dates),
+>         dates[date] <= MAX(dates[date])
+>     )
+> )
+> ```
+>
+> The condition `dates[date] <= MAX(dates[date])` means: include all dates up to and including the latest date in the current filter context. 
+
+![image-20261111153519153](images/image-20261111153519153.png)
+
 ## 2. Read the same period last year
 
 **Why this step.** Use April 2025 for a comparison with April 2026.
@@ -33,6 +54,16 @@ CALCULATE(
     SAMEPERIODLASTYEAR(dates[date])
 )
 ```
+
+This measure calculates Completed Revenue for the same period last year (LY).
+
+- `[Completed Revenue]`: Our existing revenue measure.
+- `SAMEPERIODLASTYEAR(dates[date])`: Shifts the current date period back one year.
+- `CALCULATE()`: Evaluates revenue using that previous year's dates.
+
+> [!Note]
+>
+> This is particularly useful for calculating Year-over-Year (YoY) growth 
 
 Add it to the table. **Check.** In the April 2026 row, the current column says 20,237.00 and Revenue LY says 12,791.00. The row label stays April 2026.
 
@@ -46,6 +77,8 @@ DIVIDE([Completed Revenue] - [Revenue LY], [Revenue LY])
 ```
 
 Format the measure as a percentage with one decimal place. **Check.** April 2026 reads +58.2% (Power BI may display positive percentages without the plus sign). DIVIDE returns a blank when its denominator is zero or blank in this expression.
+
+![image-20261111154106862](images/image-20261111154106862.png)
 
 ## 4. Compare years with the same months
 
