@@ -73,7 +73,7 @@ Read it from the inside out:
 3. `"Completed Revenue"` is the name of the new column.
 4. `[Completed Revenue]` is your existing measure. It is evaluated once for each category row.
 
-**Why the measure gives a different number on each row.** On the Outerwear row, ADDCOLUMNS has a current row (Outerwear), but a current row is not a filter. When you call a **measure** there, DAX quietly wraps it in CALCULATE, and CALCULATE turns the current row into a filter: `products[category] = "Outerwear"`. This is **context transition** (D20 page 40). So each row gets its own category's revenue.
+**Why the measure gives a different number on each row.** On the Outerwear row, ADDCOLUMNS has a current row (Outerwear), but a current row is not a filter. When you call a **measure** there, DAX quietly wraps it in CALCULATE, and CALCULATE turns the current row into a filter: `products[category] = "Outerwear"`. This is **context transition** (D20 page 50). So each row gets its own category's revenue.
 
 Try it the other way to see the difference. If you wrote `SUM(sales_lines[line_value])` instead of `[Completed Revenue]`, there would be no CALCULATE, no filter, and every row would show the same number: 340,370.00, the total of all sales lines.
 

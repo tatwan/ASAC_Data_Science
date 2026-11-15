@@ -1,0 +1,14 @@
+{
+  "name": "Nakheel Retail",
+  "dataColors": ["#3B4AE0", "#0F766E", "#B45309", "#BE123C", "#47505F", "#7C3AED"],
+  "background": "#FFFFFF",
+  "foreground": "#0B1220",
+  "tableAccent": "#3B4AE0",
+  "good": "#15803D",
+  "neutral": "#B45309",
+  "bad": "#B91C1C",
+  "maximum": "#15803D",
+  "center": "#FFFFFF",
+  "minimum": "#B91C1C",
+  "null": "#E5E7EB"
+}
