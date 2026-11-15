@@ -2,7 +2,7 @@
 
 [Course home](../../README.md) · [Schedule](../../course/STUDENT_SCHEDULE.md)
 
-**D19 (after the break)–D22 · 12 scheduled hours · Status: D18 ready (slides and labs; Part 1 added and the Sunday half rebuilt with lean labs, 4 November 2026; taught in the D19 and D20 slots); D19 built for D21 (DAX 1); D20 built for D22 (DAX 2 and the first report page).**
+**D19 (after the break)–D23 · 16 scheduled hours · Status: D18, D19 and D20 ready (slides and labs); the D20 materials are taught in the D23 slot, Sun 15 Nov, with a short DAX review; the Model-the-data study guide and cheat sheet are the PL-300 reading (15 November 2026).**
 
 Build a star schema, write measures and investigate model performance.
 
@@ -12,7 +12,8 @@ Build a star schema, write measures and investigate model performance.
 |---|---|---|
 | D20 | Sun 8 Nov | Model: grain, the star, relationships and the date table (D18 materials) |
 | D21 | Mon 9 Nov | DAX 1: measures, DIVIDE, CALCULATE, filter context and percent of total |
-| D22 | Wed 11 Nov | DAX 2 (time intelligence, SUMX, quick measures), then report design 1 |
+| D22 | Wed 11 Nov | The D18 and D19 labs: the model and DAX 1 practice |
+| D23 | Sun 15 Nov | DAX 2 (time intelligence, SUMX), a short DAX review, then report design 1 (D20 materials) |
 
 ## Materials
 

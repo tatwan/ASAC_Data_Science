@@ -41,7 +41,38 @@ TOTALYTD([Completed Revenue], dates[date])
 >
 > The condition `dates[date] <= MAX(dates[date])` means: include all dates up to and including the latest date in the current filter context. 
 
-![image-20261111153519153](images/image-20261111153519153.png)
+
+
+This is equivalent to the SQL below which you can try in BigQuery:
+
+```sql
+WITH year_month_revenue AS (
+    SELECT
+        DATE_TRUNC(order_date, MONTH) AS year_month,
+        SUM(order_total) AS revenue
+    FROM nakheel.orders
+    WHERE status = 'completed'
+    GROUP BY year_month
+)
+
+SELECT
+    FORMAT_DATE('%Y-%m', year_month) AS year_month,
+    revenue,
+
+    SUM(revenue) OVER (
+        PARTITION BY EXTRACT(YEAR FROM year_month)
+        ORDER BY year_month
+    ) AS revenue_ytd,
+
+    SUM(revenue) OVER (
+        ORDER BY year_month
+    ) AS revenue_running_total
+
+FROM year_month_revenue
+ORDER BY year_month;
+```
+
+![image-20261115145302540](images/image-20261115145302540.png)
 
 ## 2. Read the same period last year
 

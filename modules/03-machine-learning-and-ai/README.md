@@ -15,7 +15,7 @@ Understand how models learn and are evaluated, build them in BigQuery ML, hand t
 | D13 | Wed 21 Oct | Machine learning 3: regression review, classification (D12 continued), then clustering begins |
 | D14 | Sun 25 Oct | Machine learning 4: clustering (D13 continued), then improving models begins |
 | D15 | Mon 26 Oct | Machine learning 5: forests, boosting and better features (D14 continued) · forecasting is optional self-study |
-| D24 | Thu 26 Nov | Generative AI for analysts |
+| D24 | Thu 26 Nov | Generative AI for analysts, with PL-300 and GitHub practice; Assignment 3 due |
 
 ## Datasets
 

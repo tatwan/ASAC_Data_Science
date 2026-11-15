@@ -218,8 +218,8 @@ A. Calculation groups delete columns · B. Creating a calculation group turns on
 | All 16 Model-the-data skills in exam order | [Standalone study guide](../slides_pdf/PL300-Study-Guide-Model-The-Data.pdf), with a linked index and explained questions |
 | Star schema, grain, relationships, date table, role-playing dates | D18 PDF; study guide pages 6–31 |
 | Measures, filter context, CALCULATE, percent of total, KEEPFILTERS, ALL | D19 PDF (pages 61–67 for study) |
-| Time intelligence, SUMX, row context, context transition, VAR | D20 PDF (pages 8–44) |
-| Calculated tables, visual calculations, semi-additive, calculation groups, statistics, quick measures | D20 PDF (pages 63–76), D20 Lab 06 |
+| Time intelligence, SUMX, row context, context transition, VAR | D20 PDF (pages 4–55) |
+| Calculated tables, visual calculations, semi-additive, calculation groups, statistics, quick measures | D20 PDF (pages 73–95), D20 Lab 06 |
 | Performance Analyzer and DAX query view | Study guide pages 82–87; D20 Lab 06, Step 5 |
 | Weekly snapshots and closing stock | Study guide pages 55–60; D20 Lab 06, Step 6 |
 

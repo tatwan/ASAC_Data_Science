@@ -95,6 +95,13 @@ Multiplying the totals applies the combined quantity to the combined prices. It 
 
 **Why the same multiplication now works.** For the Fleece jacket row, DAX reads that row’s quantity, 1, and that row’s price, 24.00. It stores 24.00 for that row. Then it evaluates the next row using that row’s values. That current-row evaluation is **row context**.
 
+![A month table comparing Completed Revenue, Revenue YTD, Revenue Running Total, Wrong Revenue and Sum of DAX Line Value](images/image-20261115151817343.png)
+
+**Reading this capture.** Here the new column is summed by month, with no order or status filter on the page. Two things to notice:
+
+- **Sum of DAX Line Value** is higher than **Completed Revenue** in every month (340,370.00 against 316,023.50 in total). The column has a value for **every** sales line, cancelled and pending included. Completed Revenue keeps only completed lines, because its CALCULATE adds that filter.
+- **Wrong Revenue** is in the millions. With a whole month in scope, it multiplies all the month's quantities by all its prices: the Step 2 mistake at a larger size.
+
 3. Add **DAX Line Value** to the table, with **Don’t summarize**. It should match the supplied `line_value` on each line.
 4. Change the page’s order filter to **100142**. This order has quantities greater than 1, so the multiplication is easier to see:
 
@@ -116,7 +123,7 @@ Return the order filter to **100003** and clear the category slicer before Step 
 
 **Why this step.** A revenue measure needs a total that follows the report filters. SUMX provides a current row for the multiplication, evaluates it on each available row, then adds the results.
 
-Create the measure:
+1. In `sales_lines`, choose **New measure** and enter:
 
 ```dax
 Revenue (SUMX) =
@@ -134,6 +141,10 @@ SUMX is an **iterator**: it evaluates an expression for each row of a table.
 | `sales_lines[qty] * sales_lines[price]` | The calculation to perform using the quantity and price of the current line. |
 
 Naming `sales_lines[qty]` identifies a column. It does not establish a current row. `SUMX(sales_lines, …)` supplies the iteration that does.
+
+![The same month table with Revenue (SUMX) added beside Sum of DAX Line Value](images/image-20261115151928029.png)
+
+**Reading this capture.** Revenue (SUMX) matches Sum of DAX Line Value on every month and in the total (340,370.00). Both multiply qty × price on each line and add the results. The column did it once and stored the answers; SUMX does it again each time the visual asks, under the visual's filters.
 
 ### How SUMX evaluates order 100003
 
@@ -170,7 +181,8 @@ The loop supplies the current `row`. SUMX supplies the current DAX row while eva
 >
 > The column references identify where values come from. The table argument specifies what to iterate over. Iterators can also visit the rows of a filtered table or a table produced by another DAX expression, so the iteration table must be explicit.
 
-Add **Revenue (SUMX)** and **Total Revenue** to cards. Compare all three cards under the same page filter.
+2. Add **Revenue (SUMX)** to a new **Card**, and **Total Revenue** to another.
+3. Keep order **100003** in the page filter and compare the three cards. Then switch the page filter to **100142** and compare again.
 
 | Filter | Wrong Revenue | Revenue (SUMX) | Total Revenue |
 |---|---:|---:|---:|
