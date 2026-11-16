@@ -35,6 +35,6 @@ Steps marked **Trial or Pro** are optional on a free account. Every check that c
 | 03 | [A dynamic Manager role](03-Evr-Dynamic-Role/README.md) | One role that reads the signed-in email | Lina sees 110,685.50 |
 | 04 | [Lab: an access and refresh plan](04-Lab-Access-And-Refresh-Plan/README.md) | A one-page plan for the Nakheel report (after class) | Four decisions with reasons |
 
-Activity 01 is Monday's; Activities 02 and 03 are Wednesday's. Finish any you miss on your own with the same checks. Lab 04 is after class and is practice for Assignment 3.
+Activity 01 is Monday 16's; Activities 02 and 03 are Monday 23's (Wednesday 18 was cancelled). Finish any you miss on your own with the same checks. Lab 04 is after class and is practice for Assignment 3.
 
 **Data:** [channel_managers.csv](Resources/channel_managers.csv) (Activity 03) is described in [Resources](Resources/README.md).

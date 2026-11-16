@@ -1,6 +1,6 @@
 # Assignment 3: A Power BI dashboard of New York taxi trips, 2019–2020
 
-**Modules 4–7, Power BI · 50% of the course grade · Issued Wednesday 18 November · Due before 4:00 PM, Thursday 26 November**
+**Modules 4–7, Power BI · 50% of the course grade · Released online Wednesday 18 November, briefed in class Monday 23 November · Due before 4:00 PM, Thursday 26 November**
 
 ## The owner's questions
 

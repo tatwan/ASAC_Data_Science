@@ -45,7 +45,7 @@ On the tile, select **More options (…) → Manage alerts → Add alert rule**.
 
 **C4.** **Manage alerts** lists one rule, *Above 120,000*. No notification arrives: 110,685.50 is below the threshold, and the data has not refreshed since you published.
 
-**What just happened.** The alert is yours alone; nobody else who opens the dashboard sees it. It will only fire after a refresh, which the Wednesday class covers.
+**What just happened.** The alert is yours alone; nobody else who opens the dashboard sees it. It will only fire after a refresh, which the Monday 23 November class covers.
 
 ## Trial or Pro: share the report with a neighbour
 
