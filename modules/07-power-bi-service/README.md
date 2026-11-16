@@ -11,7 +11,7 @@ Explain publishing, access, refresh and governance; validate row-level security.
 | Session | Date | Focus |
 |---|---|---|
 | D25 (after the break) | Mon 16 Nov | D22 Part 1: publish, licences, workspaces, sharing, dashboards and alerts |
-| D26 | Wed 18 Nov | A PL-300 Mash review; D22 Parts 2–4: row-level security, refresh and governance, Microsoft Fabric; then end to end: Austin's bike share from BigQuery to a published Power BI report (D23) |
+| D26 | Mon 23 Nov (moved from Wed 18) | A PL-300 Mash review; D22 Parts 2–4: row-level security, refresh and governance, Microsoft Fabric; then end to end: Austin's bike share from BigQuery to a published Power BI report (D23) |
 
 ## Materials
 
