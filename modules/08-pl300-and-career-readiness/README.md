@@ -2,7 +2,7 @@
 
 [Course home](../../README.md) · [Schedule](../../course/STUDENT_SCHEDULE.md)
 
-**Extra session D27, Mon 23 Nov · 2 scheduled hours · Status: built (GitHub and Markdown: your profile and portfolio).**
+**Extra session D27, Tue 24 Nov · 2 scheduled hours · Status: built (GitHub and Markdown: your profile and portfolio).**
 
 Build your portfolio on GitHub: a profile page and a project page that lead with what you found.
 
@@ -14,7 +14,7 @@ At the end of the course you put your best work in a public GitHub repository an
 
 | Session | Date | Focus |
 |---|---|---|
-| D27 (extra) | Mon 23 Nov | GitHub and Markdown: your profile page and portfolio (extra 2-hour session), 4:00–6:00 PM · [slides](slides_pdf/D27-GitHub_Markdown_Portfolio.pdf) · [activities and lab](labs/D27/README.md) |
+| D27 (extra) | Tue 24 Nov | GitHub and Markdown: your profile page and portfolio (extra 2-hour session), 4:00–6:00 PM · [slides](slides_pdf/D27-GitHub_Markdown_Portfolio.pdf) · [activities and lab](labs/D27/README.md) |
 
 ## Materials
 
@@ -34,4 +34,4 @@ Each lab will state prerequisites, input/version, numbered steps, three checkpoi
 
 Solutions are not published here. Keep keys and instructor notes in the local ignored `instructor/` folder or the approved private teaching store. Graded submissions go to the institution’s private collection route, not issues or pull requests in this course repository.
 
-D26 (Wed 18 November) is Tarek's PL-300 review using live ungraded Mash, a prepared case study and checked domain tasks, including exam questions on features the course did not build. There is no mock exam (changed 4 November 2026). Separate programme pre/post MCQs are to be designed in the next session, with Moodle as the likely delivery platform. The provider’s question bank and trainee scores must never be committed here.
+D26 (Mon 23 November; moved from Wed 18 on 16 November 2026) is Tarek's PL-300 review using live ungraded Mash, a prepared case study and checked domain tasks, including exam questions on features the course did not build. There is no mock exam (changed 4 November 2026). Separate programme pre/post MCQs are to be designed in the next session, with Moodle as the likely delivery platform. The provider’s question bank and trainee scores must never be committed here.
