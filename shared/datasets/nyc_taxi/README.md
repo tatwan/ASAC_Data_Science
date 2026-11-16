@@ -76,7 +76,7 @@ Every trip has a pickup zone and a dropoff zone, and both are in `taxi_zone_look
 | `fare_amount` | Decimal | The time-and-distance fare from the meter, in US dollars |
 | `extra` | Decimal | Extras and surcharges (rush hour, overnight) |
 | `mta_tax` | Decimal | A fixed tax added by the meter |
-| `tip_amount` | Decimal | Tip. **Filled in only for card payments; cash tips are not recorded** |
+| `tip_amount` | Decimal | Tip. **Recorded for card payments; cash tips are not recorded.** One trip in this sample is marked cash and still shows a tip |
 | `tolls_amount` | Decimal | Tolls paid during the trip |
 | `improvement_surcharge` | Decimal | A fixed surcharge added at the start of the trip |
 | `total_amount` | Decimal | The total charged to the passenger. Does not include cash tips |

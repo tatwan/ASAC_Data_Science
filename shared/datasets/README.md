@@ -12,7 +12,7 @@ These are the datasets you use in the labs and assignments. Each folder holds th
 | [`pagila/`](pagila/README.md) | Films, film categories and the table that links them, from the Pagila sample database | D07 activity 08 and the D07 lab |
 | [`intl_football/`](intl_football/README.md) | Every men's international football match since 1872, with goal scorers and penalty shootouts, to 30 September 2026 | Assignment 1 (SQL), loaded on D10 |
 | [`hotel_bookings/`](hotel_bookings/README.md) | 119,390 bookings for a resort hotel and a city hotel in Portugal, 2015–2017, with cancellations and prices, from Antonio, Almeida and Nunes (2019) | Assignment 2 (machine learning), issued on D16 |
-| [`nyc_taxi/`](nyc_taxi/README.md) | 217,911 New York yellow taxi trips (1 in 500), 2019–2020, with the taxi zones and the payment and rate codes, from the NYC Taxi and Limousine Commission | Assignment 3 (Power BI dashboard), issued Wed 18 Nov |
+| [`nyc_taxi/`](nyc_taxi/README.md) | 217,911 New York yellow taxi trips (1 in 500), 2019–2020, with the taxi zones and the payment and rate codes, from the NYC Taxi and Limousine Commission | Assignment 3 (Power BI dashboard), released Wed 18 Nov |
 | [`ml_classics/`](ml_classics/README.md) | Eight small, well-known machine-learning datasets: salaries, medical insurance costs, car fuel economy (Auto MPG), telecom customer churn, employee attrition, mall shoppers, Palmer penguins and a wholesaler's clients | D11, D12 and D13, to learn regression, classification and clustering in BigQuery ML |
 
 Three more datasets live elsewhere:

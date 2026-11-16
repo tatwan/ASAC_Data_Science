@@ -47,7 +47,7 @@ S3 if you hand in the PDF only. A correct number with no formula to read gets ha
 | Page 1, Overview | 10 | Every box of the mockup, with its visual and fields (6); the year slicer works and does not filter the tip chart (2); Trips and Trips LY on one line chart, months in calendar order (2) | Most boxes, or the slicer filters everything |
 | Page 2, Places | 8 | Every box (5); Top 10 by a Top N filter (1); the year and borough slicers work, and the year and borough slicers do not filter the airport chart (1); the dropoff chart uses `Dropoff Trips` (1) | Most boxes |
 | Page 3, Story | 5 | The title is the finding with a number (2); two evidence visuals that support it, with the page filtered to 2020 (2); a "what to do next" text (1) | A title with no number, or evidence that does not match the title |
-| Reads well | 4 | Visual titles say what they show; bars sorted; number formats fit (counts with no decimals, money with two, percentages with one); "1 trip in 500" on every page (1 each) | |
+| Reads well | 4 | Visual titles say what they show; bars sorted (months in calendar order); number formats fit (counts with no decimals, money with two, percentages with one); "1 trip in 500" on every page (1 each) | |
 | Your own touch | 3 | A theme and colours used the same way on every page (1); at least one addition the mockup does not ask for (1), named on slide S4 with why it helps (1) | |
 
 **Matching the mockup** means every box is there, in about the same place, with the visual and the fields it names. A
@@ -79,7 +79,7 @@ but the explaining sentence is missing).
 
 | Bonus | Full points (2) |
 |---|---|
-| B1 A role that shows only Manhattan pickups | The role, **View as** showing 197,459 trips, and what the Dropoff Trips chart shows under the role, explained from Microsoft's USERELATIONSHIP page |
+| B1 A role that shows only Manhattan pickups | The role, **View as** showing 197,459 trips on a page with no year filter, and what the Dropoff Trips chart shows under the role, explained from Microsoft's USERELATIONSHIP page |
 | B2 Drillthrough | A working drillthrough page for one zone, with a screenshot of it reached from page 2 |
 | B3 Tooltip page | A tooltip page that shows the three measures for the borough under the mouse |
 | B4 Bookmarks | Two buttons that switch the trend chart, with a screenshot of each state |
