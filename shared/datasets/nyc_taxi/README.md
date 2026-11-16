@@ -95,6 +95,6 @@ Every trip has a pickup zone and a dropoff zone, and both are in `taxi_zone_look
 
 ## How the sample was taken
 
-Every trip in the 24 monthly files got a number calculated from seven of its columns (a hash). The trips whose number divides by 500 were kept. The rule does not look at the date, the place or the price, so the sample keeps the shape of the full data: 2019 has 84.4 million trips in the full files and 168,880 here; 2020 has 24.6 million and 49,028 here.
+Every trip in the 24 monthly files got a number calculated from seven of its columns (a hash). The trips whose number divides by 500 were kept. The rule does not look at the date, the place or the price, so the sample keeps the shape of the full data: 2019 has 84.4 million trips in the full files and 168,880 here; 2020 has 24.6 million and 49,028 here. These are counts before cleaning: after Assignment 3's three rules, 168,547 and 48,791 remain.
 
 Credit: data from the NYC Taxi and Limousine Commission, through NYC Open Data.
