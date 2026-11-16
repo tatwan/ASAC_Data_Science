@@ -22,7 +22,8 @@ Add a page filter on every page you build today: `sales_lines[status]` is comple
 | 03 | [Drillthrough and tooltip](03-Evr-Drillthrough-And-Tooltip/README.md) | An Outerwear detail page and a tooltip page | Outerwear 76,637.00 |
 | 04 | [Bookmarks and visual calculations](04-Evr-Bookmarks-And-Visual-Calculations/README.md) | Two buttons; a running total and a rank | August 122,583.00 |
 | 05 | [Lab: a one-page story](05-Lab-One-Page-Story/README.md) | One page with one supported finding (after class) | Jan–Aug growth +27.1% |
+| 06 | [Count rows, Top N, a second label, single select](06-Evr-Four-Moves-For-A3/README.md) | Rows counted and kept; a Top 5; a share label; a single-select slicer | Outerwear 24.3% |
 
-Activities 01–04 follow the class demo; finish any you miss on your own with the same checks. Lab 05 is after class and is practice for Assignment 3.
+Activities 01–04 and 06 follow the class demo (06 prepares Assignment 3's new steps); finish any you miss on your own with the same checks. Lab 05 is after class and is practice for Assignment 3.
 
 **In Desktop and on the web.** Desktop is the route these READMEs describe. Where the web editor differs, a short "On the web" note says so. Some features (the mobile layout, some analytics options) are Desktop only.

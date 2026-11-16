@@ -2,7 +2,7 @@
 
 [Course home](../../README.md) · [Schedule](../../course/STUDENT_SCHEDULE.md)
 
-**D23 (after 7:20) and D25 · 6 scheduled hours · Status: D20 Labs 04–05 and the D21 slides and labs ready; Assignment 3 issued Wednesday 18 November (15 November 2026).**
+**D23 (after 7:20) and D25 · 6 scheduled hours · Status: D20 Labs 04–05 and the D21 slides and labs ready; Assignment 3 released online Wednesday 18 November and briefed in class Monday 23 November (Wed 18 cancelled, 16 November 2026).**
 
 Create an accessible, interactive report and defend an evidence-based recommendation.
 
@@ -11,7 +11,7 @@ Create an accessible, interactive report and defend an evidence-based recommenda
 | Session | Date | Focus |
 |---|---|---|
 | D25 | Mon 16 Nov | Visualize and analyze (D21 materials), then manage, secure and share, and Fabric (D22 materials) |
-| D26 | Wed 18 Nov | Assignment 3 issued at the end of class |
+| D26 | Mon 23 Nov | Assignment 3 briefed in class (its brief is released online Wed 18 Nov; Wed 18 cancelled) |
 
 ## Materials
 

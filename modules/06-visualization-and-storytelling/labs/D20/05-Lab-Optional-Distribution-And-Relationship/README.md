@@ -32,7 +32,11 @@ You will answer each question with a chart built for it, on one new page, then w
 
 ## 1. Learn what a bin is
 
-**What and why.** `sales_lines[line_value]` holds the amount of each sales line: 5.00, 18.00, 24.00, 48.00 and so on, 235 different values. A chart with one bar per exact amount would be unreadable. So you group nearby amounts into ranges called **bins**, and count how many lines fall in each. A chart of those counts is a **histogram**. It shows the **distribution**: which amounts are common and which are rare.
+**What and why.** `sales_lines[line_value]` holds the amount of each sales line: 5.00, 18.00, 24.00, 48.00 and so on, 235 different values. A chart with one bar per exact amount would be unreadable. 
+
+![image-20261116113608728](images/image-20261116113608728.png)
+
+So you group nearby amounts into ranges called **bins**, and count how many lines fall in each. A chart of those counts is a **histogram**. It shows the **distribution**: which amounts are common and which are rare.
 
 With bins 10 wide, starting at zero:
 
@@ -55,8 +59,12 @@ The label is the **start** of the range. An amount of exactly 20.00 goes in bin 
 **How: route A, the grouping dialog (Desktop).**
 
 1. In the **Data** pane, right-click `sales_lines[line_value]` → **New group**.
+
 2. Set **Group type** to **Bin**, **Bin type** to **Size of bins**, and **Bin size** to `10`. Click **OK**.
+
 3. A new field, **line_value (bins)**, appears in `sales_lines`.
+
+   ![image-20261116113752699](images/image-20261116113752699.png)
 
 **How: route B, a calculated column (Desktop or web).** Use this if you have no **New group** option.
 
@@ -92,9 +100,16 @@ A calculated column runs this once for every row of `sales_lines`, as DAX Line V
    `COUNTROWS` counts the rows of a table that survive the current filters. Under a bin of 10, it counts the completed lines whose amount is 10 to under 20.
 
 2. Add a **Clustered column chart**. Put your bins field on the **X-axis** and **Sales Line Count** on the **Y-axis**.
+
 3. In **Format visual → X-axis**, set **Type** to **Categorical**, so each bin is its own bar.
+
+   ![image-20261116114015415](images/image-20261116114015415.png)
+
 4. Sort by the bins field, ascending: **…** → **Sort axis** → your bins field → **Sort ascending**.
+
 5. Title the chart **Completed sales lines by amount (bins of 10)**. Name the axes **Line amount, bin start** and **Number of sales lines**.
+
+   ![image-20261116114511144](images/image-20261116114511144.png)
 
 **C3.** Hover the first three bars:
 
@@ -139,6 +154,8 @@ The tallest bar is bin 10. The chart has a long tail to the right: a few lines a
 
 There are 60 products, but you may count fewer dots: products with the same price and units sit on top of each other.
 
+![image-20261116115127375](images/image-20261116115127375.png)
+
 ## 5. Read both charts
 
 **What and why.** A chart is only useful when you can say what it shows, and what it does not. Write one or two sentences for each:
@@ -154,6 +171,8 @@ There are 60 products, but you may count fewer dots: products with the same pric
 3. No. Products differ in what they are, their category and who buys them, so cheap and popular going together is not proof that cutting a price causes more sales. List price is also not always the price charged on each line.
 
 Save the file.
+
+![image-20261116115232287](images/image-20261116115232287.png)
 
 ## If something does not match
 

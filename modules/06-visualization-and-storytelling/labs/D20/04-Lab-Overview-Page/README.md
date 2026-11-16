@@ -107,13 +107,22 @@ Open [nakheel-theme.json](../Resources/nakheel-theme.json) in any text editor. E
 **How.**
 
 1. Add a **Table** with `dates[year_month]`, **Completed Revenue**, **Revenue LY** and **YoY %**.
+
 2. In the **Columns** well, open the drop-down on **YoY %** → **Conditional formatting** → **Background color**.
+
+   ![image-20261116101742819](images/image-20261116101742819.png)
+
 3. Set **Format style** to **Gradient** and tick **Add a middle color**.
+
 4. Set **Minimum** to **Lowest value**, **Center** to **Number** with value `0`, and **Maximum** to **Highest value**. Check that the colours are red, white and green (from the theme), then **OK**.
+
+   ![image-20261116101921797](images/image-20261116101921797.png)
 
 **Check yourself.** April 2026 shows **+58.2%** on a green cell (Power BI may drop the plus sign). Months that fell are red. Months from 2024-09 to 2025-08 show no YoY % at all: the data starts in September 2024, so there is no "last year" to compare with, and DIVIDE returns blank. No row after 2026-08 appears, because of the page filter.
 
 Save the file. You will use this page in D21.
+
+![image-20261116102459748](images/image-20261116102459748.png)
 
 **What just happened.** You built the page in the order a reader uses it: the size of the business first, then trend and comparison, then where to look closer. The theme set the colours once for all of it, including the gradient you used last.
 

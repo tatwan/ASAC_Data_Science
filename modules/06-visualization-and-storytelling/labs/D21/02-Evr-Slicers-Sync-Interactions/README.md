@@ -22,9 +22,14 @@
 **How.**
 
 1. Open the **Overview** page and click an empty part of the canvas.
+
 2. In the **Visualizations** pane, choose **Slicer**. Drag `sales_lines[channel]` into its **Field** well.
+
 3. With the slicer selected, open **Format visual → Visual → Slicer settings → Options** and set **Style** to **Tile**. The two channels now show as two buttons.
+
 4. Click **online**.
+
+   ![image-20261116115428475](images/image-20261116115428475.png)
 
 **C1.** The Completed Revenue card shows **110,685.50**. Click **store**: **205,338.00**. The two add up to 316,023.50. Click the selected button again to clear it.
 
@@ -35,12 +40,24 @@
 **How.**
 
 1. Right-click the **Overview** page tab → **Duplicate page**. Rename the copy **Detail** (double-click its tab).
+
+   ![image-20261116115504775](images/image-20261116115504775.png)
+
 2. On **Detail**, select the copied slicer and delete it. You want the choice to come from Overview, not a second slicer.
+
 3. Go back to **Overview** and select the slicer.
+
 4. Open **View → Sync slicers**. A pane lists every page with two tick boxes:
    - **Sync** (the arrows icon): this page follows the slicer's choice.
+
    - **Visible** (the eye icon): the slicer is shown on this page.
+
+     ![image-20261116115543974](images/image-20261116115543974.png)
+
 5. Tick **Sync** for **Overview** and **Detail**. Leave **Visible** ticked for Overview only.
+
+   ![image-20261116115741941](images/image-20261116115741941.png)
+
 6. Select **online** on Overview, then open **Detail**.
 
 **C2.** The card on **Detail** shows **110,685.50**, although Detail has no slicer. Before you synced, it showed 316,023.50.
@@ -54,9 +71,14 @@
 **How.**
 
 1. On **Overview**, clear the slicer so both channels are shown.
+
 2. Add a **Clustered column chart** with `sales_lines[channel]` on the **X-axis** and **Completed Revenue** on the **Y-axis**.
+
 3. In the category **bar chart** from Lab 04, click the **Outerwear** bar.
+
 4. Hover the shaded part of each channel column.
+
+   ![image-20261116120030551](images/image-20261116120030551.png)
 
 **C3.** Both channel columns keep their full height (205,338.00 and 110,685.50). A darker part shows Outerwear inside each: **51,321.50** in store and **25,315.50** online. Your donut from Lab 04 reacts too.
 
@@ -65,6 +87,8 @@ Click Outerwear again to clear the selection.
 ## 4. Change the interaction to filter, then to none
 
 **What and why.** Sometimes the reader wants to see **only** the clicked category, not its share. Sometimes a chart should **ignore** clicks altogether, for example a total that must never change. **Edit interactions** sets the reaction for each pair of visuals. It has three choices:
+
+![image-20261116120157117](images/image-20261116120157117.png)
 
 | Icon | Name | What the other visual does when you click |
 |---|---|---|

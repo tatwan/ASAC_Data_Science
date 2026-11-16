@@ -24,8 +24,13 @@ Requests 2 and 3 use **visual calculations**: short DAX formulas that live insid
 **How.**
 
 1. Open **View → Bookmarks**. The Bookmarks pane opens.
+
+   ![image-20261116121524002](images/image-20261116121524002.png)
+
 2. In the channel slicer, select **store**.
+
 3. In the Bookmarks pane, choose **Add**. A bookmark called **Bookmark 1** appears. Double-click it and rename it `Store`.
+
 4. In the slicer, select **online**. Choose **Add** again and rename the new bookmark `Online`.
 
 **C1.** Click the `Store` bookmark in the pane: the card shows **205,338.00** and the slicer shows store. Click `Online`: **110,685.50**.
@@ -43,9 +48,19 @@ Requests 2 and 3 use **visual calculations**: short DAX formulas that live insid
 **How.**
 
 1. Open **Insert → Buttons → Blank**. An empty button appears on the page.
+
+   ![image-20261116121656611](images/image-20261116121656611.png)
+
 2. With the button selected, open **Format → Button → Style → Text**, turn **Text** on and type `Store`.
+
+   ![image-20261116121823703](images/image-20261116121823703.png)
+
 3. Still in the Format pane, turn on **Action**. Set **Type** to **Bookmark** and **Bookmark** to `Store`.
+
+   ![image-20261116121843321](images/image-20261116121843321.png)
+
 4. Repeat steps 1–3 for a second button: text `Online`, bookmark `Online`.
+
 5. Place both buttons near the slicer.
 
 **C2.** **Ctrl+click** the `Online` button in Desktop (a plain click in the service): the card shows **110,685.50**. Ctrl+click `Store`: **205,338.00**.
