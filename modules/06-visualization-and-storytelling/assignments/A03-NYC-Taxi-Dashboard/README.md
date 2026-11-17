@@ -33,8 +33,8 @@ Two files, before **4:00 PM on Thursday 26 November**, through the link your TA 
 | `A03_<FirstName>_<LastName>.pbix` | Your Power BI file with the three pages |
 | `A03_<FirstName>_<LastName>.pdf` | Your slides saved as PDF: **the story** (3 to 5 slides) and **how I built it** (listed below). You can make the slides in PowerPoint, Google Slides or any tool that saves a PDF |
 
-The "how I built it" slides. The marker opens your `.pbix` to see your model and measures, so with a `.pbix` you
-make three slides: S1, S4 and S5. S2 and S3 are for the PDF-only route below.
+The "how I built it" slides. Your TA marks from your PDF. Everyone makes S1, S4 and S5, and the three page
+screenshots P1 to P3 below. S2 and S3 are for the PDF-only route.
 
 | Slide | What is on it | Part | Who makes it |
 |---|---|---|---|
@@ -44,16 +44,27 @@ make three slides: S1, S4 and S5. S2 and S3 are for the PDF-only route below.
 | S4 Your design | Your own touch from Part 4, and why it helps; any chart you changed from the mockup, and why | 4 | Everyone |
 | S5 Share | Your Part 6 screenshot or access plan | 6 | Everyone |
 
+**P1 to P3: one screenshot of each page, in this view.** Your TA reads your numbers from them. Turn on data labels
+(**Format visual → Visual → Data labels**) so the numbers show on the charts.
+
+| Slide | Page | Set it like this |
+|---|---|---|
+| P1 | Page 1, Overview | Year slicer on 2020 |
+| P2 | Page 2, Places | Year slicer on 2020, borough slicer cleared |
+| P3 | Page 3, Story | As you built it (filtered to 2020) |
+
+Before you take them, check that your pages show the numbers in [Check yourself (Part 4)](#check-yourself-part-4).
+
 **If you work in the browser** and cannot download a `.pbix` file, hand in the PDF only. Then make all five slides,
 and also show what a marker would open the file to see:
 
 - On S1, the **Applied steps** of every query (`trips`, `zones`, `payment_types`, `rate_codes`, `dates`).
 - On S2, also the settings from 2.3: `dates` marked as the date table, `month` sorted by `month_no`, the hidden keys.
-- After S4, three slides P1, P2 and P3: one screenshot of each page, with the slicer and filter settings visible.
+- On P1 to P3, also show the slicer and filter settings.
 
 You can get full marks this way.
 
-**Order your PDF:** the story slides, then S1 to S5 (with P1 to P3 after S4 if you have them), then one slide for each
+**Order your PDF:** the story slides, then S1 to S5 (with P1 to P3 after S4), then one slide for each
 bonus task you did, titled B1 to B7.
 
 **Points:** the core tasks are worth 100 points. The bonus tasks are optional and give up to 10 extra points (your
@@ -376,9 +387,11 @@ lost the most is on top.
 | 1 | Year 2020 | Trips 48,791 · Trips YoY % −71.1% · Credit card 34,667 trips |
 | 1 | Year 2020 | The Revenue YTD columns rise from January to December and end at 898,025.57 |
 | 1 | Year 2019 | The Trips LY line and the Trips YoY % card are empty (there is no 2018 in the data) |
-| 2 | Year 2020, borough slicer cleared | Upper East Side South first in the table, 2,236 trips, −68.6% |
+| 2 | Year 2020, borough slicer cleared | Manhattan first in the borough chart, 91.3% |
+| 2 | Year 2020, borough slicer cleared | Upper East Side South first in the table, 2,236 trips, Trips LY 7,121, −68.6% |
 | 2 | Year 2020, borough slicer cleared | Upper East Side North first in the dropoff chart, 2,238 trips |
 | 2 | Any year | The airport chart still shows both years: JFK Airport 1,147 pickups in 2020, 5,379 in 2019 |
+| 3 | As built (2020) | The April column reads −96.6%, the biggest loss of the year |
 
 ---
 
