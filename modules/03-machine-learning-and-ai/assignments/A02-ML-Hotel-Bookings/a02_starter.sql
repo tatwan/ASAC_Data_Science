@@ -1,6 +1,6 @@
 -- =============================================================================================
 -- Assignment 2: Predict hotel cancellations
--- Name:
+-- Name: AMAL OMAR MOHAMMAD ALKILANY
 --
 -- How to use this file
 --   * Run ONE block at a time: select its lines with the mouse, then click Run.
@@ -46,20 +46,21 @@ SELECT
   hotel,
   COUNT(*) AS bookings,
   MIN(arrival_date_year) AS first_year,
-  MAX(___) AS last_year                 -- ___ : the same column as in MIN
+  MAX(arrival_date_year) AS last_year                 -- ___ : the same column as in MIN
 FROM ml.hotel_bookings
-GROUP BY ___;                           -- ___ : the column you want one row for
+GROUP BY hotel;                           -- ___ : the column you want one row for
 
 -- 1.2 How many bookings are cancelled?
 -- is_canceled is 1 (cancelled) or 0 (the guest came), so:
 --   SUM(is_canceled) = the number of cancelled bookings
 --   AVG(is_canceled) = the share of cancelled bookings (0.37 means 37%)
 -- First, both hotels together (one row):
-SELECT
+SELECT hotel
   COUNT(*) AS bookings,
   SUM(is_canceled) AS cancelled,
   ROUND(AVG(is_canceled) * 100, 1) AS cancel_pct
-FROM ml.hotel_bookings;
+FROM ml.hotel_bookings
+GROUP BY hotel;  
 
 -- Then, one row for each hotel: copy the query above, add the hotel column to SELECT,
 -- and add GROUP BY hotel before the ; at the end.
@@ -70,9 +71,9 @@ FROM ml.hotel_bookings;
 SELECT
   deposit_type,
   COUNT(*) AS bookings,
-  ROUND(AVG(___) * 100, 1) AS cancel_pct    -- ___ : the column that says if a booking was cancelled
+  ROUND(AVG(is_canceled) * 100, 1) AS cancel_pct    -- ___ : the column that says if a booking was cancelled
 FROM ml.hotel_bookings
-GROUP BY ___
+GROUP BY deposit_type
 ORDER BY bookings DESC;
 
 -- 1.4 Do people who book early cancel more?
@@ -82,9 +83,9 @@ SELECT
   CASE
     WHEN lead_time <= 7   THEN '1: 0-7 days'
     WHEN lead_time <= 30  THEN '2: 8-30 days'
-    WHEN lead_time <= ___ THEN '3: 31-90 days'      -- ___ : the last day of this band
+    WHEN lead_time <= 90  THEN '3: 31-90 days'      -- ___ : the last day of this band
     WHEN lead_time <= 180 THEN '4: 91-180 days'
-    WHEN lead_time <= ___ THEN '5: 181-365 days'    -- ___ : the last day of this band
+    WHEN lead_time <= 365 THEN '5: 181-365 days'    -- ___ : the last day of this band
     ELSE '6: over a year'
   END AS lead_band,
   COUNT(*) AS bookings,
@@ -252,7 +253,7 @@ ORDER BY threshold;
 SELECT *
 FROM ML.EVALUATE(MODEL ml.cancel_honest,
   (SELECT * FROM ml.hotel_groups WHERE split = 'test'),
-  STRUCT(___ AS threshold));
+  STRUCT( 0.7 AS threshold));
 
 
 -- =============================================================================================
@@ -375,6 +376,15 @@ ORDER BY bookings DESC;
 -- B1. Test your guess from 1.3: who makes the Non Refund bookings?
 -- your query (hint: WHERE deposit_type = 'Non Refund', then GROUP BY market_segment;
 --             show COUNT(*), AVG(lead_time) and the share with country = 'PRT')
+SELECT
+market_segment,
+COUNT(*) AS total_bookings,
+ROUND(AVG(lead_time), 0) AS avg_lead_time,
+ROUND(COUNTIF(country = 'PRT') / COUNT(*) * 100, 1) AS pct_portugal
+FROM ml.hotel_groups
+WHERE deposit_type = 'Non Refund'
+GROUP BY market_segment
+ORDER BY total_bookings DESC;
 
 -- B2. Explain one booking.
 -- Step 1: find No Deposit validation bookings that your model says will cancel.
@@ -394,24 +404,63 @@ LIMIT 10;
 -- top_k_features = 5 shows the 5 columns that pushed this prediction the most (D15).
 SELECT *
 FROM ML.EXPLAIN_PREDICT(MODEL ml.cancel_honest,
-  (SELECT * FROM ml.hotel_groups WHERE booking_id = ___),
+  (SELECT * FROM ml.hotel_groups WHERE booking_id = 15153),
   STRUCT(5 AS top_k_features));
 
 -- B3. Train the price model on all rows (no WHERE on adr), then find the lowest predicted price.
 -- your CREATE OR REPLACE MODEL ml.price_all_rows ... (copy Block 3.2a and remove "AND adr > 0 AND adr < 1000")
 -- then:
--- SELECT MIN(predicted_adr) AS lowest_price, COUNTIF(predicted_adr < 0) AS below_zero
--- FROM ML.PREDICT(MODEL ml.price_all_rows, (SELECT * FROM ml.hotel_groups WHERE split = 'validation'));
+CREATE OR REPLACE MODEL ml.price_all_rows
+OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['adr'], data_split_method = 'NO_SPLIT') AS
+SELECT
+  adr,
+  hotel, arrival_date_month, reserved_room_type,
+  adults, children, babies, meal,
+  market_segment, distribution_channel, customer_type,
+  lead_time, stays_in_weekend_nights, stays_in_week_nights,
+  is_repeated_guest, total_of_special_requests
+FROM ml.hotel_groups
+WHERE split = 'train';
+ 
+SELECT MIN(predicted_adr) AS lowest_price, COUNTIF(predicted_adr < 0) AS below_zero
+ FROM ML.PREDICT(MODEL ml.price_all_rows, (SELECT * FROM ml.hotel_groups WHERE split = 'validation'));
 
 -- B4. Hidden leaks: copy Block 3.1b as ml.cancel_leaks, add the columns you marked Disagree in 2.2
 --     (but NOT reservation_status), then evaluate on the validation rows.
 -- your query
+
+CREATE OR REPLACE MODEL ml.cancel_leaks
+OPTIONS (model_type = 'LOGISTIC_REG', input_label_cols = ['is_canceled'], data_split_method = 'NO_SPLIT') AS
+SELECT * EXCEPT (reservation_status, split)
+FROM ml.hotel_groups
+WHERE split = 'train';
+
+SELECT *
+FROM ML.EVALUATE(MODEL ml.cancel_leaks,
+  (SELECT * FROM ml.hotel_groups WHERE split = 'validation'));
+
 
 -- B5. Fix the month mistake: copy Block 3.2a as ml.price_hotel_month and add this line to the SELECT:
 --   CONCAT(hotel, ' ', arrival_date_month) AS hotel_month,
 -- To evaluate or predict, add the same column to the rows you give it:
 --   (SELECT *, CONCAT(hotel, ' ', arrival_date_month) AS hotel_month FROM ml.hotel_groups WHERE ...)
 -- your query
+CREATE OR REPLACE MODEL ml.price_hotel_month
+OPTIONS (model_type = 'LINEAR_REG', input_label_cols = ['adr'], data_split_method = 'NO_SPLIT') AS
+SELECT
+  adr,
+  CONCAT(hotel, ' ', arrival_date_month) AS hotel_month,
+  reserved_room_type, adults, children, babies, meal,
+  market_segment, distribution_channel, customer_type,
+  lead_time, stays_in_weekend_nights, stays_in_week_nights,
+  is_repeated_guest, total_of_special_requests
+FROM ml.hotel_groups
+WHERE split = 'train' AND adr > 0 AND adr < 1000;
+
+SELECT *
+FROM ML.EVALUATE(MODEL ml.price_hotel_month,
+  (SELECT *, CONCAT(hotel, ' ', arrival_date_month) AS hotel_month
+ FROM ml.hotel_groups WHERE split = 'validation' AND adr > 0 AND adr < 1000));
 
 -- B6. Choose k: copy Block 3.3 as ml.guests_k3 (num_clusters = 3) and ml.guests_k5 (num_clusters = 5).
 -- ML.EVALUATE on a k-means model needs no rows; it shows davies_bouldin_index (lower = more separate groups).
