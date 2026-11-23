@@ -6,7 +6,7 @@ You train a linear regression on the days of 2023, check it on days it has not s
 
 ### Why a model at all
 
-Activity 01 found that hot days average 622.6 rides and other days 830.9. That gap mixes two things. Every hot day falls in summer, and summer is when Austin's students, more than half of the riders, are away. From averages alone you cannot tell how much of the gap is the heat and how much is the calendar. A model can compare a hot day with an ordinary day **in the same month and on the same weekday**, and give the heat its own number.
+Activity 01 found that hot days average 614.8 rides and other days 828.5. That gap mixes two things. Every hot day falls in summer, and summer is when Austin's students, more than half of the riders, are away. From averages alone you cannot tell how much of the gap is the heat and how much is the calendar. A model can compare a hot day with an ordinary day **in the same month and on the same weekday**, and give the heat its own number.
 
 ### Why linear regression
 
@@ -23,7 +23,7 @@ Of the regression models you know, linear regression is the one whose answer you
 ### What we hope to get
 
 1. **Predictions better than a guess**, on days the model never saw. The guess is the median training day, 731 rides, which misses by 273.6 rides a day. If the model cannot beat that, its weights mean nothing.
-2. **A weight for heat with the calendar held fixed.** If the heat weight came out near zero, the gap in Activity 01 was all calendar. If it came out near the raw gap of about 208 rides or larger, the heat matters on its own.
+2. **A weight for heat with the calendar held fixed.** If the heat weight came out near zero, the gap in Activity 01 was all calendar. If it came out near the raw gap of about 214 rides or larger, the heat matters on its own.
 3. **A weight for each month**, to compare with the heat.
 
 **Remember (D11 and D14).** The **MAE** is the average miss, in rides. **R²** is the share of the day-to-day variation the model explains: 0 is no better than the average, 1 is perfect. The test days are fixed in the view, as in D14, so every classmate scores the same 73 days.

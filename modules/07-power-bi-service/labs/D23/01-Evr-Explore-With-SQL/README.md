@@ -55,7 +55,7 @@ GROUP BY month_number
 ORDER BY month_number;
 ```
 
-**C1.** Twelve rows that add up to 283,964 rides. October is the busiest month (38,728) and June the quietest (16,144).
+**C1.** Twelve rows that add up to 282,696 rides. October is the busiest month (38,727) and June the quietest (14,877).
 
 Before you run it, the editor says the query will read about 23 MB. BigQuery charges by the columns it reads, and this query reads only `start_time`.
 
@@ -76,7 +76,7 @@ WHERE t.start_time >= '2023-01-01' AND t.start_time < '2024-01-01';
 
 `COUNT(st.station_id)` counts only the rows where the right side found a match; unmatched rows have `NULL` there.
 
-**C2.** 283,964 rides, of which 239,989 have a station. 11 of the 82 station numbers are not in the stations table. An inner join would have dropped 43,975 trips. Each trip also stores its station's name, so the views in Activity 02 use that and skip the stations table.
+**C2.** 282,696 rides, of which 238,886 have a station. 11 of the 82 station numbers are not in the stations table. An inner join would have dropped 43,810 trips. Each trip also stores its station's name, so the views in Activity 02 use that and skip the stations table.
 
 ## 3. Join each day's rides to the day's weather
 
@@ -106,7 +106,7 @@ ORDER BY average_rides;
 
 `max` is a column name that is also a function, so it needs backticks. A **Hot** day reached 100 °F or more without heavy rain; a **Rain** day had a quarter of an inch or more.
 
-**C3.** Hot: 81 days, 622.6 rides on average. Rain: 26 days, 769.5. Other: 257 days, 830.9. The three day counts add up to 364, not 365: on 1 February 2023, during an ice storm, no trips were recorded.
+**C3.** Hot: 81 days, 614.8 rides on average. Rain: 26 days, 767.9. Other: 257 days, 828.5. The three day counts add up to 364, not 365: on 1 February 2023, during an ice storm, no trips were recorded.
 
 Hot days have about a quarter fewer rides than other days. Keep that number in mind; Activity 03 tests it.
 

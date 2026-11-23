@@ -32,7 +32,7 @@ DIVIDE (
 
 Format it as a percentage with one decimal place.
 
-**C1.** On a card, Student share for the whole year is **51.4%**.
+**C1.** On a card, Student share for the whole year is **51.5%**.
 
 ## 2. Read it by month
 

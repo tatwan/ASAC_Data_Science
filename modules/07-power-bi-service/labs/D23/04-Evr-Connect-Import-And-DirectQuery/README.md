@@ -12,7 +12,7 @@ Your three views are ready in BigQuery. Power BI can read a view in two ways. **
 |---|---|---:|---|---|
 | `v_days` | one day | 364 | Import | small, changes once a day: a copy is cheap and fast |
 | `v_predictions` | one day, actual and predicted rides | 364 | Import | the same size; the model's output does not change between refreshes |
-| `v_trips` | one trip | 283,964 | DirectQuery | large: Power BI asks for the totals it needs instead of copying every trip |
+| `v_trips` | one trip | 282,696 | DirectQuery | large: Power BI asks for the totals it needs instead of copying every trip |
 
 The day tables answer "what kind of day was it?"; the trip table answers "who rode, from where, at what hour?". The relationship on `day` lets a Hot slicer from `v_days` filter the trips in `v_trips`.
 
@@ -66,7 +66,7 @@ If you see **Access Denied … bigquery.jobs.create**, start again and open **Ad
 
 ## 2. Add `v_trips` in DirectQuery
 
-**Why this step.** `v_trips` has one row per trip. Importing it would copy 283,964 rows into the file and repeat the copy at every refresh; DirectQuery leaves them in BigQuery and asks only for the totals each visual needs.
+**Why this step.** `v_trips` has one row per trip. Importing it would copy 282,696 rows into the file and repeat the copy at every refresh; DirectQuery leaves them in BigQuery and asks only for the totals each visual needs.
 
 Select **Get data → Google BigQuery** again. Tick `v_trips` in the Navigator and select **Load**. In **Connection settings**, choose **DirectQuery** this time and select **OK**. Power BI warns that the report now mixes Import and DirectQuery (a composite model); select **OK**.
 

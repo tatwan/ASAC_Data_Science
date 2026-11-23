@@ -12,7 +12,7 @@ Your model gives the answer; one report page has to tell it. You build three vis
 |---|---|---|
 | Rides by month | When do people ride? | October about 1,249 a day; May to July and December below 575, June lowest |
 | Rides by day type | Does the weather matter? | Hot days 614.8, others 828.5: the quick answer |
-| Actual against predicted | Does month + weekday + weather explain the year? | The lines follow each other; October 38,728 against 39,021 |
+| Actual against predicted | Does month + weekday + weather explain the year? | The lines follow each other; October 38,727 against about 39,000 |
 | Title and sentence | So what? | The calendar first, the heat second: about 700 against about 225 rides a day |
 
 Each visual comes from an earlier step: the months and day types from `v_days` (Activity 02), the predicted line from `v_predictions` (Activity 03), the numbers in the sentence from the model's weights (Activity 03, step 4).
@@ -52,7 +52,7 @@ Add a **Clustered bar chart** with `v_days[day_type]` on the Y-axis and **Averag
 
 Add a **Line chart** with `v_predictions[day]` on the X-axis (Month only), and **Sum of trips** and **Sum of predicted_trips** on the Y-axis.
 
-**C3.** In October the lines are close: **38,728** actual and **39,021** predicted.
+**C3.** In October the lines are close: **38,727** actual and **about 39,000** predicted.
 
 Give the page a title in a text box: **Austin's bikes follow the school calendar first and the heat second.** Under it, one sentence: *With the month held fixed, a 100 °F day costs about 225 rides; the autumn semester adds up to about 700 a day.*
 

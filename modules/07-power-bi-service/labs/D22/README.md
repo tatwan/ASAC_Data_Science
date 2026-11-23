@@ -30,12 +30,14 @@ Steps marked **Trial or Pro** are optional on a free account. Every check that c
 
 | # | Activity | What you build | Check |
 |---|---|---|---|
-| 00 | [Build the Nakheel overview report from one file](00-Evr-Build-The-Overview-Report/README.md) | Cards, a monthly line with average and trend lines, category bars, a decomposition tree | Completed revenue 316,023.50 |
-| 01 | [Publish, pin and set an alert](01-Evr-Publish-Pin-Alert/README.md) | The report in My workspace, a dashboard tile and an alert rule | Tile shows 110,685.50 |
-| 02 | [A static store role](02-Evr-Static-Role/README.md) | Store and Online roles, tested with View as | Store 205,338.00 |
-| 03 | [A dynamic Manager role](03-Evr-Dynamic-Role/README.md) | One role that reads the signed-in email | Lina sees 110,685.50 |
-| 04 | [Lab: an access and refresh plan](04-Lab-Access-And-Refresh-Plan/README.md) | A one-page plan for the Nakheel report (after class) | Four decisions with reasons |
+| 00 | [Build the Nakheel overview report from one file](00-Evr-Build-The-Overview-Report/README.md) | Three cards, a monthly line, category bars, a channel slicer | Completed revenue 316,023.50 |
+| 01 | [Add reference lines with the Analytics pane](01-Evr-Analytics-Pane-Lines/README.md) | Average, median, min, max, a 15,000 target and a trend line on the monthly chart | Average 13,167.65 |
+| 02 | [Find patterns with the AI visuals](02-Evr-AI-Visuals/README.md) | Anomalies, a decomposition tree, key influencers, Q&A on an Explore page | April 2026 flagged |
+| 03 | [Publish, pin and set an alert](03-Evr-Publish-Pin-Alert/README.md) | The report in My workspace, a dashboard tile and an alert rule | Tile shows 110,685.50 |
+| 04 | [A static store role](04-Evr-Static-Role/README.md) | Store and Online roles, tested with View as | Store 205,338.00 |
+| 05 | [A dynamic Manager role](05-Evr-Dynamic-Role/README.md) | One role that reads the signed-in email | Lina sees 110,685.50 |
+| 06 | [Lab: an access and refresh plan](06-Lab-Access-And-Refresh-Plan/README.md) | A one-page plan for the Nakheel report (after class) | Four decisions with reasons |
 
-Finish any activity you miss on your own with the same checks. Lab 04 is after class and is practice for Assignment 3.
+Finish any activity you miss on your own with the same checks. Lab 06 is after class and is practice for Assignment 3.
 
-**Data:** [sales_lines.csv](Resources/start/sales_lines.csv) (Activity 00) and [channel_managers.csv](Resources/channel_managers.csv) (Activity 03) are described in [Resources](Resources/README.md).
+**Data:** [sales_lines.csv](Resources/start/sales_lines.csv) (Activity 00) and [channel_managers.csv](Resources/channel_managers.csv) (Activity 05) are described in [Resources](Resources/README.md).

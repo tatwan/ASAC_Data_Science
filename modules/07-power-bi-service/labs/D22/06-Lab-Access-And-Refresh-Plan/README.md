@@ -1,8 +1,8 @@
-# Lab 04 · An access and refresh plan for the Nakheel report
+# Lab 06 · An access and refresh plan for the Nakheel report
 
 Nakheel wants the channel report in use by next Monday. Before anyone publishes, the head of sales asks for a one-page plan: who gets the report and how, which rows each person sees, how it stays current, and how it is labelled. You write that plan. No Power BI is needed; a document or a sheet of paper will do. This is practice for Assignment 3 and is not handed in.
 
-Use your D22 model: the Manager role from [Activity 03](../03-Evr-Dynamic-Role/README.md) and the report from [Activity 01](../01-Evr-Publish-Pin-Alert/README.md).
+Use your D22 model: the Manager role from [Activity 05](../05-Evr-Dynamic-Role/README.md) and the report from [Activity 03](../03-Evr-Publish-Pin-Alert/README.md).
 
 **The people**
 
@@ -35,7 +35,7 @@ Write a table with each person and one role: Admin, Member, Contributor or Viewe
 
 **Why this step.** Sharing, an app and Build permission reach different audiences. Once the model has a role, a reader who is in no role sees no rows at all, so every reader needs one.
 
-For each person, write the route (share, app or Build) and the security role. The Manager role only knows the four managers. Decide how Huda sees every channel: add a role named `All` on `sales_lines` with the rule `TRUE()`, or put her in both static roles from Activity 02. Decide what Yazan sees: Build does not lift RLS.
+For each person, write the route (share, app or Build) and the security role. The Manager role only knows the four managers. Decide how Huda sees every channel: add a role named `All` on `sales_lines` with the rule `TRUE()`, or put her in both static roles from Activity 04. Decide what Yazan sees: Build does not lift RLS.
 
 **Check.** Every reader is in a role: the four managers in Manager, Huda in a role that keeps all rows (316,023.50), and Yazan in a role you chose on purpose. The managers and Huda get the app; Yazan gets Build.
 

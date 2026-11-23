@@ -1,13 +1,13 @@
 # D23 · Austin's bikes, from BigQuery to a published report
 
-Austin, Texas, has a public bike-share system with about 80 docking stations. In 2023 its riders took 283,964 trips. On the hottest days there were fewer of them. Is it the heat? Today you answer that question end to end: SQL in BigQuery, views for Power BI, one BigQuery ML model, the BigQuery connector in Import and DirectQuery, a story page, and a published report that refreshes without a gateway.
+Austin, Texas, has a public bike-share system with about 80 docking stations. In 2023 its riders took 282,696 trips. On the hottest days there were fewer of them. Is it the heat? Today you answer that question end to end: SQL in BigQuery, views for Power BI, one BigQuery ML model, the BigQuery connector in Import and DirectQuery, a story page, and a published report that refreshes without a gateway.
 
 | Activity | Where | What you build | Check |
 |---|---|---|---|
-| [01 Explore with SQL](01-Evr-Explore-With-SQL/README.md) | BigQuery | Four queries on trips, stations and weather | Hot days average 622.6 trips |
-| [02 Views for Power BI](02-Evr-Views-For-Power-BI/README.md) | BigQuery | `bikes.v_days` and `bikes.v_trips` | 364 days, 283,964 trips |
+| [01 Explore with SQL](01-Evr-Explore-With-SQL/README.md) | BigQuery | Four queries on trips, stations and weather | Hot days average 614.8 trips |
+| [02 Views for Power BI](02-Evr-Views-For-Power-BI/README.md) | BigQuery | `bikes.v_days` and `bikes.v_trips` | 364 days, 282,696 trips |
 | [03 Train and score a model](03-Evr-Train-And-Score-A-Model/README.md) | BigQuery ML | `bikes.trips_model` and `bikes.v_predictions` | Test error about 171 against 274 |
-| [04 Connect: Import and DirectQuery](04-Evr-Connect-Import-And-DirectQuery/README.md) | Power BI Desktop | Two views imported, one queried live | Both cards show 283,964 |
+| [04 Connect: Import and DirectQuery](04-Evr-Connect-Import-And-DirectQuery/README.md) | Power BI Desktop | Two views imported, one queried live | Both cards show 282,696 |
 | [05 Story page and publish](05-Evr-Story-Page-And-Publish/README.md) | Power BI | One story page in My workspace | No gateway needed |
 | [06 Lab: who rides when](06-Lab-Who-Rides-When/README.md) | Power BI | The student share by month (after class) | September 66.3% |
 

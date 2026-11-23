@@ -13,7 +13,7 @@ The question has two sizes of answer. "Do hot days have fewer rides?" is about *
 | View | One row is | Rows | Built from | Used by |
 |---|---|---:|---|---|
 | `bikes.v_days` | one day of 2023 | 364 | trips counted per day, joined to that day's weather | the model (03), the story page (05) |
-| `bikes.v_trips` | one trip of 2023 | 283,964 | the trips table, with a few columns reshaped | the report in DirectQuery (04), Lab 06 |
+| `bikes.v_trips` | one trip of 2023 | 282,696 | the trips table, with a few columns reshaped | the report in DirectQuery (04), Lab 06 |
 
 ### What each view holds
 
@@ -87,7 +87,7 @@ FROM daily JOIN weather USING (day);
 SELECT COUNT(*) AS days, SUM(trips) AS trips FROM bikes.v_days;
 ```
 
-**C2.** 364 days and 283,964 trips, the same total as Activity 01.
+**C2.** 364 days and 282,696 trips, the same total as Activity 01.
 
 ## 3. The trip view, `bikes.v_trips`
 
@@ -115,6 +115,6 @@ GROUP BY rider_group
 ORDER BY rides DESC;
 ```
 
-**C3.** Student 145,890; Member 70,299; Pass or single ride 67,775. They add up to 283,964.
+**C3.** Student 145,702; Member 69,441; Pass or single ride 67,553. They add up to 282,696.
 
 **What just happened.** Your dataset holds two views and no data. Each time Power BI, or you, reads `bikes.v_days`, BigQuery runs its query against the public tables. That is why the view costs nothing to store, and also why reading it reads the source again: about 146 MB for `v_days`, 200 MB for all of `v_trips`. Sandbox views expire after 60 days; rerun the `CREATE` statements if yours has gone.

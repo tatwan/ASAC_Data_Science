@@ -1,8 +1,8 @@
-# Activity 01 · Publish the report, pin a tile and set a data alert
+# Activity 03 · Publish the report, pin a tile and set a data alert
 
 The online manager wants to see online revenue each morning without opening Desktop, and to hear about it when revenue passes a target. You publish the report to the Power BI service, pin the online card to a dashboard and set an alert on it. Everything here works on a free account.
 
-Start from your `D22.pbix` from [Activity 00](../00-Evr-Build-The-Overview-Report/README.md), saved but not yet published. Activity 00 only builds; this activity publishes it, once. Its **Overview** page already has the **Online revenue** card you will pin: a card filtered to online in **Filters on this visual**, showing **110,685.50**.
+Start from your `D22.pbix` from [Activities 00–02](../00-Evr-Build-The-Overview-Report/README.md), saved but not yet published. Activities 00–02 only build and analyse; this activity publishes the report, once, with both pages. Its **Overview** page already has the **Online revenue** card you will pin: a card filtered to online in **Filters on this visual**, showing **110,685.50**.
 
 | Step | Where | What the manager needs | Feature |
 |---|---|---|---|

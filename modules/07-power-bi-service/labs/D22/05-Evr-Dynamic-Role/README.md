@@ -1,8 +1,8 @@
-# Activity 03 · A dynamic Manager role that reads who is signed in
+# Activity 05 · A dynamic Manager role that reads who is signed in
 
 Nakheel has four channel managers. With static roles, someone must add each manager to the right role, and a new channel needs a new role. You replace both roles with one role that looks up the signed-in person's email in a small table. Everything here works on a free account.
 
-**Where:** Power BI Desktop, in the **same** `D22.pbix` as Activities 00–02. You add `channel_managers` to this model, next to `sales_lines`: a role can only read tables that are in its own model, so the list of managers has to live there. No new report, no new file.
+**Where:** Power BI Desktop, in the **same** `D22.pbix` as Activities 00–04. You add `channel_managers` to this model, next to `sales_lines`: a role can only read tables that are in its own model, so the list of managers has to live there. No new report, no new file.
 
 Download [channel_managers.csv](../Resources/channel_managers.csv) ([what it contains](../Resources/README.md)) and save it next to your `D22.pbix`.
 
@@ -31,7 +31,7 @@ In the open `D22.pbix`, select **Home → Get data → Text/CSV**, choose `chann
 
 ## 2. Write the Manager role
 
-**What the Manager role is.** In Activity 02 each role had its channel typed in: Store keeps `"store"`, Online keeps `"online"`. You would add every store manager to Store and every online manager to Online, by hand, and a third channel would need a third role. The **Manager** role replaces both with **one rule that works out the channel for whoever opens the report**. Every manager is a member of this one role; the table you just loaded decides which channel each of them sees.
+**What the Manager role is.** In Activity 04 each role had its channel typed in: Store keeps `"store"`, Online keeps `"online"`. You would add every store manager to Store and every online manager to Online, by hand, and a third channel would need a third role. The **Manager** role replaces both with **one rule that works out the channel for whoever opens the report**. Every manager is a member of this one role; the table you just loaded decides which channel each of them sees.
 
 **How the rule works out the channel.** Two DAX functions do it:
 

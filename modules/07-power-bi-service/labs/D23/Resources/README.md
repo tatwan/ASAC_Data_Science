@@ -4,7 +4,7 @@ D23 reads two of Google's public BigQuery datasets in place. You do not download
 
 | Table | What one row is | Rows (whole table) | Used for |
 |---|---|---:|---|
-| `bigquery-public-data.austin_bikeshare.bikeshare_trips` | one bike trip in Austin, Texas | 2,916,659 (December 2013 to August 2026) | 2023 only: 283,964 trips |
+| `bigquery-public-data.austin_bikeshare.bikeshare_trips` | one bike trip in Austin, Texas | 2,916,659 (December 2013 to August 2026) | 2023 only: 282,696 trips |
 | `bigquery-public-data.austin_bikeshare.bikeshare_stations` | one docking station | 101 | Activity 01's join check |
 | `bigquery-public-data.noaa_gsod.gsod2023` | one weather station on one day | worldwide | station `722544` (Austin Camp Mabry): 365 days |
 
@@ -37,7 +37,7 @@ erDiagram
     }
 ```
 
-A trip joins its station on the station number. A trip joins the weather on its date, after you keep one weather station (`stn = '722544'`). The stations table is out of date: 11 of the 82 station numbers used in 2023 are missing from it, so an inner join would drop 43,975 trips. The activities keep the station name that each trip carries instead.
+A trip joins its station on the station number. A trip joins the weather on its date, after you keep one weather station (`stn = '722544'`). The stations table is out of date: 11 of the 82 station numbers used in 2023 are missing from it, so an inner join would drop 43,810 trips. The activities keep the station name that each trip carries instead.
 
 ## The trips table, column by column
 
@@ -64,19 +64,19 @@ A trip joins its station on the station number. A trip joins the weather on its 
 | `bikeshare_stations` | One docking station | `station_id` (joins to `start_station_id`), `name`, `number_of_docks` |
 | `noaa_gsod.gsod2023` | One weather station on one day | `stn` (the station: `722544` is Austin Camp Mabry), `date`, `max` (the day's highest temperature, °F), `prcp` (the day's rain, inches) |
 
-## Fixed checks (2023, computed 15 November 2026)
+## Fixed checks (2023, rechecked by Tarek on 23 November 2026)
 
 | Check | Value |
 |---|---:|
-| Trips in 2023 | 283,964 |
+| Trips in 2023 | 282,696 |
 | Days with trips | 364 (none on 1 February, during an ice storm) |
-| Trips whose station is in the stations table | 239,989 |
-| Hot days (100 °F or more, no rain) and their average | 81 days, 622.6 trips |
-| Rain days (0.25 in or more) and their average | 26 days, 769.5 trips |
-| Other days and their average | 257 days, 830.9 trips |
-| Student trips | 145,890 (51.4%) |
+| Trips whose station is in the stations table | 238,886 |
+| Hot days (100 °F or more, no rain) and their average | 81 days, 614.8 trips |
+| Rain days (0.25 in or more) and their average | 26 days, 767.9 trips |
+| Other days and their average | 257 days, 828.5 trips |
+| Student trips | 145,702 (51.5%) |
 
-Google refreshes the trips table every day. Past trips should stay the same. If a check is off by a few trips, rerun the query and compare.
+Google refreshes the trips table every day, and past trips can change: between 15 and 23 November 2026 about 1,268 trips of June 2023 were removed. If a check is off, rerun the query and compare the shape, not the last digit.
 
 ## Source and terms
 

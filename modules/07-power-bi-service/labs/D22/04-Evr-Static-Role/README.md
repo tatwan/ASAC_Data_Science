@@ -1,8 +1,8 @@
-# Activity 02 · A static store role, tested with View as
+# Activity 04 · A static store role, tested with View as
 
 Nakheel has a store manager and an online manager. Each should open the same report and see only their own channel's sales. You write one security role for each channel and test both in Desktop before anything is published. Everything here works on a free account.
 
-**Where:** back in **Power BI Desktop**, in your `D22.pbix`. Activity 01 ended in the browser; this activity changes the model, and the model is edited in Desktop. The copy you published in Activity 01 has no roles yet and does not change until you publish again (end of this activity).
+**Where:** back in **Power BI Desktop**, in your `D22.pbix`. Activity 03 ended in the browser; this activity changes the model, and the model is edited in Desktop. The copy you published in Activity 03 has no roles yet and does not change until you publish again (end of this activity).
 
 Start from your `D22.pbix` from [Activity 00](../00-Evr-Build-The-Overview-Report/README.md). Completed Revenue on a card is 316,023.50.
 
@@ -63,6 +63,6 @@ Open **View as** again, tick **Store** and **Online**, and select **OK**. Then s
 
 Save the file. Select **Home → Publish → My workspace**. Power BI asks whether to **Replace** the existing D22 semantic model: select **Replace**.
 
-**C5.** In the Service, on the D22 semantic model, **… → Security** lists the roles **Store** and **Online**. Adding people to them needs the trial or Pro (D22 page 32). Your dashboard tile from Activity 01 still shows 110,685.50: you are the author, and roles do not restrict the author.
+**C5.** In the Service, on the D22 semantic model, **… → Security** lists the roles **Store** and **Online**. Adding people to them needs the trial or Pro (D22 page 32). Your dashboard tile from Activity 03 still shows 110,685.50: you are the author, and roles do not restrict the author.
 
 [Microsoft: row-level security in Power BI](https://learn.microsoft.com/en-us/fabric/security/service-admin-row-level-security)
