@@ -2,90 +2,55 @@
 
 # ASAC Data Science & Analytics — 2026
 
-This beginner programme prepares learners for analyst and business intelligence roles. It combines guided instruction with practical work in SQL, Power Query, data modelling, DAX, report design, introductory machine learning and responsible AI.
+A beginner programme for analyst and business intelligence roles: SQL in BigQuery, machine learning in BigQuery ML, Power BI (Power Query, data modelling, DAX, report design, sharing and security) and generative AI for analysts. It supports preparation for the Microsoft Power BI Data Analyst exam (PL-300); the programme itself does not award Microsoft certification.
 
-**Dates:** 20 September–26 November 2026 (from November: Sundays, Mondays and Wednesdays)  
-**Class time:** 4:00–8:00 PM (Asia/Amman), from 27 September; D01–D02 ran 2:00–6:00 PM  
-**Format:** 26 sessions across 8 weeks, for 104 scheduled hours  
-**Optional review:** Thursday 8 October, 4:00–6:00 PM, a review of the SQL from D03 to D08 (yellow on the schedule)  
-**Lead instructor:** Tarek Atwan  
-**Cohort:** Approximately 200 trainees
+**Dates:** 20 September – 26 November 2026  
+**Class time:** 4:00–8:00 PM (Amman time), break 6:30–7:00 PM  
+**Instructor:** Tarek Atwan
 
-The programme supports preparation for the Microsoft Power BI Data Analyst certification exam (PL-300). Completing the programme does not award Microsoft certification; learners must pass Microsoft's exam to earn it.
+## Schedule
 
-## Schedule and delivery plan
+![ASAC Data Science and Analytics course schedule](course/assets/schedule.png)
 
-![ASAC Data Science and Analytics schedule and delivery plan](course/assets/schedule.png)
+[Student schedule with links to every session's slides](course/STUDENT_SCHEDULE.md) · [Calendar as a PDF](course/assets/schedule.pdf) · [Excel version](course/assets/student-schedule.xlsx) · [Google Sheets](https://docs.google.com/spreadsheets/d/1eese9ddJeecPEWQ60ApRvr0rfiYVBfoNaogoYhwyRNk/edit?usp=sharing)
 
-[Download the schedule as a PDF](course/assets/schedule.pdf)
+## Modules
 
-[View the student schedule](course/STUDENT_SCHEDULE.md) · [Download the Excel version](course/assets/student-schedule.xlsx) · [Open in Google Sheets](https://docs.google.com/spreadsheets/d/1eese9ddJeecPEWQ60ApRvr0rfiYVBfoNaogoYhwyRNk/edit?usp=sharing)
+| Module | Dates | What you learn |
+|---|---|---|
+| [01 Data foundations](modules/01-data-foundations/) | 20–21 Sep | Analyst roles, reading a table, data quality, where data lives |
+| [02 SQL](modules/02-sql/) | 27 Sep – 12 Oct | Queries, aggregation, joins, CTEs, views and window functions in BigQuery |
+| [03 Machine learning and AI](modules/03-machine-learning-and-ai/) | 18–29 Oct, 26 Nov | Regression, classification, clustering and trees in BigQuery ML; generative AI used with checks |
+| [04 Power Query](modules/04-power-query/) | 29 Oct – 4 Nov | Importing, cleaning, appending and merging data in Power BI |
+| [05 Data modelling and DAX](modules/05-data-modeling-and-dax/) | 4–15 Nov | Star schemas, relationships, a date table, measures and time intelligence |
+| [06 Visualisation and storytelling](modules/06-visualization-and-storytelling/) | 15–16 Nov | Report design, interaction, analysis and the story |
+| [07 Manage and secure Power BI](modules/07-power-bi-service/) | 16 and 23 Nov | Publishing, workspaces, sharing, refresh, row-level security; BigQuery to a published report |
+| [08 PL-300 and career readiness](modules/08-pl300-and-career-readiness/) | 23–24 Nov | PL-300 review; GitHub, Markdown and your portfolio |
 
-The scheduled hours include a 30-minute break from 6:30 to 7:00 PM. Labs start at 7:00 PM, right after the break.
+Generative AI belongs to module 03 but is taught last, on 26 November.
+
+## How the course works
+
+- **Session:** one class. Slides and labs are named by session (D01, D02 …); the [student schedule](course/STUDENT_SCHEDULE.md) shows which slides each date used.
+- **Lab:** practice you complete after class. Labs are not submitted or graded. Solutions are released after the session; some are shown in class instead.
+- **Assignment:** graded work done outside class, with a brief, a deadline and a rubric. There are three, each due before 4:00 PM on its due date:
+  - [Assignment 1: SQL](modules/02-sql/assignments/A01-SQL-Football/README.md), 12–21 October
+  - [Assignment 2: machine learning](modules/03-machine-learning-and-ai/assignments/A02-ML-Hotel-Bookings/README.md), 29 October – 5 November
+  - [Assignment 3: a Power BI dashboard](modules/06-visualization-and-storytelling/assignments/A03-NYC-Taxi-Dashboard/README.md), 18–26 November
+
+## Tools
+
+| Tool | Used for |
+|---|---|
+| BigQuery Sandbox | SQL and BigQuery ML (free, no credit card) |
+| Power BI Desktop | Power Query, modelling, DAX and reports (Windows only) |
+| Power BI Service | Publishing, sharing and security, where your account allows |
+| GitHub | Your portfolio |
+
+If a paid or restricted feature is not available to you, it is demonstrated in class and you get a free alternative.
 
 > [!NOTE]
-> Course materials will be released weekly before the first session of each new week.
-
-## How the course is organised
-
-Five words are used consistently across the schedule, this repository and every brief.
-
-| Term | What it means |
-|---|---|
-| **Module** | A subject area, numbered 01 to 08. A module is not a week: module 02 spans several weeks, and week 8 draws on more than one module. Each module has a folder under [`modules/`](modules/) holding its content, labs, assignments, datasets and resources. |
-| **Session** | One four-hour class, identified as D01 to D26. The identifier never changes, so D08 means the same session in every document. |
-| **Lab** | Practice done in class to reinforce the concept just taught. It is not graded and does not become homework. If you do not finish, the reference solution is released at the debrief. |
-| **Homework** | A weekly set issued in class and due before the first session of the following week. About 26 hours across the programme. There is no homework in week 8. |
-| **Assignment** | Graded work done outside class, with a published brief, deadline and rubric. There are three: A1 to A3. |
-| **Practical** | A graded, open-book assessment completed inside a session. There are two: P1 and P2. |
-
-There is no mock exam (changed 4 November 2026): D26 is a PL-300 review with exam-style practice.
-
-## Course coverage
-
-| Module | Days | Scheduled hours | Main focus |
-|---|---|---:|---|
-| [01 Data foundations](modules/01-data-foundations/) | D01–D02 | 8 | Analyst roles, data quality, ethics and the Power BI workflow |
-| [02 SQL](modules/02-sql/) | D03–D10 | 32 | Querying, joins, CTEs, views and window functions in BigQuery |
-| [03 Machine learning and AI literacy](modules/03-machine-learning-and-ai/) | D11–D15, D24 | 24 | BigQuery ML, model evaluation, predictions for Power BI and generative AI used with checks |
-| [04 Power Query](modules/04-power-query/) | D16–D19 | 12 | Importing, profiling, cleaning, combining and validating data |
-| [05 Data modelling and DAX](modules/05-data-modeling-and-dax/) | D19–D22 | 12 | Star schemas, relationships, measures and filter context |
-| [06 Visualisation and storytelling](modules/06-visualization-and-storytelling/) | D22–D23 | 6 | Report design, interaction, analysis and the story |
-| [07 Managing and securing Power BI](modules/07-power-bi-service/) | D25 | 4 | An end-to-end demo, then publishing, workspaces, refresh and row-level security |
-| [08 PL-300 review and career readiness](modules/08-pl300-and-career-readiness/) | D26 | 4 | Structured review, exam practice and next steps |
-
-Modules are numbered in the order they are taught. Generative AI (D24) belongs to module 03 although it is taught after Power BI.
-
-## How sessions work
-
-Tarek leads concepts and demonstrations. On shared days, he hands the class to the assigned TAs for a structured lab. The schedule uses three delivery markers:
-
-- Solid green: instructor-led throughout
-- Split green and orange: instructor-led teaching followed by a TA-led lab; the printed handoff time controls the split
-- Solid orange: TA-led throughout
-
-Labs are completed in class. Weekly homework provides about 26 hours of practice outside class. Formal assessment consists of four assignments, two open-book practicals and continuous professional practice; there is no capstone project.
-
-From 4 November 2026 Tarek teaches every session, D01 to D26; there is no TA-only day and no mock exam. Vouchers follow rules supplied to learners by the programme team. The course does not award Microsoft certification.
-
-## Tools and access
-
-| Tool | Use in the programme |
-|---|---|
-| BigQuery Sandbox | SQL and BigQuery ML |
-| GitHub | Portfolio work and version control |
-| Power BI Desktop | Power Query, modelling, DAX and report development |
-| Power BI Service | Selected publishing and security demonstrations where access permits |
-
-Required trainee work uses free access and does not require a credit card. Power BI Desktop requires access to Windows. If a paid or restricted feature is unavailable, the instructor demonstrates it and provides an equivalent free evidence route.
-
-> [!Note]
->
-> A copy of these materials is mirrored in the course
-> [Google Drive folder](https://drive.google.com/drive/folders/14MonW3zPw5i9iubBdrclYS3XEZeaqYBP?usp=sharing).
-> This repository is the original; if the two ever disagree, trust this one.
-
-
+> These materials are also in the course [Google Drive folder](https://drive.google.com/drive/folders/14MonW3zPw5i9iubBdrclYS3XEZeaqYBP?usp=sharing). If the two ever disagree, this repository is correct.
 
 ## Reuse
 

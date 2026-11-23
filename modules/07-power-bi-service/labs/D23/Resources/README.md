@@ -64,7 +64,7 @@ A trip joins its station on the station number. A trip joins the weather on its 
 | `bikeshare_stations` | One docking station | `station_id` (joins to `start_station_id`), `name`, `number_of_docks` |
 | `noaa_gsod.gsod2023` | One weather station on one day | `stn` (the station: `722544` is Austin Camp Mabry), `date`, `max` (the day's highest temperature, °F), `prcp` (the day's rain, inches) |
 
-## Fixed checks (2023, rechecked by Tarek on 23 November 2026)
+## Fixed checks (2023, checked 23 November 2026)
 
 | Check | Value |
 |---|---:|

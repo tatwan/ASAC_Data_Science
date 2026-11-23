@@ -1,53 +1,50 @@
 # Student schedule
 
-Classes run **4:00–8:00 PM** (Asia/Amman) with a break from **6:30 to 7:00 PM**. Tarek teaches the whole session. Each session has a lab that you complete **after class**; its solution is released afterwards. D01 and D02 ran 2:00–6:00 PM.
+Classes run **4:00–8:00 PM** (Amman time), with a break from 6:30 to 7:00 PM. Each session has a lab you complete after class; its solution is released afterwards. All three assignments are due **before 4:00 PM** on their due date.
 
-**Updated 23 November 2026: the last week.** **Monday 23 November, 4:00–8:00 PM:** a one-hour PL-300 review of the four exam domains, then managing, securing and sharing a report (the D22 slides), a break at 6:00, and a hands-on lab from BigQuery to a published Power BI report (the D23 slides). **Tuesday 24 November, 4:00–6:00 PM:** GitHub and Markdown, your profile page and portfolio (the D27 slides). **Thursday 26 November, 4:00–8:00 PM:** a 45-minute PL-300 quiz, then generative AI for analysts (the D24 slides), the last session. **Assignment 3 is due before 4:00 PM on Thursday.** The table below names the last three sessions by date and by the slides they use.
+## This week
 
-**Updated 16 November 2026: no class on Wednesday 18 November.** **Monday 16 November** is Visualize and analyze (the D21 slides: mockups, filters, drillthrough, tooltips, bookmarks, visual calculations and the story), then managing, securing and sharing a report. **Monday 23 November, 4:00–8:00 PM,** is a short PL-300 quiz, then a hands-on lab from BigQuery to a published Power BI report, and the Assignment 3 briefing. **Tuesday 24 November is an extra session, 4:00–6:00 PM: GitHub and Markdown, your profile page and portfolio.** Thursday 26 November is generative AI, the last session, and **Assignment 3 is due before 4:00 PM that day**. Its brief, a Power BI dashboard on New York taxi trips, is released online on Wednesday 18 November, as planned.
+- **Monday 23 November, 4:00–8:00 PM:** PL-300 review of the four exam domains; manage, secure and share a report (D22 slides); then a hands-on lab from BigQuery to a published Power BI report (D23 slides).
+- **Tuesday 24 November, 4:00–6:00 PM:** GitHub and Markdown, your profile page and portfolio (D27 slides).
+- **Thursday 26 November, 4:00–8:00 PM:** a 45-minute PL-300 quiz, then generative AI for analysts (D24 slides). This is the last session.
+- **Assignment 3 is due before 4:00 PM on Thursday 26 November.**
 
-**Updated 4 November 2026: the actual pace.** We are about two sessions behind the published plan, so the topics below now show what we teach on each date. Wednesday 4 November finishes the D17 slides (the folder, the store list and Merge) and starts the model; Sunday 8 the model (D18 slides); Monday 9 and Wednesday 11 DAX; Wednesday 11 and Sunday 15 report design and the story. **Monday 16 November is a Tarek-led session: an end-to-end demo, then managing and securing a report. Wednesday 18 November is a PL-300 review with Tarek; there is no mock exam.** Assignment 2 is still due before 4:00 PM on Thursday 5 November, and Assignment 3 still runs from Wednesday 11 to Wednesday 18 November. If you want to work ahead, the slides and labs keep their day names.
+## All sessions
 
-**Updated 29 October 2026: a lighter November.** From November, classes are on **Sundays, Mondays and Wednesdays**; there is no class on Tuesdays or Thursdays. Assignment 2 is still due **before 4:00 PM on Thursday 5 November** (no class that day). There are now **three assignments**: Assignment 3, a Power BI dashboard, runs from Wednesday 11 to Wednesday 18 November, and there is no Assignment 4. (The review and mock days changed on 4 November; see above.) The last session, D24 (generative AI), is on **Thursday 26 November**.
+The **Slides** column links the slides each class used. Optional sessions and days without class are in italics.
 
-**Updated 29 September 2026.** We slowed SQL down so that joins get two full sessions. Machine learning and AI now come straight after SQL, in BigQuery, so you keep using the SQL you learned. Power BI runs from 29 October and reads the BigQuery views you build on 11 October. The assignment dates below replace the earlier ones.
+| Date (2026) | Topic | Slides | Module | Assignment |
+|---|---|---|---|---|
+| Sun 20 Sep | Programme launch and data literacy (2:00–6:00 PM) | [D01](../modules/01-data-foundations/slides_pdf/D01-Data_Literacy.pdf) | [Data foundations](../modules/01-data-foundations/README.md) |  |
+| Mon 21 Sep | Where data lives and cloud fundamentals (2:00–6:00 PM) | [D02](../modules/01-data-foundations/slides_pdf/D02-Where_Data_Lives.pdf) | [Data foundations](../modules/01-data-foundations/README.md) |  |
+| Sun 27 Sep | SQL foundations and the relational model | [D03](../modules/02-sql/slides_pdf/D03-Databases_SQL_First_Queries.pdf) | [SQL](../modules/02-sql/README.md) |  |
+| Mon 28 Sep | SQL continued; aggregation begins | [D04](../modules/02-sql/slides_pdf/D04-Aggregation_Grain_Measures.pdf) | [SQL](../modules/02-sql/README.md) |  |
+| Tue 29 Sep | Aggregation, functions and CASE | [D04](../modules/02-sql/slides_pdf/D04-Aggregation_Grain_Measures.pdf) | [SQL](../modules/02-sql/README.md) |  |
+| Sun 4 Oct | Joins: combining tables | [D06](../modules/02-sql/slides_pdf/D06-Joins_Combining_Tables.pdf) | [SQL](../modules/02-sql/README.md) |  |
+| Mon 5 Oct | Joins with GROUP BY and CASE | [D07](../modules/02-sql/slides_pdf/D07-Joins_GroupBy_Case.pdf) | [SQL](../modules/02-sql/README.md) |  |
+| Wed 7 Oct | Subqueries, CTEs and views | [D08](../modules/02-sql/slides_pdf/D08-Subqueries_CTEs_Views.pdf) | [SQL](../modules/02-sql/README.md) |  |
+| Thu 8 Oct | *Optional: SQL review (4:00–6:00 PM)* | – | [SQL](../modules/02-sql/README.md) |  |
+| Sun 11 Oct | Subqueries, CTEs and views, continued | [D09](../modules/02-sql/slides_pdf/D09-Subqueries_CTEs_Views_Continued.pdf) | [SQL](../modules/02-sql/README.md) |  |
+| Mon 12 Oct | Window functions and cloud warehouses | [D10](../modules/02-sql/slides_pdf/D10-Window_Functions_Cloud_Warehouse.pdf) | [SQL](../modules/02-sql/README.md) | **Assignment 1 issued** |
+| Sun 18 Oct | Machine learning 1: what learning means; regression | [D11](../modules/03-machine-learning-and-ai/slides_pdf/D11-BigQuery_ML_Predicting_A_Number.pdf) | [Machine learning and AI](../modules/03-machine-learning-and-ai/README.md) |  |
+| Mon 19 Oct | Machine learning 2: regression in BigQuery ML; classification | [D11](../modules/03-machine-learning-and-ai/slides_pdf/D11-BigQuery_ML_Predicting_A_Number.pdf), [D12](../modules/03-machine-learning-and-ai/slides_pdf/D12-Classification_Judging_The_Prediction.pdf) | [Machine learning and AI](../modules/03-machine-learning-and-ai/README.md) |  |
+| Tue 20 Oct | *Optional: help with SQL and Assignment 1 (4:00–6:00 PM)* | – | [SQL](../modules/02-sql/README.md) |  |
+| Wed 21 Oct | Machine learning 3: classification; clustering | [D12](../modules/03-machine-learning-and-ai/slides_pdf/D12-Classification_Judging_The_Prediction.pdf), [D13](../modules/03-machine-learning-and-ai/slides_pdf/D13-Clustering_Groups_Without_A_Label.pdf) | [Machine learning and AI](../modules/03-machine-learning-and-ai/README.md) | **Assignment 1 due before 4:00 PM** |
+| Sun 25 Oct | Machine learning 4: clustering; improving models with trees | [D13](../modules/03-machine-learning-and-ai/slides_pdf/D13-Clustering_Groups_Without_A_Label.pdf), [D14](../modules/03-machine-learning-and-ai/slides_pdf/D14-Improving_Models_Trees_And_Features.pdf) | [Machine learning and AI](../modules/03-machine-learning-and-ai/README.md) |  |
+| Mon 26 Oct | Machine learning 5: forests, boosting and better features. Forecasting (D15 slides 1–49) is optional self-study | [D14](../modules/03-machine-learning-and-ai/slides_pdf/D14-Improving_Models_Trees_And_Features.pdf), [D15](../modules/03-machine-learning-and-ai/slides_pdf/D15-Forecasting_Explaining_Serving.pdf) | [Machine learning and AI](../modules/03-machine-learning-and-ai/README.md) |  |
+| Thu 29 Oct | Machine learning 6: explaining models and MLOps; then Power BI and a first report | [D15](../modules/03-machine-learning-and-ai/slides_pdf/D15-Forecasting_Explaining_Serving.pdf), [D16](../modules/04-power-query/slides_pdf/D16-MLOps_Four_Models_PowerBI.pdf) | [Machine learning and AI](../modules/03-machine-learning-and-ai/README.md) | **Assignment 2 issued** |
+| Sun 1 Nov | Power BI Desktop, the first report and Append | [D16](../modules/04-power-query/slides_pdf/D16-MLOps_Four_Models_PowerBI.pdf), [D17](../modules/04-power-query/slides_pdf/D17-Power_Query_Files_Append_Merge.pdf) | [Power Query](../modules/04-power-query/README.md) |  |
+| Mon 2 Nov | Power Query continued | [D16](../modules/04-power-query/slides_pdf/D16-MLOps_Four_Models_PowerBI.pdf), [D17](../modules/04-power-query/slides_pdf/D17-Power_Query_Files_Append_Merge.pdf) | [Power Query](../modules/04-power-query/README.md) |  |
+| Wed 4 Nov | A folder of files, the store list and Merge; then why we model | [D17](../modules/04-power-query/slides_pdf/D17-Power_Query_Files_Append_Merge.pdf), [D18](../modules/05-data-modeling-and-dax/slides_pdf/D18-Model_Star_Relationships_Dates.pdf) | [Power Query](../modules/04-power-query/README.md) |  |
+| Thu 5 Nov | *No class* | – | – | **Assignment 2 due before 4:00 PM** |
+| Sun 8 Nov | The data model: grain, the star schema, relationships and the date table | [D18](../modules/05-data-modeling-and-dax/slides_pdf/D18-Model_Star_Relationships_Dates.pdf) | [Data modelling and DAX](../modules/05-data-modeling-and-dax/README.md) |  |
+| Mon 9 Nov | DAX 1: measures, CALCULATE and filter context | [D19](../modules/05-data-modeling-and-dax/slides_pdf/D19-DAX_Measures_Filter_Context.pdf) | [Data modelling and DAX](../modules/05-data-modeling-and-dax/README.md) |  |
+| Wed 11 Nov | Practice: the model and DAX 1 labs | [D18](../modules/05-data-modeling-and-dax/slides_pdf/D18-Model_Star_Relationships_Dates.pdf), [D19](../modules/05-data-modeling-and-dax/slides_pdf/D19-DAX_Measures_Filter_Context.pdf) | [Data modelling and DAX](../modules/05-data-modeling-and-dax/README.md) |  |
+| Sun 15 Nov | DAX 2: time intelligence and SUMX; report design | [D20](../modules/05-data-modeling-and-dax/slides_pdf/D20-Time_Intelligence_SUMX_Report_Design.pdf) | [Data modelling and DAX](../modules/05-data-modeling-and-dax/README.md) |  |
+| Mon 16 Nov | Visualize and analyze; then manage, secure and share | [D21](../modules/06-visualization-and-storytelling/slides_pdf/D21-Visualize_Analyze_Report_Design.pdf), [D22](../modules/07-power-bi-service/slides_pdf/D22-Manage_Secure_Share_Fabric.pdf) | [Visualisation and storytelling](../modules/06-visualization-and-storytelling/README.md) |  |
+| Wed 18 Nov | *No class* | – | – | **Assignment 3 released online** |
+| Mon 23 Nov | PL-300 review; manage, secure and share; BigQuery to a published Power BI report | [PL-300 review](../modules/08-pl300-and-career-readiness/slides_pdf/PL300-Review-Four-Domains.pdf), [D22](../modules/07-power-bi-service/slides_pdf/D22-Manage_Secure_Share_Fabric.pdf), [D23](../modules/07-power-bi-service/slides_pdf/D23-BigQuery_To_PowerBI_End_To_End.pdf) | [Manage and secure Power BI](../modules/07-power-bi-service/README.md) |  |
+| Tue 24 Nov | GitHub and Markdown: your profile and portfolio (4:00–6:00 PM) | [D27](../modules/08-pl300-and-career-readiness/slides_pdf/D27-GitHub_Markdown_Portfolio.pdf) | [PL-300 and career readiness](../modules/08-pl300-and-career-readiness/README.md) |  |
+| Thu 26 Nov | PL-300 quiz (45 minutes), then generative AI for analysts. Last session | [D24](../modules/03-machine-learning-and-ai/slides_pdf/D24-Generative_AI_For_Analysts.pdf) | [Machine learning and AI](../modules/03-machine-learning-and-ai/README.md) | **Assignment 3 due before 4:00 PM** |
 
-**Updated 9 October 2026.** D08 needed more time, so Sunday 11 October finishes subqueries, CTEs and views, and Monday 12 October covers window functions and starts Assignment 1. Machine learning starts on 18 October.
-
-**Updated 18 October 2026.** Each assignment now starts when its module is finished, and you always get a full week: Assignment 2 runs from Thursday 29 October to Thursday 5 November. (Assignment 3's dates changed on 29 October; see the top of this page.)
-
-**Updated 21 October 2026.** Machine learning is running about a day behind, so the topics move. D13 reviews regression, finishes classification (the confusion matrix and the threshold) and starts clustering. D14 finishes clustering and starts improving models with decision trees. D15 continues with forests, boosting and better features. **Forecasting is now optional, self-study:** the first part of the D15 slides (slides 1–49), activities 01–06 and labs 09, 10 and 13, with their solutions; it is not needed for Assignment 2. D16 starts with explaining and saving predictions (the second part of the D15 slides) and an overview of MLOps; Assignment 2 is still issued on D16, and Power BI starts at 6:00 PM that day as planned. Nothing changes from D17.
-
-**Optional sessions, 4:00–6:00 PM: Thursday 8 and Tuesday 20 October.** 8 October reviewed the SQL so far. 20 October is help with SQL and Assignment 1, the day before it is due. They are optional: no new content, no lab and nothing graded. They are shown in yellow on the schedule. (The session on Thursday 22 October is cancelled.)
-
-| Date | Topic | Material home | Lab | Assignment given | Assignment due |
-|---|---|---|:---:|---|---|
-| D01 · Sun 20 Sep 2026 | Programme launch and data literacy | [Data foundations](../modules/01-data-foundations/README.md) | Yes | - | - |
-| D02 · Mon 21 Sep 2026 | Where data lives and cloud fundamentals | [Data foundations](../modules/01-data-foundations/README.md) | Yes | - | - |
-| D03 · Sun 27 Sep 2026 | SQL foundations and the relational model | [SQL](../modules/02-sql/README.md) | Yes | - | - |
-| D04 · Mon 28 Sep 2026 | SQL foundations continued; aggregation begins | [SQL](../modules/02-sql/README.md) | Yes | - | - |
-| D05 · Tue 29 Sep 2026 | Aggregation, functions and CASE | [SQL](../modules/02-sql/README.md) | Yes | - | - |
-| D06 · Sun 4 Oct 2026 | Joins: combining tables | [SQL](../modules/02-sql/README.md) | After class | - | - |
-| D07 · Mon 5 Oct 2026 | Joins continued: joins with GROUP BY and CASE | [SQL](../modules/02-sql/README.md) | After class | - | - |
-| D08 · Wed 7 Oct 2026 | Subqueries, CTEs and views (begun) | [SQL](../modules/02-sql/README.md) | After class | - | - |
-| **Optional** · Thu 8 Oct 2026 | **Optional review: SQL so far (D03–D08)**, 4:00–6:00 PM | [SQL](../modules/02-sql/README.md) | No | - | - |
-| D09 · Sun 11 Oct 2026 | Subqueries and CTEs, then views (D08 continued) | [SQL](../modules/02-sql/README.md) | After class | - | - |
-| D10 · Mon 12 Oct 2026 | Window functions, cloud warehouses and Assignment 1 | [SQL](../modules/02-sql/README.md) | After class | Assignment 1 | - |
-| D11 · Sun 18 Oct 2026 | Machine learning 1: what learning means, and regression (begun) | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | - |
-| D12 · Mon 19 Oct 2026 | Machine learning 2: regression and BigQuery ML (D11 continued), then classification begins | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | - |
-| **Optional** · Tue 20 Oct 2026 | **Optional support session: SQL and Assignment 1**, 4:00–6:00 PM | [SQL](../modules/02-sql/README.md) | No | - | - |
-| D13 · Wed 21 Oct 2026 | Machine learning 3: regression review, classification (D12 continued), then clustering begins | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | Assignment 1, before 4:00 PM |
-| D14 · Sun 25 Oct 2026 | Machine learning 4: clustering (D13 continued), then improving models begins | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | - |
-| D15 · Mon 26 Oct 2026 | Machine learning 5: forests, boosting and better features (D14 continued) · forecasting is optional self-study | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | - |
-| D16 · Thu 29 Oct 2026 | Machine learning 6: explaining, MLOps and four models in a row; then Power BI, Fabric and a first report | [Prepare data with Power Query](../modules/04-power-query/README.md) | After class | Assignment 2 | - |
-| D17 · Sun 1 Nov 2026 | Kick-off, Power BI Desktop and the first report, Append (D16 and D17 materials) | [Prepare data with Power Query](../modules/04-power-query/README.md) | After class | - | - |
-| D18 · Mon 2 Nov 2026 | The 1 November route continued (D16 and D17 materials) | [Prepare data with Power Query](../modules/04-power-query/README.md) | After class | - | - |
-| D19 · Wed 4 Nov 2026 | Power Query II finished (folder, store list, Merge), then why we model (D17 and D18 materials) | [Prepare data with Power Query](../modules/04-power-query/README.md) | After class | - | Assignment 2, before 4:00 PM Thu 5 Nov (the day after; no class) |
-| D20 · Sun 8 Nov 2026 | Model: grain, the star, relationships and the date table (D18 materials) | [Data modelling and DAX](../modules/05-data-modeling-and-dax/README.md) | After class | - | - |
-| D21 · Mon 9 Nov 2026 | DAX 1: measures, DIVIDE, CALCULATE, filter context and percent of total | [Data modelling and DAX](../modules/05-data-modeling-and-dax/README.md) | After class | - | - |
-| D22 · Wed 11 Nov 2026 | The D18 and D19 labs: the model and DAX 1 practice | [Data modelling and DAX](../modules/05-data-modeling-and-dax/README.md) | After class | - | - |
-| D23 · Sun 15 Nov 2026 | DAX 2 (time intelligence, SUMX), a short DAX review, then report design 1 (D20 materials) | [Data modelling and DAX](../modules/05-data-modeling-and-dax/README.md) | After class | - | - |
-| D25 · Mon 16 Nov 2026 | Visualize and analyze (D21 materials), then manage, secure and share, and Fabric (D22 materials) | [Visualisation and storytelling](../modules/06-visualization-and-storytelling/README.md) | After class | - | - |
-| Mon 23 Nov 2026 | A PL-300 review of the four domains; manage, secure and share (D22 slides); end to end: BigQuery to a published Power BI report (D23 slides) | [Manage and secure Power BI](../modules/07-power-bi-service/README.md) | After class | - | - |
-| Tue 24 Nov 2026 | GitHub and Markdown: your profile page and portfolio (D27 slides), 4:00–6:00 PM | [PL-300 and career readiness](../modules/08-pl300-and-career-readiness/README.md) | No | - | - |
-| Thu 26 Nov 2026 | A 45-minute PL-300 quiz, then generative AI for analysts (D24 slides); Assignment 3 due | [Machine learning and AI literacy](../modules/03-machine-learning-and-ai/README.md) | After class | - | Assignment 3, before 4:00 PM |
+[Download the Excel version](assets/student-schedule.xlsx) · [Calendar as a PDF](assets/schedule.pdf) · [Course home](../README.md)

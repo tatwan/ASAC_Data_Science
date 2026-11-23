@@ -2,23 +2,24 @@
 
 [Course home](../../README.md) · [Schedule](../../course/STUDENT_SCHEDULE.md)
 
-**D03–D10 · 32 scheduled hours · Status: D03–D10 materials ready.**
+**27 September – 12 October 2026**
 
 Query, combine and check data with SQL in BigQuery, then save the views that Power BI reads later in the course.
 
 ## Sessions
 
-| Session | Date | Focus |
-|---|---|---|
-| D03 | Sun 27 Sep | SQL foundations and the relational model |
-| D04 | Mon 28 Sep | SQL foundations continued; aggregation begins |
-| D05 | Tue 29 Sep | Aggregation, functions and CASE |
-| D06 | Sun 4 Oct | Joins: combining tables |
-| D07 | Mon 5 Oct | Joins continued: joins with GROUP BY and CASE |
-| D08 | Wed 7 Oct | Subqueries, CTEs and views (begun) |
-| Optional | Thu 8 Oct | Optional review: SQL so far (D03–D08), 4:00–6:00 PM |
-| D09 | Sun 11 Oct | Subqueries and CTEs, then views (D08 continued) |
-| D10 | Mon 12 Oct | Window functions, cloud warehouses and Assignment 1 |
+| Date | Topic | Slides | Labs |
+|---|---|---|---|
+| Sun 27 Sep | SQL foundations and the relational model | [D03](slides_pdf/D03-Databases_SQL_First_Queries.pdf) | [D03](labs/D03/) |
+| Mon 28 Sep | SQL continued; aggregation begins | [D04](slides_pdf/D04-Aggregation_Grain_Measures.pdf) | [D04](labs/D04/) |
+| Tue 29 Sep | Aggregation, functions and CASE | [D04](slides_pdf/D04-Aggregation_Grain_Measures.pdf) | [D04](labs/D04/) |
+| Sun 4 Oct | Joins: combining tables | [D06](slides_pdf/D06-Joins_Combining_Tables.pdf) | [D06](labs/D06/) |
+| Mon 5 Oct | Joins with GROUP BY and CASE | [D07](slides_pdf/D07-Joins_GroupBy_Case.pdf) | [D07](labs/D07/) |
+| Wed 7 Oct | Subqueries, CTEs and views | [D08](slides_pdf/D08-Subqueries_CTEs_Views.pdf) | [D08](labs/D08/) |
+| Thu 8 Oct | *Optional: SQL review (4:00–6:00 PM)* | – | – |
+| Sun 11 Oct | Subqueries, CTEs and views, continued | [D09](slides_pdf/D09-Subqueries_CTEs_Views_Continued.pdf) | [D09](labs/D09/) |
+| Mon 12 Oct | Window functions and cloud warehouses · **Assignment 1 issued** | [D10](slides_pdf/D10-Window_Functions_Cloud_Warehouse.pdf) | [D10](labs/D10/) |
+| Tue 20 Oct | *Optional: help with SQL and Assignment 1 (4:00–6:00 PM)* | – | – |
 
 ## Materials
 

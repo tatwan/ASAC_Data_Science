@@ -55,4 +55,4 @@ A copy of these materials is mirrored in the course
 This repository is the original; if the two ever disagree, trust this one.
 
 Labs are done in class and are not graded. If you do not finish one, the reference solution is
-released at the debrief so you can finish it yourself. It never becomes homework.e
+released at the debrief so you can finish it yourself. It never becomes homework.

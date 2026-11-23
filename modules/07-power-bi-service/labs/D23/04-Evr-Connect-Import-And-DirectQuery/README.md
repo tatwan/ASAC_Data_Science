@@ -60,7 +60,7 @@ Select **Load**. Power BI then asks for the **Connection settings**: choose **Im
 
 If you see **Access Denied … bigquery.jobs.create**, start again and open **Advanced options**: in **Billing Project ID**, type your project's ID (shown in the BigQuery console's project picker). Power BI then runs its queries in your sandbox.
 
-**C1.** On a card, `trips` from `v_days` shows about **282,696** (Tarek's run, 23 November 2026; it was 283,964 on 15 November, before Google revised June 2023's trips).
+**C1.** On a card, `trips` from `v_days` shows about **282,696** (checked 23 November 2026; it was 283,964 on 15 November, before Google revised June 2023's trips).
 
 ![image-20261123135809935](images/image-20261123135809935.png)
 
@@ -98,7 +98,7 @@ Power BI draws the first line differently, with open half-circles at its ends: t
 
 ![image-20261123140257059](images/image-20261123140257059.png)
 
-**C3.** Add a slicer on `v_days[day_type]` and select **Hot**. The `v_days` card and the `v_trips` card show the same number: **49,795** in Tarek's run on 23 November 2026 (50,428 on 15 November). The two cards agreeing is the check; the exact number moves when Google revises the trips.
+**C3.** Add a slicer on `v_days[day_type]` and select **Hot**. The `v_days` card and the `v_trips` card show the same number: **49,795** when checked on 23 November 2026. The two cards agreeing is the check; the exact number moves when Google revises the trips.
 
 ![image-20261123140513234](images/image-20261123140513234.png)
 

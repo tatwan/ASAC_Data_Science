@@ -18,7 +18,7 @@ The website does not send a CSV. It sends JSON: each order is a record, with a r
 
 Open `online_orders_2026-08.json` in Notepad and read the first order. It has `order_id`, `order_date`, `status`, a `customer` with `customer_id` and `city`, a `shipping_fee`, and `items`, a list of the products bought (one to six per order).
 
-**In the browser:** open your semantic model's Power Query and choose **Get data → JSON → Upload file**, if that connector is offered. The D16 rehearsal tested CSV upload, not JSON. If JSON upload is unavailable on your account, use Desktop or pair with someone using it. The expansion steps below are the same.
+**In the browser:** open your semantic model's Power Query and choose **Get data → JSON → Upload file**, if that connector is offered. Uploading a CSV this way is known to work; JSON may not be offered. If JSON upload is unavailable on your account, use Desktop or pair with someone using it. The expansion steps below are the same.
 
 
 ## Checkpoints

@@ -125,6 +125,6 @@ SELECT SUM(trips) AS actual, SUM(predicted_trips) AS predicted
 FROM bikes.v_predictions WHERE split = 'test';
 ```
 
-**C5.** On the 73 test days: about 54,961 actual rides and 57,372 predicted (Tarek's run, 23 November 2026). Google updates the trips table, so a few dozen rides either way is normal.
+**C5.** On the 73 test days: about 54,961 actual rides and 57,372 predicted (checked 23 November 2026). Google updates the trips table, so a few dozen rides either way is normal.
 
 **What just happened.** The quick answer, "hot days lose a quarter of the rides", mixed two causes. The model compares like with like and splits them: about 225 rides for the heat, and up to about 700 for the school calendar. Look at 21–25 August 2023: every day reached between 99 and 107 °F, and rides still went from 760 to 1,116 a day. The autumn semester had started.

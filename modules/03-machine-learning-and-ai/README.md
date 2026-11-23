@@ -2,20 +2,21 @@
 
 [Course home](../../README.md) · [Schedule](../../course/STUDENT_SCHEDULE.md)
 
-**D11–D16 and D24 · Status: D11 to D16 ready (slides and labs; BigQuery numbers still being confirmed); D24 built (generative AI for analysts: slides, four activities, a lab and the AI usage charter template).**
+**18–29 October 2026, and generative AI on 26 November**
 
 Understand how models learn and are evaluated, build them in BigQuery ML, hand their outputs to Power BI, and use generative AI with verification and privacy controls.
 
 ## Sessions
 
-| Session | Date | Focus |
-|---|---|---|
-| D11 | Sun 18 Oct | Machine learning 1: what learning means, and regression (begun) |
-| D12 | Mon 19 Oct | Machine learning 2: regression and BigQuery ML (D11 continued), then classification begins |
-| D13 | Wed 21 Oct | Machine learning 3: regression review, classification (D12 continued), then clustering begins |
-| D14 | Sun 25 Oct | Machine learning 4: clustering (D13 continued), then improving models begins |
-| D15 | Mon 26 Oct | Machine learning 5: forests, boosting and better features (D14 continued) · forecasting is optional self-study |
-| D24 | Thu 26 Nov | A 45-minute PL-300 quiz, then generative AI for analysts: what a language model does, how to prompt and check it, and how to keep a client safe; Assignment 3 due · [slides](slides_pdf/D24-Generative_AI_For_Analysts.pdf) · [activities and lab](labs/D24/README.md) |
+| Date | Topic | Slides | Labs |
+|---|---|---|---|
+| Sun 18 Oct | Machine learning 1: what learning means; regression | [D11](slides_pdf/D11-BigQuery_ML_Predicting_A_Number.pdf) | [D11](labs/D11/) |
+| Mon 19 Oct | Machine learning 2: regression in BigQuery ML; classification | [D11](slides_pdf/D11-BigQuery_ML_Predicting_A_Number.pdf), [D12](slides_pdf/D12-Classification_Judging_The_Prediction.pdf) | [D11](labs/D11/), [D12](labs/D12/) |
+| Wed 21 Oct | Machine learning 3: classification; clustering · **Assignment 1 due before 4:00 PM** | [D12](slides_pdf/D12-Classification_Judging_The_Prediction.pdf), [D13](slides_pdf/D13-Clustering_Groups_Without_A_Label.pdf) | [D12](labs/D12/), [D13](labs/D13/) |
+| Sun 25 Oct | Machine learning 4: clustering; improving models with trees | [D13](slides_pdf/D13-Clustering_Groups_Without_A_Label.pdf), [D14](slides_pdf/D14-Improving_Models_Trees_And_Features.pdf) | [D13](labs/D13/), [D14](labs/D14/) |
+| Mon 26 Oct | Machine learning 5: forests, boosting and better features. Forecasting (D15 slides 1–49) is optional self-study | [D14](slides_pdf/D14-Improving_Models_Trees_And_Features.pdf), [D15](slides_pdf/D15-Forecasting_Explaining_Serving.pdf) | [D14](labs/D14/), [D15](labs/D15/) |
+| Thu 29 Oct | Machine learning 6: explaining models and MLOps; then Power BI and a first report · **Assignment 2 issued** | [D15](slides_pdf/D15-Forecasting_Explaining_Serving.pdf), [D16](../04-power-query/slides_pdf/D16-MLOps_Four_Models_PowerBI.pdf) | [D15](labs/D15/), [D16](labs/D16/) |
+| Thu 26 Nov | PL-300 quiz (45 minutes), then generative AI for analysts. Last session · **Assignment 3 due before 4:00 PM** | [D24](slides_pdf/D24-Generative_AI_For_Analysts.pdf) | [D24](labs/D24/README.md) |
 
 ## Datasets
 
@@ -40,20 +41,14 @@ Each algorithm is learned first on small, well-known datasets, so the attention 
 
 ## Materials
 
-| Folder | Intended contents | Status |
+| Folder | What is in it | Open |
 |---|---|---|
 | [slides_pdf/](slides_pdf/) | The slides for each session, as PDF | D11, D12, D13, D14, D15, D16 |
-| [labs/](labs/) | Guided/independent instructions, starter and restart files; released solutions | [D11](labs/D11/), [D12](labs/D12/), [D13](labs/D13/), [D14](labs/D14/), [D15](labs/D15/), [D16](labs/D16/) |
-| [assignments/](assignments/) | Relevant weekly sets, graded briefs, rubrics and submission instructions | [Assignment 2: hotel bookings](assignments/A02-ML-Hotel-Bookings/README.md) |
-| [datasets/](datasets/) | Small domain-specific fixtures or links to the shared dataset | D11 to D15 use the [classic ML datasets](../../shared/datasets/ml_classics/README.md), D16 the [recap datasets](../../shared/datasets/ml_recap/README.md); see [Datasets](#datasets) |
-| [resources/](resources/) | Setup instructions, cheat sheets and official reference links | [BigQuery ML reference links](resources/bigquery-ml-reference-links.md) · [BigQuery ML functions in Module 3](resources/bigquery-ml-functions.md) |
+| [labs/](labs/) | Activities and labs, with starter files and solutions | [D11](labs/D11/), [D12](labs/D12/), [D13](labs/D13/), [D14](labs/D14/), [D15](labs/D15/), [D16](labs/D16/) |
+| [assignments/](assignments/) | Assignment brief and rubric | [Assignment 2: hotel bookings](assignments/A02-ML-Hotel-Bookings/README.md) |
+| [datasets/](datasets/) | Datasets | D11 to D15 use the [classic ML datasets](../../shared/datasets/ml_classics/README.md), D16 the [recap datasets](../../shared/datasets/ml_recap/README.md); see [Datasets](#datasets) |
+| [resources/](resources/) | Guides and reference links | [BigQuery ML reference links](resources/bigquery-ml-reference-links.md) · [BigQuery ML functions in Module 3](resources/bigquery-ml-functions.md) |
 
-Keep D01–D26 in filenames, for example `D03-select-and-filter.md`; use `W02-...`, `A01-...` and `P01-...` for weekly sets, assignments and practicals. These are naming examples, not existing files.
+Each session's lab is done after class to practise that day's ideas. Labs are not submitted or graded.
 
-Each session's lab is done after class to practise that day's ideas; it is not submitted or graded, and its solution is released afterwards. Assignments keep their published due dates. Editable slide sources are kept privately; only PDF slides are published.
-
-Each lab will state prerequisites, input/version, numbered steps, three checkpoints, expected output, a self-check and a fallback. Shared datasets live once in [shared/datasets/](../../shared/datasets/README.md); link to them rather than copying them between modules.
-
-Only released solutions belong here. Keep unreleased keys and instructor notes in the local ignored `instructor/` folder or the approved private teaching store. Graded submissions go to the institution’s private collection route, not issues or pull requests in this course repository.
-
-Assignment 2 covers the machine-learning sessions (issued D16 after the machine-learning part, due before 4:00 PM Thu 5 Nov, a day without class). The AI usage charter is completed in class on D24.
+Assignment 2 covers the machine-learning sessions: issued Thursday 29 October, due before 4:00 PM on Thursday 5 November. The AI usage charter is completed in class on 26 November.

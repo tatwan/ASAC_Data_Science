@@ -32,7 +32,7 @@ Continue in the file from Activity 04. Add a new page and name it **Story**.
 
 Add a **Clustered column chart**. Put `v_days[day]` on the X-axis and keep only **Month** in its date hierarchy. Put `v_days[trips]` on the Y-axis and change its summary from **Sum** to **Average**.
 
-**C1.** October is highest at **1,249.3** rides a day, then September (1,177.3). June (495.9), July (531.0), May (563.6) and December (572.5) are the lowest: the months without classes. (Tarek's run, 23 November 2026. On 15 November June showed 538.1: Google has since removed about 1,270 June trips.)
+**C1.** October is highest at **1,249.3** rides a day, then September (1,177.3). June (495.9), July (531.0), May (563.6) and December (572.5) are the lowest: the months without classes. (checked 23 November 2026. On 15 November June showed 538.1: Google has since removed about 1,270 June trips.)
 
 ![image-20261123141216480](images/image-20261123141216480.png)
 
@@ -42,7 +42,7 @@ Add a **Clustered column chart**. Put `v_days[day]` on the X-axis and keep only 
 
 Add a **Clustered bar chart** with `v_days[day_type]` on the Y-axis and **Average of trips** on the X-axis. Sort by the average.
 
-**C2.** Other 828.5, Rain 767.9, Hot 614.8 (Tarek's run, 23 November 2026). Hot days are still about a quarter below other days.
+**C2.** Other 828.5, Rain 767.9, Hot 614.8 (checked 23 November 2026). Hot days are still about a quarter below other days.
 
 ![image-20261123141301773](images/image-20261123141301773.png)
 
