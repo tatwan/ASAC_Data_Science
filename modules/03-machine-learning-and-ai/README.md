@@ -2,7 +2,7 @@
 
 [Course home](../../README.md) · [Schedule](../../course/STUDENT_SCHEDULE.md)
 
-**D11–D16 and D24 · Status: D11 to D16 ready (slides and labs; BigQuery numbers still being confirmed); D24 in production.**
+**D11–D16 and D24 · Status: D11 to D16 ready (slides and labs; BigQuery numbers still being confirmed); D24 built (generative AI for analysts: slides, four activities, a lab and the AI usage charter template).**
 
 Understand how models learn and are evaluated, build them in BigQuery ML, hand their outputs to Power BI, and use generative AI with verification and privacy controls.
 
@@ -15,7 +15,7 @@ Understand how models learn and are evaluated, build them in BigQuery ML, hand t
 | D13 | Wed 21 Oct | Machine learning 3: regression review, classification (D12 continued), then clustering begins |
 | D14 | Sun 25 Oct | Machine learning 4: clustering (D13 continued), then improving models begins |
 | D15 | Mon 26 Oct | Machine learning 5: forests, boosting and better features (D14 continued) · forecasting is optional self-study |
-| D24 | Thu 26 Nov | Generative AI for analysts, with PL-300 and GitHub practice; Assignment 3 due |
+| D24 | Thu 26 Nov | A 45-minute PL-300 quiz, then generative AI for analysts: what a language model does, how to prompt and check it, and how to keep a client safe; Assignment 3 due · [slides](slides_pdf/D24-Generative_AI_For_Analysts.pdf) · [activities and lab](labs/D24/README.md) |
 
 ## Datasets
 

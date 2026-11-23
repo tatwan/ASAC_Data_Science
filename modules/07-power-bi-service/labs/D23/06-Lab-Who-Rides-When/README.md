@@ -2,6 +2,12 @@
 
 Activity 03 says the school calendar moves Austin's rides more than the heat does. If that is true, the share of rides taken by students should rise and fall with the semesters. You test it with one measure on the DirectQuery table, read it by month, and write one finding. About 20 minutes, after class.
 
+**Where you are:** after the route (01 Explore → 02 Views → 03 Model → 04 Connect → 05 Story). You test the model's claim with the report you built.
+
+**Remember (D19).** `CALCULATE` evaluates a measure under a changed filter; `DIVIDE` divides and returns a blank instead of an error. A share is one count under a filter, divided by the same count without it, as D19's percent of total.
+
+**What you are testing.** Activity 03 said the school calendar moves rides about three times as much as the heat. If that is true, the share of rides taken by students should be high in term time and low in the summer and in December. If the share were flat all year, the calendar story would be wrong.
+
 | Step | What you need | Power BI |
 |---|---|---|
 | 1 | The share of rides taken by students | A measure with `CALCULATE` and `DIVIDE` |

@@ -1,6 +1,32 @@
 # Activity 03 · Train a model, score it, and read what it learned
 
-Hot days average 622.6 rides and other days 830.9. But hot days only happen in summer, when most students are away. A linear regression can compare days within the same month and weekday, and so separate the heat from the calendar. You train it, check it on days it has not seen, read its weights, and save its predictions as a view for Power BI.
+You train a linear regression on the days of 2023, check it on days it has not seen, read its weights, and save its predictions as a view for Power BI. The sections below say why each part is needed before you start.
+
+**Where you are:** 01 Explore → 02 Views → **03 Model** → 04 Connect → 05 Story. You bring `bikes.v_days` (Activity 02); you hand on `bikes.v_predictions`, which Activity 04 imports and Activity 05 draws.
+
+### Why a model at all
+
+Activity 01 found that hot days average 622.6 rides and other days 830.9. That gap mixes two things. Every hot day falls in summer, and summer is when Austin's students, more than half of the riders, are away. From averages alone you cannot tell how much of the gap is the heat and how much is the calendar. A model can compare a hot day with an ordinary day **in the same month and on the same weekday**, and give the heat its own number.
+
+### Why linear regression
+
+**Remember (D11 and D12).** The label decides the kind of model. Here the label, `trips`, is a number, so this is **regression**, the kind you trained in D11. D12's classifiers predicted a category (churn or not), which is not today's question.
+
+Of the regression models you know, linear regression is the one whose answer you can read. It predicts rides as a starting value plus one **weight** for each feature value. For a text feature, every value gets its own weight (D11, Lab 06). The difference between the Hot weight and the Other weight is the number of rides a hot day costs, with the month and weekday unchanged. That weight is the answer to the question. Tree models (D14) can predict well too, but they give no single number per feature to read.
+
+| Feature | Values | Why it is in the model |
+|---|---|---|
+| `day_type` | Hot, Rain, Other | the effect we want to measure |
+| `month_name` | Jan … Dec | holds the season and the school calendar fixed |
+| `weekday` | Mon … Sun | holds the weekly pattern fixed |
+
+### What we hope to get
+
+1. **Predictions better than a guess**, on days the model never saw. The guess is the median training day, 731 rides, which misses by 273.6 rides a day. If the model cannot beat that, its weights mean nothing.
+2. **A weight for heat with the calendar held fixed.** If the heat weight came out near zero, the gap in Activity 01 was all calendar. If it came out near the raw gap of about 208 rides or larger, the heat matters on its own.
+3. **A weight for each month**, to compare with the heat.
+
+**Remember (D11 and D14).** The **MAE** is the average miss, in rides. **R²** is the share of the day-to-day variation the model explains: 0 is no better than the average, 1 is perfect. The test days are fixed in the view, as in D14, so every classmate scores the same 73 days.
 
 | Step | What you need | BigQuery ML |
 |---|---|---|
@@ -60,7 +86,7 @@ FROM bikes.v_days, guess
 WHERE split = 'test';
 ```
 
-**C3.** The model is off by 171.4 rides a day on average, with an R² of 0.52. Guessing 747 every day is off by 271.1. The model removes more than a third of the error. It is far from perfect: football games, holidays and exam weeks are not among its features.
+**C3.** The model is off by about 171 rides a day on average, with an R² of about 0.53. Guessing 731 every day is off by about 274. The model removes more than a third of the error. It is far from perfect: football games, holidays and exam weeks are not among its features.
 
 ## 4. Read the weights
 
@@ -76,11 +102,13 @@ ORDER BY feature, weight;
 
 | Comparison | Weights | Difference |
 |---|---|---:|
-| Hot against Other | -1,172.1 and -946.3 | about **-226** rides |
-| Rain against Other | -1,061.0 and -946.3 | about **-115** rides |
-| October against December | 768.5 and 63.5 | about **+705** rides |
+| Hot against Other | -110.2 and 114.3 | about **-225** rides |
+| Rain against Other | 0.0 and 114.3 | about **-114** rides |
+| October against December | 548.0 and -156.9 | about **+705** rides |
 
-With the month held fixed, a hot day still costs about 226 rides. The month matters three times as much: October, in the middle of the autumn semester, has about 705 more rides a day than December, when the students go home.
+Your single weights may not match these: BigQuery can choose a different value to set at zero (here Rain and February are 0.0), and on 15 November the same model gave Hot -1,172.1 and Other -946.3. The differences stay the same, which is why you read differences.
+
+With the month held fixed, a hot day still costs about 225 rides. The month matters three times as much: October, in the middle of the autumn semester, has about 705 more rides a day than December, when the students go home.
 
 ## 5. Save the predictions as a view
 
@@ -97,6 +125,6 @@ SELECT SUM(trips) AS actual, SUM(predicted_trips) AS predicted
 FROM bikes.v_predictions WHERE split = 'test';
 ```
 
-**C5.** On the 73 test days: 55,188 actual rides, 57,632 predicted.
+**C5.** On the 73 test days: about 54,961 actual rides and 57,372 predicted (Tarek's run, 23 November 2026). Google updates the trips table, so a few dozen rides either way is normal.
 
-**What just happened.** The quick answer, "hot days lose a quarter of the rides", mixed two causes. The model compares like with like and splits them: about 226 rides for the heat, and up to about 700 for the school calendar. Look at 21–25 August 2023: every day reached between 99 and 107 °F, and rides still went from 760 to 1,116 a day. The autumn semester had started.
+**What just happened.** The quick answer, "hot days lose a quarter of the rides", mixed two causes. The model compares like with like and splits them: about 225 rides for the heat, and up to about 700 for the school calendar. Look at 21–25 August 2023: every day reached between 99 and 107 °F, and rides still went from 760 to 1,116 a day. The autumn semester had started.

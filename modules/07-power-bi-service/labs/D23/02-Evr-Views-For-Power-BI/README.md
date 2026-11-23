@@ -2,6 +2,42 @@
 
 Power BI should not have to know how you cleaned and joined the data. You save the work as two views in your own dataset: one row per day with its weather, and one row per trip with a simple rider group. Power BI reads the views as if they were tables.
 
+**Where you are:** 01 Explore → **02 Views** → 03 Model → 04 Connect → 05 Story. You bring Activity 01's queries; you hand on two views that Activity 03 trains on and Activity 04 connects to.
+
+**Remember (D08).** A view is a saved query with a name. It holds no rows: each time someone reads it, BigQuery runs the query again. In D08 you built Nakheel's `bi` views so Power BI would see clean tables; this is the same idea on Austin's data.
+
+### Why two views, and not one
+
+The question has two sizes of answer. "Do hot days have fewer rides?" is about **days**: one temperature, one rain total and one ride count per day. "Who rides, and when in the day?" is about **trips**. A single view would have to repeat each day's weather on all of its trips, about 780 times on an average day, and any sum of temperature would be wrong. So each grain gets its own view, and Power BI joins them on `day` in Activity 04.
+
+| View | One row is | Rows | Built from | Used by |
+|---|---|---:|---|---|
+| `bikes.v_days` | one day of 2023 | 364 | trips counted per day, joined to that day's weather | the model (03), the story page (05) |
+| `bikes.v_trips` | one trip of 2023 | 283,964 | the trips table, with a few columns reshaped | the report in DirectQuery (04), Lab 06 |
+
+### What each view holds
+
+`bikes.v_days`:
+
+| Column | What it holds | Why it is there |
+|---|---|---|
+| `day` | the date | joins to `v_trips` and `v_predictions` in Power BI |
+| `trips` | rides that started that day | the number we explain: the model's label |
+| `max_temp_f`, `rain_in` | the day's highest temperature (°F) and rain (inches) at Austin Camp Mabry | the weather, as measured |
+| `day_type` | Hot, Rain or Other, from those two numbers | the weather as a category the model and a slicer can use |
+| `weekday`, `month_name` | Mon … Sun, Jan … Dec | the calendar, so the model can hold it fixed |
+| `split` | train or test: every fifth day is a test day | a fair score for the model (Activity 03) |
+
+`bikes.v_trips`:
+
+| Column | What it holds | Why it is there |
+|---|---|---|
+| `trip_id` | the trip's key | a count of it is a count of trips |
+| `day`, `start_hour` | the date and the hour the trip started | DirectQuery cannot read BigQuery's date-and-time type, so date and hour are kept apart |
+| `start_station_name` | where the trip started | which stations are busiest |
+| `rider_group` | Student, Member, or Pass or single ride | 11 pass types in three readable groups |
+| `bike_type`, `duration_minutes` | the kind of bike and the trip length | detail for the report |
+
 | Step | What you need | SQL |
 |---|---|---|
 | 1 | A dataset of your own, in the same location as the public data | `CREATE SCHEMA` |

@@ -2,8 +2,13 @@
 
 Before you build anything for Power BI, you find out what the data can answer. Four queries: how rides change through 2023, whether trips join their stations, how rides change with the weather, and who the riders are.
 
+**Where you are:** **01 Explore** → 02 Views → 03 Model → 04 Connect → 05 Story. You start from three public tables; you hand on four tested queries that Activity 02 saves as views.
+
+**Remember.** `GROUP BY` turns many rows into one per group (D04). A `LEFT JOIN` keeps every row on the left and leaves `NULL` where nothing matched, so counting the right-hand key shows how many matched (D06). A CTE names a step of a query so the next step can read it (D08).
+
 | Step | Question | SQL you use |
 |---|---|---|
+| 0 | What is one row of the trips table? | The Schema and Preview tabs |
 | 1 | How do rides change through the year? | `GROUP BY` a month |
 | 2 | Does every trip find its station? | `LEFT JOIN` and `COUNT` of the matched key |
 | 3 | Do hot or rainy days have fewer rides? | Two CTEs joined on the date |
@@ -11,7 +16,33 @@ Before you build anything for Power BI, you find out what the data can answer. F
 
 Open a new query tab in BigQuery. The queries read the public tables directly, so there is nothing to upload.
 
+## 0. Meet the trips table before you query it
+
+**Why this step.** A query is only as good as your picture of one row. Before you count anything, find out what one row of `bikeshare_trips` is and which column answers which question.
+
+In the **Explorer** on the left, search for `austin_bikeshare`, open `bigquery-public-data` → `austin_bikeshare` and select `bikeshare_trips`.
+
+1. Open the **Schema** tab. *Why:* it lists every column and its type, and reads no data.
+2. Open the **Preview** tab. *Why:* it shows real rows for free, unlike `SELECT *`, which reads the whole table.
+3. Open the **Details** tab and note the number of rows.
+
+**C0.** Ten columns. One row is one trip. Sort them into four groups:
+
+| Group | Columns | The question they answer |
+|---|---|---|
+| When | `start_time` | When was the trip? |
+| Where | `start_station_id`, `start_station_name`, `end_station_id`, `end_station_name` | From which station, to which? |
+| Who | `subscriber_type`, `bike_id`, `bike_type` | Which kind of rider, on which bike? |
+| How long | `duration_minutes` | How long was the trip? |
+
+`trip_id` is the key: one value per trip. Each column is explained in [Resources](../Resources/README.md#the-trips-table-column-by-column).
+
+**What just happened.** Every query below reads one group. Step 1 reads *when*, step 2 *where*, step 3 *when* joined to the weather, step 4 *who*. Naming the group first tells you which columns to select, and therefore what the query costs.
+
+
 ## 1. Rides by month
+
+ 
 
 **Why this step.** A first count tells you the size and the shape of the data before you trust any comparison. One year is enough to see a pattern.
 

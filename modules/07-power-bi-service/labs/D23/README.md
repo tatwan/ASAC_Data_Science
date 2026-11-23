@@ -6,10 +6,25 @@ Austin, Texas, has a public bike-share system with about 80 docking stations. In
 |---|---|---|---|
 | [01 Explore with SQL](01-Evr-Explore-With-SQL/README.md) | BigQuery | Four queries on trips, stations and weather | Hot days average 622.6 trips |
 | [02 Views for Power BI](02-Evr-Views-For-Power-BI/README.md) | BigQuery | `bikes.v_days` and `bikes.v_trips` | 364 days, 283,964 trips |
-| [03 Train and score a model](03-Evr-Train-And-Score-A-Model/README.md) | BigQuery ML | `bikes.trips_model` and `bikes.v_predictions` | Test error 171.4 against 271.1 |
+| [03 Train and score a model](03-Evr-Train-And-Score-A-Model/README.md) | BigQuery ML | `bikes.trips_model` and `bikes.v_predictions` | Test error about 171 against 274 |
 | [04 Connect: Import and DirectQuery](04-Evr-Connect-Import-And-DirectQuery/README.md) | Power BI Desktop | Two views imported, one queried live | Both cards show 283,964 |
 | [05 Story page and publish](05-Evr-Story-Page-And-Publish/README.md) | Power BI | One story page in My workspace | No gateway needed |
 | [06 Lab: who rides when](06-Lab-Who-Rides-When/README.md) | Power BI | The student share by month (after class) | September 66.3% |
+
+## The route, end to end
+
+Each activity takes the previous one's result and hands on its own. If you lose the thread, find your step here.
+
+| Step | You start with | You make | Why it is needed | The idea, and where you met it |
+|---|---|---|---|---|
+| 01 Explore | three public tables | four answers in SQL | to know what the data can answer before building anything | GROUP BY, LEFT JOIN, CTEs (D04–D08) |
+| 02 Views | Activity 01's queries | `v_days` (one row per day) and `v_trips` (one row per trip) | Power BI and the model need clean tables at the right grain | views (D08) |
+| 03 Model | `v_days` | `trips_model`, its weights and `v_predictions` | to separate the heat from the school calendar | linear regression, MAE, a fixed test split (D11, D12, D14) |
+| 04 Connect | the three views | a Power BI model: two tables imported, one in DirectQuery | to read BigQuery from Power BI and see both storage modes | storage modes (D22), relationships (D18) |
+| 05 Story | the Power BI model | one story page, published, refreshing with no gateway | to tell the finding to a reader | a supported finding (D21), gateways (D22) |
+| 06 Lab | the published report | the student share by month | to test the model's claim with the data | CALCULATE and DIVIDE (D19) |
+
+The question all day: **Austin's riders took fewer trips on the hottest days. Is it the heat?**
 
 ## Before you start
 

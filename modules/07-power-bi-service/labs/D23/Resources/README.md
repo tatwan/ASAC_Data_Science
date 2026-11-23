@@ -39,15 +39,30 @@ erDiagram
 
 A trip joins its station on the station number. A trip joins the weather on its date, after you keep one weather station (`stn = '722544'`). The stations table is out of date: 11 of the 82 station numbers used in 2023 are missing from it, so an inner join would drop 43,975 trips. The activities keep the station name that each trip carries instead.
 
-## Columns you will use
+## The trips table, column by column
 
-| Column | Meaning |
-|---|---|
-| `start_time` | when the trip started, Austin local time (stored without a time zone) |
-| `subscriber_type` | the rider's pass or membership, for example `Student Membership`, `Local365`, `24 Hour Walk Up Pass` |
-| `duration_minutes` | trip length in minutes |
-| `max` | the day's highest temperature, °F |
-| `prcp` | the day's rain, inches |
+**One row is one bike trip.** A rider takes a bike from a docking station and returns it, at the same station or another. The operator records the trip once it ends, with these ten columns. Check them yourself: in the BigQuery Explorer open `bigquery-public-data` → `austin_bikeshare` → `bikeshare_trips`. **Schema** lists the columns and their types; **Preview** shows real rows and costs nothing.
+
+| Group | Column | What it means | Used today |
+|---|---|---|---|
+| Key | `trip_id` | One value per trip, so a count of it is a count of trips | Count of trips in Power BI (Activity 04) |
+| When | `start_time` | When the trip started, Austin local time (stored without a time zone) | Every activity: month, day, hour |
+| Where | `start_station_id` | The number of the station where the trip started | The station join (Activity 01, step 2) |
+| Where | `start_station_name` | That station's name, as the trip recorded it | `v_trips` (Activity 02) |
+| Where | `end_station_id`, `end_station_name` | The same for the station where the trip ended | Not today |
+| Who | `subscriber_type` | The rider's pass or membership, for example `Student Membership`, `Local365`, `24 Hour Walk Up Pass` | Students against members (Activity 01, step 4; `v_trips`) |
+| Who | `bike_id` | The bike used; the same bike appears on many trips | Not today |
+| Who | `bike_type` | The kind of bike, for example classic or electric | `v_trips` (Activity 02) |
+| How long | `duration_minutes` | Trip length in minutes | `v_trips` (Activity 02) |
+
+**Questions to ask before you query.** What is one row? (One trip.) Which column says when? (`start_time`.) Which says who? (`subscriber_type`.) If you want rides per day, what do you group by? (The date of `start_time`.) Every query in Activity 01 answers one of these.
+
+## The other two tables
+
+| Table | One row is | Columns you will use |
+|---|---|---|
+| `bikeshare_stations` | One docking station | `station_id` (joins to `start_station_id`), `name`, `number_of_docks` |
+| `noaa_gsod.gsod2023` | One weather station on one day | `stn` (the station: `722544` is Austin Camp Mabry), `date`, `max` (the day's highest temperature, °F), `prcp` (the day's rain, inches) |
 
 ## Fixed checks (2023, computed 15 November 2026)
 

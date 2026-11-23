@@ -14,6 +14,7 @@ At the end of the course you put your best work in a public GitHub repository an
 
 | Session | Date | Focus |
 |---|---|---|
+| PL-300 review | Mon 23 Nov | The four exam domains, with the skills our slides had not covered: parameters, privacy levels, Group By, pivot, unpivot, transpose, JSON, page settings, reference lines, error bars, forecast, Analyze and Copilot · [slides](slides_pdf/PL300-Review-Four-Domains.pdf) |
 | D27 (extra) | Tue 24 Nov | GitHub and Markdown: your profile page and portfolio (extra 2-hour session), 4:00–6:00 PM · [slides](slides_pdf/D27-GitHub_Markdown_Portfolio.pdf) · [activities and lab](labs/D27/README.md) |
 
 ## Materials
