@@ -1,37 +1,46 @@
-# D27 · GitHub and Markdown: your profile and your portfolio
+# D27 · GitHub: your projects, your page and your profile
 
-An employer gets one link from you. Two clicks later they should know what you can do: your GitHub profile, then one project whose first screen states what you found, with a number and the screenshot that proves it. Today you build both in the browser, from the Austin bike-share analysis you did on D23. You type no Git commands and install nothing.
+GitHub is where people who work with data and code keep their projects, show them to others and work on them together. Each project lives in a **repository**: a folder with its history. Today you learn how it works by using it. You leave with a profile that reads like your CV and a personal web page, both free and both at an address you can send to an employer.
 
-| Activity | What you build | Check |
+Everything happens in the browser. You install nothing and type no Git commands.
+
+| Activity | What you do | You finish with |
 |---|---|---|
-| [01 Write Markdown](01-Evr-Write-Markdown/README.md) | The repository `austin-bikes-2023` and a Markdown practice file | Preview shows the day-type table and a coloured SQL block |
-| [02 Upload and commit](02-Evr-Upload-And-Commit/README.md) | Your screenshots and SQL in folders; one edit | History shows 5 commits |
-| [03 Project README and Pages](03-Evr-Project-README-And-Pages/README.md) | A README that opens with your finding, published as a website | The site is live at `your-username.github.io/austin-bikes-2023/` |
-| [04 Profile README](04-Evr-Profile-README/README.md) | Your profile page, with the project pinned | `github.com/your-username` shows your README |
-| [05 Lab: a second project](05-Lab-Second-Project/README.md) | After class: the same pattern for Assignment 1 | Your profile pins two projects |
+| [01 How to read a repository](01-Evr-Read-A-Repository/README.md) | Look around a real repository: files, history, one change | You can find your way in any repository |
+| [02 How to create a repository and write Markdown](02-Evr-Create-A-Repository-And-Write-Markdown/README.md) | Write a recipe, save it, change it, read its history | Your first repository |
+| [03 How to put a project on GitHub](03-Evr-Put-A-Project-On-GitHub/README.md) | Upload data, SQL and a chart, then write the page that explains them | A project a visitor can understand |
+| [04 How to create your GitHub Page](04-Evr-Create-Your-GitHub-Page/README.md) | Publish a one-page website and make it yours | `your-username.github.io` |
+| [05 How to write a profile that reads like your CV](05-Evr-Write-A-Profile-Like-A-CV/README.md) | Who you are, what you want to do, what you can show | `github.com/your-username` |
+| [06 How to propose a change](06-Evr-Propose-A-Change/README.md) | An issue, a branch, a pull request and a merge | The way teams change a project |
 
-## Before you start
+**Every activity stands alone.** Activity 01 reads a public repository. Each of the others starts with a new one and brings the files it needs, so you can do them in any order and skip any of them.
 
-- **Your GitHub account** from the Week 1 homework, signed in, in Chrome or Edge. If you have no account yet, create a free one at [github.com/signup](https://github.com/signup) with a username you would be content to show an employer.
-- **Your D23 work**, on your laptop:
-  - a folder named `images` holding a screenshot of your D23 story page, saved as `story-page.png` (lowercase, no spaces);
-  - your D23 SQL. If you did not save it, use the course's [d23_bigquery.sql](../../../07-power-bi-service/labs/D23/Resources/d23_bigquery.sql).
-- **No D23 screenshot?** Follow along with Tarek's [starter pack](Resources/starter/README.md). It is there so you can keep up today. Before you share your link with anyone, replace every file from it with your own work.
+## Before you start: a GitHub account
 
-**Check:** you can open `github.com/your-username` (with your own username) and see your profile page.
+You need a free account. If you have one, sign in at [github.com](https://github.com) and go to the check.
 
-## What you leave with
+1. Open [github.com/signup](https://github.com/signup) and enter your email, a password and a username.
+2. **Choose the username as carefully as an email address for work.** It becomes part of every link you share today: `github.com/your-username` and `your-username.github.io`. Your name, or your name with one short word, works well: `firstname-lastname`, `firstname-data`. Only letters, digits and single hyphens are allowed, so no dots and no underscores. Small letters are simplest.
+3. GitHub may show a puzzle to check that you are a person. Then it emails you a code. Enter it to finish. Until your email is verified, GitHub does not let you create a repository.
 
-| Link | Who it is for |
+**Check.** Open `github.com/your-username`, with your own username. You see your profile page, almost empty for now.
+
+Wherever these activities say `your-username`, type your own.
+
+## What to keep private
+
+Everything you make today is **public**: anyone can read it, without an account. GitHub also keeps the history, so a file you delete can still be opened in an older version.
+
+| Fine to publish | Keep off GitHub |
 |---|---|
-| `github.com/your-username` | Anyone who wants to know who you are and what you have built |
-| `github.com/your-username/austin-bikes-2023` | A reader who wants your SQL and files |
-| `your-username.github.io/austin-bikes-2023/` | A reader who will not open a code site |
+| Your work, your skills, your education | Passwords, access keys, a Google key file (`.json`) |
+| Links to LinkedIn and to your projects | Your ID number, date of birth and home address |
+| Public data, with its source named | Other people's personal data, or your employer's data |
+| An email address you use for job applications | Your phone number, unless you want calls from strangers |
+
+**One setting worth changing.** Click your picture → **Settings** → **Emails**, and turn on **Keep my email addresses private**. Your changes then carry an address made by GitHub instead of your own.
 
 ## Resources
 
 - [Markdown cheat sheet](Resources/markdown-cheat-sheet.md)
-- [Project README template](Resources/README-template.md) and [profile template](Resources/profile-template.md)
-- [The finished example repository](Resources/example-austin-bikes-2023/README.md) and [an example profile](Resources/example-profile-README.md)
-
-**Public means anyone.** A repository on a free account is public, and its history keeps every file you ever committed, even after you delete it. Never commit passwords, keys, a Google or BigQuery key file (`.json`), personal data, or Assignment 3 before it is graded.
+- [GitHub words in plain language](Resources/github-words.md)

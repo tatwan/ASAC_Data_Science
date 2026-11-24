@@ -4,11 +4,13 @@
 
 **23–24 November 2026**
 
-Build your portfolio on GitHub: a profile page and a project page that lead with what you found.
+Learn GitHub by using it: read a repository, make your own, publish a personal page, and write a profile that reads like your CV.
 
-## Portfolio on GitHub
+## Your page and your profile on GitHub
 
-At the end of the course you put your best work in a public GitHub repository an employer can read: SQL files from Assignment 1, the machine-learning write-up from Assignment 2, and screenshots and the story from your Power BI report. The extra session on Tuesday 24 November (D27) builds the first project, your D23 bike-share analysis, and your profile page, all in the browser. [Lab 05](labs/D27/05-Lab-Second-Project/README.md) adds Assignment 1 the same way. Nothing about it is graded. You created your GitHub account in the Week 1 homework.
+[Six activities](labs/D27/README.md), all in the browser. Each one stands alone: it starts with a new repository and brings the files it needs, so it does not matter which earlier labs you finished. You leave with two links to put on your CV: `your-username.github.io` and `github.com/your-username`. Nothing about it is graded.
+
+Publish graded work only after it has been graded.
 
 ## Sessions
 
