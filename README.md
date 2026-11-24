@@ -1,6 +1,6 @@
 ![img](course/assets/repo_images/logo.png)
 
-# ASAC Data Science & Analytics — 2026
+# ASAC Data Science & Analytics  (2026)
 
 A beginner programme for analyst and business intelligence roles: SQL in BigQuery, machine learning in BigQuery ML, Power BI (Power Query, data modelling, DAX, report design, sharing and security) and generative AI for analysts. It supports preparation for the Microsoft Power BI Data Analyst exam (PL-300); the programme itself does not award Microsoft certification.
 
