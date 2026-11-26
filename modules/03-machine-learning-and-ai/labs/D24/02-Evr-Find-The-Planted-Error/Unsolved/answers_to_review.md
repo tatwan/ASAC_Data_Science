@@ -1,43 +1,78 @@
 # Activity 02 · two answers to review
 
-These answers were written for the course in the style of an AI assistant. Each one runs. Each one is wrong.
+These answers were written for the course in the style of an AI assistant. The prompts are the kind you learned to write in Activity 01: the tables, the columns, what one row is, and the task. Each query runs. Each one is wrong.
 
-## Answer A · SQL
+## Answer A
 
-**The question:** "How many completed orders do we have?"
+**The prompt:**
+
+```text
+BigQuery SQL. Dataset: nakheel.
+
+Tables:
+- orders(order_id, customer_id, order_date, status, order_total): one row is one order
+- order_items(order_id, product_id, qty, price): one row is one order line
+
+Task: how many completed orders do we have, and what is their revenue?
+Revenue = qty * price. Only orders with status = 'completed'.
+
+Explain the query in two lines, then give the SQL.
+```
 
 **The assistant's answer:**
 
-> Here is a query that counts your orders:
+> The query joins each order line to its order so it can keep only completed orders. It then counts the orders and adds up `qty * price` for their revenue.
 
 ```sql
-SELECT COUNT(*) AS completed_orders
-FROM nakheel.orders;
+SELECT
+  COUNT(*) AS completed_orders,
+  SUM(i.qty * i.price) AS revenue
+FROM nakheel.orders AS o
+JOIN nakheel.order_items AS i
+  ON i.order_id = o.order_id
+WHERE o.status = 'completed';
 ```
 
-**It returned:** `3,000`
+**It returned:**
 
-## Answer B · DAX
+| completed_orders | revenue |
+|---:|---:|
+| 6,951 | 316,023.50 |
 
-**The question:** "What share of completed revenue does each category bring?"
+## Answer B
+
+**The prompt:**
+
+```text
+BigQuery SQL. Dataset: nakheel.
+
+Tables:
+- orders(order_id, customer_id, order_date, status, order_total): one row is one order
+
+Task: how many customers have not placed a completed order in the last 90 days?
+Count only customers who have at least one completed order.
+
+Explain the query in two lines, then give the SQL.
+```
 
 **The assistant's answer:**
 
-> This measure divides each category's revenue by total revenue:
+> The query finds each customer's most recent completed order, then counts the customers whose last order is more than 90 days ago.
 
-```dax
-Share of Revenue =
-DIVIDE([Completed Revenue], [Completed Revenue])
+```sql
+WITH last_order AS (
+  SELECT customer_id, MAX(order_date) AS last_order_date
+  FROM nakheel.orders
+  WHERE status = 'completed'
+  GROUP BY customer_id
+)
+SELECT COUNT(*) AS lapsed_customers
+FROM last_order
+WHERE last_order_date < DATE_SUB(CURRENT_DATE(), INTERVAL 90 DAY);
 ```
 
-**In a table by category it shows:**
+**It returned** (run on 26 November 2026):
 
-| category | Completed Revenue | Share of Revenue |
-|---|---:|---:|
-| Outerwear | 76,637.00 | 100.0% |
-| Shoes | 62,373.50 | 100.0% |
-| Bottoms | 50,535.00 | 100.0% |
-| Accessories | 43,525.00 | 100.0% |
-| Sportswear | 42,365.00 | 100.0% |
-| Tops | 40,588.00 | 100.0% |
-| **Total** | **316,023.50** | **100.0%** |
+| lapsed_customers |
+|---:|
+| 447 |

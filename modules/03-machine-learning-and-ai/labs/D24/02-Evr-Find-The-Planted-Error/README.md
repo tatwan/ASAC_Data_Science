@@ -1,56 +1,73 @@
-# Activity 02 · Find the planted error
+# Activity 02 · Find the error in an answer that had the schema
 
-In this activity, you will review two answers an assistant gave. Both run without an error, and both are wrong. You find each error with a number you already know, and you write the follow-up prompt that fixes it.
+In this activity, you will review two answers an assistant gave to a well-written prompt: the tables, the columns and what one row is were all in it. Both queries run without an error, and both are wrong. You find each error with a number you already know, and you write the follow-up that fixes it.
 
 **Files:** [Unsolved/answers_to_review.md](Unsolved/answers_to_review.md)
 
-**Data:** nothing to load. The check numbers are below; they come from `nakheel.orders` (D03) and your D19 Power BI model.
+**Data:** nothing to load. The check numbers are below; they come from `nakheel.orders` and `nakheel.order_items` (D03) and the D19 number registry.
+
+| What you already know | Value |
+|---|---|
+| Orders, all statuses | 3,000 |
+| Completed orders | 2,771 |
+| Completed revenue, `SUM(qty * price)` | 316,023.50 |
+| Customers with a completed order | 452 |
+| First and last `order_date` in the data | 1 September 2024 and 31 August 2026 |
 
 | Step | What you do | Why |
 |---|---|---|
-| 1 | Review the SQL answer | A missing filter does not raise an error |
-| 2 | Review the DAX answer | A valid formula can answer another question |
+| 1 | Review Answer A | One right number on a row does not make the other right |
+| 2 | Review Answer B | The model cannot know facts about your data that the prompt left out |
 | 3 | Write the two follow-ups | A precise correction is a prompt too |
+| 4 | Try the prompts in your own assistant | Yours may or may not make the same mistake |
 
-## 1. Review the SQL answer
+## 1. Review Answer A
 
-**Why this step.** The manager asked: "How many completed orders do we have?" The assistant's query runs and returns one number. Nothing on the screen says it is wrong.
+**Why this step.** The analyst asked for two numbers in one query. The revenue matches the number you trust, so it is tempting to accept the whole row.
 
-1. Open [Unsolved/answers_to_review.md](Unsolved/answers_to_review.md) and read Answer A.
-2. Before reading its result, say what one row of `nakheel.orders` is.
-3. Compare the result with the number you know: completed orders are **2,771**.
+1. Open [Unsolved/answers_to_review.md](Unsolved/answers_to_review.md) and read the prompt for Answer A, then the SQL.
+2. Before reading the result, say what one row is after the join: one order, or one order line?
+3. Compare both numbers in the result with the table above.
 
-**C1.** Answer A returned **3,000**. Write in one sentence what it counted.
+**C1.** Answer A returned **6,951** completed orders and **316,023.50** revenue. Write in one sentence why the revenue is right and the count is wrong.
 
-## 2. Review the DAX answer
+## 2. Review Answer B
 
-**Why this step.** The manager asked: "What share of completed revenue does each category bring?" The measure is valid DAX and the visual shows a percentage on every row.
+**Why this step.** The prompt gave the tables and the definition. It did not say when the data ends. The assistant filled that gap with the only date it has: today.
 
-1. Read Answer B and the table under it.
-2. Ask what filter is on the top number and what filter is on the bottom number when the visual is on the Outerwear row.
-3. Compare with the number you know: Outerwear's share is **24.3%**.
+1. Read the prompt for Answer B, then the SQL. Find the date the 90 days are counted back from.
+2. Compare the result with the number of customers who have a completed order (452) and with the last date in the data.
 
-**C2.** Answer B shows **100.0%** on every row. Write in one sentence why.
+**C2.** Answer B returned **447** lapsed customers out of 452 when it was run on 26 November 2026. Run on any day from 30 November 2026, the same query returns **452**: every customer. Write in one sentence why the answer changes when the data does not.
 
 ## 3. Write the two follow-ups
 
 **Why this step.** "That's wrong, try again" gives the assistant nothing to work with. Say the number you got, the number you expected and why.
 
 1. For each answer, write a follow-up of one or two sentences.
-2. If you have an assistant open, paste the answer and your follow-up, and read what comes back.
+2. Decide what you would add to the original prompt so the error is less likely next time.
 
-**C3.** Each follow-up names the wrong number, the right number and the cause. Compare with `Solved/errors_named.md` when it is shown in class.
+**C3.** Each follow-up names the wrong number, what it should be or what it should be checked against, and the cause. Compare with `Solved/errors_named.md` when it is shown in class.
 
-**What just happened.** Neither answer had a syntax error, so no tool caught it. A number you trusted did. Keep a few such numbers for every dataset you work on.
+## 4. Try the prompts in your own assistant
+
+**Why this step.** These answers were written for the course, so everyone reviews the same code. Real assistants differ, and the same one can answer differently on another day.
+
+1. In a new chat, send the prompt for Answer A, then the prompt for Answer B.
+2. Check what comes back the same way: what is one row, and what date does it count from?
+
+**C4.** Whether your assistant made the mistake or not, you only know because you checked against numbers you trust.
+
+**What just happened.** The prompts were good and the code was valid. The errors came from things the prompt did not settle: the grain after a join, and the date the data ends. A check you run yourself is what found them.
 
 ## Hint
 
-Answer A: look for a `WHERE`. Answer B: a measure divided by itself, inside the same filters, is always 1.
+Answer A: a join to `order_items` gives one row per line, and an order has two or three lines. Answer B: look for `CURRENT_DATE()`.
 
 ## Bonus
 
-Answer B's fix removes the category filter from the bottom number. Which D19 function did that?
+Write the query for Answer B so that it never needs editing: take the end date from the data itself instead of typing it.
 
 ## References
 
-Check numbers from the D19 number registry: 3,000 orders, 2,771 completed; completed revenue 316,023.50; Outerwear 76,637.00 (24.3%).
+Nakheel Retail: course-generated synthetic data. Check numbers from the D19 number registry and the dataset README (period 1 September 2024 to 31 August 2026). The answers to review were written for this course in the style of an assistant; they are not transcripts of a particular product.
